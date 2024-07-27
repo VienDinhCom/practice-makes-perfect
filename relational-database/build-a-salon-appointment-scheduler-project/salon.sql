@@ -51,7 +51,7 @@ CREATE TABLE public.appointments (
     appointment_id integer NOT NULL,
     customer_id integer NOT NULL,
     service_id integer NOT NULL,
-    "time" character varying(30)
+    "time" character varying(30) NOT NULL
 );
 
 
@@ -85,7 +85,7 @@ ALTER SEQUENCE public.appointments_appointment_id_seq OWNED BY public.appointmen
 
 CREATE TABLE public.customers (
     customer_id integer NOT NULL,
-    phone character varying(8) NOT NULL,
+    phone character varying(12) NOT NULL,
     name character varying(30) NOT NULL
 );
 
@@ -173,22 +173,17 @@ ALTER TABLE ONLY public.services ALTER COLUMN service_id SET DEFAULT nextval('pu
 -- Data for Name: appointments; Type: TABLE DATA; Schema: public; Owner: freecodecamp
 --
 
-INSERT INTO public.appointments VALUES (1, 4, 1, '10:30');
-INSERT INTO public.appointments VALUES (2, 4, 1, '11:30');
-INSERT INTO public.appointments VALUES (3, 4, 1, '12:30');
-INSERT INTO public.appointments VALUES (10, 10, 5, '8AM');
-INSERT INTO public.appointments VALUES (11, 11, 3, '7PM');
-INSERT INTO public.appointments VALUES (12, 10, 4, '4PM');
+INSERT INTO public.appointments VALUES (8, 12, 2, '11am');
+INSERT INTO public.appointments VALUES (9, 13, 5, '7am');
+INSERT INTO public.appointments VALUES (10, 13, 4, '3pm');
 
 
 --
 -- Data for Name: customers; Type: TABLE DATA; Schema: public; Owner: freecodecamp
 --
 
-INSERT INTO public.customers VALUES (3, '000-0000', 'Zero');
-INSERT INTO public.customers VALUES (4, '111-1111', 'Fabio');
-INSERT INTO public.customers VALUES (10, '123-4567', 'Vien');
-INSERT INTO public.customers VALUES (11, '321-6547', 'John');
+INSERT INTO public.customers VALUES (12, '555-555-5555', 'Fabio');
+INSERT INTO public.customers VALUES (13, '123-456-7890', 'Vien');
 
 
 --
@@ -206,14 +201,14 @@ INSERT INTO public.services VALUES (5, 'trim');
 -- Name: appointments_appointment_id_seq; Type: SEQUENCE SET; Schema: public; Owner: freecodecamp
 --
 
-SELECT pg_catalog.setval('public.appointments_appointment_id_seq', 12, true);
+SELECT pg_catalog.setval('public.appointments_appointment_id_seq', 10, true);
 
 
 --
 -- Name: customers_customer_id_seq; Type: SEQUENCE SET; Schema: public; Owner: freecodecamp
 --
 
-SELECT pg_catalog.setval('public.customers_customer_id_seq', 11, true);
+SELECT pg_catalog.setval('public.customers_customer_id_seq', 13, true);
 
 
 --
@@ -260,7 +255,7 @@ ALTER TABLE ONLY public.services
 --
 
 ALTER TABLE ONLY public.appointments
-    ADD CONSTRAINT appointments_customer_id_fkey FOREIGN KEY (customer_id) REFERENCES public.customers(customer_id);
+    ADD CONSTRAINT appointments_customer_id_fkey FOREIGN KEY (customer_id) REFERENCES public.customers(customer_id) ON UPDATE CASCADE ON DELETE CASCADE;
 
 
 --
@@ -268,7 +263,7 @@ ALTER TABLE ONLY public.appointments
 --
 
 ALTER TABLE ONLY public.appointments
-    ADD CONSTRAINT appointments_service_id_fkey FOREIGN KEY (service_id) REFERENCES public.services(service_id);
+    ADD CONSTRAINT appointments_service_id_fkey FOREIGN KEY (service_id) REFERENCES public.services(service_id) ON UPDATE CASCADE ON DELETE CASCADE;
 
 
 --
