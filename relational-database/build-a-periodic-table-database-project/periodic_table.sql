@@ -221,7 +221,7 @@ ALTER TABLE ONLY public.types
 --
 
 ALTER TABLE ONLY public.properties
-    ADD CONSTRAINT properties_atomic_number_fkey FOREIGN KEY (atomic_number) REFERENCES public.elements(atomic_number);
+    ADD CONSTRAINT properties_atomic_number_fkey FOREIGN KEY (atomic_number) REFERENCES public.elements(atomic_number) ON UPDATE CASCADE ON DELETE CASCADE;
 
 
 --
