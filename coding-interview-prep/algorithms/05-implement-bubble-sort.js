@@ -1,14 +1,20 @@
 import { expect } from 'jsr:@std/expect';
 
 function bubbleSort(arr = []) {
+  let swapped;
+
   for (let i = 0; i < arr.length; i++) {
+    swapped = false;
+
     for (let j = arr.length - 1; j > i; j--) {
       if (arr[j] < arr[j - 1]) {
-        const temp = arr[j];
-        arr[j] = arr[j - 1];
-        arr[j - 1] = temp;
+        [arr[j], arr[j - 1]] = [arr[j - 1], arr[j]];
+
+        swapped = true;
       }
     }
+
+    if (!swapped) break;
   }
 
   return arr;
