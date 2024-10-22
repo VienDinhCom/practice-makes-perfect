@@ -1,4 +1,4 @@
-import { expect } from "jsr:@std/expect";
+import { expect } from 'jsr:@std/expect';
 
 function pairwise(arr, arg) {
   const indices = new Set();
@@ -17,9 +17,8 @@ function pairwise(arr, arg) {
     }
   }
 
-  return Array.from(indices).reduce((sum, index) => sum +index, 0);
+  return Array.from(indices).reduce((sum, index) => sum + index, 0);
 }
-
 
 const r = pairwise([7, 9, 11, 13, 15], 20);
 
