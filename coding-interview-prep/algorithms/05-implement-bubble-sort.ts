@@ -1,6 +1,6 @@
 import { expect } from 'jsr:@std/expect';
 
-function bubbleSort(arr = []) {
+function bubbleSort(arr: number[]) {
   let swapped;
 
   for (let i = 0; i < arr.length; i++) {

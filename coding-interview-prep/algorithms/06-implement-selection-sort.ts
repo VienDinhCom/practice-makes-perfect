@@ -1,4 +1,6 @@
-function selectionSort(array = []) {
+import { expect } from 'jsr:@std/expect';
+
+function selectionSort(array: number[]) {
   return array;
 }
 
