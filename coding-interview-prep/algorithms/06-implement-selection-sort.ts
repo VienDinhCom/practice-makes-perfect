@@ -10,7 +10,9 @@ function selectionSort(arr: number[]) {
       }
     }
 
-    [arr[i], arr[minj]] = [arr[minj], arr[i]];
+    if (minj !== i) {
+      [arr[i], arr[minj]] = [arr[minj], arr[i]];
+    }
   }
 
   return arr;
