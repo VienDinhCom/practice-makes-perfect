@@ -1,7 +1,19 @@
 import { expect } from 'jsr:@std/expect';
 
-function selectionSort(array: number[]) {
-  return array;
+function selectionSort(arr: number[]) {
+  for (let i = 0; i < arr.length; i++) {
+    let minj = i;
+
+    for (let j = i + 1; j < arr.length; j++) {
+      if (arr[j] < arr[minj]) {
+        minj = j;
+      }
+    }
+
+    [arr[i], arr[minj]] = [arr[minj], arr[i]];
+  }
+
+  return arr;
 }
 
 Deno.test('test', () => {
