@@ -1,27 +1,28 @@
 import { expect } from 'jsr:@std/expect';
 
 function bubbleSort(arr: number[]) {
-  let swapped;
-
   for (let i = 0; i < arr.length; i++) {
-    swapped = false;
+    let swapped = false;
 
     for (let j = 0; j < arr.length - i - 1; j++) {
       if (arr[j] > arr[j + 1]) {
-        [arr[j], arr[j + 1]] = [arr[j + 1], arr[j]];
-
         swapped = true;
+
+        [arr[j], arr[j + 1]] = [arr[j + 1], arr[j]];
       }
     }
 
-    if (!swapped) break;
+    if (swapped === false) break;
   }
 
   return arr;
 }
 
+// https://visualgo.net/en/sorting
+// https://www.w3schools.com/dsa/dsa_algo_bubblesort.php
+
 Deno.test('test', () => {
-  const input = [1, 4, 2, 8, 345, 123, 43, 32, 5643, 63, 123, 43, 2, 55, 1, 234, 92];
+  const input = [3, 15, 7, 1, 12, 19, 5, 8, 2, 10];
   const output = input.toSorted((a, b) => a - b);
 
   expect(bubbleSort(input)).toStrictEqual(output);
