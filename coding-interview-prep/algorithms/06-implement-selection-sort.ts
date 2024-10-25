@@ -1,6 +1,6 @@
 import { expect } from 'jsr:@std/expect';
 
-function selectionSort(arr: number[]) {
+function insertionSort(arr: number[]) {
   for (let i = 0; i < arr.length; i++) {
     let minj = i;
 
