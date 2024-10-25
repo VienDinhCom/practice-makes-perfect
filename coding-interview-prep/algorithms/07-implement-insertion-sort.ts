@@ -24,6 +24,7 @@ function insertionSort(arr: number[]): number[] {
   return arr;
 }
 
+// https://visualgo.net/en/sorting
 // https://www.w3schools.com/dsa/dsa_algo_insertionsort.php
 
 Deno.test('test', () => {
