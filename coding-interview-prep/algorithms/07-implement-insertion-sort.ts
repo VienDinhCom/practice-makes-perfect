@@ -1,24 +1,17 @@
 import { expect } from 'jsr:@std/expect';
 
 function insertionSort(arr: number[]): number[] {
-  // Mark the first element as sorted
-  for (let i = 1; i < arr.length; i++) {
-    // Extract the element X
-    const X = arr[i];
-    let j: number;
+  for (let i = 0; i < arr.length; i++) {
+    const tmp = arr[i];
 
-    // Start from the last sorted index
-    for (j = i - 1; j >= 0; j--) {
-      // If current element j > X, move sorted element to the right by 1
-      if (arr[j] > X) {
-        arr[j + 1] = arr[j]; // Move element to the right
-      } else {
-        break; // Break loop and insert X here
-      }
+    let j = i - 1;
+
+    while (j >= 0 && tmp < arr[j]) {
+      arr[j + 1] = arr[j];
+      j--;
     }
 
-    // Insert X at the correct position
-    arr[j + 1] = X;
+    arr[j + 1] = tmp;
   }
 
   return arr;
