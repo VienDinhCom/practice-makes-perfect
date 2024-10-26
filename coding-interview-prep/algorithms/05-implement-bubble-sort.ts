@@ -4,7 +4,7 @@ function bubbleSort(arr: number[]) {
   for (let i = 0; i < arr.length; i++) {
     let swapped = false;
 
-    for (let j = 0; j < arr.length - i - 1; j++) {
+    for (let j = 0; j < arr.length - 1 - i; j++) {
       if (arr[j] > arr[j + 1]) {
         swapped = true;
 
