@@ -1,26 +1,23 @@
 import { expect } from 'jsr:@std/expect';
 
-function bubbleSort(arr: number[]): number[] {
-  // Check for empty or single-element arrays
-  if (arr.length <= 1) return arr;
+function bubbleSort(nums: number[]): number[] {
+  if (nums.length <= 1) return nums;
 
-  for (let i = 0; i < arr.length; i++) {
+  for (let i = 0; i < nums.length; i++) {
     let swapped = false;
 
-    for (let j = 0; j < arr.length - i - 1; j++) {
-      // Compare adjacent elements
-      if (arr[j] > arr[j + 1]) {
+    for (let j = 0; j < nums.length - i - 1; j++) {
+      if (nums[j] > nums[j + 1]) {
+        [nums[j], nums[j + 1]] = [nums[j + 1], nums[j]];
+
         swapped = true;
-        // Swap elements
-        [arr[j], arr[j + 1]] = [arr[j + 1], arr[j]];
       }
     }
 
-    // If no elements were swapped, the array is sorted
     if (!swapped) break;
   }
 
-  return arr;
+  return nums;
 }
 
 // https://visualgo.net/en/sorting

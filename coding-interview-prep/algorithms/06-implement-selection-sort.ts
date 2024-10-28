@@ -1,21 +1,23 @@
 import { expect } from 'jsr:@std/expect';
 
-function selectionSort(arr: number[]) {
-  for (let i = 0; i < arr.length; i++) {
+function selectionSort(nums: number[]): number[] {
+  if (nums.length <= 1) return nums;
+
+  for (let i = 0; i < nums.length; i++) {
     let minIndex = i;
 
-    for (let j = i + 1; j < arr.length; j++) {
-      if (arr[j] < arr[minIndex]) {
+    for (let j = i + 1; j < nums.length; j++) {
+      if (nums[j] < nums[minIndex]) {
         minIndex = j;
       }
     }
 
     if (minIndex !== i) {
-      [arr[i], arr[minIndex]] = [arr[minIndex], arr[i]];
+      [nums[minIndex], nums[i]] = [nums[i], nums[minIndex]];
     }
   }
 
-  return arr;
+  return nums;
 }
 
 // https://visualgo.net/en/sorting
