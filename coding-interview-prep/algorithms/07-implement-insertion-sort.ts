@@ -4,16 +4,16 @@ function insertionSort(nums: number[]): number[] {
   if (nums.length <= 1) return nums;
 
   for (let i = 1; i < nums.length; i++) {
-    const currentValue = nums[i];
+    const tmp = nums[i];
 
-    let currentIndex = i - 1;
+    let j = i - 1;
 
-    while (nums[currentIndex] > currentValue && currentIndex >= 0) {
-      nums[currentIndex + 1] = nums[currentIndex];
-      currentIndex--;
+    while (nums[j] > tmp && j >= 0) {
+      nums[j + 1] = nums[j];
+      j--;
     }
 
-    nums[currentIndex + 1] = currentValue;
+    nums[j + 1] = tmp;
   }
 
   return nums;
