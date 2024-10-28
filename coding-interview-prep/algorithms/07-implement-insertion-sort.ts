@@ -1,20 +1,22 @@
 import { expect } from 'jsr:@std/expect';
 
-function insertionSort(arr: number[]): number[] {
-  for (let i = 0; i < arr.length; i++) {
-    const tmp = arr[i];
+function insertionSort(nums: number[]): number[] {
+  if (nums.length <= 1) return nums;
 
-    let j = i - 1;
+  for (let i = 1; i < nums.length; i++) {
+    const currentValue = nums[i];
 
-    while (arr[j] > tmp && j >= 0) {
-      arr[j + 1] = arr[j];
-      j--;
+    let currentIndex = i - 1;
+
+    while (nums[currentIndex] > currentValue && currentIndex >= 0) {
+      nums[currentIndex + 1] = nums[currentIndex];
+      currentIndex--;
     }
 
-    arr[j + 1] = tmp;
+    nums[currentIndex + 1] = currentValue;
   }
 
-  return arr;
+  return nums;
 }
 
 // https://visualgo.net/en/sorting
