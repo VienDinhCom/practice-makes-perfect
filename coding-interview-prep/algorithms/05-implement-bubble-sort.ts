@@ -1,18 +1,23 @@
 import { expect } from 'jsr:@std/expect';
 
-function bubbleSort(arr: number[]) {
+function bubbleSort(arr: number[]): number[] {
+  // Check for empty or single-element arrays
+  if (arr.length <= 1) return arr;
+
   for (let i = 0; i < arr.length; i++) {
     let swapped = false;
 
     for (let j = 0; j < arr.length - i - 1; j++) {
+      // Compare adjacent elements
       if (arr[j] > arr[j + 1]) {
         swapped = true;
-
+        // Swap elements
         [arr[j], arr[j + 1]] = [arr[j + 1], arr[j]];
       }
     }
 
-    if (swapped === false) break;
+    // If no elements were swapped, the array is sorted
+    if (!swapped) break;
   }
 
   return arr;
