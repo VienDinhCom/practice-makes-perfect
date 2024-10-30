@@ -36,7 +36,9 @@ function partition(arr: number[], left: number, right: number): number {
       i++;
 
       // Hoán đổi arr[i] và arr[j]
-      [arr[i], arr[j]] = [arr[j], arr[i]];
+      if (i !== j) {
+        [arr[i], arr[j]] = [arr[j], arr[i]];
+      }
     }
   }
 
