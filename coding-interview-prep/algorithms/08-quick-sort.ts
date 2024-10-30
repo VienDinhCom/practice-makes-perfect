@@ -28,7 +28,7 @@ function partition(arr: number[], left: number, right: number): number {
   // Biến i được khởi tạo để theo dõi vị trí mà các phần tử nhỏ hơn hoặc bằng pivot sẽ được đặt.
   let i = left - 1;
 
-  // Duyệt qua các phần tử từ left đến right - 1
+  // Duyệt qua các phần tử từ left đến right - 1 (trước pivot)
   for (let j = left; j < right; j++) {
     // Nếu phần tử hiện tại nhỏ hơn hoặc bằng pivot
     if (arr[j] <= pivot) {
