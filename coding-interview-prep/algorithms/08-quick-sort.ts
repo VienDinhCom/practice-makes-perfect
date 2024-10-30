@@ -4,7 +4,10 @@ function quickSort(arr: number[], left: number = 0, right: number = arr.length -
   // Nếu chỉ số left nhỏ hơn right, nghĩa là còn phần tử để sắp xếp.
   if (left < right) {
     //  Gọi hàm partition để chia mảng thành hai phần dựa trên giá trị chốt (pivot).
+
+    console.log('Before: ', arr);
     const pivotIndex = partition(arr, left, right);
+    console.log('After: ', arr, '\n');
 
     // Đệ quy sắp xếp các phần tử bên trái của pivot
     quickSort(arr, left, pivotIndex - 1);
@@ -43,6 +46,8 @@ function partition(arr: number[], left: number, right: number): number {
   // Trả về chỉ số của pivot sau khi đã được đặt đúng vị trí
   return i + 1;
 }
+
+quickSort([3, 15, 7, 1, 12, 19, 5, 8, 2, 10]);
 
 // https://visualgo.net/en/sorting
 // https://www.youtube.com/watch?v=WprjBK0p6rw
