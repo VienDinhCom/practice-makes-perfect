@@ -1,30 +1,46 @@
 import { expect } from 'jsr:@std/expect';
 
 function quickSort(arr: number[], left: number = 0, right: number = arr.length - 1): number[] {
+  // Nếu chỉ số left nhỏ hơn right, nghĩa là còn phần tử để sắp xếp.
   if (left < right) {
+    //  Gọi hàm partition để chia mảng thành hai phần dựa trên giá trị chốt (pivot).
     const pivotIndex = partition(arr, left, right);
 
+    // Đệ quy sắp xếp các phần tử bên trái của pivot
     quickSort(arr, left, pivotIndex - 1);
+
+    // Đệ quy sắp xếp các phần tử bên phải của pivot
     quickSort(arr, pivotIndex + 1, right);
   }
 
+  // Trả về mảng đã được sắp xếp
   return arr;
 }
 
+// Hàm partition chia mảng thành hai phần dựa trên pivot
 function partition(arr: number[], left: number, right: number): number {
+  // Chọn phần tử cuối cùng làm pivot
   const pivot = arr[right];
 
+  // Biến i được khởi tạo để theo dõi vị trí mà các phần tử nhỏ hơn hoặc bằng pivot sẽ được đặt.
   let i = left - 1;
 
+  // Duyệt qua các phần tử từ left đến right - 1
   for (let j = left; j < right; j++) {
+    // Nếu phần tử hiện tại nhỏ hơn hoặc bằng pivot
     if (arr[j] <= pivot) {
+      // Tăng chỉ số i
       i++;
+
+      // Hoán đổi arr[i] và arr[j]
       [arr[i], arr[j]] = [arr[j], arr[i]];
     }
   }
 
+  // Hoán đổi phần tử ngay sau i với pivot để đưa pivot về đúng vị trí
   [arr[i + 1], arr[right]] = [arr[right], arr[i + 1]];
 
+  // Trả về chỉ số của pivot sau khi đã được đặt đúng vị trí
   return i + 1;
 }
 
