@@ -1,55 +1,52 @@
 import { expect } from 'jsr:@std/expect';
 
-function quickSort(arr: number[], left: number = 0, right: number = arr.length - 1): number[] {
-  // Nếu chỉ số left nhỏ hơn right, nghĩa là còn phần tử để sắp xếp.
+function quickSort(nums: number[], left: number = 0, right: number = nums.length - 1): number[] {
+  // Kiểm tra điều kiện dừng của đệ quy: nếu left >= right, đoạn này đã sắp xếp xong
   if (left < right) {
-    //  Gọi hàm partition để chia mảng thành hai phần dựa trên giá trị chốt (pivot).
+    // Phân đoạn mảng và tìm vị trí của pivot
+    const pivotIndex = partition(nums, left, right);
 
-    console.log('Before: ', arr);
-    const pivotIndex = partition(arr, left, right);
-    console.log('After: ', arr, '\n');
+    // Sắp xếp phần bên trái của pivot
+    quickSort(nums, left, pivotIndex - 1);
 
-    // Đệ quy sắp xếp các phần tử bên trái của pivot
-    quickSort(arr, left, pivotIndex - 1);
-
-    // Đệ quy sắp xếp các phần tử bên phải của pivot
-    quickSort(arr, pivotIndex + 1, right);
+    // Sắp xếp phần bên phải của pivot
+    quickSort(nums, pivotIndex + 1, right);
   }
 
-  // Trả về mảng đã được sắp xếp
-  return arr;
+  // Trả về mảng đã sắp xếp
+  return nums;
 }
 
-// Hàm partition chia mảng thành hai phần dựa trên pivot
-function partition(arr: number[], left: number, right: number): number {
-  // Chọn phần tử cuối cùng làm pivot
-  const pivot = arr[right];
+// Hàm partition chọn một phần tử làm pivot và sắp xếp các phần tử xung quanh nó
+function partition(nums: number[], left: number, right: number): number {
+  // Chọn phần tử cuối cùng trong đoạn làm pivot
+  const pivot = nums[right];
 
-  // Biến i được khởi tạo để theo dõi vị trí mà các phần tử nhỏ hơn hoặc bằng pivot sẽ được đặt.
+  // Khởi tạo chỉ số i để đánh dấu vị trí phần tử cuối cùng <= pivot
   let i = left - 1;
 
-  // Duyệt qua các phần tử từ left đến right - 1 (trước pivot)
+  // Duyệt qua các phần tử từ left đến right - 1 để sắp xếp quanh pivot
   for (let j = left; j < right; j++) {
-    // Nếu phần tử hiện tại nhỏ hơn hoặc bằng pivot
-    if (arr[j] <= pivot) {
-      // Tăng chỉ số i
+    // Nếu phần tử hiện tại nhỏ hơn hoặc bằng pivot, hoán đổi nó về vị trí "nhỏ hơn pivot"
+    if (nums[j] <= pivot) {
+      // Tăng chỉ số i để mở rộng vùng các phần tử nhỏ hơn hoặc bằng pivot
       i++;
 
-      // Hoán đổi arr[i] và arr[j]
-      if (i !== j) {
-        [arr[i], arr[j]] = [arr[j], arr[i]];
+      // Hoán đổi phần tử tại nums[i] và nums[j] để đảm bảo các phần tử nhỏ hơn pivot nằm bên trái
+      if (j !== i) {
+        [nums[j], nums[i]] = [nums[i], nums[j]];
       }
     }
   }
 
-  // Hoán đổi phần tử ngay sau i với pivot để đưa pivot về đúng vị trí
-  [arr[i + 1], arr[right]] = [arr[right], arr[i + 1]];
+  // Đưa pivot về vị trí chính xác (i + 1) bằng cách hoán đổi với phần tử tại nums[right]
+  if (i + 1 !== right) {
+    [nums[right], nums[i + 1]] = [nums[i + 1], nums[right]];
+  }
 
-  // Trả về chỉ số của pivot sau khi đã được đặt đúng vị trí
+  // Trả về vị trí cuối cùng của pivot sau khi đã phân chia mảng
   return i + 1;
 }
-
-quickSort([3, 15, 7, 1, 12, 19, 5, 8, 2, 10]);
 
 // https://visualgo.net/en/sorting
 // https://www.youtube.com/watch?v=WprjBK0p6rw
