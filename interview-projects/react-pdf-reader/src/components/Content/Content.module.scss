@@ -1,0 +1,127 @@
+.root {
+  height: 100vh;
+  overflow-y: auto;
+  flex: 1;
+
+  @media (max-width: 1024px) {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+.header {
+  padding: 23px;
+  text-align: center;
+  background: #080447;
+  margin-bottom: -20px;
+}
+
+.logo {
+  margin-bottom: 20px;
+}
+
+.body {
+  padding: 0 80px;
+
+  @media (max-width: 1024px) {
+    padding: 0 23px;
+    flex: 1;
+  }
+}
+
+.title {
+  font-style: normal;
+  font-weight: bold;
+  font-size: 36px;
+  color: #2D1F3F;
+  margin: 70px 0 50px 0;
+  line-height: 36px;
+  word-break: break-all;
+
+  @media (max-width: 1024px) {
+    font-size: 24px;
+    margin: 50px 0 30px 0;
+  }
+}
+
+.fileIcon {
+  margin-right: 20px;
+  float: left;
+  height: 45px;
+
+  @media (max-width: 1024px) {
+    height: 32px;
+  }
+}
+
+.content {
+  padding-bottom: 70px;
+
+  @media (max-width: 1024px) {
+    padding-bottom: 50px;
+  }
+}
+
+.none {
+  margin-top: 75px;
+  font-size: 18px;
+
+  @media (max-width: 1024px) {
+    text-align: center;
+  }
+}
+
+.noneSmallText {
+  font-size: 14px;
+}
+
+.footer {
+  background: #080447;
+  color: #fff;
+  text-align: center;
+  padding: 23px;
+}
+
+.footerTitle {
+  margin: 0 0 20px 0;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 31px;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.27);
+}
+
+.fileList {
+  text-align: left;
+  list-style: none;
+  padding: 0;
+}
+
+@mixin activeFile {
+  color: #F7B633;
+}
+
+.fileItem {
+  cursor: pointer;
+  margin-bottom: 10px;
+  font-size: 18px;
+  transition-duration: 0.3;
+
+  &:hover {
+    @include activeFile;
+  }
+}
+
+.fileItemActive {
+  @include activeFile;
+}
+
+.fileItemImg {
+  float: left;
+  margin-right: 10px;
+}
+
+.fileItemSize {
+  color: #4951b8;
+  font-size: 14px;
+}

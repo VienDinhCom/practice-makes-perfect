@@ -1,0 +1,86 @@
+.root {
+  background: #080447;
+  color: #fff;
+  width: 384px;
+  display: flex;
+  flex-direction: column;
+}
+
+.header {
+  padding: 70px 55px 35px 55px;
+}
+
+.body {
+  flex: 1;
+}
+
+.logo {
+  height: 37px;
+}
+
+.fileList {
+  padding: 0 20px;
+  margin: 0;
+}
+
+.fileListHeader {
+  padding: 0 55px;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 31px;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.27);
+}
+
+@mixin activeFile {
+  background: rgba(88, 147, 212, 0.2);
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 15px;
+}
+
+.fileItem {
+  list-style: none;
+  cursor: pointer;
+  margin-bottom: 20px;
+  padding: 20px 35px;
+  transition-duration: 0.3s;
+
+  &:hover,
+  &.active {
+    @include activeFile;
+  }
+
+  &::after {
+    clear: both;
+  }
+}
+
+.fileItemActive {
+  @include activeFile;
+}
+
+.fileImage {
+  float: left;
+  margin-top: 7px;
+  margin-right: 20px;
+}
+
+.fileInfo {
+  overflow: hidden;
+}
+
+.fileName {
+  margin: 0;
+  font-weight: 600;
+  font-size: 22px;
+  line-height: 31px;
+}
+
+.fileSize {
+  color: #4951b8;
+}
+
+.footer {
+  padding: 30px;
+  text-align: center;
+}

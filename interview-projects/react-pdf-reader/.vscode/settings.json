@@ -1,0 +1,6 @@
+{
+  "eslint.enable": true,
+  "eslint.autoFixOnSave": true,
+  "javascript.validate.enable": false,
+  "emmet.triggerExpansionOnTab": true
+}

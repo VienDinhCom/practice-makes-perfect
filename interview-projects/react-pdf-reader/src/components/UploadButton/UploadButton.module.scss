@@ -1,0 +1,28 @@
+.upload {
+  padding: 22px 62px;
+  background: #F7B633;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 10px;
+  font-weight: 600;
+  font-size: 22px;
+  color: #FFFFFF;
+  display: inline-block;
+  text-align: center;
+
+  :hover {
+    cursor: pointer;
+  }
+
+  @media (max-width: 480px) {
+    padding-left: 35px;
+    padding-right: 35px;
+  }
+}
+
+.uploadInput {
+  display: none;
+}
+
+.uploadIcon {
+  margin-right: 15px;
+}

@@ -1,0 +1,31 @@
+{
+  "name": "reader-zone-test",
+  "version": "0.1.0",
+  "license": "MIT",
+  "scripts": {
+    "dev": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ],
+  "dependencies": {
+    "normalize.css": "^8.0.1",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "react-pdf": "^4.1.0",
+    "react-pdf-js": "^5.1.0",
+    "react-scripts": "^3.0.1"
+  },
+  "devDependencies": {
+    "eslint-config-prettier": "^6.0.0",
+    "eslint-plugin-prettier": "^3.1.0",
+    "node-sass": "^4.12.0",
+    "prettier": "^1.18.2"
+  }
+}
