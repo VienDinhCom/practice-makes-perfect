@@ -18,40 +18,78 @@ const Person = mongoose.model('Person', personSchema);
 
 const createAndSavePerson = async (done) => {
   try {
-    const data = await Person.create({name: 'Vien', age: 18, favoriteFoods: ['rice']});
-    
-    done(null, data)
+    const data = await Person.create({ name: 'Vien', age: 18, favoriteFoods: ['rice'] });
+
+    done(null, data);
   } catch (error) {
     done(error);
   }
 };
 
-const createManyPeople = (arrayOfPeople, done) => {
-  done(null /*, data*/);
+const createManyPeople = async (arrayOfPeople, done) => {
+  try {
+    const data = await Person.insertMany(arrayOfPeople);
+    done(null, data);
+  } catch (error) {
+    done(error);
+  }
 };
 
-const findPeopleByName = (personName, done) => {
-  done(null /*, data*/);
+const findPeopleByName = async (personName, done) => {
+  try {
+    const data = await Person.find({ name: personName });
+    done(null, data);
+  } catch (error) {
+    done(error);
+  }
 };
 
-const findOneByFood = (food, done) => {
-  done(null /*, data*/);
+const findOneByFood = async (food, done) => {
+  try {
+    const data = await Person.findOne({ favoriteFoods: food });
+
+    done(null, data);
+  } catch (error) {
+    done(error);
+  }
 };
 
-const findPersonById = (personId, done) => {
-  done(null /*, data*/);
+const findPersonById = async (personId, done) => {
+  try {
+    const data = await Person.findOne({ _id: personId });
+
+    done(null, data);
+  } catch (error) {
+    done(error);
+  }
 };
 
-const findEditThenSave = (personId, done) => {
-  const foodToAdd = 'hamburger';
+const findEditThenSave = async (personId, done) => {
+  try {
+    const person = await Person.findById(personId);
 
-  done(null /*, data*/);
+    const foodToAdd = 'hamburger';
+
+    person.favoriteFoods.push(foodToAdd);
+
+    const data = await person.save();
+
+    done(null, data);
+  } catch (error) {
+    done(error);
+  }
 };
 
-const findAndUpdate = (personName, done) => {
+const findAndUpdate = async (personName, done) => {
   const ageToSet = 20;
 
-  done(null /*, data*/);
+  try {
+    const data = await Person.findOneAndUpdate({ name: personName }, { age: ageToSet }, { new: true });
+
+    done(null, data);
+  } catch (error) {
+    done(error);
+  }
 };
 
 const removeById = (personId, done) => {
