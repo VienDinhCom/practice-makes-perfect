@@ -81,9 +81,9 @@ const findEditThenSave = async (personId, done) => {
 };
 
 const findAndUpdate = async (personName, done) => {
-  const ageToSet = 20;
-
   try {
+    const ageToSet = 20;
+
     const data = await Person.findOneAndUpdate({ name: personName }, { age: ageToSet }, { new: true });
 
     done(null, data);
@@ -92,20 +92,42 @@ const findAndUpdate = async (personName, done) => {
   }
 };
 
-const removeById = (personId, done) => {
-  done(null /*, data*/);
+const removeById = async (personId, done) => {
+  try {
+    const data = await Person.findByIdAndRemove(personId);
+
+    done(null, data);
+  } catch (error) {
+    done(error);
+  }
 };
 
-const removeManyPeople = (done) => {
-  const nameToRemove = 'Mary';
+const removeManyPeople = async (done) => {
+  try {
+    const nameToRemove = 'Mary';
 
-  done(null /*, data*/);
+    const data = await Person.deleteMany({ name: nameToRemove });
+
+    done(null, data);
+  } catch (error) {
+    done(error);
+  }
 };
 
-const queryChain = (done) => {
-  const foodToSearch = 'burrito';
+const queryChain = async (done) => {
+  try {
+    const foodToSearch = 'burrito';
 
-  done(null /*, data*/);
+    const data = await Person.find({ favoriteFoods: foodToSearch })
+      .sort({ name: 1 })
+      .limit(2)
+      .select('name favoriteFoods')
+      .exec();
+
+    done(null, data);
+  } catch (error) {
+    done(error);
+  }
 };
 
 /** **Well Done !!**
