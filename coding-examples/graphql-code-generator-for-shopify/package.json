@@ -1,0 +1,22 @@
+{
+  "name": "graphql-code-generator-for-shopify-example",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "codegen": "graphql-codegen --config codegen.yml"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@graphql-codegen/cli": "^1.2.0",
+    "@graphql-codegen/typescript": "1.2.0",
+    "@graphql-codegen/typescript-operations": "^1.2.0",
+    "graphql": "^14.3.1"
+  },
+  "dependencies": {
+    "apollo-boost": "^0.4.0"
+  }
+}
