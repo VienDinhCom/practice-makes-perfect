@@ -48,7 +48,6 @@ async function validateURL(url, callback) {
     await dns.lookup(hostname);
   } catch (error) {
     callback({ error: 'invalid url' });
-    throw error;
   }
 }
 
