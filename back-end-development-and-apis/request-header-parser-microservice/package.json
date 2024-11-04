@@ -4,6 +4,7 @@
   "description": "API project for freeCodeCamp",
   "main": "index.js",
   "scripts": {
+    "dev": "node --watch index.js",
     "start": "node index.js"
   },
   "dependencies": {
