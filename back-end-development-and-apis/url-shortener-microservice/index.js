@@ -1,24 +1,87 @@
-require('dotenv').config();
-const express = require('express');
 const cors = require('cors');
+const dotenv = require('dotenv');
+const express = require('express');
+const shortid = require('shortid');
+const dns = require('dns/promises');
+const mongoose = require('mongoose');
+const bodyParser = require('body-parser');
+
+dotenv.config();
+
+/* MongoDB
+ *********************************************************/
+mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true });
+
+const shortUrlSchema = new mongoose.Schema({
+  original: {
+    type: String,
+    required: true,
+    unique: true,
+  },
+  short: {
+    type: String,
+    required: true,
+    unique: true,
+  },
+});
+
+const ShortURL = mongoose.model('ShortURL', shortUrlSchema);
+
+/* Express
+ *********************************************************/
 const app = express();
 
-// Basic Configuration
 const port = process.env.PORT || 3000;
 
 app.use(cors());
-
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use('/public', express.static(`${process.cwd()}/public`));
 
-app.get('/', function(req, res) {
+app.get('/', function (req, res) {
   res.sendFile(process.cwd() + '/views/index.html');
 });
 
-// Your first API endpoint
-app.get('/api/hello', function(req, res) {
-  res.json({ greeting: 'hello API' });
+async function validateURL(url, callback) {
+  try {
+    const { hostname } = new URL(url);
+
+    await dns.lookup(hostname);
+  } catch (error) {
+    callback({ error: 'invalid url' });
+    throw error;
+  }
+}
+
+app.post('/api/shorturl', async function (req, res) {
+  const originalUrl = req.body.url;
+
+  await validateURL(originalUrl, (error) => {
+    res.json(error);
+  });
+
+  const shortUrl = shortid.generate();
+
+  await ShortURL.create({ original: originalUrl, short: shortUrl })
+    .then((data) => {
+      res.json({ original_url: data.original, short_url: data.short });
+    })
+    .catch((error) => {
+      if (error.code === 11000) {
+        ShortURL.findOne({ original: originalUrl }).then((data) => {
+          res.json({ original_url: data.original, short_url: data.short });
+        });
+      } else {
+        throw error;
+      }
+    });
 });
 
-app.listen(port, function() {
+app.get('/api/shorturl/:shorturl', function (req, res) {
+  ShortURL.findOne({ short: req.params.shorturl }).then((data) => {
+    res.redirect(data.original);
+  });
+});
+
+app.listen(port, function () {
   console.log(`Listening on port ${port}`);
 });
