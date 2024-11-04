@@ -61,25 +61,25 @@ app.post('/api/shorturl', async function (req, res) {
 
   const shortUrl = shortid.generate();
 
-  await ShortURL.create({ original: originalUrl, short: shortUrl })
-    .then((data) => {
+  try {
+    const data = await ShortURL.create({ original: originalUrl, short: shortUrl });
+
+    res.json({ original_url: data.original, short_url: data.short });
+  } catch (error) {
+    if (error.code === 11000) {
+      const data = await ShortURL.findOne({ original: originalUrl });
+
       res.json({ original_url: data.original, short_url: data.short });
-    })
-    .catch((error) => {
-      if (error.code === 11000) {
-        ShortURL.findOne({ original: originalUrl }).then((data) => {
-          res.json({ original_url: data.original, short_url: data.short });
-        });
-      } else {
-        throw error;
-      }
-    });
+    } else {
+      throw error;
+    }
+  }
 });
 
-app.get('/api/shorturl/:shorturl', function (req, res) {
-  ShortURL.findOne({ short: req.params.shorturl }).then((data) => {
-    res.redirect(data.original);
-  });
+app.get('/api/shorturl/:shorturl', async function (req, res) {
+  const data = await ShortURL.findOne({ short: req.params.shorturl });
+
+  res.redirect(data.original);
 });
 
 app.listen(port, function () {
