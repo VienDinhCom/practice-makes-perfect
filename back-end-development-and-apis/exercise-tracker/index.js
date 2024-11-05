@@ -107,9 +107,32 @@ app.get('/api/users/:_id/logs', async (req, res) => {
 
   if (user) {
     const count = await Exercise.countDocuments();
-    const exercises = await Exercise.find().sort({ date: -1 }).select('description duration date').exec();
 
-    console.log(user);
+    const { from, to, limit } = req.query;
+
+    const dateFilter = (() => {
+      if (from && to) {
+        return {
+          $gte: new Date(from),
+          $lte: new Date(to),
+        };
+      }
+
+      return;
+    })();
+
+    console.log(user.id, req.query, {
+      $gte: new Date(from),
+      $lte: new Date(to),
+    });
+
+    const exercises = await Exercise.find({
+      // date: dateFilter,
+    })
+      // .limit(Number(limit) || undefined)
+      // .sort({ date: -1 })
+      .select('description duration date')
+      .exec();
 
     res.json({
       _id: user._id,
