@@ -20,6 +20,7 @@ function merge(left: number[], right: number[]): number[] {
       sortedArr.push(right.shift()!);
     }
   }
+
   return [...sortedArr, ...left, ...right];
 }
 
