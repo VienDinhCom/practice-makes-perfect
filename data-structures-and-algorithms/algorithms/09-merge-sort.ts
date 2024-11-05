@@ -1,50 +1,26 @@
 import { expect } from 'jsr:@std/expect';
 
-function mergeSort(nums: number[]): number[] {
-  // Nếu mảng có độ dài 1 hoặc nhỏ hơn, trả về mảng (đã được sắp xếp)
-  if (nums.length <= 1) return nums;
+function mergeSort(arr: number[]): number[] {
+  if (arr.length <= 1) return arr;
 
-  // Xác định vị trí giữa của mảng
-  const midIndex = Math.floor(nums.length / 2);
+  const mid = Math.floor(arr.length / 2);
+  const left = mergeSort(arr.slice(0, mid));
+  const right = mergeSort(arr.slice(mid));
 
-  // Chia mảng thành hai nửa: bên trái và bên phải, sau đó sắp xếp đệ quy
-  const left = mergeSort(nums.slice(0, midIndex));
-  const right = mergeSort(nums.slice(midIndex));
-
-  // Kết hợp hai mảng đã sắp xếp thành một mảng đã sắp xếp hoàn chỉnh
   return merge(left, right);
 }
 
 function merge(left: number[], right: number[]): number[] {
-  // Mảng kết quả để lưu trữ các phần tử đã sắp xếp
-  const result: number[] = [];
+  const sortedArr = [];
 
-  // Chỉ số hiện tại của mảng left
-  let leftIndex = 0;
-
-  // Chỉ số hiện tại của mảng right
-  let rightIndex = 0;
-
-  // Lặp qua các phần tử của cả hai mảng cho đến khi một trong hai mảng hết phần tử
-  while (leftIndex < left.length && rightIndex < right.length) {
-    // So sánh các phần tử ở chỉ số hiện tại của left và right
-    if (left[leftIndex] < right[rightIndex]) {
-      // Thêm phần tử nhỏ hơn vào mảng kết quả
-      result.push(left[leftIndex]);
-
-      // Tăng chỉ số của mảng left
-      leftIndex++;
+  while (left.length && right.length) {
+    if (left[0] < right[0]) {
+      sortedArr.push(left.shift()!);
     } else {
-      // Thêm phần tử nhỏ hơn vào mảng kết quả
-      result.push(right[rightIndex]);
-
-      // Tăng chỉ số của mảng right
-      rightIndex++;
+      sortedArr.push(right.shift()!);
     }
   }
-
-  // Kết hợp các phần tử còn lại từ mảng bên trái và bên phải vào kết quả
-  return result.concat(left.slice(leftIndex)).concat(right.slice(rightIndex));
+  return [...sortedArr, ...left, ...right];
 }
 
 // https://visualgo.net/en/sorting
