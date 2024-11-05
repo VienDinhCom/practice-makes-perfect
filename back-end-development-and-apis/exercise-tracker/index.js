@@ -8,6 +8,7 @@ const _ = require('lodash');
 dotenv.config();
 
 const isProd = () => process.env.NODE_ENV === 'production';
+const formatDate = (date) => date.toString().split(' ').slice(0, 4).join(' ');
 
 /* MongoDB
  *********************************************************/
@@ -79,17 +80,10 @@ app.get('/api/users', async (req, res) => {
 });
 
 app.post('/api/users/:_id/exercises', async (req, res, next) => {
-  const user = await User.findById(req.body[':_id']);
+  const user = await User.findById(req.params['_id']);
 
   if (user) {
     const { description, duration, date } = req.body;
-
-    console.log({
-      username: user.username,
-      description,
-      duration: Number(duration),
-      date: new Date(date || Date.now()),
-    });
 
     const exercise = await Exercise.create({
       username: user.username,
@@ -98,7 +92,35 @@ app.post('/api/users/:_id/exercises', async (req, res, next) => {
       date: new Date(date || Date.now()),
     });
 
-    res.json(_.pick(exercise, ['_id', 'username', 'date', 'duration', 'description']));
+    res.json({
+      _id: user._id,
+      username: user.username,
+      date: formatDate(exercise.date),
+      duration: exercise.duration,
+      description: exercise.description,
+    });
+  }
+});
+
+app.get('/api/users/:_id/logs', async (req, res) => {
+  const user = await User.findById(req.params['_id']);
+
+  if (user) {
+    const count = await Exercise.countDocuments();
+    const exercises = await Exercise.find().sort({ date: -1 }).select('description duration date').exec();
+
+    console.log(user);
+
+    res.json({
+      _id: user._id,
+      username: user.username,
+      count,
+      log: exercises.map(({ description, duration, date }) => ({
+        description,
+        duration,
+        date: formatDate(date),
+      })),
+    });
   }
 });
 
