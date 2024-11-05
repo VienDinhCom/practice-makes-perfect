@@ -3,8 +3,11 @@ const dotenv = require('dotenv');
 const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
+const _ = require('lodash');
 
 dotenv.config();
+
+const isProd = () => process.env.NODE_ENV === 'production';
 
 /* MongoDB
  *********************************************************/
@@ -60,11 +63,13 @@ app.post('/api/users', async (req, res) => {
 
   let user = await User.findOne({ username });
 
-  if (user) res.json(user);
+  if (user) {
+    res.json(user);
+  } else {
+    user = await User.create({ username });
 
-  user = await User.create({ username });
-
-  res.json(user);
+    res.json(user);
+  }
 });
 
 app.get('/api/users', async (req, res) => {
@@ -73,6 +78,30 @@ app.get('/api/users', async (req, res) => {
   res.json(users);
 });
 
-const listener = app.listen(process.env.PORT || 3000, () => {
+app.post('/api/users/:_id/exercises', async (req, res, next) => {
+  const user = await User.findById(req.body[':_id']);
+
+  if (user) {
+    const { description, duration, date } = req.body;
+
+    console.log({
+      username: user.username,
+      description,
+      duration: Number(duration),
+      date: new Date(date || Date.now()),
+    });
+
+    const exercise = await Exercise.create({
+      username: user.username,
+      description,
+      duration: Number(duration),
+      date: new Date(date || Date.now()),
+    });
+
+    res.json(_.pick(exercise, ['_id', 'username', 'date', 'duration', 'description']));
+  }
+});
+
+const listener = app.listen(port, () => {
   console.log('Your app is listening on port ' + listener.address().port);
 });
