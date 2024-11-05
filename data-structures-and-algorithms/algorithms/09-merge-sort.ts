@@ -1,48 +1,33 @@
 import { expect } from 'jsr:@std/expect';
 
-// Function to perform merge sort on an array
-function mergeSort(arr: number[]): number[] {
-  // Base case: if the array has 1 or 0 elements, it's already sorted
-  if (arr.length <= 1) {
-    return arr;
-  }
+function mergeSort(nums: number[]): number[] {
+  if (nums.length <= 1) return nums;
 
-  // Find the midpoint of the array to divide it into two halves
-  const mid = Math.floor(arr.length / 2);
+  const midIndex = Math.floor(nums.length / 2);
 
-  // Recursively sort the left and right halves
-  const left = mergeSort(arr.slice(0, mid));
-  const right = mergeSort(arr.slice(mid));
+  const left = mergeSort(nums.slice(0, midIndex));
+  const right = mergeSort(nums.slice(midIndex));
 
-  // Merge the sorted halves and return the sorted array
   return merge(left, right);
 }
 
-// Helper function to merge two sorted arrays into one sorted array
 function merge(left: number[], right: number[]): number[] {
-  const result: number[] = []; // Array to store the merged result
+  const result: number[] = [];
 
-  let leftIndex = 0; // Index for traversing the left array
-  let rightIndex = 0; // Index for traversing the right array
+  let leftIndex = 0;
+  let rightIndex = 0;
 
-  // Continue merging until one of the arrays is fully traversed
   while (leftIndex < left.length && rightIndex < right.length) {
-    // Compare the elements at the current indices of both arrays
     if (left[leftIndex] < right[rightIndex]) {
-      // If left element is smaller, add it to the result array and move the left index forward
       result.push(left[leftIndex]);
       leftIndex++;
     } else {
-      // If right element is smaller or equal, add it to the result array and move the right index forward
       result.push(right[rightIndex]);
       rightIndex++;
     }
   }
 
-  // Concatenate any remaining elements from either array to the result
-  return result
-    .concat(left.slice(leftIndex)) // Add remaining elements from the left array (if any)
-    .concat(right.slice(rightIndex)); // Add remaining elements from the right array (if any)
+  return result.concat(left.slice(leftIndex)).concat(right.slice(rightIndex));
 }
 
 // https://visualgo.net/en/sorting
