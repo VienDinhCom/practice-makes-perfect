@@ -3,10 +3,6 @@ const dotenv = require('dotenv');
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
-const shortid = require('shortid');
-
-const { validateRequestBody } = require('zod-express-middleware');
-const { z } = require('zod');
 
 dotenv.config();
 
