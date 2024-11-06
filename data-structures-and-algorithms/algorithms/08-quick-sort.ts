@@ -20,17 +20,13 @@ function partition(nums: number[], left: number, right: number): number {
     if (nums[j] <= pivot) {
       i++;
 
-      if (j !== i) {
-        [nums[j], nums[i]] = [nums[i], nums[j]];
-      }
+      if (i !== j) [nums[i], nums[j]] = [nums[j], nums[i]];
     }
   }
 
   const pivotIndex = i + 1;
 
-  if (pivotIndex !== right) {
-    [nums[right], nums[pivotIndex]] = [nums[pivotIndex], nums[right]];
-  }
+  if (pivotIndex !== right) [nums[pivotIndex], nums[right]] = [nums[right], nums[pivotIndex]];
 
   return pivotIndex;
 }
