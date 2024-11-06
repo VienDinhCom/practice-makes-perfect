@@ -4,11 +4,9 @@ const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const _ = require('lodash');
+const { z } = require('zod');
 
 dotenv.config();
-
-const isProd = () => process.env.NODE_ENV === 'production';
-const formatDate = (date) => date.toString().split(' ').slice(0, 4).join(' ');
 
 /* MongoDB
  *********************************************************/
@@ -95,7 +93,7 @@ app.post('/api/users/:_id/exercises', async (req, res, next) => {
     res.json({
       _id: user._id,
       username: user.username,
-      date: formatDate(exercise.date),
+      date: exercise.date.toDateString(),
       duration: exercise.duration,
       description: exercise.description,
     });
@@ -103,35 +101,39 @@ app.post('/api/users/:_id/exercises', async (req, res, next) => {
 });
 
 app.get('/api/users/:_id/logs', async (req, res) => {
+  console.log({ query: req.query });
+
+  const Query = z.object({
+    from: z
+      .string()
+      .date()
+      .default(new Date(0).toISOString().substring(0, 10))
+      .transform((str) => new Date(str)),
+    to: z
+      .string()
+      .date()
+      .default(new Date(Date.now()).toISOString().substring(0, 10))
+      .transform((str) => new Date(str)),
+    limit: z
+      .string()
+      .default('0')
+      .transform((str) => Number(str)),
+  });
+
+  const query = Query.parse(req.query);
+
   const user = await User.findById(req.params['_id']);
 
   if (user) {
-    const count = await Exercise.countDocuments();
-
-    const { from, to, limit } = req.query;
-
-    const dateFilter = (() => {
-      if (from && to) {
-        return {
-          $gte: new Date(from),
-          $lte: new Date(to),
-        };
-      }
-
-      return;
-    })();
-
-    console.log(user.id, req.query, {
-      $gte: new Date(from),
-      $lte: new Date(to),
-    });
+    const count = await Exercise.countDocuments({ username: user.username });
 
     const exercises = await Exercise.find({
-      // date: dateFilter,
+      username: user.username,
+      date: { $gte: query.from, $lte: query.to },
     })
-      // .limit(Number(limit) || undefined)
-      // .sort({ date: -1 })
       .select('description duration date')
+      .sort({ date: -1 })
+      .limit(query.limit)
       .exec();
 
     res.json({
@@ -141,7 +143,7 @@ app.get('/api/users/:_id/logs', async (req, res) => {
       log: exercises.map(({ description, duration, date }) => ({
         description,
         duration,
-        date: formatDate(date),
+        date: date.toDateString(),
       })),
     });
   }
