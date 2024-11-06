@@ -1,9 +1,11 @@
-const cors = require('cors');
-const dotenv = require('dotenv');
 const express = require('express');
-const mongoose = require('mongoose');
+const dotenv = require('dotenv');
+const cors = require('cors');
 const bodyParser = require('body-parser');
-const _ = require('lodash');
+const mongoose = require('mongoose');
+const shortid = require('shortid');
+
+const { validateRequestBody } = require('zod-express-middleware');
 const { z } = require('zod');
 
 dotenv.config();
@@ -13,32 +15,16 @@ dotenv.config();
 mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true });
 
 const userSchema = new mongoose.Schema({
-  username: {
-    type: String,
-    require: true,
-    unique: true,
-  },
+  username: String,
 });
 
 const User = mongoose.model('User', userSchema);
 
 const exerciseSchema = new mongoose.Schema({
-  username: {
-    type: String,
-    require: true,
-  },
-  description: {
-    type: String,
-    require: true,
-  },
-  duration: {
-    type: Number,
-    require: true,
-  },
-  date: {
-    type: Date,
-    require: true,
-  },
+  userId: String,
+  description: { type: String, required: true },
+  duration: { type: Number, required: true },
+  date: String,
 });
 
 const Exercise = mongoose.model('Exercise', exerciseSchema);
@@ -47,108 +33,88 @@ const Exercise = mongoose.model('Exercise', exerciseSchema);
  *********************************************************/
 const app = express();
 
-const port = process.env.PORT || 3000;
-
 app.use(cors());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static('public'));
 
-app.get('/', (req, res) => {
+app.get('/', async (_req, res) => {
   res.sendFile(__dirname + '/views/index.html');
+  await User.syncIndexes();
+  await Exercise.syncIndexes();
 });
 
-app.post('/api/users', async (req, res) => {
-  const username = req.body.username.toLowerCase();
-
-  let user = await User.findOne({ username });
-
-  if (user) {
-    res.json(user);
-  } else {
-    user = await User.create({ username });
-
-    res.json(user);
-  }
-});
-
-app.get('/api/users', async (req, res) => {
+app.get('/api/users', async function (_req, res) {
   const users = await User.find();
 
   res.json(users);
 });
 
-app.post('/api/users/:_id/exercises', async (req, res, next) => {
-  const user = await User.findById(req.params['_id']);
+app.post('/api/users', async function (req, res) {
+  const user = await User.create({ username: req.body.username });
 
-  if (user) {
-    const { description, duration, date } = req.body;
-
-    const exercise = await Exercise.create({
-      username: user.username,
-      description,
-      duration: Number(duration),
-      date: new Date(date || Date.now()),
-    });
-
-    res.json({
-      _id: user._id,
-      username: user.username,
-      date: exercise.date.toDateString(),
-      duration: exercise.duration,
-      description: exercise.description,
-    });
-  }
+  res.json({ username: user.username, _id: user._id });
 });
 
-app.get('/api/users/:_id/logs', async (req, res) => {
-  console.log({ query: req.query });
+app.post('/api/users/:_id/exercises', async function (req, res) {
+  const userId = req.params._id;
+  const description = req.body.description;
+  const duration = req.body.duration;
+  const date = req.body.date || new Date().toISOString().substring(0, 10);
 
-  const Query = z.object({
-    from: z
-      .string()
-      .date()
-      .default(new Date(0).toISOString().substring(0, 10))
-      .transform((str) => new Date(str)),
-    to: z
-      .string()
-      .date()
-      .default(new Date(Date.now()).toISOString().substring(0, 10))
-      .transform((str) => new Date(str)),
-    limit: z
-      .string()
-      .default('0')
-      .transform((str) => Number(str)),
+  const user = await User.findById(userId);
+
+  const exercise = await Exercise.create({
+    userId: user._id,
+    username: user.username,
+    description: description,
+    duration: parseInt(duration),
+    date: date,
   });
 
-  const query = Query.parse(req.query);
-
-  const user = await User.findById(req.params['_id']);
-
-  if (user) {
-    const count = await Exercise.countDocuments({ username: user.username });
-
-    const exercises = await Exercise.find({
-      username: user.username,
-      date: { $gte: query.from, $lte: query.to },
-    })
-      .select('description duration date')
-      .sort({ date: -1 })
-      .limit(query.limit)
-      .exec();
-
-    res.json({
-      _id: user._id,
-      username: user.username,
-      count,
-      log: exercises.map(({ description, duration, date }) => ({
-        description,
-        duration,
-        date: date.toDateString(),
-      })),
-    });
-  }
+  res.json({
+    username: user.username,
+    description: exercise.description,
+    duration: exercise.duration,
+    date: new Date(exercise.date).toDateString(),
+    _id: user._id,
+  });
 });
 
-const listener = app.listen(port, () => {
+app.get('/api/users/:_id/logs', async function (req, res) {
+  const userId = req.params._id;
+  const from = req.query.from || new Date(0).toISOString().substring(0, 10);
+  const to = req.query.to || new Date(Date.now()).toISOString().substring(0, 10);
+  const limit = Number(req.query.limit) || 0;
+
+  const user = await User.findById(userId).exec();
+
+  const exercises = await Exercise.find({
+    userId: userId,
+    date: { $gte: from, $lte: to },
+  })
+    .select('description duration date')
+    .limit(limit)
+    .exec();
+
+  res.json({
+    _id: user._id,
+    username: user.username,
+    count: exercises.length,
+    log: exercises.map((exercise) => {
+      return {
+        description: exercise.description,
+        duration: exercise.duration,
+        date: new Date(exercise.date).toDateString(),
+      };
+    }),
+  });
+});
+
+app.use((err, req, res, next) => {
+  console.error(err.stack);
+  res.status(500).send('Something broke!');
+});
+
+const listener = app.listen(process.env.PORT || 3000, () => {
   console.log('Your app is listening on port ' + listener.address().port);
 });
