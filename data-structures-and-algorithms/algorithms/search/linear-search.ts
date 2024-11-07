@@ -1,8 +1,8 @@
 import { expect } from 'jsr:@std/expect';
 
-function linearSearch(arr: number[], target: number): number {
-  for (let i = 0; i < arr.length; i++) {
-    if (arr[i] === target) {
+function linearSearch(nums: number[], target: number): number {
+  for (let i = 0; i < nums.length; i++) {
+    if (nums[i] === target) {
       return i;
     }
   }
