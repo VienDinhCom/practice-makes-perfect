@@ -12,9 +12,16 @@ function linearSearch(nums: number[], target: number): number {
 
 // https://www.w3schools.com/dsa/dsa_algo_linearsearch.php
 
-Deno.test('target in the middle of the array', () => {
+Deno.test('found', () => {
   const input = [3, 15, 7, 1, 12, 19, 5, 8, 2, 10];
-  expect(linearSearch(input, 1)).toStrictEqual(3); // target at index 3
+
+  expect(linearSearch(input, 1)).toStrictEqual(3);
+});
+
+Deno.test('not found', () => {
+  const input = [3, 15, 7, 1, 12, 19, 5, 8, 2, 10];
+
+  expect(linearSearch(input, 4)).toStrictEqual(-1);
 });
 
 Deno.test('target at the beginning of the array', () => {
