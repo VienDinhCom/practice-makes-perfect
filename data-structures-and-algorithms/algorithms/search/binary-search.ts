@@ -1,23 +1,32 @@
 import { expect } from 'jsr:@std/expect';
 
 function binarySearch(nums: number[], target: number): number {
-  let left = 0;
-  let right = nums.length - 1;
+  // Đặt biến chỉ mục bên trái ban đầu là 0
+  let leftIndex = 0;
+  // Đặt biến chỉ mục bên phải là độ dài mảng - 1
+  let rightIndex = nums.length - 1;
 
-  while (left <= right) {
-    const mid = Math.floor((left + right) / 2);
+  // Vòng lặp chạy khi chỉ mục bên trái vẫn nhỏ hơn hoặc bằng chỉ mục bên phải
+  while (leftIndex <= rightIndex) {
+    // Tính toán chỉ mục ở giữa của mảng hiện tại
+    const midIndex = Math.floor((rightIndex + leftIndex) / 2);
 
-    if (nums[mid] === target) {
-      return mid;
+    // Kiểm tra xem giá trị ở giữa có phải là giá trị cần tìm không
+    if (nums[midIndex] === target) {
+      // Nếu tìm thấy, trả về chỉ mục của giá trị đó
+      return midIndex;
     }
 
-    if (nums[mid] < target) {
-      left = mid + 1;
+    if (target > nums[midIndex]) {
+      // Nếu giá trị cần tìm lớn hơn giá trị ở giữa, cập nhật chỉ mục bên trái để thu hẹp phạm vi tìm kiếm về phía bên phải
+      leftIndex = midIndex + 1;
     } else {
-      right = mid - 1;
+      // Nếu giá trị cần tìm nhỏ hơn giá trị ở giữa, cập nhật chỉ mục bên phải để thu hẹp phạm vi tìm kiếm về phía bên trái
+      rightIndex = midIndex - 1;
     }
   }
 
+  // Nếu không tìm thấy giá trị cần tìm trong mảng, trả về -1
   return -1;
 }
 
