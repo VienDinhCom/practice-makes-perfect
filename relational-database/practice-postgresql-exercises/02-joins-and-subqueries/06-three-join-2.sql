@@ -1,0 +1,1 @@
+-- https://pgexercises.com/questions/joins/threejoin2.html
