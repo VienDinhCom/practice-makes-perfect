@@ -1,6 +1,25 @@
 import { expect } from 'jsr:@std/expect';
 
-function binarySearch(nums: number[], target: number): number {}
+function binarySearch(nums: number[], target: number): number {
+  let leftIndex = 0;
+  let rightIndex = nums.length - 1;
+
+  while (leftIndex <= rightIndex) {
+    const midIndex = Math.floor((leftIndex + rightIndex) / 2);
+
+    if (nums[midIndex] === target) {
+      return midIndex;
+    }
+
+    if (target < nums[midIndex]) {
+      rightIndex = midIndex - 1;
+    } else {
+      leftIndex = midIndex + 1;
+    }
+  }
+
+  return -1;
+}
 
 // https://www.w3schools.com/dsa/dsa_algo_binarysearch.php
 
