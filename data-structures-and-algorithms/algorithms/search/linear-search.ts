@@ -1,14 +1,6 @@
 import { expect } from 'jsr:@std/expect';
 
-function linearSearch(nums: number[], target: number): number {
-  for (let i = 0; i < nums.length; i++) {
-    if (nums[i] === target) {
-      return i;
-    }
-  }
-
-  return -1;
-}
+function linearSearch(nums: number[], target: number): number {}
 
 // https://www.w3schools.com/dsa/dsa_algo_linearsearch.php
 
