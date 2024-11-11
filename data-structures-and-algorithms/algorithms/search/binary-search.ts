@@ -84,3 +84,28 @@ Deno.test('found when array has large numbers', () => {
   const input = [1000, 2000, 3000, 4000, 5000, 6000, 7000, 8000, 9000, 10000];
   expect(binarySearch(input, 7000)).toStrictEqual(6); // Middle of large numbers
 });
+
+function binarySearchFCC(nums: number[], target: number) {
+  const path = [];
+
+  let leftIndex = 0;
+  let rightIndex = nums.length - 1;
+
+  while (leftIndex <= rightIndex) {
+    const midIndex = Math.floor((leftIndex + rightIndex) / 2);
+
+    path.push(nums[midIndex]);
+
+    if (nums[midIndex] === target) {
+      return path;
+    }
+
+    if (target > nums[midIndex]) {
+      leftIndex = midIndex + 1;
+    } else {
+      rightIndex = midIndex - 1;
+    }
+  }
+
+  return 'Value Not Found';
+}
