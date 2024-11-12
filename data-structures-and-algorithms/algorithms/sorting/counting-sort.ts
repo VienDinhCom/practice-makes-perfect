@@ -2,7 +2,7 @@ import { expect } from 'jsr:@std/expect';
 
 function countingSort(nums: number[]): number[] {
   const max = Math.max(...nums);
-  const count = new Array<number>(max + 1).fill(0);
+  const count = new Array(max + 1).fill(0);
 
   for (const num of nums) {
     count[num]++;
@@ -13,7 +13,6 @@ function countingSort(nums: number[]): number[] {
   for (let i = 0; i < count.length; i++) {
     while (count[i] > 0) {
       sortedNums.push(i);
-
       count[i]--;
     }
   }
