@@ -1,7 +1,23 @@
 import { expect } from 'jsr:@std/expect';
 
-function getDigit(num: number, place: number): number {
-  return Math.floor(num / Math.pow(10, place)) % 10;
+function radixSort(nums: number[]): number[] {
+  if (nums.length <= 1) return nums;
+
+  const maxDigits = getMaxDigits(nums);
+
+  for (let k = 0; k < maxDigits; k++) {
+    const buckets: number[][] = new Array(10).fill(0).map(() => []);
+
+    for (let i = 0; i < nums.length; i++) {
+      const digit = getDigit(nums[i], k);
+
+      buckets[digit].push(nums[i]);
+    }
+
+    nums = ([] as number[]).concat(...buckets);
+  }
+
+  return nums;
 }
 
 function getMaxDigits(nums: number[]): number {
@@ -14,33 +30,15 @@ function getMaxDigits(nums: number[]): number {
   return maxDigits;
 }
 
-// Radix Sort implementation
-function radixSort(nums: number[]): number[] {
-  const maxDigits = getMaxDigits(nums);
-
-  // Loop over each digit position (from least significant to most significant)
-  for (let k = 0; k < maxDigits; k++) {
-    // Create buckets for each digit (0 to 9)
-    const buckets: number[][] = Array.from({ length: 10 }, () => []);
-
-    // Place each number in the appropriate bucket based on the current digit
-    for (let i = 0; i < nums.length; i++) {
-      const digit = getDigit(nums[i], k);
-      buckets[digit].push(nums[i]);
-    }
-
-    // Reassemble the array from the buckets
-    nums = ([] as number[]).concat(...buckets);
-  }
-
-  return nums;
+function getDigit(num: number, place: number): number {
+  return Math.floor(num / Math.pow(10, place)) % 10;
 }
 
 // https://visualgo.net/en/sorting
 // https://www.w3schools.com/dsa/dsa_algo_radixSort.php
 
 Deno.test('standard array', () => {
-  const input = [3, 15, 7, 1, 12, 19, 5, 8, 2, 10];
+  const input = [121, 432, 564, 23, 1, 45, 788];
   const output = input.toSorted((a, b) => a - b);
   expect(radixSort(input)).toStrictEqual(output);
 });
