@@ -3,8 +3,8 @@ import { expect } from 'jsr:@std/expect';
 class Stack<T> {
   private items: T[] = [];
 
-  push(element: T): void {
-    this.items.push(element);
+  push(item: T): void {
+    this.items.push(item);
   }
 
   pop(): T | undefined {
@@ -15,12 +15,12 @@ class Stack<T> {
     return this.items[this.items.length - 1];
   }
 
-  isEmpty(): boolean {
-    return this.items.length === 0;
-  }
-
   size(): number {
     return this.items.length;
+  }
+
+  isEmpty(): boolean {
+    return this.items.length === 0;
   }
 }
 
