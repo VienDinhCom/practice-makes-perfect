@@ -2,6 +2,7 @@ import { expect } from 'jsr:@std/expect';
 
 function countingSort(nums: number[]): number[] {
   const max = Math.max(...nums);
+
   const count = new Array(max + 1).fill(0);
 
   for (const num of nums) {
