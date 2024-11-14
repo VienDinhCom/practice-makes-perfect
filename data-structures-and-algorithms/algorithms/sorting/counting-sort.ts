@@ -1,6 +1,8 @@
 import { expect } from 'jsr:@std/expect';
 
 function countingSort(nums: number[]): number[] {
+  if (nums.length <= 1) return nums;
+
   const max = Math.max(...nums);
 
   const count = new Array(max + 1).fill(0);
