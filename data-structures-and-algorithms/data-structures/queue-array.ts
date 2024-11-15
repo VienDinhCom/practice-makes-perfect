@@ -3,8 +3,8 @@ import { expect } from 'jsr:@std/expect';
 class Queue<T> {
   private items: T[] = [];
 
-  enqueue(element: T): void {
-    this.items.push(element);
+  enqueue(item: T): void {
+    this.items.push(item);
   }
 
   dequeue(): T | undefined {
