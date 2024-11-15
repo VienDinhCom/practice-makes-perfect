@@ -5,7 +5,7 @@ function radixSort(nums: number[]): number[] {
 
   const maxDigits = getMaxDigits(nums);
 
-  for (let k = 0; k <= maxDigits; k++) {
+  for (let k = 0; k < maxDigits; k++) {
     const buckets: number[][] = new Array(10).fill(0).map(() => []);
 
     for (const num of nums) {
@@ -43,8 +43,7 @@ function getDigit(num: number, place: number): number {
 
   // return digit;
 
-  const str = String(num);
-  const digit = Number(str[str.length - 1 - place]) || 0;
+  const digit = Number(String(num).split('').reverse()[place]) || 0;
 
   // console.log({ num, str, place, digit });
 
