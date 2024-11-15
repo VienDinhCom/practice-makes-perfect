@@ -24,6 +24,8 @@ class Queue<T> {
   }
 }
 
+// https://www.w3schools.com/dsa/dsa_algo_insertionsort.php
+
 Deno.test('enqueue adds elements and increases size', () => {
   const queue = new Queue<number>();
 
