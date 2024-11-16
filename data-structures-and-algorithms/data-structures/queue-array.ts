@@ -15,12 +15,12 @@ class Queue<T> {
     return this.items[0];
   }
 
-  isEmpty(): boolean {
-    return this.items.length === 0;
-  }
-
   size(): number {
     return this.items.length;
+  }
+
+  isEmpty(): boolean {
+    return this.items.length === 0;
   }
 }
 

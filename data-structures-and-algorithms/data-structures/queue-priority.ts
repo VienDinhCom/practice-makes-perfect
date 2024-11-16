@@ -4,7 +4,7 @@ class PriorityQueue<T> {
   private items: [T, number][] = [];
 
   enqueue(value: T, priority: number): void {
-    // this.items.push(item);
+    // this.items.push([value, priority]);
     // this.items.sort((a, b) => a[1] - b[1]);
 
     const index = this.items.findIndex(([_, p]) => priority < p);
