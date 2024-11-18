@@ -16,37 +16,37 @@ class CircularQueue<T> {
   }
 
   enqueue(item: T) {
-    if (this.queue[this.write] === null) {
-      this.queue[this.write] = item;
-
-      if (this.write >= this.max) {
-        this.write = 0;
-      } else {
-        this.write++;
-      }
-
-      return item;
+    if (this.queue[this.write] !== null) {
+      return null; // Queue is full
     }
 
-    return null;
+    this.queue[this.write] = item;
+
+    if (this.write >= this.max) {
+      this.write = 0;
+    } else {
+      this.write++;
+    }
+
+    return item;
   }
 
   dequeue() {
-    if (this.queue[this.read] !== null) {
-      const item = this.queue[this.read];
-
-      this.queue[this.read] = null;
-
-      if (this.read >= this.max) {
-        this.read = 0;
-      } else {
-        this.read++;
-      }
-
-      return item;
+    if (this.queue[this.read] === null) {
+      return null; // Queue is empty
     }
 
-    return null;
+    const item = this.queue[this.read];
+
+    this.queue[this.read] = null;
+
+    if (this.read >= this.max) {
+      this.read = 0;
+    } else {
+      this.read++;
+    }
+
+    return item;
   }
 }
 
