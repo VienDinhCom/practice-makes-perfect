@@ -46,6 +46,18 @@ class Set {
 
     return newSet;
   }
+
+  intersection(anotherSet: Set) {
+    const newSet = new Set();
+
+    anotherSet.values().forEach((item) => {
+      if (this.dictionary[item]) {
+        newSet.add(item);
+      }
+    });
+
+    return newSet;
+  }
 }
 
 // Test case for the constructor
