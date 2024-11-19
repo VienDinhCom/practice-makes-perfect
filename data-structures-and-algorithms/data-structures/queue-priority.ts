@@ -1,7 +1,11 @@
 import { expect } from 'jsr:@std/expect';
 
 class PriorityQueue<T> {
-  private items: [T, number][] = [];
+  private items: [T, number][];
+
+  constructor() {
+    this.items = [];
+  }
 
   enqueue(value: T, priority: number): void {
     // this.items.push([value, priority]);
