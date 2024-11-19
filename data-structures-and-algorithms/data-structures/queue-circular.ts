@@ -1,14 +1,14 @@
 import { expect } from 'jsr:@std/expect';
 
 class CircularQueue<T> {
-  queue: Array<T | null>;
+  private items: Array<T | null>;
 
-  read: number;
-  write: number;
-  max: number;
+  private read: number;
+  private write: number;
+  private max: number;
 
   constructor(size: number) {
-    this.queue = new Array(size).fill(null);
+    this.items = new Array(size).fill(null);
 
     this.read = 0;
     this.write = 0;
@@ -16,11 +16,11 @@ class CircularQueue<T> {
   }
 
   enqueue(item: T) {
-    if (this.queue[this.write] !== null) {
-      return null; // Queue is full
+    if (this.items[this.write] !== null) {
+      return null;
     }
 
-    this.queue[this.write] = item;
+    this.items[this.write] = item;
 
     if (this.write >= this.max) {
       this.write = 0;
@@ -32,13 +32,13 @@ class CircularQueue<T> {
   }
 
   dequeue() {
-    if (this.queue[this.read] === null) {
-      return null; // Queue is empty
+    if (this.items[this.read] === null) {
+      return null;
     }
 
-    const item = this.queue[this.read];
+    const item = this.items[this.read];
 
-    this.queue[this.read] = null;
+    this.items[this.read] = null;
 
     if (this.read >= this.max) {
       this.read = 0;
