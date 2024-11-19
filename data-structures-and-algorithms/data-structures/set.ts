@@ -37,6 +37,15 @@ class Set {
   size() {
     return this.length;
   }
+
+  union(anotherSet: Set) {
+    const newSet = new Set();
+
+    this.values().forEach((item) => newSet.add(item));
+    anotherSet.values().forEach((item) => newSet.add(item));
+
+    return newSet;
+  }
 }
 
 // Test case for the constructor
@@ -92,4 +101,20 @@ Deno.test('Set.size() returns the number of elements in the set', () => {
   expect(set.size()).toStrictEqual(2);
   set.remove(10);
   expect(set.size()).toStrictEqual(1);
+});
+
+// Test case for `union` method
+Deno.test('Set: union() method creates a new set containing elements from both sets', () => {
+  const setA = new Set();
+  const setB = new Set();
+
+  setA.add(1);
+  setA.add(2);
+  setB.add(3);
+  setB.add(4);
+
+  const unionSet = setA.union(setB);
+
+  expect(unionSet.values()).toStrictEqual([1, 2, 3, 4]);
+  expect(unionSet.size()).toStrictEqual(4);
 });
