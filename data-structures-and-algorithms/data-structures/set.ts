@@ -13,25 +13,25 @@ class Set {
     return this.dictionary[element] !== undefined;
   }
 
-  values() {
-    return Object.values(this.dictionary);
-  }
-
   add(element: number) {
-    if (this.has(element)) {
-      return false;
-    }
+    if (this.has(element)) return false;
 
     this.dictionary[element] = element;
+
     this.length++;
 
     return true;
   }
 
-  remove(element: number) {
-    delete this.dictionary[element];
+  values() {
+    return Object.values(this.dictionary);
+  }
 
-    this.length--;
+  remove(element: number) {
+    if (this.has(element)) {
+      delete this.dictionary[element];
+      this.length--;
+    }
   }
 
   size() {
