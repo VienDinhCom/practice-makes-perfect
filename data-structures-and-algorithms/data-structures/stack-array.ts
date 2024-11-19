@@ -3,8 +3,8 @@ import { expect } from 'jsr:@std/expect';
 class Stack<T> {
   private items: T[];
 
-  constructor( ) {
-    this.items = []
+  constructor() {
+    this.items = [];
   }
 
   push(item: T): void {

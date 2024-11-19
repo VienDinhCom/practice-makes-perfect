@@ -1,7 +1,11 @@
 import { expect } from 'jsr:@std/expect';
 
 class Queue<T> {
-  private items: T[] = [];
+  private items: T[];
+
+  constructor() {
+    this.items = [];
+  }
 
   enqueue(item: T): void {
     this.items.push(item);
