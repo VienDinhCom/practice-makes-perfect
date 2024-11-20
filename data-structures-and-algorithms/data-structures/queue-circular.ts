@@ -2,7 +2,6 @@ import { expect } from 'jsr:@std/expect';
 
 class CircularQueue<T> {
   private items: Array<T | null>;
-
   private read: number;
   private write: number;
   private max: number;
@@ -16,9 +15,7 @@ class CircularQueue<T> {
   }
 
   enqueue(item: T) {
-    if (this.items[this.write] !== null) {
-      return null;
-    }
+    if (this.items[this.write] !== null) return null;
 
     this.items[this.write] = item;
 
@@ -32,9 +29,7 @@ class CircularQueue<T> {
   }
 
   dequeue() {
-    if (this.items[this.read] === null) {
-      return null;
-    }
+    if (this.items[this.read] === null) return null;
 
     const item = this.items[this.read];
 
