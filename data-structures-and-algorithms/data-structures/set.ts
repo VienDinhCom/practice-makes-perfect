@@ -62,6 +62,16 @@ class Set {
 
     return newSet;
   }
+
+  difference(anotherSet: Set): Set {
+    const newSet = new Set();
+
+    this.values().forEach((value) => {
+      if (!anotherSet.has(value)) newSet.add(value);
+    });
+
+    return newSet;
+  }
 }
 
 // Test case for the constructor
@@ -150,6 +160,26 @@ Deno.test('Set: intersection() method creates a new set containing elements valu
   setB.add(5);
 
   const unionSet = setA.intersection(setB);
+
+  expect(unionSet.values()).toStrictEqual([3]);
+  expect(unionSet.size()).toStrictEqual(1);
+});
+
+// Test case for `difference` method
+Deno.test('Set: difference() method creates a new set containing elements values that are common to two sets', () => {
+  const setA = new Set();
+
+  setA.add(1);
+  setA.add(2);
+  setA.add(3);
+
+  const setB = new Set();
+
+  setB.add(1);
+  setB.add(2);
+  setB.add(4);
+
+  const unionSet = setA.difference(setB);
 
   expect(unionSet.values()).toStrictEqual([3]);
   expect(unionSet.size()).toStrictEqual(1);
