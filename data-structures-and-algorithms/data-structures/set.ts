@@ -52,6 +52,16 @@ class Set {
 
     return newSet;
   }
+
+  intersection(anotherSet: Set): Set {
+    const newSet = new Set();
+
+    anotherSet.values().forEach((value) => {
+      if (this.has(value)) newSet.add(value);
+    });
+
+    return newSet;
+  }
 }
 
 // Test case for the constructor
@@ -123,4 +133,24 @@ Deno.test('Set: union() method creates a new set containing elements from both s
 
   expect(unionSet.values()).toStrictEqual([1, 2, 3, 4]);
   expect(unionSet.size()).toStrictEqual(4);
+});
+
+// Test case for `intersection` method
+Deno.test('Set: intersection() method creates a new set containing elements values that are common to two sets', () => {
+  const setA = new Set();
+
+  setA.add(1);
+  setA.add(2);
+  setA.add(3);
+
+  const setB = new Set();
+
+  setB.add(3);
+  setB.add(4);
+  setB.add(5);
+
+  const unionSet = setA.intersection(setB);
+
+  expect(unionSet.values()).toStrictEqual([3]);
+  expect(unionSet.size()).toStrictEqual(1);
 });
