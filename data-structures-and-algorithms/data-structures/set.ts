@@ -72,6 +72,16 @@ class Set {
 
     return newSet;
   }
+
+  isSubsetOf(anotherSet: Set): boolean {
+    for (const value of this.values()) {
+      if (!anotherSet.has(value)) {
+        return false;
+      }
+    }
+
+    return true;
+  }
 }
 
 // Test case for the constructor
@@ -166,21 +176,44 @@ Deno.test('Set: intersection() method creates a new set containing elements valu
 });
 
 // Test case for `difference` method
-Deno.test('Set: difference() method creates a new set containing elements values that are common to two sets', () => {
-  const setA = new Set();
+Deno.test(
+  'Set: difference() method creates a new set containing elements present in the first set that are absent in the second',
+  () => {
+    const setA = new Set();
 
-  setA.add(1);
-  setA.add(2);
-  setA.add(3);
+    setA.add(1);
+    setA.add(2);
+    setA.add(3);
 
-  const setB = new Set();
+    const setB = new Set();
 
-  setB.add(1);
-  setB.add(2);
-  setB.add(4);
+    setB.add(1);
+    setB.add(2);
+    setB.add(4);
 
-  const unionSet = setA.difference(setB);
+    const unionSet = setA.difference(setB);
 
-  expect(unionSet.values()).toStrictEqual([3]);
-  expect(unionSet.size()).toStrictEqual(1);
-});
+    expect(unionSet.values()).toStrictEqual([3]);
+    expect(unionSet.size()).toStrictEqual(1);
+  }
+);
+
+// Test case for `isSubsetOf` method
+Deno.test(
+  'Set: isSubsetOf() method compares the first set against the second, and if the first set is fully contained within the second, it will return true',
+  () => {
+    const setA = new Set();
+
+    setA.add(1);
+    setA.add(2);
+
+    const setB = new Set();
+
+    setB.add(1);
+    setB.add(2);
+    setB.add(3);
+
+    expect(setA.isSubsetOf(setB)).toStrictEqual(true);
+    expect(setB.isSubsetOf(setA)).toStrictEqual(false);
+  }
+);
