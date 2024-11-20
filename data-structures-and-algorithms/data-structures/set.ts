@@ -9,54 +9,34 @@ class Set {
     this.length = 0;
   }
 
-  has(element: number) {
+  has(element: number): boolean {
     return this.dictionary[element] !== undefined;
   }
 
-  add(element: number) {
+  size(): number {
+    return this.length;
+  }
+
+  values(): number[] {
+    return Object.values(this.dictionary);
+  }
+
+  add(element: number): boolean {
     if (this.has(element)) return false;
 
     this.dictionary[element] = element;
-
     this.length++;
 
     return true;
   }
 
-  values() {
-    return Object.values(this.dictionary);
-  }
+  remove(element: number): number {
+    const item = this.dictionary[element];
 
-  remove(element: number) {
-    if (this.has(element)) {
-      delete this.dictionary[element];
-      this.length--;
-    }
-  }
+    delete this.dictionary[element];
+    this.length--;
 
-  size() {
-    return this.length;
-  }
-
-  union(anotherSet: Set) {
-    const newSet = new Set();
-
-    this.values().forEach((item) => newSet.add(item));
-    anotherSet.values().forEach((item) => newSet.add(item));
-
-    return newSet;
-  }
-
-  intersection(anotherSet: Set) {
-    const newSet = new Set();
-
-    anotherSet.values().forEach((item) => {
-      if (this.dictionary[item]) {
-        newSet.add(item);
-      }
-    });
-
-    return newSet;
+    return item;
   }
 }
 
@@ -116,17 +96,17 @@ Deno.test('Set.size() returns the number of elements in the set', () => {
 });
 
 // Test case for `union` method
-Deno.test('Set: union() method creates a new set containing elements from both sets', () => {
-  const setA = new Set();
-  const setB = new Set();
+// Deno.test('Set: union() method creates a new set containing elements from both sets', () => {
+//   const setA = new Set();
+//   const setB = new Set();
 
-  setA.add(1);
-  setA.add(2);
-  setB.add(3);
-  setB.add(4);
+//   setA.add(1);
+//   setA.add(2);
+//   setB.add(3);
+//   setB.add(4);
 
-  const unionSet = setA.union(setB);
+//   const unionSet = setA.union(setB);
 
-  expect(unionSet.values()).toStrictEqual([1, 2, 3, 4]);
-  expect(unionSet.size()).toStrictEqual(4);
-});
+//   expect(unionSet.values()).toStrictEqual([1, 2, 3, 4]);
+//   expect(unionSet.size()).toStrictEqual(4);
+// });
