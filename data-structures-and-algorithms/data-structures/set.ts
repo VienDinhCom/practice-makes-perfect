@@ -42,12 +42,12 @@ class Set {
   union(anotherSet: Set): Set {
     const newSet = new Set();
 
-    this.values().forEach((value) => {
-      newSet.add(value);
+    this.values().forEach((elm) => {
+      newSet.add(elm);
     });
 
-    anotherSet.values().forEach((value) => {
-      newSet.add(value);
+    anotherSet.values().forEach((elm) => {
+      newSet.add(elm);
     });
 
     return newSet;
@@ -56,8 +56,10 @@ class Set {
   intersection(anotherSet: Set): Set {
     const newSet = new Set();
 
-    anotherSet.values().forEach((value) => {
-      if (this.has(value)) newSet.add(value);
+    anotherSet.values().forEach((elm) => {
+      if (this.has(elm)) {
+        newSet.add(elm);
+      }
     });
 
     return newSet;
@@ -66,16 +68,18 @@ class Set {
   difference(anotherSet: Set): Set {
     const newSet = new Set();
 
-    this.values().forEach((value) => {
-      if (!anotherSet.has(value)) newSet.add(value);
+    this.values().forEach((elm) => {
+      if (!anotherSet.has(elm)) {
+        newSet.add(elm);
+      }
     });
 
     return newSet;
   }
 
   isSubsetOf(anotherSet: Set): boolean {
-    for (const value of this.values()) {
-      if (!anotherSet.has(value)) {
+    for (const elm of this.values()) {
+      if (!anotherSet.has(elm)) {
         return false;
       }
     }
