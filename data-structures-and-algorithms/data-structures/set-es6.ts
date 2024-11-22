@@ -20,8 +20,7 @@ class SetES6 {
   }
 
   add(element: number): boolean {
-    if (this.has(element)) return false;
-
+    if (this.set.has(element)) return false;
     this.set.add(element);
 
     return true;
@@ -33,38 +32,38 @@ class SetES6 {
     return element;
   }
 
-  union(anotherSetES6: SetES6): SetES6 {
+  union(anotherSet: SetES6): SetES6 {
     const newSet = new SetES6();
 
-    this.set.union(anotherSetES6.set).forEach((value) => {
-      newSet.add(value);
+    this.set.union(anotherSet.set).forEach((elm) => {
+      newSet.add(elm);
     });
 
     return newSet;
   }
 
-  intersection(anotherSetES6: SetES6): SetES6 {
-    const newSetES6 = new SetES6();
+  intersection(anotherSet: SetES6): SetES6 {
+    const newSet = new SetES6();
 
-    this.set.intersection(anotherSetES6.set).forEach((value) => {
-      newSetES6.add(value);
+    this.set.intersection(anotherSet.set).forEach((elm) => {
+      newSet.add(elm);
     });
 
-    return newSetES6;
+    return newSet;
   }
 
-  difference(anotherSetES6: SetES6): SetES6 {
-    const newSetES6 = new SetES6();
+  difference(anotherSet: SetES6): SetES6 {
+    const newSet = new SetES6();
 
-    this.set.difference(anotherSetES6.set).forEach((value) => {
-      newSetES6.add(value);
+    this.set.difference(anotherSet.set).forEach((elm) => {
+      newSet.add(elm);
     });
 
-    return newSetES6;
+    return newSet;
   }
 
-  isSubsetOf(anotherSetES6: SetES6): boolean {
-    return this.set.isSubsetOf(anotherSetES6.set);
+  isSubsetOf(anotherSet: SetES6): boolean {
+    return this.set.isSubsetOf(anotherSet.set);
   }
 }
 
