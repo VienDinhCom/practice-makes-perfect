@@ -7,6 +7,10 @@ class MapClass<T> {
     this.object = {};
   }
 
+  has(key: string) {
+    return this.object[key] !== undefined;
+  }
+
   add(key: string, value: T) {
     if (this.has(key)) return false;
 
@@ -15,16 +19,12 @@ class MapClass<T> {
     return true;
   }
 
-  remove(key: string) {
-    delete this.object[key];
-  }
-
   get(key: string) {
     return this.object[key];
   }
 
-  has(key: string) {
-    return this.object[key] !== undefined;
+  remove(key: string) {
+    delete this.object[key];
   }
 
   values() {
@@ -37,7 +37,7 @@ class MapClass<T> {
 
   clear() {
     Object.keys(this.object).forEach((key) => {
-      this.remove(key);
+      delete this.object[key];
     });
   }
 
