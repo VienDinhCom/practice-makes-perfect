@@ -20,9 +20,7 @@ class HashTable<T> {
   add(key: string, value: T) {
     const hashedKey = this.hash(key);
 
-    if (!this.table[hashedKey]) {
-      this.table[hashedKey] = {};
-    }
+    this.table[hashedKey] ??= {};
 
     this.table[hashedKey][key] = value;
   }
