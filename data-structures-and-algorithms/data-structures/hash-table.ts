@@ -1,10 +1,10 @@
 import { expect } from 'jsr:@std/expect';
 
 class HashTable<T> {
-  private table: { [key: number]: { [key: string]: T } };
+  private table: { [key: string]: T }[];
 
   constructor() {
-    this.table = {};
+    this.table = [];
   }
 
   private hash(str: string) {
