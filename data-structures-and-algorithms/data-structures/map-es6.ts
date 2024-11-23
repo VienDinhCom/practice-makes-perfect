@@ -27,16 +27,16 @@ class MapES6<T> {
     this.map.delete(key);
   }
 
-  values() {
+  values(): T[] {
     return [...this.map.values()];
   }
 
-  entries() {
-    return [...this.map.entries()];
+  entries(): [string, T][] {
+    return Array.from(this.map.entries());
   }
 
   clear() {
-    this.map.clear();
+    return this.map.clear();
   }
 
   size() {
