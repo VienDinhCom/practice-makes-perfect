@@ -58,7 +58,7 @@ class SetES6 {
   }
 
   isSubsetOf(anotherSet: SetES6): boolean {
-    return this.set.isSubsetOf(anotherSet.set)
+    return this.set.isSubsetOf(anotherSet.set);
   }
 }
 

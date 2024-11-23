@@ -37,7 +37,7 @@ class MapClass<T> {
 
   clear() {
     Object.keys(this.object).forEach((key) => {
-      delete this.object[key];
+      this.remove(key);
     });
   }
 
