@@ -1,7 +1,7 @@
 import { expect } from 'jsr:@std/expect';
 
 class HashTable<T> {
-  private table: { [key: string]: T }[];
+  private table: [string, T][][];
 
   constructor() {
     this.table = [];
@@ -18,27 +18,39 @@ class HashTable<T> {
   }
 
   add(key: string, value: T) {
-    const hashedKey = this.hash(key);
+    const index = this.hash(key);
 
-    this.table[hashedKey] ??= {};
+    this.table[index] ??= [];
 
-    this.table[hashedKey][key] = value;
+    const itemIndex = this.table[index].findIndex((item) => item[0] === key);
+
+    if (itemIndex >= 0) {
+      this.table[index][itemIndex][1] = value;
+    } else {
+      this.table[index].push([key, value]);
+    }
   }
 
   lookup(key: string) {
-    const hashedKey = this.hash(key);
+    const index = this.hash(key);
 
-    return this.table[hashedKey] ? this.table[hashedKey][key] : undefined;
+    if (this.table[index] === undefined) return undefined;
+
+    const item = this.table[index].find((item) => item[0] === key);
+
+    return item ? item[1] : undefined;
   }
 
   remove(key: string) {
-    const hashedKey = this.hash(key);
+    const index = this.hash(key);
 
-    if (this.table[hashedKey]) {
-      delete this.table[hashedKey][key];
+    if (this.table[index]) {
+      const itemIndex = this.table[index].findIndex((item) => item[0] === key);
 
-      if (Object.keys(this.table[hashedKey]).length === 0) {
-        delete this.table[hashedKey];
+      this.table[index].splice(itemIndex, 1);
+
+      if (this.table[index].length === 0) {
+        delete this.table[index];
       }
     }
   }
