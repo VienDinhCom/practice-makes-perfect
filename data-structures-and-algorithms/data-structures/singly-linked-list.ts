@@ -1,3 +1,5 @@
+import { expect } from 'jsr:@std/expect';
+
 class Node<T> {
   element: T;
   next: Node<T> | null;
@@ -100,20 +102,118 @@ class SinglyLinkedList<T> {
       this.head = node;
       this.length++;
     } else {
-      let current = this.head?.next;
+      let previous = this.head!;
+      let current = previous?.next;
       let index = 1;
 
       while (current) {
         if (index === at) {
           const node = new Node(element);
+
+          previous.next = node;
           node.next = current;
-          current = node;
+
           this.length++;
+
+          return;
         }
 
+        previous = current;
         current = current.next;
         index++;
       }
     }
   }
 }
+
+Deno.test('add elements', () => {
+  const list = new SinglyLinkedList<number>();
+  list.add(10);
+  list.add(20);
+  list.add(30);
+
+  expect(list.length).toStrictEqual(3);
+  expect(list.elementAt(0)).toStrictEqual(10);
+  expect(list.elementAt(1)).toStrictEqual(20);
+  expect(list.elementAt(2)).toStrictEqual(30);
+});
+
+Deno.test('remove elements', () => {
+  const list = new SinglyLinkedList<number>();
+  list.add(10);
+  list.add(20);
+  list.add(30);
+  list.remove(20);
+
+  expect(list.length).toStrictEqual(2);
+  expect(list.indexOf(20)).toStrictEqual(-1);
+  expect(list.elementAt(1)).toStrictEqual(30);
+});
+
+Deno.test('check if empty', () => {
+  const list = new SinglyLinkedList<number>();
+
+  expect(list.isEmpty()).toStrictEqual(true);
+
+  list.add(10);
+
+  expect(list.isEmpty()).toStrictEqual(false);
+});
+
+Deno.test('indexOf', () => {
+  const list = new SinglyLinkedList<number>();
+  list.add(10);
+  list.add(20);
+  list.add(30);
+
+  expect(list.indexOf(10)).toStrictEqual(0);
+  expect(list.indexOf(20)).toStrictEqual(1);
+  expect(list.indexOf(40)).toStrictEqual(-1);
+});
+
+Deno.test('elementAt', () => {
+  const list = new SinglyLinkedList<number>();
+  list.add(10);
+  list.add(20);
+  list.add(30);
+
+  expect(list.elementAt(0)).toStrictEqual(10);
+  expect(list.elementAt(2)).toStrictEqual(30);
+  expect(list.elementAt(3)).toStrictEqual(undefined);
+});
+
+Deno.test('addAt', () => {
+  const list = new SinglyLinkedList<number>();
+
+  list.add(10);
+  list.add(20);
+  list.add(30);
+
+  list.addAt(1, 15);
+
+  expect(list.length).toStrictEqual(4);
+  expect(list.elementAt(1)).toStrictEqual(15);
+  expect(list.elementAt(2)).toStrictEqual(20);
+});
+
+Deno.test('addAt at head', () => {
+  const list = new SinglyLinkedList<number>();
+  list.add(20);
+  list.add(30);
+
+  list.addAt(0, 10);
+
+  expect(list.length).toStrictEqual(3);
+  expect(list.elementAt(0)).toStrictEqual(10);
+  expect(list.elementAt(1)).toStrictEqual(20);
+});
+
+Deno.test('addAt out of bounds', () => {
+  const list = new SinglyLinkedList<number>();
+  list.add(10);
+
+  list.addAt(5, 20); // Out of bounds; should do nothing
+
+  expect(list.length).toStrictEqual(1);
+  expect(list.indexOf(20)).toStrictEqual(-1);
+});
