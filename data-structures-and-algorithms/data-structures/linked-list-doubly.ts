@@ -29,32 +29,63 @@ class DoublyLinkedList<T> {
   }
 
   remove(data: T) {
-    let currentNode = this.head;
+    let current = this.head;
 
-    while (currentNode) {
-      if (currentNode.data === data) {
-        if (currentNode === this.head) {
-          this.head = currentNode.next;
-          if (this.head) {
-            this.head.prev = null;
-          } else {
+    while (current) {
+      if (current.data === data) {
+        if (current === this.head) {
+          this.head = current.next;
+
+          if (this.head === null) {
             this.tail = null;
+          } else {
+            this.head!.prev = null;
           }
+
+          return;
         }
-        // Removing tail
-        else if (currentNode === this.tail) {
-          this.tail = currentNode.prev;
+
+        if (current === this.tail) {
+          this.tail = current.prev;
           this.tail!.next = null;
+
+          return;
         }
-        // Removing middle node
-        else {
-          currentNode.prev!.next = currentNode.next;
-          currentNode.next!.prev = currentNode.prev;
-        }
+
+        current.prev!.next = current.next;
+        current.next!.prev = current.prev;
       }
-      currentNode = currentNode.next;
+
+      current = current.next;
     }
   }
+
+  // remove(data: T) {
+  //   if (this.head!.data === data) {
+  //     this.head!.next!.prev = null;
+  //     this.head = this.head!.next;
+  //   } else if (this.tail!.data === data) {
+  //     this.tail!.prev!.next = null;
+  //     this.tail = this.tail!.prev;
+  //   } else {
+  //     let prev = this.head;
+  //     let current = prev!.next;
+  //     let next = current!.next;
+
+  //     while (current) {
+  //       if (current.data === data) {
+  //         prev!.next = next;
+  //         next!.prev = prev;
+
+  //         return;
+  //       }
+
+  //       prev = current;
+  //       current = next;
+  //       next = next!.next;
+  //     }
+  //   }
+  // }
 
   reverse() {
     let temp = null;
@@ -116,6 +147,7 @@ Deno.test('add method', async (t) => {
 Deno.test('remove method', async (t) => {
   await t.step('should remove element from single-element list', () => {
     const list = new DoublyLinkedList<number>();
+
     list.add(5);
     list.remove(5);
 
