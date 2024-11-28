@@ -19,13 +19,12 @@ class DoublyLinkedList<T> {
   add(data: T) {
     const node = new Node(data, this.tail);
 
-    if (!this.head) {
+    if (this.head === null) {
       this.head = node;
       this.tail = node;
     } else {
-      const tempNode = this.tail;
-      tempNode!.next = node;
-      this.tail = node;
+      this.tail!.next = node;
+      this.tail = this.tail!.next;
     }
   }
 
@@ -41,12 +40,12 @@ class DoublyLinkedList<T> {
           } else {
             this.tail = null;
           }
-        } 
+        }
         // Removing tail
         else if (currentNode === this.tail) {
           this.tail = currentNode.prev;
           this.tail!.next = null;
-        } 
+        }
         // Removing middle node
         else {
           currentNode.prev!.next = currentNode.next;
