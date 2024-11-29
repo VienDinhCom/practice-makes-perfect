@@ -60,25 +60,59 @@ class DoublyLinkedList<T> {
     }
   }
 
+  // reverse() {
+  //   let left = this.head;
+  //   let right = this.tail;
+
+  //   while (left !== right || left?.prev === right) {
+  //     const temp = { ...left } as Node<T>;
+
+  //     left!.data = right!.data;
+  //     right!.data = temp!.data;
+
+  //     left = left!.next;
+  //     right = right!.prev;
+  //   }
+  // }
+
   reverse() {
-    let left = this.head;
-    let right = this.tail;
+    let current = this.tail;
 
-    while (left !== right || left?.prev === right) {
-      const temp = { ...left } as Node<T>;
+    this.head = current;
 
-      left!.data = right!.data;
-      right!.data = temp!.data;
+    while (current) {
+      const temp = current.next;
+      current.next = current.prev;
+      current.prev = temp;
 
-      left = left!.next;
-      right = right!.prev;
+      if (current.next === null) {
+        this.tail = current;
+        return;
+      }
+
+      current = current.next;
     }
+  }
+
+  values(): T[] {
+    const values: T[] = [];
+
+    let current = this.tail;
+
+    while (current) {
+      values.unshift(current.data);
+
+      current = current.prev;
+    }
+
+    return values;
   }
 }
 
 Deno.test('add method', async (t) => {
   await t.step('should add first element to an empty list', () => {
     const list = new DoublyLinkedList<number>();
+
     list.add(5);
 
     expect(list.head?.data).toStrictEqual(5);
@@ -108,6 +142,16 @@ Deno.test('add method', async (t) => {
     expect(list.head?.next?.prev?.data).toStrictEqual(1);
     expect(list.tail?.prev?.next?.data).toStrictEqual(3);
   });
+});
+
+Deno.test('values method', () => {
+  const list = new DoublyLinkedList<number>();
+
+  list.add(5);
+  list.add(2);
+  list.add(9);
+
+  expect(list.values()).toStrictEqual([5, 2, 9]);
 });
 
 Deno.test('remove method', async (t) => {
@@ -185,19 +229,16 @@ Deno.test('reverse method', async (t) => {
 
   await t.step('should reverse a multi-element list', () => {
     const list = new DoublyLinkedList<number>();
+
     list.add(1);
     list.add(2);
     list.add(3);
+    list.add(4);
+    list.add(5);
+
     list.reverse();
 
-    expect(list.head?.data).toStrictEqual(3);
-    expect(list.tail?.data).toStrictEqual(1);
-
-    // Check connections
-    expect(list.head?.next?.data).toStrictEqual(2);
-    expect(list.head?.prev).toBeNull();
-    expect(list.tail?.prev?.data).toStrictEqual(2);
-    expect(list.tail?.next).toBeNull();
+    expect(list.values()).toStrictEqual([5, 4, 3, 2, 1]);
   });
 
   await t.step('should maintain correct prev and next pointers after reverse', () => {
