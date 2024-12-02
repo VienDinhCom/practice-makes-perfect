@@ -1,7 +1,7 @@
 import { expect } from 'jsr:@std/expect';
 
 class MapES6<T> {
-  private map: Map<string, T>;
+  map: Map<string, T>;
 
   constructor() {
     this.map = new Map();
@@ -12,7 +12,9 @@ class MapES6<T> {
   }
 
   add(key: string, value: T) {
-    if (this.map.has(key)) return false;
+    if (this.has(key)) {
+      return false;
+    }
 
     this.map.set(key, value);
 
@@ -28,15 +30,15 @@ class MapES6<T> {
   }
 
   values(): T[] {
-    return [...this.map.values()];
+    return this.map.values().toArray();
   }
 
   entries(): [string, T][] {
-    return Array.from(this.map.entries());
+    return [...this.map.entries()];
   }
 
   clear() {
-    return this.map.clear();
+    this.map.clear();
   }
 
   size() {
