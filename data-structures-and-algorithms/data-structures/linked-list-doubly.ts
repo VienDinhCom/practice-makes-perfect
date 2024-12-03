@@ -1,60 +1,86 @@
 import { expect } from 'jsr:@std/expect';
 
 class Node<T> {
-  data: T;
   prev: Node<T> | null;
+  data: T;
   next: Node<T> | null;
 
-  constructor(data: T, prev: Node<T> | null = null) {
+  constructor(data: T) {
+    this.prev = null;
     this.data = data;
-    this.prev = prev;
     this.next = null;
   }
 }
 
 class DoublyLinkedList<T> {
-  head: Node<T> | null = null;
-  tail: Node<T> | null = null;
+  head: Node<T> | null;
+  tail: Node<T> | null;
+
+  constructor() {
+    this.head = null;
+    this.tail = null;
+  }
 
   add(data: T) {
-    const node = new Node(data, this.tail);
+    const node = new Node(data);
 
     if (this.head === null) {
       this.head = node;
       this.tail = node;
     } else {
+      node.prev = this.tail;
+
       this.tail!.next = node;
-      this.tail = this.tail!.next;
+      this.tail = node;
     }
   }
 
   remove(data: T) {
-    let current = this.head;
+    if (this.head?.data === data) {
+      if (this.head === this.tail) {
+        this.head = null;
+        this.tail = null;
+      } else {
+        this.head = this.head.next;
+        this.head!.prev = null;
+      }
+    } else {
+      let prev = this.head;
+      let current = this.head?.next;
 
-    while (current) {
-      if (current.data === data) {
-        if (current === this.head) {
-          this.head = current.next;
-
-          if (this.head === null) {
-            this.tail = null;
+      while (current) {
+        if (current.data === data) {
+          if (current === this.tail) {
+            this.tail = this.tail.prev;
+            this.tail!.next = null;
           } else {
-            this.head!.prev = null;
+            prev!.next = current.next;
+            current.next!.prev = prev;
           }
 
           return;
         }
 
-        if (current === this.tail) {
-          this.tail = current.prev;
-          this.tail!.next = null;
-
-          return;
-        }
-
-        current.prev!.next = current.next;
-        current.next!.prev = current.prev;
+        prev = current;
+        current = current.next;
       }
+    }
+  }
+
+  reverse() {
+    this.head = this.tail;
+
+    let current = this.head;
+
+    while (current) {
+      const temp = current.next;
+
+      if (current.next) {
+        this.tail = current;
+      }
+
+      current.next = current.prev;
+      current.prev = temp;
 
       current = current.next;
     }
@@ -64,35 +90,16 @@ class DoublyLinkedList<T> {
   //   let left = this.head;
   //   let right = this.tail;
 
-  //   while (left !== right || left?.prev === right) {
-  //     const temp = { ...left } as Node<T>;
+  //   while (left !== right && left?.prev !== right) {
+  //     const temp = { ...left };
 
   //     left!.data = right!.data;
-  //     right!.data = temp!.data;
+  //     right!.data = temp.data!;
 
   //     left = left!.next;
   //     right = right!.prev;
   //   }
   // }
-
-  reverse() {
-    let current = this.tail;
-
-    this.head = current;
-
-    while (current) {
-      const temp = current.next;
-      current.next = current.prev;
-      current.prev = temp;
-
-      if (current.next === null) {
-        this.tail = current;
-        return;
-      }
-
-      current = current.next;
-    }
-  }
 
   values(): T[] {
     const values: T[] = [];
