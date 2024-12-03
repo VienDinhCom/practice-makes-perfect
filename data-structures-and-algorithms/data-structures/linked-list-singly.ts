@@ -11,12 +11,12 @@ class Node<T> {
 }
 
 class SinglyLinkedList<T> {
+  private head: Node<T> | null;
   length: number;
-  head: Node<T> | null;
 
   constructor() {
-    this.length = 0;
     this.head = null;
+    this.length = 0;
   }
 
   add(element: T) {
@@ -28,7 +28,7 @@ class SinglyLinkedList<T> {
       let current = this.head;
 
       while (current.next) {
-        current = current.next;
+        current = current.next!;
       }
 
       current.next = node;
@@ -40,22 +40,18 @@ class SinglyLinkedList<T> {
   remove(element: T) {
     if (this.head?.element === element) {
       this.head = this.head.next;
-
       this.length--;
     } else {
-      let previous = this.head!;
+      let prev = this.head;
       let current = this.head?.next;
 
       while (current) {
         if (current.element === element) {
-          previous.next = current.next;
-
+          prev!.next = current.next;
           this.length--;
-
-          return;
         }
 
-        previous = current;
+        prev = current;
         current = current.next;
       }
     }
@@ -66,61 +62,60 @@ class SinglyLinkedList<T> {
   }
 
   indexOf = (element: T) => {
-    let current = this.head;
     let index = 0;
+    let current = this.head;
 
     while (current) {
       if (current.element === element) {
         return index;
       }
 
-      current = current.next;
       index++;
+      current = current.next;
     }
 
     return -1;
   };
 
   elementAt(at: number) {
-    let current = this.head;
     let index = 0;
+    let current = this.head;
 
     while (current) {
-      if (index === at) {
+      if (at === index) {
         return current.element;
       }
 
-      current = current.next;
       index++;
+      current = current.next;
     }
   }
 
   addAt(at: number, element: T) {
+    const node = new Node(element);
+
     if (at === 0) {
-      const node = new Node(element);
       node.next = this.head;
       this.head = node;
       this.length++;
     } else {
-      let previous = this.head!;
-      let current = previous?.next;
       let index = 1;
+      let prev = this.head;
+      let current = this.head?.next;
 
       while (current) {
-        if (index === at) {
-          const node = new Node(element);
-
-          previous.next = node;
+        if (at === index) {
           node.next = current;
+          prev!.next = node;
 
           this.length++;
 
           return;
         }
 
-        previous = current;
-        current = current.next;
         index++;
+        prev = current;
+        current = current.next;
       }
     }
   }
