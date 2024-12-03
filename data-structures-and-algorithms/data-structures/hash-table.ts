@@ -10,26 +10,29 @@ class HashTable<T> {
   }
 
   private hash(str: string) {
-    let hashed = 0;
+    let hash = 0;
 
     for (let i = 0; i < str.length; i++) {
-      hashed += str.charCodeAt(i);
+      hash += str.charCodeAt(i);
     }
 
-    return hashed;
+    return hash;
   }
 
   set(key: string, value: T): HashTable<T> {
-    const index = this.hash(key);
+    const hash = this.hash(key);
 
-    this.table[index] ??= [];
+    if (this.table[hash]) {
+      const index = this.table[hash].findIndex(([k]) => k === key);
 
-    const itemIndex = this.table[index].findIndex((item) => item[0] === key);
-
-    if (itemIndex >= 0) {
-      this.table[index][itemIndex][1] = value;
+      if (index >= 0) {
+        this.table[hash][index] = [key, value];
+      } else {
+        this.table[hash].push([key, value]);
+        this.size++;
+      }
     } else {
-      this.table[index].push([key, value]);
+      this.table[hash] = [[key, value]];
       this.size++;
     }
 
@@ -37,27 +40,32 @@ class HashTable<T> {
   }
 
   get(key: string): T | undefined {
-    const index = this.hash(key);
+    const hash = this.hash(key);
 
-    if (this.table[index] === undefined) return undefined;
+    const bucket = this.table[hash];
 
-    const item = this.table[index].find((item) => item[0] === key);
+    if (bucket) {
+      const item = bucket.find(([k]) => k === key);
 
-    return item ? item[1] : undefined;
+      if (item) {
+        return item[1];
+      }
+    }
   }
 
   delete(key: string): void {
-    const index = this.hash(key);
+    const hash = this.hash(key);
 
-    if (this.table[index]) {
-      const itemIndex = this.table[index].findIndex((item) => item[0] === key);
+    if (this.table[hash]) {
+      const index = this.table[hash].findIndex(([k]) => k === key);
 
-      this.table[index].splice(itemIndex, 1);
+      if (index >= 0) {
+        this.table[hash].splice(index, 1);
+        this.size--;
 
-      this.size--;
-
-      if (this.table[index].length === 0) {
-        delete this.table[index];
+        if (this.table[hash].length === 0) {
+          this.table.slice(hash, 1);
+        }
       }
     }
   }
@@ -117,12 +125,12 @@ class HashTable<T> {
 
 Deno.test('set and get', () => {
   const hashTable = new HashTable<number>();
-  hashTable.set('a', 1);
-  hashTable.set('b', 2);
+  hashTable.set('ab', 1);
+  hashTable.set('ba', 2);
 
-  expect(hashTable.get('a')).toStrictEqual(1);
-  expect(hashTable.get('b')).toStrictEqual(2);
-  expect(hashTable.get('c')).toStrictEqual(undefined);
+  expect(hashTable.get('ab')).toStrictEqual(1);
+  expect(hashTable.get('ba')).toStrictEqual(2);
+  expect(hashTable.get('cc')).toStrictEqual(undefined);
 });
 
 Deno.test('lookup for non-existing key', () => {
