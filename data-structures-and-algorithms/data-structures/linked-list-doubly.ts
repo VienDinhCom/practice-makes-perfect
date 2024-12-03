@@ -73,12 +73,11 @@ class DoublyLinkedList<T> {
     let current = this.head;
 
     while (current) {
-      const temp = current.next;
-
       if (current.next) {
         this.tail = current;
       }
 
+      const temp = current.next;
       current.next = current.prev;
       current.prev = temp;
 
