@@ -69,5 +69,21 @@ function BinarySearchTree() {
     }
   };
 
+  this.isPresent = (value) => {
+    let current = this.root;
+
+    while (current) {
+      if (value === current.value) {
+        return true;
+      }
+
+      const dirrection = value < current.value ? 'left' : 'right';
+
+      current = current[dirrection];
+    }
+
+    return false;
+  };
+
   // Only change code above this line
 }
