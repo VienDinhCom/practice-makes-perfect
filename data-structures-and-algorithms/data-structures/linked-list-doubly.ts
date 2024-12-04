@@ -77,9 +77,7 @@ class DoublyLinkedList<T> {
         this.tail = current;
       }
 
-      const temp = current.next;
-      current.next = current.prev;
-      current.prev = temp;
+      [current.next, current.prev] = [current.prev, current.next];
 
       current = current.next;
     }
