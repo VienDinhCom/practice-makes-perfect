@@ -83,6 +83,8 @@ function BinarySearchTree() {
     return false;
   };
 
+  // https://forum.freecodecamp.org/t/freecodecamp-challenge-guide-find-the-minimum-and-maximum-height-of-a-binary-search-tree/301641
+
   this.findMaxHeight = () => {
     const heights = [];
 
@@ -117,6 +119,10 @@ function BinarySearchTree() {
     traverse(this.root, -1);
 
     return Math.min(...heights);
+  };
+
+  this.isBalanced = () => {
+    return this.findMaxHeight() === this.findMinHeight();
   };
 }
 
