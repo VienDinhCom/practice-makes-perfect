@@ -9,8 +9,6 @@ function Node(value) {
 function BinarySearchTree() {
   this.root = null;
 
-  // Only change code below this line
-
   this.add = (value) => {
     const node = new Node(value);
 
@@ -84,6 +82,26 @@ function BinarySearchTree() {
 
     return false;
   };
+}
 
-  // Only change code above this line
+function isBinarySearchTree(tree) {
+  const validate = (node) => {
+    if (node === null) return true;
+
+    if (node.left === null) {
+      return true;
+    } else if (node.left.value >= node.value) {
+      return false;
+    }
+
+    if (node.right === null) {
+      return true;
+    } else if (node.right.value <= node.value) {
+      return false;
+    }
+
+    return validate(node.left) && validate(node.right);
+  };
+
+  return validate(tree.root);
 }
