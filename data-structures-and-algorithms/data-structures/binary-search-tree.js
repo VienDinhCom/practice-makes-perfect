@@ -82,6 +82,24 @@ function BinarySearchTree() {
 
     return false;
   };
+
+  this.findMaxHeight = () => {
+    const heights = [];
+
+    const traverse = (node, count) => {
+      if (node === null) {
+        heights.push(count);
+        return;
+      }
+
+      traverse(node.left, count + 1);
+      traverse(node.right, count + 1);
+    };
+
+    traverse(this.root, -1);
+
+    return Math.max(...heights);
+  };
 }
 
 function isBinarySearchTree(tree) {
