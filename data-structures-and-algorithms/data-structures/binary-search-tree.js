@@ -85,40 +85,60 @@ function BinarySearchTree() {
 
   // https://forum.freecodecamp.org/t/freecodecamp-challenge-guide-find-the-minimum-and-maximum-height-of-a-binary-search-tree/301641
 
+  // this.findMaxHeight = () => {
+  //   const heights = [];
+
+  //   const traverse = (node, count) => {
+  //     if (node === null) {
+  //       heights.push(count);
+  //       return;
+  //     }
+
+  //     traverse(node.left, count + 1);
+  //     traverse(node.right, count + 1);
+  //   };
+
+  //   traverse(this.root, -1);
+
+  //   return Math.max(...heights);
+  // };
+
   this.findMaxHeight = () => {
-    const heights = [];
+    const traverse = (node) => {
+      if (node === null) return -1;
 
-    const traverse = (node, count) => {
-      if (node === null) {
-        heights.push(count);
-        return;
-      }
-
-      traverse(node.left, count + 1);
-      traverse(node.right, count + 1);
+      return 1 + Math.max(traverse(node.left), traverse(node.right));
     };
 
-    traverse(this.root, -1);
-
-    return Math.max(...heights);
+    return traverse(this.root);
   };
 
+  // this.findMinHeight = () => {
+  //   const heights = [];
+
+  //   const traverse = (node, count) => {
+  //     if (node === null) {
+  //       heights.push(count);
+  //       return;
+  //     }
+
+  //     traverse(node.left, count + 1);
+  //     traverse(node.right, count + 1);
+  //   };
+
+  //   traverse(this.root, -1);
+
+  //   return Math.min(...heights);
+  // };
+
   this.findMinHeight = () => {
-    const heights = [];
+    const traverse = (node) => {
+      if (node === null) return -1;
 
-    const traverse = (node, count) => {
-      if (node === null) {
-        heights.push(count);
-        return;
-      }
-
-      traverse(node.left, count + 1);
-      traverse(node.right, count + 1);
+      return 1 + Math.min(traverse(node.left), traverse(node.right));
     };
 
-    traverse(this.root, -1);
-
-    return Math.min(...heights);
+    return traverse(this.root);
   };
 
   this.isBalanced = () => {
