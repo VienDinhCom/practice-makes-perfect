@@ -144,6 +144,18 @@ function BinarySearchTree() {
   this.isBalanced = () => {
     return this.findMaxHeight() === this.findMinHeight();
   };
+
+  // This method visits nodes in sorted order
+  // useful for binary search trees
+  this.inorder = () => {};
+
+  // This method processes the root first
+  // useful to create a copy of the tree or serialize it
+  this.preorder = () => {};
+
+  // This method processes all children before their parent
+  // useful for deleting trees or calculating values from leaves up
+  this.postorder = () => {};
 }
 
 function isBinarySearchTree(tree) {
