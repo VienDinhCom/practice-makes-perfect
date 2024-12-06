@@ -147,7 +147,23 @@ function BinarySearchTree() {
 
   // This method visits nodes in sorted order
   // useful for binary search trees
-  this.inorder = () => {};
+  this.inorder = () => {
+    if (this.root === null) return null;
+
+    const traverse = (node) => {
+      if (node === null) return [];
+
+      const nodes = [];
+
+      nodes.push(...traverse(node.left));
+      nodes.push(node.value);
+      nodes.push(...traverse(node.right));
+
+      return nodes;
+    };
+
+    return traverse(this.root);
+  };
 
   // This method processes the root first
   // useful to create a copy of the tree or serialize it
