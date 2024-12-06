@@ -147,6 +147,7 @@ function BinarySearchTree() {
 
   // This method visits nodes in sorted order
   // useful for binary search trees
+  // https://www.youtube.com/watch?v=ne5oOmYdWGw
   this.inorder = () => {
     if (this.root === null) return null;
 
@@ -167,6 +168,7 @@ function BinarySearchTree() {
 
   // This method processes the root first
   // useful to create a copy of the tree or serialize it
+  // https://www.youtube.com/watch?v=gLx7Px7IEzg
   this.preorder = () => {
     if (this.root === null) return null;
 
@@ -187,6 +189,7 @@ function BinarySearchTree() {
 
   // This method processes all children before their parent
   // useful for deleting trees or calculating values from leaves up
+  // https://www.youtube.com/watch?v=a8kmbuNm8Uo
   this.postorder = () => {
     if (this.root === null) return null;
 
