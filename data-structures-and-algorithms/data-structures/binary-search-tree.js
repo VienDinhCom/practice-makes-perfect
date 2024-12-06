@@ -178,6 +178,8 @@ function BinarySearchTree() {
       nodes.push(node.value);
       nodes.push(...traverse(node.left));
       nodes.push(...traverse(node.right));
+
+      return nodes;
     };
 
     return traverse(this.root);
@@ -185,7 +187,23 @@ function BinarySearchTree() {
 
   // This method processes all children before their parent
   // useful for deleting trees or calculating values from leaves up
-  this.postorder = () => {};
+  this.postorder = () => {
+    if (this.root === null) return null;
+
+    const traverse = (node) => {
+      if (node === null) return [];
+
+      const nodes = [];
+
+      nodes.push(...traverse(node.left));
+      nodes.push(...traverse(node.right));
+      nodes.push(node.value);
+
+      return nodes;
+    };
+
+    return traverse(this.root);
+  };
 }
 
 function isBinarySearchTree(tree) {
