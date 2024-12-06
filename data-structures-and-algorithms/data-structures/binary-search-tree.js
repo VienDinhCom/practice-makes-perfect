@@ -230,7 +230,27 @@ function BinarySearchTree() {
     return results;
   };
 
-  
+  this.reverseLevelOrder = () => {
+    if (this.root === null) return null;
+
+    const queue = [this.root];
+    const results = [];
+
+    const pushIfThere = (node) => {
+      if (node) queue.push(node);
+    };
+
+    while (queue.length > 0) {
+      const node = queue.shift();
+
+      results.push(node.value);
+
+      pushIfThere(node.right);
+      pushIfThere(node.left);
+    }
+
+    return results;
+  };
 }
 
 function isBinarySearchTree(tree) {
