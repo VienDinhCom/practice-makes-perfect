@@ -167,7 +167,21 @@ function BinarySearchTree() {
 
   // This method processes the root first
   // useful to create a copy of the tree or serialize it
-  this.preorder = () => {};
+  this.preorder = () => {
+    if (this.root === null) return null;
+
+    const traverse = (node) => {
+      if (node === null) return [];
+
+      const nodes = [];
+
+      nodes.push(node.value);
+      nodes.push(...traverse(node.left));
+      nodes.push(...traverse(node.right));
+    };
+
+    return traverse(this.root);
+  };
 
   // This method processes all children before their parent
   // useful for deleting trees or calculating values from leaves up
