@@ -251,6 +251,39 @@ function BinarySearchTree() {
 
     return results;
   };
+
+  this.remove = (value) => {
+    if (this.root === null) {
+      return null;
+    }
+
+    if (this.root.left === null && this.root.right === null) {
+      this.root = null;
+
+      return null;
+    }
+
+    let parent = null;
+    let target = this.root;
+
+    while (target) {
+      if (target.value === value) {
+        const dirrection = parent.left === target ? 'left' : 'right';
+
+        parent[dirrection] = null;
+
+        return;
+      }
+
+      parent = target;
+
+      if (value > target.value) {
+        target = target.right;
+      } else {
+        target = target.left;
+      }
+    }
+  };
 }
 
 function isBinarySearchTree(tree) {
