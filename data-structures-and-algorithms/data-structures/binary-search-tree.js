@@ -270,7 +270,11 @@ function BinarySearchTree() {
       if (target.value === value) {
         const dirrection = parent.left === target ? 'left' : 'right';
 
-        parent[dirrection] = null;
+        const hasNoChildren = target.left === null && target.right === null;
+
+        if (hasNoChildren) {
+          parent[dirrection] = null;
+        }
 
         return;
       }
