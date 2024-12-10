@@ -262,8 +262,8 @@ function BinarySearchTree() {
     const hasTwoChilds = (node) => node.left && node.right;
 
     if (value === this.root.value) {
-      if (hasTwoChilds(this.root)) {
-        
+      if (hasOneChild(this.root)) {
+        this.root = this.root.left || this.root.right;
       } else if (hasNoChildren(this.root)) {
         this.root = null;
       }
