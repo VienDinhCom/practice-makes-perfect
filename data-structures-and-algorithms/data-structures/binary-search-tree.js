@@ -35,12 +35,12 @@ function BinarySearchTree() {
     }
   };
 
-  this.findMin = () => {
-    if (this.root === null) {
+  this.findMin = (node = this.root) => {
+    if (node === null) {
       return null;
     }
 
-    let current = this.root;
+    let current = node;
 
     while (current) {
       if (current.left === null) {
@@ -51,12 +51,12 @@ function BinarySearchTree() {
     }
   };
 
-  this.findMax = () => {
-    if (this.root === null) {
+  this.findMax = (node = this.root) => {
+    if (node === null) {
       return null;
     }
 
-    let current = this.root;
+    let current = node;
 
     while (current) {
       if (current.right === null) {
