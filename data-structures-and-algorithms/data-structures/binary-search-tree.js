@@ -262,10 +262,10 @@ function BinarySearchTree() {
     const hasTwoChilds = (node) => node.left && node.right;
 
     if (value === this.root.value) {
-      if (hasOneChild(this.root)) {
-        this.root = this.root.left || this.root.right;
-      } else if (hasNoChildren(this.root)) {
+      if (hasNoChildren(this.root)) {
         this.root = null;
+      } else if (hasOneChild(this.root)) {
+        this.root = this.root.left || this.root.right;
       }
 
       return;
