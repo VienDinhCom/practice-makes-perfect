@@ -257,10 +257,18 @@ function BinarySearchTree() {
       return null;
     }
 
-    if (this.root.left === null && this.root.right === null) {
-      this.root = null;
+    const hasNoChildren = (node) => node.left === null && node.right === null;
+    const hasOneChild = (node) => (node.left === null) !== (node.right === null);
+    const hasTwoChilds = (node) => node.left && node.right;
 
-      return null;
+    if (value === this.root.value) {
+      if (hasTwoChilds(this.root)) {
+        
+      } else if (hasNoChildren(this.root)) {
+        this.root = null;
+      }
+
+      return;
     }
 
     let parent = null;
@@ -270,10 +278,10 @@ function BinarySearchTree() {
       if (target.value === value) {
         const dirrection = parent.left === target ? 'left' : 'right';
 
-        const hasNoChildren = target.left === null && target.right === null;
-
-        if (hasNoChildren) {
+        if (hasNoChildren(target)) {
           parent[dirrection] = null;
+        } else if (hasOneChild(target)) {
+          parent[dirrection] = target.left || target.right;
         }
 
         return;
