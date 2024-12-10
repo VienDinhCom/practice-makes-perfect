@@ -266,6 +266,12 @@ function BinarySearchTree() {
         this.root = null;
       } else if (hasOneChild(this.root)) {
         this.root = this.root.left || this.root.right;
+      } else if (hasTwoChilds(this.root)) {
+        const successorValue = this.findMin(this.root.right);
+
+        this.remove(successorValue);
+
+        this.root.value = successorValue;
       }
 
       return;
@@ -282,6 +288,12 @@ function BinarySearchTree() {
           parent[dirrection] = null;
         } else if (hasOneChild(target)) {
           parent[dirrection] = target.left || target.right;
+        } else if (hasTwoChilds(target)) {
+          const successorValue = this.findMin(target.right);
+
+          this.remove(successorValue);
+
+          target.value = successorValue;
         }
 
         return;
