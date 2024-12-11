@@ -41,4 +41,22 @@ const Trie = function () {
 
     return current.end;
   };
+
+  this.print = () => {
+    const words = [];
+
+    const traverse = (node, prefix) => {
+      if (node.end) {
+        words.push(prefix);
+      }
+
+      for (const [char, child] of node.keys.entries()) {
+        traverse(child, prefix + char);
+      }
+    };
+
+    traverse(this.root, '');
+
+    return words;
+  };
 };
