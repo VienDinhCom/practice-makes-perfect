@@ -308,6 +308,21 @@ function BinarySearchTree() {
       }
     }
   };
+
+  this.invert = () => {
+    if (this.root === null) return null;
+
+    const traverse = (node) => {
+      if (node === null) return;
+
+      [node.left, node.right] = [node.right, node.left];
+
+      traverse(node.left);
+      traverse(node.right);
+    };
+
+    traverse(this.root);
+  };
 }
 
 function isBinarySearchTree(tree) {
