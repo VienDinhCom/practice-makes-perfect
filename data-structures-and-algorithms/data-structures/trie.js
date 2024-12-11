@@ -27,4 +27,18 @@ const Trie = function () {
 
     current.end = true;
   };
+
+  this.isWord = (word) => {
+    let current = this.root;
+
+    for (const char of word) {
+      if (!current.keys.has(char)) {
+        return false;
+      }
+
+      current = current.keys.get(char);
+    }
+
+    return current.end;
+  };
 };
