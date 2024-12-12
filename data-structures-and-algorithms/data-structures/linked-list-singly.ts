@@ -28,7 +28,7 @@ class SinglyLinkedList<T> {
       let current = this.head;
 
       while (current.next) {
-        current = current.next!;
+        current = current.next;
       }
 
       current.next = node;
