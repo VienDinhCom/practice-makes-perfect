@@ -49,6 +49,7 @@ class SinglyLinkedList<T> {
         if (current.element === element) {
           prev!.next = current.next;
           this.length--;
+          return;
         }
 
         prev = current;
