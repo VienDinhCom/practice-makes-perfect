@@ -36,34 +36,34 @@ class DoublyLinkedList<T> {
   }
 
   remove(data: T) {
-    if (this.head?.data === data) {
-      if (this.head === this.tail) {
-        this.head = null;
-        this.tail = null;
-      } else {
-        this.head = this.head.next;
-        this.head!.prev = null;
-      }
-    } else {
-      let prev = this.head;
-      let current = this.head?.next;
+    let prev = this.head!.prev;
+    let current = this.head;
 
-      while (current) {
-        if (current.data === data) {
-          if (current === this.tail) {
-            this.tail = this.tail.prev;
-            this.tail!.next = null;
-          } else {
-            prev!.next = current.next;
-            current.next!.prev = prev;
-          }
+    while (current) {
+      if (current.data === data) {
+        const next = current.next;
 
-          return;
+        if (prev) {
+          prev.next = next;
         }
 
-        prev = current;
-        current = current.next;
+        if (next) {
+          next.prev = prev;
+        }
+
+        if (current === this.head) {
+          this.head = next;
+        }
+
+        if (current === this.tail) {
+          this.tail = prev;
+        }
+
+        return;
       }
+
+      prev = current;
+      current = current.next;
     }
   }
 
