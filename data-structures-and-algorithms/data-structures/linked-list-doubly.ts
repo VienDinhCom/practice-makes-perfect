@@ -67,36 +67,36 @@ class DoublyLinkedList<T> {
     }
   }
 
-  reverse() {
-    this.head = this.tail;
-
-    let current = this.head;
-
-    while (current) {
-      if (current.next) {
-        this.tail = current;
-      }
-
-      [current.next, current.prev] = [current.prev, current.next];
-
-      current = current.next;
-    }
-  }
-
   // reverse() {
-  //   let left = this.head;
-  //   let right = this.tail;
+  //   this.head = this.tail;
 
-  //   while (left !== right && left?.prev !== right) {
-  //     const temp = { ...left };
+  //   let current = this.head;
 
-  //     left!.data = right!.data;
-  //     right!.data = temp.data!;
+  //   while (current) {
+  //     if (current.next) {
+  //       this.tail = current;
+  //     }
 
-  //     left = left!.next;
-  //     right = right!.prev;
+  //     [current.next, current.prev] = [current.prev, current.next];
+
+  //     current = current.next;
   //   }
   // }
+
+  reverse() {
+    let left = this.head;
+    let right = this.tail;
+
+    while (left !== right && left?.prev !== right) {
+      const temp = { ...left };
+
+      left!.data = right!.data;
+      right!.data = temp.data!;
+
+      left = left!.next;
+      right = right!.prev;
+    }
+  }
 
   values(): T[] {
     const values: T[] = [];
