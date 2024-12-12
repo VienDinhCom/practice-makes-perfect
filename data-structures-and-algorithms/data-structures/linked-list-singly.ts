@@ -63,16 +63,20 @@ class SinglyLinkedList<T> {
   }
 
   indexOf = (element: T) => {
-    let index = 0;
-    let current = this.head;
+    if (this.head?.element === element) {
+      return 0;
+    } else {
+      let current = this.head?.next;
+      let index = 1;
 
-    while (current) {
-      if (current.element === element) {
-        return index;
+      while (current) {
+        if (current.element === element) {
+          return index;
+        }
+
+        index++;
+        current = current.next;
       }
-
-      index++;
-      current = current.next;
     }
 
     return -1;
