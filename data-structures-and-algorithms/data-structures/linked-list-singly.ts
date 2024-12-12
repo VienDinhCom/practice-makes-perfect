@@ -97,15 +97,14 @@ class SinglyLinkedList<T> {
   }
 
   addAt(at: number, element: T) {
-    const node = new Node(element);
-
+    let index = 0;
     let prev = null;
     let current = this.head;
 
-    let index = 0;
-
     while (current) {
       if (at === index) {
+        const node = new Node(element);
+
         if (current === this.head) {
           node.next = this.head;
           this.head = node;
