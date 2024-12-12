@@ -82,7 +82,6 @@ class SinglyLinkedList<T> {
     return -1;
   };
 
-  // Review
   elementAt(at: number) {
     let index = 0;
     let current = this.head;
@@ -100,29 +99,27 @@ class SinglyLinkedList<T> {
   addAt(at: number, element: T) {
     const node = new Node(element);
 
-    if (at === 0) {
-      node.next = this.head;
-      this.head = node;
-      this.length++;
-    } else {
-      let index = 1;
-      let prev = this.head;
-      let current = this.head?.next;
+    let prev = null;
+    let current = this.head;
 
-      while (current) {
-        if (at === index) {
-          node.next = current;
+    let index = 0;
+
+    while (current) {
+      if (at === index) {
+        if (current === this.head) {
+          node.next = this.head;
+          this.head = node;
+        } else {
           prev!.next = node;
-
-          this.length++;
-
-          return;
+          node.next = current;
         }
 
-        index++;
-        prev = current;
-        current = current.next;
+        this.length++;
       }
+
+      index++;
+      prev = current;
+      current = current.next;
     }
   }
 }
