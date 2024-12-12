@@ -28,9 +28,9 @@ class DoublyLinkedList<T> {
       this.head = node;
       this.tail = node;
     } else {
+      this.tail!.next = node;
       node.prev = this.tail;
 
-      this.tail!.next = node;
       this.tail = node;
     }
   }
