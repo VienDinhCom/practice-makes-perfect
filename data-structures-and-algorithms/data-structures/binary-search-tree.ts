@@ -141,7 +141,6 @@ class BinarySearchTree {
   //   return Math.min(...heights);
   // };
 
-  // review
   findMinHeight() {
     const traverse = (node: Node | null): number => {
       if (node === null) {
@@ -155,7 +154,7 @@ class BinarySearchTree {
   }
 
   isBalanced() {
-    return this.findMaxHeight() === this.findMinHeight();
+    return this.findMinHeight() === this.findMaxHeight();
   }
 
   // This method visits nodes in sorted order
