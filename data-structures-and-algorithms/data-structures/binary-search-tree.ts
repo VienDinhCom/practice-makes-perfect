@@ -19,19 +19,19 @@ class BinarySearchTree {
     this.root = null;
   }
 
+  // reivew
   add(value: number) {
     const node = new Node(value);
 
     if (this.root === null) {
       this.root = node;
-      return;
     }
 
     let current = this.root;
 
     while (current) {
       if (node.value === current.value) {
-        return null;
+        return;
       }
 
       const dirrection = node.value < current.value ? 'left' : 'right';
