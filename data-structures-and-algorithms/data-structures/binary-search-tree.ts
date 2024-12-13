@@ -19,7 +19,6 @@ class BinarySearchTree {
     this.root = null;
   }
 
-  // reivew
   add(value: number) {
     const node = new Node(value);
 
@@ -45,6 +44,7 @@ class BinarySearchTree {
     }
   }
 
+  // review
   findMin(node = this.root) {
     if (node === null) {
       return null;
