@@ -60,7 +60,6 @@ class BinarySearchTree {
     }
   }
 
-  // review
   findMax(node = this.root) {
     if (node === null) {
       return null;
@@ -77,15 +76,16 @@ class BinarySearchTree {
     }
   }
 
+  // review
   isPresent(value: number) {
     let current = this.root;
 
     while (current) {
-      if (value === current.value) {
+      const dirrection = value < current.value ? 'left' : 'right';
+
+      if (current.value === value) {
         return true;
       }
-
-      const dirrection = value < current.value ? 'left' : 'right';
 
       current = current[dirrection];
     }
