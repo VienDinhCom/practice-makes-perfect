@@ -44,7 +44,6 @@ class BinarySearchTree {
     }
   }
 
-  // review
   findMin(node = this.root) {
     if (node === null) {
       return null;
@@ -61,12 +60,13 @@ class BinarySearchTree {
     }
   }
 
+  // review
   findMax(node = this.root) {
     if (node === null) {
       return null;
     }
 
-    let current = node;
+    let current: Node | null = node;
 
     while (current) {
       if (current.right === null) {
