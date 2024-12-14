@@ -208,16 +208,16 @@ class BinarySearchTree {
   postOrder = () => {
     if (this.root === null) return null;
 
-    const traverse = (node: Node): number[] => {
+    const traverse = (node: Node | null): number[] => {
       if (node === null) return [];
 
-      const nodes = [];
+      const values: number[] = [];
 
-      nodes.push(...traverse(node.left!));
-      nodes.push(...traverse(node.right!));
-      nodes.push(node.value);
+      values.push(...traverse(node.left));
+      values.push(...traverse(node.right));
+      values.push(node.value);
 
-      return nodes;
+      return values;
     };
 
     return traverse(this.root);
