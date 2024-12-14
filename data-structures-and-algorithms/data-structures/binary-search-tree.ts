@@ -167,39 +167,41 @@ class BinarySearchTree {
     const traverse = (node: Node | null): number[] => {
       if (node === null) return [];
 
-      const nodes: number[] = [];
+      const values: number[] = [];
 
-      nodes.push(...traverse(node.left));
-      nodes.push(node.value);
-      nodes.push(...traverse(node.right));
+      values.push(...traverse(node.left));
+      values.push(node.value);
+      values.push(...traverse(node.right));
 
-      return nodes;
+      return values;
     };
 
     return traverse(this.root);
   };
 
+  // Root first
   // This method processes the root first
   // useful to create a copy of the tree or serialize it
   // https://www.youtube.com/watch?v=gLx7Px7IEzg
   preOrder() {
     if (this.root === null) return null;
 
-    const traverse = (node: Node): number[] => {
-      if (node === null) return [];
+    const values: number[] = [];
 
-      const nodes = [];
+    const traverse = (node: Node | null) => {
+      if (node === null) return;
 
-      nodes.push(node.value);
-      nodes.push(...traverse(node.left!));
-      nodes.push(...traverse(node.right!));
-
-      return nodes;
+      values.push(node.value);
+      traverse(node.left);
+      traverse(node.right);
     };
 
-    return traverse(this.root);
+    traverse(this.root);
+
+    return values;
   }
 
+  // Children first
   // This method processes all children before their parent
   // useful for deleting trees or calculating values from leaves up
   // https://www.youtube.com/watch?v=a8kmbuNm8Uo
