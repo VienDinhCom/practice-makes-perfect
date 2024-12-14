@@ -157,25 +157,26 @@ class BinarySearchTree {
     return this.findMinHeight() === this.findMaxHeight();
   }
 
+  // Should return a sorted array
   // This method visits nodes in sorted order
   // useful for binary search trees
   // https://www.youtube.com/watch?v=ne5oOmYdWGw
   inOrder = () => {
     if (this.root === null) return null;
 
-    const traverse = (node: Node): number[] => {
-      if (node === null) return [];
+    const results: number[] = [];
 
-      const nodes: number[] = [];
+    const traverse = (node: Node | null) => {
+      if (node === null) return;
 
-      nodes.push(...traverse(node.left!));
-      nodes.push(node.value);
-      nodes.push(...traverse(node.right!));
-
-      return nodes;
+      traverse(node.left);
+      results.push(node.value);
+      traverse(node.right);
     };
 
-    return traverse(this.root);
+    traverse(this.root);
+
+    return results;
   };
 
   // This method processes the root first
