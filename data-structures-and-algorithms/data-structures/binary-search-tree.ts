@@ -220,6 +220,7 @@ class BinarySearchTree {
     return traverse(this.root);
   };
 
+  // finding the shortest path in unweighted graphs or trees.
   levelOrder = () => {
     if (this.root === null) return null;
 
