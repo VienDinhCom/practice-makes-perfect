@@ -231,9 +231,7 @@ class BinarySearchTree {
     const queue: Node[] = [this.root];
 
     const pushIfThere = (node: Node | null) => {
-      if (node) {
-        queue.push(node);
-      }
+      if (node) queue.push(node);
     };
 
     while (queue.length) {
@@ -251,10 +249,10 @@ class BinarySearchTree {
   reverseLevelOrder = () => {
     if (this.root === null) return null;
 
-    const queue = [this.root];
-    const results = [];
+    const results: number[] = [];
+    const queue: Node[] = [this.root];
 
-    const pushIfThere = (node: Node) => {
+    const pushIfThere = (node: Node | null) => {
       if (node) queue.push(node);
     };
 
@@ -263,8 +261,8 @@ class BinarySearchTree {
 
       results.push(node.value);
 
-      pushIfThere(node.right!);
-      pushIfThere(node.left!);
+      pushIfThere(node.right);
+      pushIfThere(node.left);
     }
 
     return results;
