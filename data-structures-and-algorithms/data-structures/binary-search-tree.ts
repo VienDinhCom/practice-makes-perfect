@@ -227,20 +227,22 @@ class BinarySearchTree {
   levelOrder = () => {
     if (this.root === null) return null;
 
-    const queue = [this.root];
-    const results = [];
+    const results: number[] = [];
+    const queue: Node[] = [this.root];
 
-    const pushIfThere = (node: Node) => {
-      if (node) queue.push(node);
+    const pushIfThere = (node: Node | null) => {
+      if (node) {
+        queue.push(node);
+      }
     };
 
-    while (queue.length > 0) {
+    while (queue.length) {
       const node = queue.shift()!;
 
       results.push(node.value);
 
-      pushIfThere(node.left!);
-      pushIfThere(node.right!);
+      pushIfThere(node.left);
+      pushIfThere(node.right);
     }
 
     return results;
