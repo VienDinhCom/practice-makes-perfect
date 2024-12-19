@@ -348,7 +348,7 @@ class BinarySearchTree {
   };
 
   static isBinarySearchTree(tree: BinarySearchTree) {
-    const validate = (node: Node): boolean => {
+    const validate = (node: Node | null): boolean => {
       if (node === null) return true;
 
       if (node.left === null) {
@@ -366,7 +366,7 @@ class BinarySearchTree {
       return validate(node.left) && validate(node.right);
     };
 
-    return validate(tree.root!);
+    return validate(tree.root);
   }
 }
 
