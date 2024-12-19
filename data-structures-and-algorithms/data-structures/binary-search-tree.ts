@@ -335,13 +335,13 @@ class BinarySearchTree {
   invert = () => {
     if (this.root === null) return null;
 
-    const traverse = (node: Node) => {
+    const traverse = (node: Node | null) => {
       if (node === null) return;
 
       [node.left, node.right] = [node.right, node.left];
 
-      traverse(node.left!);
-      traverse(node.right!);
+      traverse(node.left);
+      traverse(node.right);
     };
 
     traverse(this.root);
@@ -668,10 +668,16 @@ Deno.test('BinarySearchTree - invert method', () => {
   tree.add(6);
   tree.add(8);
 
+  const before = tree.inOrder();
+
   tree.invert();
+
+  const after = tree.inOrder();
 
   // After inversion, check reversed order traversals
   expect(tree.levelOrder()).toStrictEqual([5, 7, 3, 8, 6, 4, 1]);
+
+  expect(after).toStrictEqual(before?.reverse());
 });
 
 Deno.test('BinarySearchTree - isBinarySearchTree static method', () => {
