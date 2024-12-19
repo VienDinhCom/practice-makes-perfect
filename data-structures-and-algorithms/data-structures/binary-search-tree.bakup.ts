@@ -512,6 +512,109 @@ Deno.test('BinarySearchTree - traversal methods', () => {
   expect(tree.reverseLevelOrder()).toStrictEqual([5, 7, 3, 8, 6, 4, 1]);
 });
 
+Deno.test('remove: node with no children (leaf node)', () => {
+  const tree = new BinarySearchTree();
+  tree.add(10);
+  tree.add(5);
+  tree.add(15);
+
+  tree.remove(5);
+
+  expect(tree.inOrder()).toStrictEqual([10, 15]);
+  expect(tree.isPresent(5)).toBe(false);
+});
+
+Deno.test('remove: node with one child', () => {
+  const tree = new BinarySearchTree();
+  tree.add(10);
+  tree.add(5);
+  tree.add(15);
+  tree.add(3); // Left child of 5
+
+  tree.remove(5);
+
+  expect(tree.inOrder()).toStrictEqual([3, 10, 15]);
+  expect(tree.isPresent(5)).toBe(false);
+  expect(tree.isPresent(3)).toBe(true);
+});
+
+Deno.test('remove: node with two children', () => {
+  const tree = new BinarySearchTree();
+  tree.add(10);
+  tree.add(5);
+  tree.add(15);
+  tree.add(12);
+  tree.add(18);
+
+  tree.remove(15);
+
+  expect(tree.inOrder()).toStrictEqual([5, 10, 12, 18]);
+  expect(tree.isPresent(15)).toBe(false);
+  expect(tree.isPresent(12)).toBe(true);
+});
+
+Deno.test('remove: root node with no children', () => {
+  const tree = new BinarySearchTree();
+  tree.add(10);
+
+  tree.remove(10);
+
+  expect(tree.inOrder()).toStrictEqual(null);
+  expect(tree.isPresent(10)).toBe(false);
+});
+
+Deno.test('remove: root node with one child', () => {
+  const tree = new BinarySearchTree();
+  tree.add(10);
+  tree.add(5); // Left child
+
+  tree.remove(10);
+
+  expect(tree.inOrder()).toStrictEqual([5]);
+  expect(tree.isPresent(10)).toBe(false);
+  expect(tree.isPresent(5)).toBe(true);
+});
+
+Deno.test('remove: root node with two children', () => {
+  const tree = new BinarySearchTree();
+  tree.add(10);
+  tree.add(5);
+  tree.add(15);
+
+  tree.remove(10);
+
+  expect(tree.inOrder()).toStrictEqual([5, 15]);
+  expect(tree.isPresent(10)).toBe(false);
+});
+
+Deno.test('remove: node not present in the tree', () => {
+  const tree = new BinarySearchTree();
+  tree.add(10);
+  tree.add(5);
+  tree.add(15);
+
+  tree.remove(20);
+
+  expect(tree.inOrder()).toStrictEqual([5, 10, 15]);
+  expect(tree.isPresent(20)).toBe(false);
+});
+
+Deno.test('remove: node from a more complex tree', () => {
+  const tree = new BinarySearchTree();
+  tree.add(50);
+  tree.add(30);
+  tree.add(70);
+  tree.add(20);
+  tree.add(40);
+  tree.add(60);
+  tree.add(80);
+
+  tree.remove(30);
+
+  expect(tree.inOrder()).toStrictEqual([20, 40, 50, 60, 70, 80]);
+  expect(tree.isPresent(30)).toBe(false);
+});
+
 Deno.test('BinarySearchTree - remove method', () => {
   const tree = new BinarySearchTree();
 

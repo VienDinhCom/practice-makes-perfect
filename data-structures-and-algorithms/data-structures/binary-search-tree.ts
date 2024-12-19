@@ -269,59 +269,66 @@ class BinarySearchTree {
   };
 
   remove = (value: number) => {
-    if (this.root === null) {
+    const find = () => {
+      if (this.root === null) return null;
+
+      let parent: Node | null = null;
+      let current = this.root;
+
+      while (current) {
+        if (current.value === value) {
+          return { parent, current };
+        }
+
+        const dirrection = value < current.value ? 'left' : 'right';
+
+        parent = current;
+        current = current[dirrection]!;
+      }
+
       return null;
-    }
+    };
 
-    const hasNoChildren = (node: Node) => node.left === null && node.right === null;
-    const hasOneChild = (node: Node) => (node.left === null) !== (node.right === null);
-    const hasTwoChilds = (node: Node) => node.left && node.right;
+    const result = find();
 
-    if (value === this.root.value) {
-      if (hasNoChildren(this.root)) {
+    if (result === null) return null;
+
+    const { parent, current } = result;
+
+    const hasNoChildren = current.left === null && current.right === null;
+    const hasOneChild = (current.left === null) !== (current.right === null);
+    const hasTwoChilds = current.left && current.right;
+
+    const dirrection = current === parent?.left ? 'left' : 'right';
+
+    if (hasNoChildren) {
+      if (current === this.root) {
         this.root = null;
-      } else if (hasOneChild(this.root)) {
-        this.root = this.root.left || this.root.right;
-      } else if (hasTwoChilds(this.root)) {
-        const successorValue = this.findMin(this.root.right)!;
-
-        this.remove(successorValue);
-
-        this.root.value = successorValue;
+      } else {
+        parent![dirrection] = null;
       }
 
       return;
     }
 
-    let parent: Node | null = null;
-    let target = this.root;
-
-    while (target) {
-      if (target.value === value) {
-        const dirrection = parent!.left === target ? 'left' : 'right';
-
-        if (hasNoChildren(target)) {
-          parent![dirrection] = null;
-        } else if (hasOneChild(target)) {
-          parent![dirrection] = target.left || target.right;
-        } else if (hasTwoChilds(target)) {
-          const successorValue = this.findMin(target.right)!;
-
-          this.remove(successorValue);
-
-          target.value = successorValue;
-        }
-
-        return;
-      }
-
-      parent = target;
-
-      if (value > target.value) {
-        target = target.right!;
+    if (hasOneChild) {
+      if (current === this.root) {
+        this.root = this.root.left || this.root.right;
       } else {
-        target = target.left!;
+        parent![dirrection] = current.left || current.right;
       }
+
+      return;
+    }
+
+    if (hasTwoChilds) {
+      const node = current === this.root ? this.root : current;
+
+      const sucessorValue = this.findMin(node.right)!;
+
+      this.remove(sucessorValue);
+
+      node.value = sucessorValue;
     }
   };
 
@@ -517,6 +524,109 @@ Deno.test('BinarySearchTree - traversal methods', () => {
 
   // reverseLevelOrder traversal
   expect(tree.reverseLevelOrder()).toStrictEqual([5, 7, 3, 8, 6, 4, 1]);
+});
+
+Deno.test('remove: node with no children (leaf node)', () => {
+  const tree = new BinarySearchTree();
+  tree.add(10);
+  tree.add(5);
+  tree.add(15);
+
+  tree.remove(5);
+
+  expect(tree.inOrder()).toStrictEqual([10, 15]);
+  expect(tree.isPresent(5)).toBe(false);
+});
+
+Deno.test('remove: node with one child', () => {
+  const tree = new BinarySearchTree();
+  tree.add(10);
+  tree.add(5);
+  tree.add(15);
+  tree.add(3); // Left child of 5
+
+  tree.remove(5);
+
+  expect(tree.inOrder()).toStrictEqual([3, 10, 15]);
+  expect(tree.isPresent(5)).toBe(false);
+  expect(tree.isPresent(3)).toBe(true);
+});
+
+Deno.test('remove: node with two children', () => {
+  const tree = new BinarySearchTree();
+  tree.add(10);
+  tree.add(5);
+  tree.add(15);
+  tree.add(12);
+  tree.add(18);
+
+  tree.remove(15);
+
+  expect(tree.inOrder()).toStrictEqual([5, 10, 12, 18]);
+  expect(tree.isPresent(15)).toBe(false);
+  expect(tree.isPresent(12)).toBe(true);
+});
+
+Deno.test('remove: root node with no children', () => {
+  const tree = new BinarySearchTree();
+  tree.add(10);
+
+  tree.remove(10);
+
+  expect(tree.inOrder()).toStrictEqual(null);
+  expect(tree.isPresent(10)).toBe(false);
+});
+
+Deno.test('remove: root node with one child', () => {
+  const tree = new BinarySearchTree();
+  tree.add(10);
+  tree.add(5); // Left child
+
+  tree.remove(10);
+
+  expect(tree.inOrder()).toStrictEqual([5]);
+  expect(tree.isPresent(10)).toBe(false);
+  expect(tree.isPresent(5)).toBe(true);
+});
+
+Deno.test('remove: root node with two children', () => {
+  const tree = new BinarySearchTree();
+  tree.add(10);
+  tree.add(5);
+  tree.add(15);
+
+  tree.remove(10);
+
+  expect(tree.inOrder()).toStrictEqual([5, 15]);
+  expect(tree.isPresent(10)).toBe(false);
+});
+
+Deno.test('remove: node not present in the tree', () => {
+  const tree = new BinarySearchTree();
+  tree.add(10);
+  tree.add(5);
+  tree.add(15);
+
+  tree.remove(20);
+
+  expect(tree.inOrder()).toStrictEqual([5, 10, 15]);
+  expect(tree.isPresent(20)).toBe(false);
+});
+
+Deno.test('remove: node from a more complex tree', () => {
+  const tree = new BinarySearchTree();
+  tree.add(50);
+  tree.add(30);
+  tree.add(70);
+  tree.add(20);
+  tree.add(40);
+  tree.add(60);
+  tree.add(80);
+
+  tree.remove(30);
+
+  expect(tree.inOrder()).toStrictEqual([20, 40, 50, 60, 70, 80]);
+  expect(tree.isPresent(30)).toBe(false);
 });
 
 Deno.test('BinarySearchTree - remove method', () => {
