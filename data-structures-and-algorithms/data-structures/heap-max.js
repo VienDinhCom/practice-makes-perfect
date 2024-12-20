@@ -50,15 +50,17 @@ class MaxHeap {
 
     const heapify = (index) => {
       let largest = index;
-      const left = this.leftChildIndex(index);
-      const right = this.rightChildIndex(index);
 
       // Check if the left child exists and is greater than the current largest
+      const left = this.leftChildIndex(index);
+
       if (left < this.heap.length && this.heap[left] > this.heap[largest]) {
         largest = left;
       }
 
       // Check if the right child exists and is greater than the current largest
+      const right = this.rightChildIndex(index);
+
       if (right < this.heap.length && this.heap[right] > this.heap[largest]) {
         largest = right;
       }
