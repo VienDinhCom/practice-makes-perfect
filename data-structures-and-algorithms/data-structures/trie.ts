@@ -17,7 +17,6 @@ class Trie {
     this.root = new Node();
   }
 
-  // review
   add(word: string) {
     let current = this.root;
 
@@ -32,6 +31,7 @@ class Trie {
     current.isEndOfWord = true;
   }
 
+  // review
   isWord(word: string) {
     let current = this.root;
 
