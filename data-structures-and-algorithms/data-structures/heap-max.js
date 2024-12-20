@@ -34,4 +34,44 @@ class MaxHeap {
       parentIndex = this.parentIndex(currentIndex);
     }
   }
+
+  remove() {
+    if (this.heap.length === 1) {
+      return null;
+    }
+
+    const max = this.heap[1];
+
+    if (this.heap.length === 2) {
+      return this.heap.pop();
+    }
+
+    this.heap[1] = this.heap.pop();
+
+    const heapify = (index) => {
+      let largest = index;
+      const left = this.leftChildIndex(index);
+      const right = this.rightChildIndex(index);
+
+      // Check if the left child exists and is greater than the current largest
+      if (left < this.heap.length && this.heap[left] > this.heap[largest]) {
+        largest = left;
+      }
+
+      // Check if the right child exists and is greater than the current largest
+      if (right < this.heap.length && this.heap[right] > this.heap[largest]) {
+        largest = right;
+      }
+
+      // If the largest index is not the current index, swap and continue heapifying
+      if (largest !== index) {
+        [this.heap[index], this.heap[largest]] = [this.heap[largest], this.heap[index]];
+        heapify(largest);
+      }
+    };
+
+    heapify(1);
+
+    return max;
+  }
 }
