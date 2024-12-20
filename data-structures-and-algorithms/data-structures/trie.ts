@@ -31,7 +31,6 @@ class Trie {
     current.isEndOfWord = true;
   }
 
-  // review
   isWord(word: string) {
     let current = this.root;
 
@@ -54,9 +53,9 @@ class Trie {
         words.push(prefix);
       }
 
-      for (const [char, child] of node.children.entries()) {
-        traverse(child, prefix + char);
-      }
+      node.children.forEach((node, char) => {
+        traverse(node, prefix + char);
+      });
     };
 
     traverse(this.root, '');
