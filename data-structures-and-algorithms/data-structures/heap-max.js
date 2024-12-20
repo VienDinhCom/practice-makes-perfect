@@ -40,11 +40,11 @@ class MaxHeap {
       return null;
     }
 
-    const max = this.heap[1];
-
     if (this.heap.length === 2) {
       return this.heap.pop();
     }
+
+    const max = this.heap[1];
 
     this.heap[1] = this.heap.pop();
 
