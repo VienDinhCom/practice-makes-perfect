@@ -27,7 +27,7 @@ class MaxHeap {
     let parentIndex = this.parentIndex(currentIndex);
 
     // Bubble up the new item to maintain max-heap property
-    while (currentIndex > 1 && item > this.heap[parentIndex]) {
+    while (currentIndex > 1 && this.heap[currentIndex] > this.heap[parentIndex]) {
       [this.heap[currentIndex], this.heap[parentIndex]] = [this.heap[parentIndex], this.heap[currentIndex]];
 
       currentIndex = parentIndex;
