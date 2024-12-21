@@ -3,23 +3,6 @@ class MinHeap {
     this.heap = [null];
   }
 
-  static isSorted(a) {
-    for (let i = 0; i < a.length - 1; i++) {
-      if (a[i] > a[i + 1]) {
-        return false;
-      }
-    }
-    return true;
-  }
-
-  static createRandomArray(size = 5) {
-    const a = new Array(size);
-    for (let i = 0; i < size; i++) {
-      a[i] = Math.floor(Math.random() * 100);
-    }
-    return a;
-  }
-
   leftChildIndex(index) {
     return 2 * index;
   }
@@ -59,7 +42,7 @@ class MinHeap {
 
     this.heap[1] = this.heap.pop();
 
-    const heapify = (index) => {
+    const heapifyDown = (index) => {
       const left = this.leftChildIndex(index);
       const right = this.rightChildIndex(index);
 
@@ -76,12 +59,26 @@ class MinHeap {
       if (smallest !== index) {
         [this.heap[index], this.heap[smallest]] = [this.heap[smallest], this.heap[index]];
 
-        heapify(smallest);
+        heapifyDown(smallest);
       }
     };
 
-    heapify(1);
+    heapifyDown(1);
 
     return item;
+  }
+
+  sort() {
+    const temp = [...this.heap];
+
+    const sortedArray = [];
+
+    while (this.heap.length > 1) {
+      sortedArray.push(this.remove());
+    }
+
+    this.heap = temp;
+
+    return sortedArray;
   }
 }
