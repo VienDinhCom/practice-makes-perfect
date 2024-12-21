@@ -1,24 +1,31 @@
-const Items = (props) => {
-  return <h1>Current Quantity of Items in Cart: {props.quantity}</h1>;
-};
-
-// Change code below this line
-
-Items.propTypes = {
-  quantity: PropTypes.number.isRequired,
-};
-
-// Change code above this line
-
-Items.defaultProps = {
-  quantity: 0,
-};
-
-class ShoppingCart extends React.Component {
+class App extends React.Component {
   constructor(props) {
     super(props);
+
   }
   render() {
-    return <Items />;
+    return (
+        <div>
+            { /* Change code below this line */ }
+            <Welcome name="You" />
+            { /* Change code above this line */ }
+        </div>
+    );
   }
-}
+};
+
+class Welcome extends React.Component {
+  constructor(props) {
+    super(props);
+
+  }
+  render() {
+    return (
+        <div>
+          { /* Change code below this line */ }
+          <p>Hello, <strong>{this.props.name}</strong>!</p>
+          { /* Change code above this line */ }
+        </div>
+    );
+  }
+};
