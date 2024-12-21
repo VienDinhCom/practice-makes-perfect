@@ -76,7 +76,7 @@ class MinHeap {
       if (smallest !== index) {
         [this.heap[index], this.heap[smallest]] = [this.heap[smallest], this.heap[index]];
 
-        this.heapify(smallest);
+        heapify(smallest);
       }
     };
 
