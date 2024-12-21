@@ -26,6 +26,7 @@ class MinHeap {
   insert(item: number) {
     this.heap.push(item);
 
+    // Heapify Up
     let current = this.heap.length - 1;
     let parent = this.parentIndex(current);
 
