@@ -84,6 +84,20 @@ class MaxHeap {
   size(): number {
     return this.heap.length - 1;
   }
+
+  sort() {
+    const temp = [...this.heap];
+
+    const sortedArray = [];
+
+    while (this.heap.length > 1) {
+      sortedArray.unshift(this.remove());
+    }
+
+    this.heap = temp;
+
+    return sortedArray;
+  }
 }
 
 Deno.test('MaxHeap: Insert and Peek', () => {
