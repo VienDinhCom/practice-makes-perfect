@@ -26,16 +26,28 @@ class MinHeap {
   insert(item: number) {
     this.heap.push(item);
 
-    // Heapify Up
-    let current = this.heap.length - 1;
-    let parent = this.parentIndex(current);
+    const heapifyUp = (index: number) => {
+      const parent = this.parentIndex(index);
 
-    while (current > 1 && this.heap[current]! < this.heap[parent]!) {
-      [this.heap[current], this.heap[parent]] = [this.heap[parent], this.heap[current]];
+      if (item < this.heap[parent]! && index > 1) {
+        [this.heap[index], this.heap[parent]] = [this.heap[parent], this.heap[index]];
 
-      current = parent;
-      parent = this.parentIndex(current);
-    }
+        heapifyUp(parent);
+      }
+    };
+
+    heapifyUp(this.heap.length - 1);
+
+    // // Heapify Up
+    // let current = this.heap.length - 1;
+    // let parent = this.parentIndex(current);
+
+    // while (current > 1 && this.heap[current]! < this.heap[parent]!) {
+    //   [this.heap[current], this.heap[parent]] = [this.heap[parent], this.heap[current]];
+
+    //   current = parent;
+    //   parent = this.parentIndex(current);
+    // }
   }
 
   remove() {
