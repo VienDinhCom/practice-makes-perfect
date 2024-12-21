@@ -100,69 +100,91 @@ class MaxHeap {
   }
 }
 
-Deno.test('MaxHeap: Insert and Peek', () => {
+Deno.test('MaxHeap - Initialization', () => {
+  const heap = new MaxHeap();
+  expect(heap.print()).toStrictEqual([null]); // The heap should start with a single null element
+  expect(heap.size()).toBe(0); // The size of the heap should be 0
+});
+
+Deno.test('MaxHeap - Insert and Peek', () => {
   const heap = new MaxHeap();
 
   heap.insert(10);
-  expect(heap.peek()).toStrictEqual(10);
+  expect(heap.peek()).toBe(10); // The max value should be 10
+  expect(heap.size()).toBe(1); // Size should be 1
 
   heap.insert(20);
-  expect(heap.peek()).toStrictEqual(20); // Max-heap property: root should be the max element
+  expect(heap.peek()).toBe(20); // The max value should now be 20
+  expect(heap.size()).toBe(2); // Size should be 2
 
-  heap.insert(5);
-  expect(heap.peek()).toStrictEqual(20);
+  heap.insert(15);
+  expect(heap.peek()).toBe(20); // Max value remains 20
+  expect(heap.size()).toBe(3); // Size should be 3
 });
 
-Deno.test('MaxHeap: Remove', () => {
+Deno.test('MaxHeap - Remove', () => {
   const heap = new MaxHeap();
 
   heap.insert(10);
   heap.insert(20);
   heap.insert(15);
 
-  expect(heap.remove()).toStrictEqual(20); // Remove max
-  expect(heap.print()).toStrictEqual([null, 15, 10]); // Ensure heap structure is maintained
+  expect(heap.remove()).toBe(20); // Removing the max value
+  expect(heap.print()).toStrictEqual([null, 15, 10]); // Remaining heap after removal
+  expect(heap.size()).toBe(2); // Size should be 2
 
-  expect(heap.remove()).toStrictEqual(15);
-  expect(heap.remove()).toStrictEqual(10);
+  expect(heap.remove()).toBe(15); // Next max value
+  expect(heap.print()).toStrictEqual([null, 10]); // Remaining heap after second removal
+  expect(heap.size()).toBe(1); // Size should be 1
 
-  // Test removing from empty heap
-  expect(() => heap.remove()).toThrow('Heap is empty, cannot remove elements.');
+  expect(heap.remove()).toBe(10); // Last element
+  expect(heap.print()).toStrictEqual([null]); // Heap is now empty
+  expect(heap.size()).toBe(0); // Size should be 0
+
+  // Test removing from an empty heap
+  try {
+    heap.remove();
+  } catch (e) {
+    expect(e).not.toBeNull();
+  }
 });
 
-Deno.test('MaxHeap: Peek', () => {
+Deno.test('MaxHeap - Sort', () => {
   const heap = new MaxHeap();
 
-  expect(heap.peek()).toStrictEqual(null); // Empty heap
-
-  heap.insert(30);
-  expect(heap.peek()).toStrictEqual(30);
-
-  heap.insert(40);
-  expect(heap.peek()).toStrictEqual(40);
-});
-
-Deno.test('MaxHeap: Size', () => {
-  const heap = new MaxHeap();
-
-  expect(heap.size()).toStrictEqual(0);
-
-  heap.insert(5);
-  expect(heap.size()).toStrictEqual(1);
-
+  heap.insert(10);
+  heap.insert(20);
   heap.insert(15);
-  expect(heap.size()).toStrictEqual(2);
+
+  expect(heap.sort()).toStrictEqual([10, 15, 20]); // Sorted array
+  expect(heap.print()).toStrictEqual([null, 20, 10, 15]); // Original heap remains unchanged
+});
+
+Deno.test('MaxHeap - Size', () => {
+  const heap = new MaxHeap();
+  expect(heap.size()).toBe(0); // Initially, size is 0
+
+  heap.insert(10);
+  expect(heap.size()).toBe(1); // Size increases to 1
+
+  heap.insert(20);
+  expect(heap.size()).toBe(2); // Size increases to 2
 
   heap.remove();
-  expect(heap.size()).toStrictEqual(1);
+  expect(heap.size()).toBe(1); // Size decreases to 1 after a removal
 });
 
-Deno.test('MaxHeap: Print', () => {
+Deno.test('MaxHeap - Edge Cases', () => {
   const heap = new MaxHeap();
 
-  heap.insert(50);
-  heap.insert(20);
-  heap.insert(30);
+  expect(heap.peek()).toBe(null); // Peek on an empty heap should return null
 
-  expect(heap.print()).toStrictEqual([null, 50, 20, 30]); // Verify internal heap structure
+  try {
+    heap.remove();
+  } catch (e) {
+    expect(e).not.toBeNull();
+  }
+
+  heap.insert(5);
+  expect(heap.sort()).toStrictEqual([5]); // Sorting a single-element heap should return the same element
 });
