@@ -29,7 +29,7 @@ class MinHeap {
     const heapifyUp = (index: number) => {
       const parent = this.parentIndex(index);
 
-      if (item < this.heap[parent]! && index > 1) {
+      if (index > 1 && this.heap[parent]! > item) {
         [this.heap[index], this.heap[parent]] = [this.heap[parent], this.heap[index]];
 
         heapifyUp(parent);
