@@ -45,4 +45,43 @@ class MinHeap {
       parent = this.parentIndex(current);
     }
   }
+
+  remove() {
+    if (this.heap.length === 1) {
+      throw new Error('Heap is empty, cannot remove elements.');
+    }
+
+    if (this.heap.length === 2) {
+      return this.heap.pop();
+    }
+
+    const item = this.heap[1];
+
+    this.heap[1] = this.heap.pop();
+
+    const heapify = (index) => {
+      const left = this.leftChildIndex(index);
+      const right = this.rightChildIndex(index);
+
+      let smallest = index;
+
+      if (left < this.heap.length && this.heap[left] < this.heap[smallest]) {
+        smallest = left;
+      }
+
+      if (right < this.heap.length && this.heap[right] < this.heap[smallest]) {
+        smallest = right;
+      }
+
+      if (smallest !== index) {
+        [this.heap[index], this.heap[smallest]] = [this.heap[smallest], this.heap[index]];
+
+        this.heapify(smallest);
+      }
+    };
+
+    heapify(1);
+
+    return item;
+  }
 }
