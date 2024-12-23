@@ -47,9 +47,7 @@ class BinarySearchTree {
   }
 
   findMin(node = this.root) {
-    if (node === null) {
-      return null;
-    }
+    if (node === null) return null;
 
     let current = node;
 
