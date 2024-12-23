@@ -1,61 +1,38 @@
-class Counter extends React.Component {
+class ControlledInput extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      count: 0,
+      input: '',
     };
     // Change code below this line
 
-    this.increment = this.increment.bind(this);
-    this.decrement = this.decrement.bind(this);
-    this.reset = this.reset.bind(this);
+    this.handleChange = this.handleChange.bind(this);
 
     // Change code above this line
   }
   // Change code below this line
-  increment() {
+
+  handleChange(event) {
     this.setState((state) => {
       const draft = structuredClone(state);
 
-      draft.count++;
+      draft.input = event.target.value;
 
       return draft;
     });
   }
 
-  decrement() {
-    this.setState((state) => {
-      const draft = structuredClone(state);
-
-      draft.count--;
-
-      return draft;
-    });
-  }
-
-  reset() {
-    this.setState((state) => {
-      const draft = structuredClone(state);
-
-      draft.count = 0;
-
-      return draft;
-    });
-  }
   // Change code above this line
   render() {
     return (
       <div>
-        <button className="inc" onClick={this.increment}>
-          Increment!
-        </button>
-        <button className="dec" onClick={this.decrement}>
-          Decrement!
-        </button>
-        <button className="reset" onClick={this.reset}>
-          Reset
-        </button>
-        <h1>Current Count: {this.state.count}</h1>
+        {/* Change code below this line */}
+
+        <input type="text" value={this.state.input} onChange={this.handleChange} />
+
+        {/* Change code above this line */}
+        <h4>Controlled Input:</h4>
+        <p>{this.state.input}</p>
       </div>
     );
   }
