@@ -90,59 +90,18 @@ class BinarySearchTree {
     return false;
   }
 
-  findMaxHeight() {
-    const heights: number[] = [];
-
-    const traverse = (node: Node | null, height: number) => {
-      if (node === null) {
-        heights.push(height - 1);
-        return;
-      }
-
-      traverse(node!.left, height + 1);
-      traverse(node!.right, height + 1);
-    };
-
-    traverse(this.root, 0);
-
-    return Math.max(...heights);
-  }
-
-  //
-  //
-  //
-  //
-  //
-  //
-  //
-  //
-  //
-  //
-  //
-  //
-  //
-  //
-  //
-  //
-  //
-  //
-  //
-  //
-
   // https://forum.freecodecamp.org/t/freecodecamp-challenge-guide-find-the-minimum-and-maximum-height-of-a-binary-search-tree/301641
-
   // findMaxHeight() {
   //   const heights: number[] = [];
 
   //   const traverse = (node: Node | null, height: number) => {
   //     if (node === null) {
   //       heights.push(height - 1);
-
   //       return;
   //     }
 
-  //     traverse(node.left, height + 1);
-  //     traverse(node.right, height + 1);
+  //     traverse(node!.left, height + 1);
+  //     traverse(node!.right, height + 1);
   //   };
 
   //   traverse(this.root, 0);
@@ -150,33 +109,15 @@ class BinarySearchTree {
   //   return Math.max(...heights);
   // }
 
-  // findMaxHeight() {
-  //   const traverse = (node: Node | null): number => {
-  //     if (node === null) return -1;
+  findMaxHeight() {
+    const traverse = (node: Node | null): number => {
+      if (node === null) return -1;
 
-  //     return 1 + Math.max(traverse(node.left), traverse(node.right));
-  //   };
+      return 1 + Math.max(traverse(node.left), traverse(node.right));
+    };
 
-  //   return traverse(this.root);
-  // }
-
-  // findMinHeight = () => {
-  //   const heights: number[] = [];
-
-  //   const traverse = (node: Node | null, height: number) => {
-  //     if (node === null) {
-  //       heights.push(height - 1);
-  //       return;
-  //     }
-
-  //     traverse(node.left, height + 1);
-  //     traverse(node.right, height + 1);
-  //   };
-
-  //   traverse(this.root, 0);
-
-  //   return Math.min(...heights);
-  // };
+    return traverse(this.root);
+  }
 
   findMinHeight() {
     const traverse = (node: Node | null): number => {
