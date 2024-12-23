@@ -1,35 +1,39 @@
-class MyComponent extends React.Component {
+class OnlyEvens extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+  shouldComponentUpdate(nextProps, nextState) {
+    console.log('Should I update?');
+    // Change code below this line
+    return nextProps.value % 2 === 0;
+    // Change code above this line
+  }
+  componentDidUpdate() {
+    console.log('Component re-rendered.');
+  }
+  render() {
+    return <h1>{this.props.value}</h1>;
+  }
+}
+
+class Controller extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      message: '',
+      value: 0,
     };
-    this.handleEnter = this.handleEnter.bind(this);
-    this.handleKeyPress = this.handleKeyPress.bind(this);
+    this.addValue = this.addValue.bind(this);
   }
-  // Change code below this line
-  componentDidMount() {
-    document.addEventListener('keydown', this.handleKeyPress);
-  }
-
-  componentWillUnmount() {
-    document.removeEventListener('keydown', this.handleKeyPress);
-  }
-  // Change code above this line
-  handleEnter() {
+  addValue() {
     this.setState((state) => ({
-      message: state.message + 'You pressed the enter key! ',
+      value: state.value + 1,
     }));
-  }
-  handleKeyPress(event) {
-    if (event.keyCode === 13) {
-      this.handleEnter();
-    }
   }
   render() {
     return (
       <div>
-        <h1>{this.state.message}</h1>
+        <button onClick={this.addValue}>Add</button>
+        <OnlyEvens value={this.state.value} />
       </div>
     );
   }
