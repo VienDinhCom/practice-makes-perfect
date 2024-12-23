@@ -2,25 +2,41 @@ class MyComponent extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      text: 'Hello',
+      visibility: false,
     };
     // Change code below this line
-    this.handleClick = this.handleClick.bind(this);
+
+    this.toggleVisibility = this.toggleVisibility.bind(this);
+
     // Change code above this line
   }
-  handleClick() {
-    this.setState({
-      text: 'You clicked!',
+  // Change code below this line
+
+  toggleVisibility() {
+    this.setState((state) => {
+      const draft = structuredClone(state);
+
+      draft.visibility = !draft.visibility;
+
+      return draft;
     });
   }
+
+  // Change code above this line
   render() {
-    return (
-      <div>
-        {/* Change code below this line */}
-        <button onClick={this.handleClick}>Click Me</button>
-        {/* Change code above this line */}
-        <h1>{this.state.text}</h1>
-      </div>
-    );
+    if (this.state.visibility) {
+      return (
+        <div>
+          <button onClick={this.toggleVisibility}>Click Me</button>
+          <h1>Now you see me!</h1>
+        </div>
+      );
+    } else {
+      return (
+        <div>
+          <button onClick={this.toggleVisibility}>Click Me</button>
+        </div>
+      );
+    }
   }
 }
