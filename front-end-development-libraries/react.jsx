@@ -2,28 +2,24 @@ class MyComponent extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      name: 'Initial State',
+      text: 'Hello',
     };
+    // Change code below this line
     this.handleClick = this.handleClick.bind(this);
+    // Change code above this line
   }
   handleClick() {
-    // Change code below this line
-
-    this.setState((state) => {
-      const draft = structuredClone(state);
-
-      draft.name = 'React Rocks!';
-
-      return draft;
+    this.setState({
+      text: 'You clicked!',
     });
-
-    // Change code above this line
   }
   render() {
     return (
       <div>
+        {/* Change code below this line */}
         <button onClick={this.handleClick}>Click Me</button>
-        <h1>{this.state.name}</h1>
+        {/* Change code above this line */}
+        <h1>{this.state.text}</h1>
       </div>
     );
   }
