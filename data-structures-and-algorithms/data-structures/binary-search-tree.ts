@@ -24,12 +24,13 @@ class BinarySearchTree {
 
     if (this.root === null) {
       this.root = node;
+      return;
     }
 
     let current = this.root;
 
     while (current) {
-      if (node.value === current.value) {
+      if (current.value === node.value) {
         return;
       }
 
@@ -37,6 +38,7 @@ class BinarySearchTree {
 
       if (current[dirrection] === null) {
         current[dirrection] = node;
+
         return;
       }
 
