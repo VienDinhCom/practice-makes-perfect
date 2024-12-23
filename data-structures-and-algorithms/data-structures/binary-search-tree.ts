@@ -27,7 +27,7 @@ class BinarySearchTree {
       return;
     }
 
-    let current = this.root;
+    let current: Node = this.root;
 
     while (current) {
       if (current.value === node.value) {
@@ -75,16 +75,16 @@ class BinarySearchTree {
   }
 
   isPresent(value: number) {
+    if (this.root === null) return false;
+
     let current = this.root;
 
     while (current) {
-      const dirrection = value < current.value ? 'left' : 'right';
+      const dirrection = value < current!.value ? 'left' : 'right';
 
-      if (current.value === value) {
-        return true;
-      }
+      if (current.value === value) return true;
 
-      current = current[dirrection];
+      current = current[dirrection]!;
     }
 
     return false;
