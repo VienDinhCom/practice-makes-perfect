@@ -119,22 +119,32 @@ class BinarySearchTree {
     return traverse(this.root);
   }
 
+  // findMinHeight() {
+  //   const heights: number[] = [];
+
+  //   const traverse = (node: Node | null, height: number) => {
+  //     if (node === null) {
+  //       heights.push(height - 1);
+  //       return;
+  //     }
+
+  //     traverse(node!.left, height + 1);
+  //     traverse(node!.right, height + 1);
+  //   };
+
+  //   traverse(this.root, 0);
+
+  //   return Math.min(...heights);
+  // }
+
   findMinHeight() {
-    const heights: number[] = [];
+    const traverse = (node: Node | null): number => {
+      if (node === null) return -1;
 
-    const traverse = (node: Node | null, height: number) => {
-      if (node === null) {
-        heights.push(height - 1);
-        return;
-      }
-
-      traverse(node!.left, height + 1);
-      traverse(node!.right, height + 1);
+      return 1 + Math.min(traverse(node.left), traverse(node.right));
     };
 
-    traverse(this.root, 0);
-
-    return Math.min(...heights);
+    return traverse(this.root);
   }
 
   isBalanced() {
