@@ -61,11 +61,9 @@ class BinarySearchTree {
   }
 
   findMax(node = this.root) {
-    if (node === null) {
-      return null;
-    }
+    if (node === null) return null;
 
-    let current: Node | null = node;
+    let current = node;
 
     while (current) {
       if (current.right === null) {
