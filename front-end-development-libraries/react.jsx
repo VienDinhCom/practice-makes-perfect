@@ -1,45 +1,33 @@
-class Results extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-  render() {
-    {
-      /* Change code below this line */
-    }
-    return <h1>{this.props.fiftyFifty ? 'You Win!' : 'You Lose!'}</h1>;
-    {
-      /* Change code above this line */
-    }
-  }
-}
-
-class GameOfChance extends React.Component {
+class GateKeeper extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      counter: 1,
-      fiftyFifty: false,
+      input: '',
     };
-    this.handleClick = this.handleClick.bind(this);
+    this.handleChange = this.handleChange.bind(this);
   }
-  handleClick() {
-    this.setState((prevState) => {
-      // Complete the return statement:
-      return {
-        counter: prevState.counter + 1,
-        fiftyFifty: Math.random() >= 0.5,
-      };
-    });
+
+  handleChange(event) {
+    this.setState({ input: event.target.value });
   }
+
   render() {
-    const expression = null; // Change this line
+    let inputStyle = {
+      border: '1px solid black',
+    };
+    // Change code below this line
+
+    if (this.state.input.length > 15) {
+      inputStyle.border = '3px solid red';
+    } else {
+      inputStyle.border = '1px solid black';
+    }
+
+    // Change code above this line
     return (
       <div>
-        <button onClick={this.handleClick}>Play Again</button>
-        {/* Change code below this line */}
-        <Results fiftyFifty={this.state.fiftyFifty} />
-        {/* Change code above this line */}
-        <p>{'Turn: ' + this.state.counter}</p>
+        <h3>Don't Type Too Much:</h3>
+        <input type="text" style={inputStyle} value={this.state.input} onChange={this.handleChange} />
       </div>
     );
   }
