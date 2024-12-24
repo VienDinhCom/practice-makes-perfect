@@ -180,19 +180,19 @@ class BinarySearchTree {
   preOrder() {
     if (this.root === null) return null;
 
-    const values: number[] = [];
-
     const traverse = (node: Node | null) => {
-      if (node === null) return;
+      if (node === null) return [];
+
+      const values: number[] = [];
 
       values.push(node.value);
-      traverse(node.left);
-      traverse(node.right);
+      values.push(...traverse(node.left));
+      values.push(...traverse(node.right));
+
+      return values;
     };
 
-    traverse(this.root);
-
-    return values;
+    return traverse(this.root);
   }
 
   // Children first
