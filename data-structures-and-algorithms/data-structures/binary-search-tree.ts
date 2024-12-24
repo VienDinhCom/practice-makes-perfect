@@ -255,69 +255,66 @@ class BinarySearchTree {
     return values;
   };
 
-  remove = (value: number) => {
-    const find = () => {
-      if (this.root === null) return null;
+  findNode(value: number) {
+    if (this.root === null) return { parent: null, current: null };
 
-      let parent: Node | null = null;
-      let current = this.root;
+    let parent: Node | null = null;
+    let current: Node | null = this.root;
 
-      while (current) {
-        if (current.value === value) {
-          return { parent, current };
-        }
-
-        const dirrection = value < current.value ? 'left' : 'right';
-
-        parent = current;
-        current = current[dirrection]!;
+    while (current) {
+      if (current.value === value) {
+        return { parent, current };
       }
 
-      return null;
-    };
+      const dirrection: 'left' | 'right' = value < current.value ? 'left' : 'right';
 
-    const result = find();
+      parent = current;
+      current = current[dirrection];
+    }
 
-    if (result === null) return null;
+    return { parent, current };
+  }
 
-    const { parent, current } = result;
+  remove(value: number) {
+    const { parent, current } = this.findNode(value);
 
-    const hasNoChildren = current.left === null && current.right === null;
+    if (current === null) return null;
+
+    const hasNoChild = current.left === null && current.right == null;
     const hasOneChild = (current.left === null) !== (current.right === null);
-    const hasTwoChilds = current.left && current.right;
 
     const dirrection = current === parent?.left ? 'left' : 'right';
 
-    if (hasNoChildren) {
+    if (hasNoChild) {
       if (current === this.root) {
         this.root = null;
       } else {
         parent![dirrection] = null;
       }
 
-      return;
+      return current;
     }
 
     if (hasOneChild) {
       if (current === this.root) {
-        this.root = this.root.left || this.root.right;
+        this.root = current.left || current.right;
       } else {
         parent![dirrection] = current.left || current.right;
       }
 
-      return;
+      return current;
     }
 
-    if (hasTwoChilds) {
-      const node = current === this.root ? this.root : current;
+    const node = current === this.root ? this.root : current;
 
-      const sucessorValue = this.findMin(node.right)!;
+    const successorValue = this.findMin(node)!;
 
-      this.remove(sucessorValue);
+    this.remove(successorValue);
 
-      node.value = sucessorValue;
-    }
-  };
+    node.value = successorValue;
+
+    return current;
+  }
 
   invert = () => {
     if (this.root === null) return null;
