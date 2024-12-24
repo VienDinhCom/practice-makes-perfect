@@ -158,19 +158,19 @@ class BinarySearchTree {
   inOrder = () => {
     if (this.root === null) return null;
 
-    const traverse = (node: Node | null): number[] => {
-      if (node === null) return [];
+    const result: number[] = [];
 
-      const values: number[] = [];
+    const traverse = (node: Node | null) => {
+      if (node === null) return;
 
-      values.push(...traverse(node.left));
-      values.push(node.value);
-      values.push(...traverse(node.right));
-
-      return values;
+      traverse(node.left);
+      result.push(node.value);
+      traverse(node.right);
     };
 
-    return traverse(this.root);
+    traverse(this.root);
+
+    return result;
   };
 
   // Root first
