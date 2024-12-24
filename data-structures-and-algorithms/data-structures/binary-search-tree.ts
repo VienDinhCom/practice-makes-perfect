@@ -202,19 +202,19 @@ class BinarySearchTree {
   postOrder = () => {
     if (this.root === null) return null;
 
-    const traverse = (node: Node | null): number[] => {
-      if (node === null) return [];
+    const values: number[] = [];
 
-      const values: number[] = [];
+    const traverse = (node: Node | null) => {
+      if (node === null) return 0;
 
-      values.push(...traverse(node.left));
-      values.push(...traverse(node.right));
+      traverse(node.left);
+      traverse(node.right);
       values.push(node.value);
-
-      return values;
     };
 
-    return traverse(this.root);
+    traverse(this.root);
+
+    return values;
   };
 
   // finding the shortest path in unweighted graphs or trees.
