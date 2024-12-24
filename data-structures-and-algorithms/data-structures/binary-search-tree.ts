@@ -240,23 +240,19 @@ class BinarySearchTree {
   reverseLevelOrder = () => {
     if (this.root === null) return null;
 
-    const results: number[] = [];
     const queue: Node[] = [this.root];
-
-    const pushIfThere = (node: Node | null) => {
-      if (node) queue.push(node);
-    };
+    const values: number[] = [];
 
     while (queue.length > 0) {
       const node = queue.shift()!;
 
-      results.push(node.value);
+      values.push(node.value);
 
-      pushIfThere(node.right);
-      pushIfThere(node.left);
+      if (node.right) queue.push(node.right);
+      if (node.left) queue.push(node.left);
     }
 
-    return results;
+    return values;
   };
 
   remove = (value: number) => {
