@@ -1,14 +1,48 @@
-const frontEndFrameworks = ['React', 'Angular', 'Ember', 'Knockout', 'Backbone', 'Vue'];
+class MyComponent extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      users: [
+        {
+          username: 'Jeff',
+          online: true,
+        },
+        {
+          username: 'Alan',
+          online: false,
+        },
+        {
+          username: 'Mary',
+          online: true,
+        },
+        {
+          username: 'Jim',
+          online: false,
+        },
+        {
+          username: 'Sara',
+          online: true,
+        },
+        {
+          username: 'Laura',
+          online: true,
+        },
+      ],
+    };
+  }
 
-function Frameworks() {
-  const renderFrameworks = frontEndFrameworks.map((item, key) => {
-    return <li key={key}>{item}</li>;
-  });
+  render() {
+    const usersOnline = this.state.users.filter((user) => user.online);
 
-  return (
-    <div>
-      <h1>Popular Front End JavaScript Frameworks</h1>
-      <ul>{renderFrameworks}</ul>
-    </div>
-  );
+    const renderOnline = usersOnline.map((item, index) => {
+      return <li key={index}>{item.username}</li>;
+    });
+
+    return (
+      <div>
+        <h1>Current Online Users:</h1>
+        <ul>{renderOnline}</ul>
+      </div>
+    );
+  }
 }
