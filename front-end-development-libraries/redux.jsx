@@ -1,43 +1,30 @@
-const LOGIN = 'LOGIN';
-const LOGOUT = 'LOGOUT';
+const ADD = 'ADD';
 
-const defaultState = {
-  authenticated: false,
-};
-
-const authReducer = (state = defaultState, action) => {
-  // Change code below this line
-
-  const draft = structuredClone(state);
-
+const reducer = (state = 0, action) => {
   switch (action.type) {
-    case LOGIN:
-      draft.authenticated = true;
-      break;
-
-    case LOGOUT:
-      draft.authenticated = false;
-      break;
-
+    case ADD:
+      return state + 1;
     default:
-      break;
+      return state;
   }
-
-  return draft;
-
-  // Change code above this line
 };
 
-const store = Redux.createStore(authReducer);
+const store = Redux.createStore(reducer);
 
-const loginUser = () => {
-  return {
-    type: LOGIN,
-  };
-};
+// Global count variable:
+let count = 0;
 
-const logoutUser = () => {
-  return {
-    type: LOGOUT,
-  };
-};
+// Change code below this line
+
+store.subscribe(() => {
+  count++;
+});
+
+// Change code above this line
+
+store.dispatch({ type: ADD });
+console.log(count);
+store.dispatch({ type: ADD });
+console.log(count);
+store.dispatch({ type: ADD });
+console.log(count);
