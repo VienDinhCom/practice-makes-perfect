@@ -1,30 +1,38 @@
-const ADD = 'ADD';
+const INCREMENT = 'INCREMENT';
+const DECREMENT = 'DECREMENT';
 
-const reducer = (state = 0, action) => {
+const counterReducer = (state = 0, action) => {
   switch (action.type) {
-    case ADD:
+    case INCREMENT:
       return state + 1;
+    case DECREMENT:
+      return state - 1;
     default:
       return state;
   }
 };
 
-const store = Redux.createStore(reducer);
+const LOGIN = 'LOGIN';
+const LOGOUT = 'LOGOUT';
 
-// Global count variable:
-let count = 0;
+const authReducer = (state = { authenticated: false }, action) => {
+  switch (action.type) {
+    case LOGIN:
+      return {
+        authenticated: true,
+      };
+    case LOGOUT:
+      return {
+        authenticated: false,
+      };
+    default:
+      return state;
+  }
+};
 
-// Change code below this line
-
-store.subscribe(() => {
-  count++;
+const rootReducer = Redux.combineReducers({
+  auth: authReducer,
+  count: counterReducer,
 });
 
-// Change code above this line
-
-store.dispatch({ type: ADD });
-console.log(count);
-store.dispatch({ type: ADD });
-console.log(count);
-store.dispatch({ type: ADD });
-console.log(count);
+const store = Redux.createStore(rootReducer);
