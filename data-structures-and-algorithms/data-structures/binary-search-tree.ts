@@ -332,25 +332,31 @@ class BinarySearchTree {
   };
 
   static isBinarySearchTree(tree: BinarySearchTree) {
-    const validate = (node: Node | null): boolean => {
-      if (node === null) return true;
+    if (tree.root === null) return true;
 
-      if (node.left === null) {
-        return true;
-      } else if (node.left.value >= node.value) {
-        return false;
+    const queue: Node[] = [tree.root];
+
+    while (queue.length > 0) {
+      const node: Node = queue.shift()!;
+
+      if (node.left) {
+        if (node.left.value > node.value) {
+          return false;
+        }
+
+        queue.push(node.left);
       }
 
-      if (node.right === null) {
-        return true;
-      } else if (node.right.value <= node.value) {
-        return false;
+      if (node.right) {
+        if (node.right.value < node.value) {
+          return false
+        }
+
+        queue.push(node.right);
       }
+    }
 
-      return validate(node.left) && validate(node.right);
-    };
-
-    return validate(tree.root);
+    return true;
   }
 }
 
