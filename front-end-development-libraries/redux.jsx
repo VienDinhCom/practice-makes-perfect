@@ -1,17 +1,23 @@
-const immutableReducer = (state = [0, 1, 2, 3, 4, 5], action) => {
+const defaultState = {
+  user: 'CamperBot',
+  status: 'offline',
+  friends: '732,982',
+  community: 'freeCodeCamp',
+};
+
+const immutableReducer = (state = defaultState, action) => {
   switch (action.type) {
-    case 'REMOVE_ITEM':
+    case 'ONLINE':
       // Don't mutate state here or the tests will fail
-      return state.filter((v, i) => i !== action.index);
+      return Object.assign({}, state, { status: 'online' });
     default:
       return state;
   }
 };
 
-const removeItem = (index) => {
+const wakeUp = () => {
   return {
-    type: 'REMOVE_ITEM',
-    index,
+    type: 'ONLINE',
   };
 };
 
