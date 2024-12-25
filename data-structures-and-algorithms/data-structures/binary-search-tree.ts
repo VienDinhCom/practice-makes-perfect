@@ -660,6 +660,7 @@ Deno.test('BinarySearchTree - invert method', () => {
 
   // After inversion, check reversed order traversals
   expect(tree.levelOrder()).toStrictEqual([5, 7, 3, 8, 6, 4, 1]);
+  expect(tree.inOrder()).toStrictEqual([1, 3, 4, 5, 6, 7, 8].reverse());
 
   expect(after).toStrictEqual(before?.reverse());
 });
