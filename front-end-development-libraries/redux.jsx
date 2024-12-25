@@ -1,28 +1,50 @@
-const ADD_NOTE = 'ADD_NOTE';
+const REQUESTING_DATA = 'REQUESTING_DATA';
+const RECEIVED_DATA = 'RECEIVED_DATA';
 
-const notesReducer = (state = 'Initial State', action) => {
+const requestingData = () => {
+  return { type: REQUESTING_DATA };
+};
+const receivedData = (data) => {
+  return { type: RECEIVED_DATA, users: data.users };
+};
+
+const handleAsync = () => {
+  return function (dispatch) {
+    // Dispatch request action here
+
+    dispatch(requestingData());
+
+    setTimeout(function () {
+      let data = {
+        users: ['Jeff', 'William', 'Alice'],
+      };
+
+      dispatch(receivedData(data));
+      // Dispatch received data action here
+    }, 2500);
+  };
+};
+
+const defaultState = {
+  fetching: false,
+  users: [],
+};
+
+const asyncDataReducer = (state = defaultState, action) => {
   switch (action.type) {
-    // Change code below this line
-    case ADD_NOTE:
-      return action.text;
-    // Change code above this line
+    case REQUESTING_DATA:
+      return {
+        fetching: true,
+        users: [],
+      };
+    case RECEIVED_DATA:
+      return {
+        fetching: false,
+        users: action.users,
+      };
     default:
       return state;
   }
 };
 
-const addNoteText = (note) => {
-  // Change code below this line
-
-  return {
-    type: ADD_NOTE,
-    text: note,
-  };
-  // Change code above this line
-};
-
-const store = Redux.createStore(notesReducer);
-
-console.log(store.getState());
-store.dispatch(addNoteText('Hello!'));
-console.log(store.getState());
+const store = Redux.createStore(asyncDataReducer, Redux.applyMiddleware(ReduxThunk.default));
