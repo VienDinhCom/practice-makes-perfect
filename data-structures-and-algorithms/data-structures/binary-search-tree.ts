@@ -331,32 +331,54 @@ class BinarySearchTree {
     traverse(this.root);
   };
 
+  // static isBinarySearchTree(tree: BinarySearchTree) {
+  //   if (tree.root === null) return true;
+
+  //   const queue: Node[] = [tree.root];
+
+  //   while (queue.length > 0) {
+  //     const node: Node = queue.shift()!;
+
+  //     if (node.left) {
+  //       if (node.left.value >= node.value) {
+  //         return false;
+  //       }
+
+  //       queue.push(node.left);
+  //     }
+
+  //     if (node.right) {
+  //       if (node.right.value <= node.value) {
+  //         return false
+  //       }
+
+  //       queue.push(node.right);
+  //     }
+  //   }
+
+  //   return true;
+  // }
+
   static isBinarySearchTree(tree: BinarySearchTree) {
-    if (tree.root === null) return true;
-
-    const queue: Node[] = [tree.root];
-
-    while (queue.length > 0) {
-      const node: Node = queue.shift()!;
+    const validate = (node: Node | null): boolean => {
+      if (node === null) return true;
 
       if (node.left) {
-        if (node.left.value > node.value) {
+        if (node.left.value >= node.value) {
           return false;
         }
-
-        queue.push(node.left);
       }
 
       if (node.right) {
-        if (node.right.value < node.value) {
-          return false
+        if (node.right.value <= node.value) {
+          return false;
         }
-
-        queue.push(node.right);
       }
-    }
 
-    return true;
+      return validate(node.left) && validate(node.right);
+    };
+
+    return validate(tree.root);
   }
 }
 
