@@ -1,3 +1,6 @@
+const LOGIN = 'LOGIN';
+const LOGOUT = 'LOGOUT';
+
 const defaultState = {
   authenticated: false,
 };
@@ -8,11 +11,11 @@ const authReducer = (state = defaultState, action) => {
   const draft = structuredClone(state);
 
   switch (action.type) {
-    case 'LOGIN':
+    case LOGIN:
       draft.authenticated = true;
       break;
 
-    case 'LOGOUT':
+    case LOGOUT:
       draft.authenticated = false;
       break;
 
@@ -29,12 +32,12 @@ const store = Redux.createStore(authReducer);
 
 const loginUser = () => {
   return {
-    type: 'LOGIN',
+    type: LOGIN,
   };
 };
 
 const logoutUser = () => {
   return {
-    type: 'LOGOUT',
+    type: LOGOUT,
   };
 };
