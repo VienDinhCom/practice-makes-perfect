@@ -1,3 +1,8 @@
-// Define an action here:
+const action = {
+  type: 'LOGIN',
+};
+// Define an action creator here:
 
-const action = { type: 'LOGIN' };
+function actionCreator() {
+  return action;
+}
