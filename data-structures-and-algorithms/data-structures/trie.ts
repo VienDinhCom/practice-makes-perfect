@@ -31,23 +31,19 @@ class Trie {
     current.isEndOfWord = true;
   }
 
-  isWord(word: string) {}
+  isWord(word: string) {
+    let current = this.root;
 
-  //
-  //
-  //
-  //
-  //
-  //
-  //
-  //
-  //
-  //
-  //
-  //
-  //
-  //
-  //
+    for (const char of word) {
+      if (!current.children.has(char)) {
+        return false;
+      }
+
+      current = current.children.get(char)!;
+    }
+
+    return current.isEndOfWord;
+  }
 
   print() {
     const words: string[] = [];
