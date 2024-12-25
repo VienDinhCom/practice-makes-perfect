@@ -45,6 +45,7 @@ class Trie {
     return current.isEndOfWord;
   }
 
+  // review
   print() {
     const words: string[] = [];
 
