@@ -1,5 +1,3 @@
-const store = Redux.createStore((state = 5) => state);
+// Define an action here:
 
-// Change code below this line
-
-const currentState = store.getState();
+const action = { type: 'LOGIN' };
