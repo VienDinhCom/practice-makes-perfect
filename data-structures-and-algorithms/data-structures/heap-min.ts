@@ -92,7 +92,7 @@ class MinHeap {
   }
 
   peek(): number | null {
-    return this.heap.length > 1 ? this.heap[1] : null;
+    return this.heap.length === 1 ? null : this.heap[1];
   }
 
   size(): number {
@@ -100,17 +100,17 @@ class MinHeap {
   }
 
   sort() {
-    const temp = [...this.heap];
+    const temp = this.heap.concat([]);
 
-    const sortedArray = [];
+    const values: number[] = [];
 
     while (this.heap.length > 1) {
-      sortedArray.push(this.remove());
+      values.push(this.remove()!);
     }
 
     this.heap = temp;
 
-    return sortedArray;
+    return values;
   }
 }
 
