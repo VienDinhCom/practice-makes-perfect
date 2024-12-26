@@ -97,18 +97,18 @@ class MaxHeap {
     return this.heap.length - 1;
   }
 
-  sort() {
+  sort(): number[] {
     const temp = [...this.heap];
 
-    const sortedArray = [];
+    const values: number[] = [];
 
     while (this.heap.length > 1) {
-      sortedArray.unshift(this.remove());
+      values.unshift(this.remove()!);
     }
 
     this.heap = temp;
 
-    return sortedArray;
+    return values;
   }
 }
 
