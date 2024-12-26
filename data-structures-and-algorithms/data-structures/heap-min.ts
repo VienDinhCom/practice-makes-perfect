@@ -60,34 +60,35 @@ class MinHeap {
       return this.heap.pop();
     }
 
-    const item = this.heap[1];
+    const value = this.heap[1];
 
     this.heap[1] = this.heap.pop()!;
 
-    const heapifyDown = (index: number) => {
-      const left = this.leftChildIndex(index);
-      const right = this.rightChildIndex(index);
+    const heapifyDown = (current: number) => {
+      const left = this.leftChildIndex(current);
 
-      let smallest = index;
+      if (current < this.heap.length && this.heap[left]! < this.heap[current]!) {
+        [this.heap[current], this.heap[left]] = [this.heap[left], this.heap[current]];
 
-      if (left < this.heap.length && this.heap[left]! < this.heap[smallest]!) {
-        smallest = left;
+        heapifyDown(left);
+
+        return;
       }
 
-      if (right < this.heap.length && this.heap[right]! < this.heap[smallest]!) {
-        smallest = right;
-      }
+      const right = this.rightChildIndex(current);
 
-      if (smallest !== index) {
-        [this.heap[index], this.heap[smallest]] = [this.heap[smallest], this.heap[index]];
+      if (current < this.heap.length && this.heap[right]! < this.heap[current]!) {
+        [this.heap[current], this.heap[right]] = [this.heap[right], this.heap[current]];
 
-        heapifyDown(smallest);
+        heapifyDown(right);
+
+        return;
       }
     };
 
     heapifyDown(1);
 
-    return item;
+    return value;
   }
 
   peek(): number | null {
