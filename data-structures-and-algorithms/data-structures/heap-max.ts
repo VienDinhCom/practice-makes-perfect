@@ -25,7 +25,7 @@ class MaxHeap {
     return [...this.heap];
   }
 
-  insert(value: number) {
+  insert(value: number): void {
     this.heap.push(value);
 
     const heapifyUp = (current: number) => {
@@ -51,7 +51,7 @@ class MaxHeap {
     // }
   }
 
-  remove() {
+  remove(): number | null {
     if (this.heap.length === 1) {
       throw new Error('Heap is empty, cannot remove elements.');
     }
@@ -90,7 +90,7 @@ class MaxHeap {
   }
 
   peek(): number | null {
-    return this.heap.length > 1 ? this.heap[1] : null;
+    return this.heap.length === 1 ? null : this.heap[1];
   }
 
   size(): number {
