@@ -51,7 +51,7 @@ class MaxHeap {
     // }
   }
 
-  remove(): number | null {
+  remove() {
     if (this.heap.length === 1) {
       throw new Error('Heap is empty, cannot remove elements.');
     }
@@ -60,34 +60,33 @@ class MaxHeap {
       return this.heap.pop()!;
     }
 
-    const max = this.heap[1];
+    const value = this.heap[1];
     this.heap[1] = this.heap.pop()!;
 
-    const heapify = (index: number): void => {
-      let largest = index;
+    const heapifyDown = (current: number) => {
+      const left = this.leftChildIndex(current);
+      const right = this.rightChildIndex(current);
 
-      // Check if the left child exists and is greater than the current largest
-      const left = this.leftChildIndex(index);
-      if (left < this.heap.length && this.heap[left]! > this.heap[largest]!) {
-        largest = left;
+      if (current < this.heap.length && this.heap[left]! > this.heap[current]!) {
+        [this.heap[current], this.heap[left]] = [this.heap[left], this.heap[current]];
+
+        heapifyDown(left);
+
+        return;
       }
 
-      // Check if the right child exists and is greater than the current largest
-      const right = this.rightChildIndex(index);
-      if (right < this.heap.length && this.heap[right]! > this.heap[largest]!) {
-        largest = right;
-      }
+      if (current < this.heap.length && this.heap[right]! > this.heap[current]!) {
+        [this.heap[current], this.heap[right]] = [this.heap[right], this.heap[current]];
 
-      // If the largest index is not the current index, swap and continue heapifying
-      if (largest !== index) {
-        [this.heap[index], this.heap[largest]] = [this.heap[largest], this.heap[index]];
-        heapify(largest);
+        heapifyDown(right);
+
+        return;
       }
     };
 
-    heapify(1);
+    heapifyDown(1);
 
-    return max;
+    return value;
   }
 
   peek(): number | null {
