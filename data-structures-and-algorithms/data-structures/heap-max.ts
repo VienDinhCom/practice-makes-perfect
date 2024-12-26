@@ -1,5 +1,7 @@
 import { expect } from 'jsr:@std/expect';
 
+// https://www.youtube.com/watch?v=0wPlzMU-k00
+
 class MaxHeap {
   heap: (number | null)[];
 
