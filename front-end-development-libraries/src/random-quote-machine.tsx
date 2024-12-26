@@ -59,6 +59,20 @@ function App() {
 
   const quote = state.quotes[state.randomIndex] || {};
 
+  if (state.loading)
+    return (
+      <div className="alert alert-warning text-center" role="alert">
+        Loading...
+      </div>
+    );
+
+  if (state.error)
+    return (
+      <div className="alert alert-danger text-center" role="alert">
+        Can't get quotes
+      </div>
+    );
+
   return (
     <section className="d-flex justify-content-center pt-5">
       <div id="quote-box" className="card w-50">
