@@ -8,8 +8,8 @@ export default defineConfig({
     rollupOptions: {
       input: {
         main: resolve(__dirname, 'index.html'),
-        nested: resolve(__dirname, 'random-quote-machine.html'),
-        // Add more entry points as needed
+        quote: resolve(__dirname, 'random-quote-machine.html'),
+        markdown: resolve(__dirname, 'markdown-previewer.html'),
       },
     },
   },
