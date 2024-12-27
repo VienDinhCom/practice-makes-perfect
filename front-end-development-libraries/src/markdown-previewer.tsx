@@ -5,6 +5,7 @@ import { marked } from 'marked';
 
 interface EditorProps {
   defaultText: string;
+  className?: string;
   onChange: (text: string) => void;
 }
 
@@ -14,6 +15,7 @@ function Editor(props: EditorProps) {
   return (
     <textarea
       id="editor"
+      className={`border p-3 ` + props.className}
       value={state.text}
       onChange={(event) => {
         setState({ ...state, text: event.target.value });
@@ -25,10 +27,17 @@ function Editor(props: EditorProps) {
 
 interface PreviewerProps {
   text: string;
+  className?: string;
 }
 
 function Previewer(props: PreviewerProps) {
-  return <div id="preview" dangerouslySetInnerHTML={{ __html: marked.parse(props.text, { breaks: true }) }}></div>;
+  return (
+    <div
+      id="preview"
+      className={`overflow-x-auto border p-3 ` + props.className}
+      dangerouslySetInnerHTML={{ __html: marked.parse(props.text, { breaks: true }) }}
+    ></div>
+  );
 }
 
 const defaultText = `
@@ -81,14 +90,20 @@ function App() {
   const [state, setState] = useState({ text: defaultText });
 
   return (
-    <section>
-      <Editor
-        defaultText={state.text}
-        onChange={(text) => {
-          setState({ ...state, text });
-        }}
-      />
-      <Previewer text={state.text} />
+    <section className="w-100 p-5">
+      <div className="card">
+        <div className="card-header">Markdown Previewer</div>
+        <div className="card-body d-flex flex-1">
+          <Editor
+            className="w-50"
+            defaultText={state.text}
+            onChange={(text) => {
+              setState({ ...state, text });
+            }}
+          />
+          <Previewer className="w-50" text={state.text} />
+        </div>
+      </div>
     </section>
   );
 }
