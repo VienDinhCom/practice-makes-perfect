@@ -10,11 +10,11 @@ class MinHeap {
   }
 
   private leftChildIndex(index: number): number {
-    return 2 * index;
+    return index * 2;
   }
 
   private rightChildIndex(index: number): number {
-    return 2 * index + 1;
+    return index * 2 + 1;
   }
 
   private parentIndex(index: number): number {
