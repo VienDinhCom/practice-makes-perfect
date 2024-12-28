@@ -100,17 +100,17 @@ class MinHeap {
   }
 
   sort() {
-    const temp = this.heap.concat([]);
+    const temp = [...this.heap];
 
-    const values: number[] = [];
+    const result: number[] = [];
 
     while (this.heap.length > 1) {
-      values.push(this.remove()!);
+      result.push(this.remove()!);
     }
 
     this.heap = temp;
 
-    return values;
+    return result;
   }
 }
 
