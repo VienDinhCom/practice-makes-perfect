@@ -92,7 +92,7 @@ class MaxHeap {
   }
 
   peek(): number | null {
-    return this.heap.length === 1 ? null : this.heap[1];
+    return this.heap.length > 1 ? this.heap[1] : null;
   }
 
   size(): number {
