@@ -61,11 +61,11 @@ class MaxHeap {
     }
 
     const value = this.heap[1];
+
     this.heap[1] = this.heap.pop()!;
 
     const heapifyDown = (current: number) => {
       const left = this.leftChildIndex(current);
-      const right = this.rightChildIndex(current);
 
       if (current < this.heap.length && this.heap[left]! > this.heap[current]!) {
         [this.heap[current], this.heap[left]] = [this.heap[left], this.heap[current]];
@@ -74,6 +74,8 @@ class MaxHeap {
 
         return;
       }
+
+      const right = this.rightChildIndex(current);
 
       if (current < this.heap.length && this.heap[right]! > this.heap[current]!) {
         [this.heap[current], this.heap[right]] = [this.heap[right], this.heap[current]];
