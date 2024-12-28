@@ -60,7 +60,7 @@ class MinHeap {
       return this.heap.pop();
     }
 
-    const value = this.heap[1];
+    const result = this.heap[1];
 
     this.heap[1] = this.heap.pop()!;
 
@@ -88,7 +88,7 @@ class MinHeap {
 
     heapifyDown(1);
 
-    return value;
+    return result;
   }
 
   peek(): number | null {
