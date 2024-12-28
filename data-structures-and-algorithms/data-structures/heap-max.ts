@@ -10,11 +10,11 @@ class MaxHeap {
   }
 
   private leftChildIndex(index: number): number {
-    return 2 * index;
+    return index * 2;
   }
 
   private rightChildIndex(index: number): number {
-    return 2 * index + 1;
+    return index * 2 + 1;
   }
 
   private parentIndex(index: number): number {
@@ -31,7 +31,7 @@ class MaxHeap {
     const heapifyUp = (current: number) => {
       const parent = this.parentIndex(current);
 
-      if (current > 1 && this.heap[current]! > this.heap[parent]!) {
+      if (current > 1 && this.heap[parent]! < this.heap[current]!) {
         [this.heap[current], this.heap[parent]] = [this.heap[parent], this.heap[current]];
 
         heapifyUp(parent);
@@ -43,7 +43,7 @@ class MaxHeap {
     // let current = this.heap.length - 1;
     // let parent = this.parentIndex(current);
 
-    // while (current > 1 && this.heap[current]! > this.heap[parent]!) {
+    // while (current > 1 && this.heap[parent]! < this.heap[current]!) {
     //   [this.heap[current], this.heap[parent]] = [this.heap[parent], this.heap[current]];
 
     //   current = parent;
