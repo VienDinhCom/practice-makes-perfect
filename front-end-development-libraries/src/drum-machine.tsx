@@ -71,7 +71,7 @@ function Pad(props: PadProps) {
     }
   })();
 
-  const [play] = useSound(audio.src);
+  const audioRef = useRef<HTMLAudioElement>(null);
   const buttonRef = useRef<HTMLButtonElement>(null);
 
   useHotkeys(props.code, () => {
@@ -80,13 +80,16 @@ function Pad(props: PadProps) {
 
   return (
     <button
+      id={`drum-pad-${props.code}`}
+      className="drum-pad"
       ref={buttonRef}
       onClick={() => {
-        play();
         props.onClick(audio.label);
+        audioRef.current?.play();
       }}
     >
       {props.code.toUpperCase()}
+      <audio id={props.code.toUpperCase()} className="clip" ref={audioRef} src={audio.src} />
     </button>
   );
 }
@@ -95,17 +98,18 @@ function App() {
   const [state, setState] = useState({ label: '' });
 
   return (
-    <section className="d-flex justify-content-center pt-5">
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
+    <section id="drum-machine" className="d-flex justify-content-center pt-5">
+      <div id="display">{state.label}</div>
 
       <Pad code="q" onClick={(label) => setState((state) => ({ ...state, label }))} />
+      <Pad code="w" onClick={(label) => setState((state) => ({ ...state, label }))} />
+      <Pad code="e" onClick={(label) => setState((state) => ({ ...state, label }))} />
+      <Pad code="a" onClick={(label) => setState((state) => ({ ...state, label }))} />
+      <Pad code="s" onClick={(label) => setState((state) => ({ ...state, label }))} />
+      <Pad code="d" onClick={(label) => setState((state) => ({ ...state, label }))} />
+      <Pad code="z" onClick={(label) => setState((state) => ({ ...state, label }))} />
+      <Pad code="x" onClick={(label) => setState((state) => ({ ...state, label }))} />
+      <Pad code="c" onClick={(label) => setState((state) => ({ ...state, label }))} />
     </section>
   );
 }
