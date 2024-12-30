@@ -103,6 +103,13 @@ function App() {
           />
           <Previewer className="w-50" text={state.text} />
         </div>
+        <a
+          className="btn border-top"
+          href="https://github.com/VienDinhCom/practice-makes-perfect/tree/main/front-end-development-libraries"
+          target="_blank"
+        >
+          Source on GitHub
+        </a>
       </div>
     </section>
   );

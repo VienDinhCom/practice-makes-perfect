@@ -13,7 +13,9 @@
     "bootstrap": "^5.3.3",
     "marked": "^15.0.4",
     "react": "17",
-    "react-dom": "17"
+    "react-dom": "17",
+    "react-hotkeys-hook": "^4.6.1",
+    "use-sound": "^4.0.3"
   },
   "devDependencies": {
     "@eslint/js": "^9.17.0",

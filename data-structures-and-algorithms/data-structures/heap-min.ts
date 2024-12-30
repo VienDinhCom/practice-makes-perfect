@@ -28,27 +28,17 @@ class MinHeap {
   insert(value: number) {
     this.heap.push(value);
 
-    const heapifyUp = (current: number) => {
+    const bubbleUp = (current: number) => {
       const parent = this.parentIndex(current);
 
       if (current > 1 && this.heap[parent]! > this.heap[current]!) {
         [this.heap[current], this.heap[parent]] = [this.heap[parent], this.heap[current]];
 
-        heapifyUp(parent);
+        bubbleUp(parent);
       }
     };
 
-    heapifyUp(this.heap.length - 1);
-
-    // let current = this.heap.length - 1;
-    // let parent = this.parentIndex(current);
-
-    // while (current > 1 && this.heap[parent]! > this.heap[current]!) {
-    //   [this.heap[current], this.heap[parent]] = [this.heap[parent], this.heap[current]];
-
-    //   current = parent;
-    //   parent = this.parentIndex(current);
-    // }
+    bubbleUp(this.heap.length - 1);
   }
 
   remove() {
@@ -64,29 +54,28 @@ class MinHeap {
 
     this.heap[1] = this.heap.pop()!;
 
-    const heapifyDown = (current: number) => {
+    const bubbleDown = (current: number) => {
       const left = this.leftChildIndex(current);
-
-      if (current < this.heap.length && this.heap[left]! < this.heap[current]!) {
-        [this.heap[current], this.heap[left]] = [this.heap[left], this.heap[current]];
-
-        heapifyDown(left);
-
-        return;
-      }
-
       const right = this.rightChildIndex(current);
 
-      if (current < this.heap.length && this.heap[right]! < this.heap[current]!) {
-        [this.heap[current], this.heap[right]] = [this.heap[right], this.heap[current]];
+      let smallest = current;
 
-        heapifyDown(right);
+      if (left < this.heap.length && this.heap[left]! < this.heap[smallest]!) {
+        smallest = left;
+      }
 
-        return;
+      if (right < this.heap.length && this.heap[right]! < this.heap[smallest]!) {
+        smallest = right;
+      }
+
+      if (smallest !== current) {
+        [this.heap[current], this.heap[smallest]] = [this.heap[smallest], this.heap[current]];
+
+        bubbleDown(right);
       }
     };
 
-    heapifyDown(1);
+    bubbleDown(1);
 
     return result;
   }

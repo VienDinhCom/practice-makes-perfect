@@ -25,72 +25,60 @@ class MaxHeap {
     return [...this.heap];
   }
 
-  insert(value: number): void {
+  insert(value: number) {
     this.heap.push(value);
 
-    const heapifyUp = (current: number) => {
+    const bubbleUp = (current: number) => {
       const parent = this.parentIndex(current);
 
       if (current > 1 && this.heap[parent]! < this.heap[current]!) {
         [this.heap[current], this.heap[parent]] = [this.heap[parent], this.heap[current]];
 
-        heapifyUp(parent);
+        bubbleUp(parent);
       }
     };
 
-    heapifyUp(this.heap.length - 1);
-
-    // let current = this.heap.length - 1;
-    // let parent = this.parentIndex(current);
-
-    // while (current > 1 && this.heap[parent]! < this.heap[current]!) {
-    //   [this.heap[current], this.heap[parent]] = [this.heap[parent], this.heap[current]];
-
-    //   current = parent;
-    //   parent = this.parentIndex(current);
-    // }
+    bubbleUp(this.heap.length - 1);
   }
 
-  remove(): number | null {
+  remove() {
     if (this.heap.length === 1) {
       throw new Error('Heap is empty, cannot remove elements.');
     }
 
     if (this.heap.length === 2) {
-      return this.heap.pop()!;
+      return this.heap.pop();
     }
 
-    const value = this.heap[1];
+    const result = this.heap[1];
 
     this.heap[1] = this.heap.pop()!;
 
-    const heapifyDown = (current: number) => {
+    const bubbleDown = (current: number) => {
       const left = this.leftChildIndex(current);
-
-      if (current < this.heap.length && this.heap[left]! > this.heap[current]!) {
-        [this.heap[current], this.heap[left]] = [this.heap[left], this.heap[current]];
-
-        heapifyDown(left);
-
-        return;
-      }
-
       const right = this.rightChildIndex(current);
 
-      if (current < this.heap.length && this.heap[right]! > this.heap[current]!) {
-        [this.heap[current], this.heap[right]] = [this.heap[right], this.heap[current]];
+      let largest = current;
 
-        heapifyDown(right);
+      if (left < this.heap.length && this.heap[left]! > this.heap[largest]!) {
+        largest = left;
+      }
 
-        return;
+      if (right < this.heap.length && this.heap[right]! > this.heap[largest]!) {
+        largest = right;
+      }
+
+      if (largest !== current) {
+        [this.heap[current], this.heap[largest]] = [this.heap[largest], this.heap[current]];
+
+        bubbleDown(right);
       }
     };
 
-    heapifyDown(1);
+    bubbleDown(1);
 
-    return value;
+    return result;
   }
-
   peek(): number | null {
     return this.heap.length > 1 ? this.heap[1] : null;
   }
