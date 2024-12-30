@@ -10,6 +10,7 @@ export default defineConfig({
         main: resolve(__dirname, 'index.html'),
         quote: resolve(__dirname, 'random-quote-machine.html'),
         markdown: resolve(__dirname, 'markdown-previewer.html'),
+        drumMachine: resolve(__dirname, 'drum-machine.html'),
       },
     },
   },
