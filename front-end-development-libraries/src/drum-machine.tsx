@@ -1,7 +1,6 @@
 import ReactDOM from 'react-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { StrictMode, useRef, useState } from 'react';
-import useSound from 'use-sound';
 import { useHotkeys } from 'react-hotkeys-hook';
 
 interface PadProps {
@@ -141,6 +140,13 @@ function App() {
         <div id="display" className="card-footer text-center">
           {state.label}
         </div>
+        <a
+          className="btn border-top"
+          href="https://github.com/VienDinhCom/practice-makes-perfect/tree/main/front-end-development-libraries"
+          target="_blank"
+        >
+          Source on GitHub
+        </a>
       </div>
     </section>
   );

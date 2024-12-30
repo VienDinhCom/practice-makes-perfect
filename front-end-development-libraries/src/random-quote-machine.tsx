@@ -110,13 +110,6 @@ function App() {
             </a>
           </div>
           <div>
-            <a
-              className="btn"
-              href="https://github.com/VienDinhCom/practice-makes-perfect/tree/main/front-end-development-libraries"
-              target="_blank"
-            >
-              Source on GitHub
-            </a>
             <button
               className="btn btn-primary"
               id="new-quote"
@@ -134,6 +127,13 @@ function App() {
             </button>
           </div>
         </div>
+        <a
+          className="btn border-top"
+          href="https://github.com/VienDinhCom/practice-makes-perfect/tree/main/front-end-development-libraries"
+          target="_blank"
+        >
+          Source on GitHub
+        </a>
       </div>
     </section>
   );
