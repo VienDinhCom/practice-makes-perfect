@@ -81,7 +81,7 @@ function Pad(props: PadProps) {
   return (
     <button
       id={`drum-pad-${props.code}`}
-      className="drum-pad"
+      className="btn btn-primary drum-pad"
       ref={buttonRef}
       onClick={() => {
         props.onClick(audio.label);
@@ -95,21 +95,53 @@ function Pad(props: PadProps) {
 }
 
 function App() {
-  const [state, setState] = useState({ label: '' });
+  const [state, setState] = useState({ label: 'Ready' });
 
   return (
     <section id="drum-machine" className="d-flex justify-content-center pt-5">
-      <div id="display">{state.label}</div>
-
-      <Pad code="q" onClick={(label) => setState((state) => ({ ...state, label }))} />
-      <Pad code="w" onClick={(label) => setState((state) => ({ ...state, label }))} />
-      <Pad code="e" onClick={(label) => setState((state) => ({ ...state, label }))} />
-      <Pad code="a" onClick={(label) => setState((state) => ({ ...state, label }))} />
-      <Pad code="s" onClick={(label) => setState((state) => ({ ...state, label }))} />
-      <Pad code="d" onClick={(label) => setState((state) => ({ ...state, label }))} />
-      <Pad code="z" onClick={(label) => setState((state) => ({ ...state, label }))} />
-      <Pad code="x" onClick={(label) => setState((state) => ({ ...state, label }))} />
-      <Pad code="c" onClick={(label) => setState((state) => ({ ...state, label }))} />
+      <div className="card">
+        <h5 className="card-header text-center">Drum Machine</h5>
+        <div className="card-body">
+          <div className="container text-center">
+            <div className="row mb-4">
+              <div className="col">
+                <Pad code="q" onClick={(label) => setState((state) => ({ ...state, label }))} />
+              </div>
+              <div className="col">
+                <Pad code="w" onClick={(label) => setState((state) => ({ ...state, label }))} />
+              </div>
+              <div className="col">
+                <Pad code="e" onClick={(label) => setState((state) => ({ ...state, label }))} />
+              </div>
+            </div>
+            <div className="row mb-4">
+              <div className="col">
+                <Pad code="a" onClick={(label) => setState((state) => ({ ...state, label }))} />
+              </div>
+              <div className="col">
+                <Pad code="s" onClick={(label) => setState((state) => ({ ...state, label }))} />
+              </div>
+              <div className="col">
+                <Pad code="d" onClick={(label) => setState((state) => ({ ...state, label }))} />
+              </div>
+            </div>
+            <div className="row">
+              <div className="col">
+                <Pad code="z" onClick={(label) => setState((state) => ({ ...state, label }))} />
+              </div>
+              <div className="col">
+                <Pad code="x" onClick={(label) => setState((state) => ({ ...state, label }))} />
+              </div>
+              <div className="col">
+                <Pad code="c" onClick={(label) => setState((state) => ({ ...state, label }))} />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div id="display" className="card-footer text-center">
+          {state.label}
+        </div>
+      </div>
     </section>
   );
 }
