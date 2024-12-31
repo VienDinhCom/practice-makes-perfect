@@ -46,47 +46,90 @@ function Button(props: ButtonProps) {
     equals: '=',
   };
 
-  const value = buttonValues[props.id];
-
   return (
-    <button
-      id={props.id}
-      onClick={() => {
-        props.onClick(String(value));
-      }}
-    >
-      {value}
+    <button id={props.id} onClick={() => props.onClick(buttonValues[props.id])}>
+      {buttonValues[props.id]}
     </button>
   );
 }
 
 function App() {
-  const [state, setState] = useState({ display: '0', temp: 0 });
+  const [state, setState] = useState({ display: '0', lastInput: '' });
+
+  const isOperator = (char: string) => ['+', '-', '*', '/'].includes(char);
+
+  function handleDecimal(value: string) {
+    const numbers = state.display.split(/[-+*/]/);
+    const currentNumber = numbers[numbers.length - 1];
+
+    // Check if the current number already contains a decimal
+    if (currentNumber.includes('.')) {
+      return state.display;
+    }
+    return state.display + value;
+  }
+
+  function handleOperator(value: string) {
+    const lastChar = state.display.slice(-1);
+    const secondLastChar = state.display.slice(-2, -1);
+
+    // Handle negative numbers
+    if (value === '-' && isOperator(lastChar) && !isOperator(secondLastChar)) {
+      return state.display + value;
+    }
+
+    // Replace consecutive operators with the new one
+    if (isOperator(lastChar)) {
+      if (isOperator(secondLastChar)) {
+        // If we have two operators and getting a third, remove both previous ones
+        return state.display.slice(0, -2) + value;
+      }
+      // Replace single operator with new one
+      return state.display.slice(0, -1) + value;
+    }
+
+    return state.display + value;
+  }
 
   function setDisplay(value: string) {
-    setState((state) => {
-      let display = state.display;
+    setState((prevState) => {
+      let newDisplay = prevState.display;
 
-      if (display === '0') {
-        display = value;
+      if (newDisplay === '0' && !isOperator(value) && value !== '.') {
+        newDisplay = value;
+      } else if (value === '.') {
+        newDisplay = handleDecimal(value);
+      } else if (isOperator(value)) {
+        newDisplay = handleOperator(value);
       } else {
-        display += value;
+        newDisplay += value;
       }
 
-      return { ...state, display };
+      return {
+        display: newDisplay,
+        lastInput: value,
+      };
     });
   }
 
   function clearDisplay() {
-    setState((state) => {
-      return { ...state, display: '0' };
-    });
+    setState({ display: '0', lastInput: '' });
   }
 
-  function caculate() {
-    setState((state) => {
-      return { ...state, display: evaluate(state.display) };
-    });
+  function calculate() {
+    try {
+      const result = evaluate(state.display);
+
+      setState({
+        display: String(result),
+        lastInput: '=',
+      });
+    } catch {
+      setState({
+        display: 'Error',
+        lastInput: '',
+      });
+    }
   }
 
   return (
@@ -99,7 +142,7 @@ function App() {
               <div className="col">
                 <Button id="clear" onClick={clearDisplay} />
               </div>
-              <div className="col ">
+              <div className="col">
                 <div id="display">{state.display}</div>
               </div>
             </div>
@@ -153,7 +196,7 @@ function App() {
                 <Button id="decimal" onClick={setDisplay} />
               </div>
               <div className="col">
-                <Button id="equals" onClick={caculate} />
+                <Button id="equals" onClick={calculate} />
               </div>
               <div className="col">
                 <Button id="multiply" onClick={setDisplay} />
@@ -173,7 +216,6 @@ function App() {
     </section>
   );
 }
-
 ReactDOM.render(
   <StrictMode>
     <App />
