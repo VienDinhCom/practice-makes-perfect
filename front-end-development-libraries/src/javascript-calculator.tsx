@@ -1,7 +1,7 @@
 import ReactDOM from 'react-dom';
 import { evaluate } from 'mathjs';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { StrictMode, useEffect, useState } from 'react';
+import { StrictMode, useState } from 'react';
 
 interface ButtonProps {
   id:
@@ -23,6 +23,7 @@ interface ButtonProps {
     | 'clear'
     | 'equals';
   onClick: (value: string) => void;
+  className?: string;
 }
 
 function Button(props: ButtonProps) {
@@ -47,14 +48,18 @@ function Button(props: ButtonProps) {
   };
 
   return (
-    <button id={props.id} onClick={() => props.onClick(buttonValues[props.id])}>
+    <button
+      className={'btn btn-primary ' + props.className}
+      id={props.id}
+      onClick={() => props.onClick(buttonValues[props.id])}
+    >
       {buttonValues[props.id]}
     </button>
   );
 }
 
 function App() {
-  const [state, setState] = useState({ display: '0', lastInput: '' });
+  const [state, setState] = useState({ display: '0' });
 
   const isOperator = (char: string) => ['+', '-', '*', '/'].includes(char);
 
@@ -107,13 +112,12 @@ function App() {
 
       return {
         display: newDisplay,
-        lastInput: value,
       };
     });
   }
 
   function clearDisplay() {
-    setState({ display: '0', lastInput: '' });
+    setState({ display: '0' });
   }
 
   function calculate() {
@@ -122,12 +126,10 @@ function App() {
 
       setState({
         display: String(result),
-        lastInput: '=',
       });
     } catch {
       setState({
         display: 'Error',
-        lastInput: '',
       });
     }
   }
@@ -139,66 +141,68 @@ function App() {
         <div className="card-body">
           <div className="container text-center">
             <div className="row mb-4">
-              <div className="col">
-                <Button id="clear" onClick={clearDisplay} />
+              <div className="col-3">
+                <Button className='btn-danger' id="clear" onClick={clearDisplay} />
               </div>
-              <div className="col">
-                <div id="display">{state.display}</div>
+              <div className="col-9">
+                <div className="border h-100 pt-1" id="display">
+                  {state.display}
+                </div>
               </div>
             </div>
             <div className="row mb-4">
-              <div className="col">
+              <div className="col-3">
                 <Button id="seven" onClick={setDisplay} />
               </div>
-              <div className="col">
+              <div className="col-3">
                 <Button id="eight" onClick={setDisplay} />
               </div>
-              <div className="col">
+              <div className="col-3">
                 <Button id="nine" onClick={setDisplay} />
               </div>
-              <div className="col">
+              <div className="col-3">
                 <Button id="add" onClick={setDisplay} />
               </div>
             </div>
             <div className="row mb-4">
-              <div className="col">
+              <div className="col-3">
                 <Button id="four" onClick={setDisplay} />
               </div>
-              <div className="col">
+              <div className="col-3">
                 <Button id="five" onClick={setDisplay} />
               </div>
-              <div className="col">
+              <div className="col-3">
                 <Button id="six" onClick={setDisplay} />
               </div>
-              <div className="col">
+              <div className="col-3">
                 <Button id="subtract" onClick={setDisplay} />
               </div>
             </div>
             <div className="row mb-4">
-              <div className="col">
+              <div className="col-3">
                 <Button id="one" onClick={setDisplay} />
               </div>
-              <div className="col">
+              <div className="col-3">
                 <Button id="two" onClick={setDisplay} />
               </div>
-              <div className="col">
+              <div className="col-3">
                 <Button id="three" onClick={setDisplay} />
               </div>
-              <div className="col">
+              <div className="col-3">
                 <Button id="divide" onClick={setDisplay} />
               </div>
             </div>
             <div className="row mb-4">
-              <div className="col">
+              <div className="col-3">
                 <Button id="zero" onClick={setDisplay} />
               </div>
-              <div className="col">
+              <div className="col-3">
                 <Button id="decimal" onClick={setDisplay} />
               </div>
-              <div className="col">
-                <Button id="equals" onClick={calculate} />
+              <div className="col-3">
+                <Button className='btn-secondary' id="equals" onClick={calculate} />
               </div>
-              <div className="col">
+              <div className="col-3">
                 <Button id="multiply" onClick={setDisplay} />
               </div>
             </div>
