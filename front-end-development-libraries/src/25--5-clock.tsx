@@ -19,7 +19,7 @@ function LengthButtons(props: LengthButtonsProps) {
       <button
         disabled={props.disabled}
         onClick={() => {
-          if (props.value > 0) {
+          if (props.value > 1) {
             props.onChange(-1);
           }
         }}
@@ -49,21 +49,42 @@ function LengthButtons(props: LengthButtonsProps) {
   );
 }
 
+interface AppState {
+  running: boolean;
+  paused: boolean;
+  breakTime: number;
+  sessionTime: number;
+  timeLeft: number;
+  status: 'Session' | 'Break';
+}
+
 function App() {
-  const defaultState = {
-    breaking: false,
+  const defaultState: AppState = {
     running: false,
     paused: false,
-    beakTime: 5,
+    breakTime: 5,
     sessionTime: 25,
     timeLeft: 25 * 60,
+    status: 'Session',
   };
 
-  const [state, setState] = useState(defaultState);
+  const [state, setState] = useState<AppState>(defaultState);
 
   useInterval(() => {
     setState((state) => {
       const draft = structuredClone(state);
+
+      if (draft.timeLeft === 0) {
+        if (draft.status === 'Session') {
+          draft.status = 'Break';
+          draft.timeLeft = draft.breakTime * 60;
+        } else {
+          draft.status = 'Session';
+          draft.timeLeft = draft.sessionTime * 60;
+        }
+
+        return draft;
+      }
 
       if (draft.running && !draft.paused && draft.timeLeft) {
         draft.timeLeft -= 1;
@@ -91,12 +112,12 @@ function App() {
               <LengthButtons
                 id="break"
                 disabled={state.running}
-                value={state.beakTime}
+                value={state.breakTime}
                 onChange={(change) => {
                   setState((state) => {
                     const draft = structuredClone(state);
 
-                    draft.beakTime += change;
+                    draft.breakTime += change;
 
                     return draft;
                   });
@@ -125,7 +146,7 @@ function App() {
 
           <div className="alert alert-success text-center" role="alert">
             <h5 id="timer-label" className="alert-heading">
-              Session
+              {state.status}
             </h5>
             <span id="time-left">{formatedTimeLeft}</span>
           </div>
