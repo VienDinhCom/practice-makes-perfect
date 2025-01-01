@@ -10,7 +10,12 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "ahooks": "^3.8.4",
     "bootstrap": "^5.3.3",
+    "bootstrap-icons": "^1.11.3",
+    "clsx": "^2.1.1",
+    "dayjs": "^1.11.13",
+    "es-toolkit": "^1.31.0",
     "marked": "^15.0.4",
     "mathjs": "^14.0.1",
     "react": "17",
