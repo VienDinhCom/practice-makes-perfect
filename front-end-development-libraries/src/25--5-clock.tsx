@@ -4,35 +4,24 @@ import 'bootstrap-icons/font/bootstrap-icons.css';
 import { StrictMode, useEffect, useState } from 'react';
 import { clsx } from 'clsx';
 import { padStart } from 'es-toolkit/compat';
+import { useInterval } from 'ahooks';
 
 interface LengthButtonsProps {
   id: string;
-  defaultValue: number;
+  value: number;
   disabled: boolean;
-  onChange: (value: number) => void;
+  onChange: (change: number) => void;
 }
 
 function LengthButtons(props: LengthButtonsProps) {
-  const [state, setState] = useState({ value: props.defaultValue });
-
   return (
     <div className="btn-group btn-group-sm" role="group">
       <button
         disabled={props.disabled}
         onClick={() => {
-          setState((state) => {
-            const draft = structuredClone(state);
-
-            if (draft.value === 0) {
-              return draft;
-            }
-
-            draft.value--;
-
-            return draft;
-          });
-
-          props.onChange(state.value);
+          if (props.value > 0) {
+            props.onChange(-1);
+          }
         }}
         id={`${props.id}-decrement`}
         type="button"
@@ -41,24 +30,14 @@ function LengthButtons(props: LengthButtonsProps) {
         <i className="bi bi-arrow-down"></i>
       </button>
       <button id={`${props.id}-length`} type="button" className="btn btn-outline-primary">
-        <b>{state.value}</b>
+        <b>{props.value}</b>
       </button>
       <button
         disabled={props.disabled}
         onClick={() => {
-          setState((state) => {
-            const draft = structuredClone(state);
-
-            if (draft.value === 60) {
-              return draft;
-            }
-
-            draft.value++;
-
-            return draft;
-          });
-
-          props.onChange(state.value);
+          if (props.value < 60) {
+            props.onChange(+1);
+          }
         }}
         id={`${props.id}-increment`}
         type="button"
@@ -77,31 +56,27 @@ function App() {
     paused: false,
     beakTime: 5,
     sessionTime: 25,
-    timeLeft: 0,
+    timeLeft: 25 * 60,
   };
 
   const [state, setState] = useState(defaultState);
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setState((state) => {
-        const draft = structuredClone(state);
+  useInterval(() => {
+    setState((state) => {
+      const draft = structuredClone(state);
 
-        if (draft.running && !draft.paused && draft.timeLeft) {
-          draft.timeLeft -= 1;
-        }
+      if (draft.running && !draft.paused && draft.timeLeft) {
+        draft.timeLeft -= 1;
+      }
 
-        return draft;
-      });
-    }, 500);
+      return draft;
+    });
+  }, 1000);
 
-    return () => {
-      clearInterval(interval);
-    };
-  }, []);
+  const minutes = Math.floor(state.timeLeft / 60);
+  const seconds = state.timeLeft - minutes * 60;
 
-  const minutes = Math.floor(state.timeLeft / 60) || state.sessionTime;
-  const seconds = state.timeLeft ? (state.timeLeft - minutes * 60) : 0;
+  const formatedTimeLeft = `${padStart(String(minutes), 2, '0')}:${padStart(String(seconds), 2, '0')}`;
 
   console.log({ ...state, minutes, seconds });
 
@@ -116,10 +91,14 @@ function App() {
               <LengthButtons
                 id="break"
                 disabled={state.running}
-                defaultValue={state.beakTime}
-                onChange={(value) => {
+                value={state.beakTime}
+                onChange={(change) => {
                   setState((state) => {
-                    return { ...state, sessionTime: value };
+                    const draft = structuredClone(state);
+
+                    draft.beakTime += change;
+
+                    return draft;
                   });
                 }}
               />
@@ -129,10 +108,15 @@ function App() {
               <LengthButtons
                 id="session"
                 disabled={state.running}
-                defaultValue={state.sessionTime}
-                onChange={(value) => {
+                value={state.sessionTime}
+                onChange={(change) => {
                   setState((state) => {
-                    return { ...state, sessionTime: value };
+                    const draft = structuredClone(state);
+
+                    draft.sessionTime += change;
+                    draft.timeLeft = draft.sessionTime * 60;
+
+                    return draft;
                   });
                 }}
               />
@@ -143,9 +127,7 @@ function App() {
             <h5 id="timer-label" className="alert-heading">
               Session
             </h5>
-            <span id="time-left">
-              {padStart(String(minutes), 2, '0')}:{padStart(String(seconds), 2, '0')}
-            </span>
+            <span id="time-left">{formatedTimeLeft}</span>
           </div>
 
           <div className="text-center">
@@ -153,7 +135,7 @@ function App() {
               <button
                 id="start_stop"
                 type="button"
-                className={clsx('btn', state.paused ? 'btn-success': state.running ? 'btn-warning' : 'btn-success')}
+                className={clsx('btn', state.paused ? 'btn-success' : state.running ? 'btn-warning' : 'btn-success')}
                 onClick={() => {
                   setState((state) => {
                     const draft = structuredClone(state);
@@ -164,16 +146,11 @@ function App() {
                       draft.running = true;
                     }
 
-                    // on start
-                    if (draft.timeLeft === 0) {
-                      draft.timeLeft = draft.sessionTime * 60;
-                    }
-
                     return draft;
                   });
                 }}
               >
-                {state.paused ? 'Resume': state.running ? 'Pause' : 'Play'}
+                {state.paused ? 'Resume' : state.running ? 'Pause' : 'Play'}
               </button>
               <button
                 id="reset"
