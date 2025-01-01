@@ -1,7 +1,7 @@
 import ReactDOM from 'react-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap-icons/font/bootstrap-icons.css';
-import { StrictMode, useEffect, useState } from 'react';
+import { StrictMode, useRef, useState } from 'react';
 import { clsx } from 'clsx';
 import { padStart } from 'es-toolkit/compat';
 import { useInterval } from 'ahooks';
@@ -69,6 +69,7 @@ function App() {
   };
 
   const [state, setState] = useState<AppState>(defaultState);
+  const audioRef = useRef<HTMLAudioElement>(null);
 
   useInterval(() => {
     setState((state) => {
@@ -82,6 +83,8 @@ function App() {
           draft.status = 'Session';
           draft.timeLeft = draft.sessionTime * 60;
         }
+
+        audioRef.current?.play();
 
         return draft;
       }
@@ -108,7 +111,9 @@ function App() {
         <div className="card-body">
           <div className="row mb-4 text-center">
             <div className="col-6">
-              <div id="break-label">Break Length</div>
+              <div id="break-label" className="small mb-1 text-nowrap">
+                Break Length
+              </div>
               <LengthButtons
                 id="break"
                 disabled={state.running}
@@ -125,7 +130,9 @@ function App() {
               />
             </div>
             <div className="col-6">
-              <div id="session-label">Session Length</div>
+              <div id="session-label" className="small mb-1 text-nowrap">
+                Session Length
+              </div>
               <LengthButtons
                 id="session"
                 disabled={state.running}
@@ -177,6 +184,11 @@ function App() {
                 id="reset"
                 onClick={() => {
                   setState(defaultState);
+
+                  if (audioRef.current) {
+                    audioRef.current.pause();
+                    audioRef.current.currentTime = 0;
+                  }
                 }}
                 type="button"
                 className="btn btn-secondary"
@@ -185,6 +197,12 @@ function App() {
               </button>
             </div>
           </div>
+
+          <audio
+            id="beep"
+            ref={audioRef}
+            src="https://cdn.freecodecamp.org/testable-projects-fcc/audio/BeepSound.wav"
+          />
         </div>
         <a
           className="btn border-top"
