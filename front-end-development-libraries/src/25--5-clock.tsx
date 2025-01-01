@@ -1,7 +1,7 @@
 import ReactDOM from 'react-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap-icons/font/bootstrap-icons.css';
-import { StrictMode, useRef, useState } from 'react';
+import { StrictMode, useEffect, useRef, useState } from 'react';
 import { clsx } from 'clsx';
 import { padStart } from 'es-toolkit/compat';
 import { useInterval } from 'ahooks';
@@ -84,8 +84,6 @@ function App() {
           draft.timeLeft = draft.sessionTime * 60;
         }
 
-        audioRef.current?.play();
-
         return draft;
       }
 
@@ -96,6 +94,10 @@ function App() {
       return draft;
     });
   }, 1000);
+
+  useEffect(() => {
+    if (state.timeLeft === 0) audioRef.current?.play();
+  }, [state.timeLeft]);
 
   const minutes = Math.floor(state.timeLeft / 60);
   const seconds = state.timeLeft - minutes * 60;
