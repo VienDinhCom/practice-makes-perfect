@@ -1,5 +1,7 @@
 import { expect } from 'jsr:@std/expect';
 
+// https://www.freecodecamp.org/learn/coding-interview-prep/data-structures/breadth-first-search
+
 function breadthFirstSearch(graph: number[][], root: number) {
   const distances: Record<number, number> = {};
   const queue: number[] = [];
