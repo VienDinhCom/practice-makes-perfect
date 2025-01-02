@@ -12,11 +12,11 @@ function breadthFirstSearch(graph: number[][], root: number) {
   queue.push(root);
 
   while (queue.length) {
-    const node = queue.shift()!;
+    const current = queue.shift()!;
 
-    graph[node].forEach((connected, neighbor) => {
+    graph[current].forEach((connected, neighbor) => {
       if (connected && distances[neighbor] === Infinity) {
-        distances[neighbor] = distances[node] + 1;
+        distances[neighbor] = distances[current] + 1;
 
         queue.push(neighbor);
       }
