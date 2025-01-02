@@ -2,22 +2,22 @@ import { expect } from 'jsr:@std/expect';
 
 function depthFirstSearch(graph: number[][], root: number) {
   const visited = new Set();
-  const result: number[] = [];
+  const values: number[] = [];
 
-  function explore(node: number) {
+  const traverse = (node: number) => {
     visited.add(node);
-    result.push(node);
+    values.push(node);
 
     graph[node].forEach((connected, neighbor) => {
       if (connected && !visited.has(neighbor)) {
-        explore(neighbor);
+        traverse(neighbor);
       }
     });
-  }
+  };
 
-  explore(root);
+  traverse(root);
 
-  return result;
+  return values;
 }
 
 Deno.test('DFS from node 1 in a fully connected graph', () => {
