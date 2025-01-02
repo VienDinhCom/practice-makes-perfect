@@ -1,5 +1,7 @@
 import { expect } from 'jsr:@std/expect';
 
+// https://www.freecodecamp.org/learn/coding-interview-prep/data-structures/depth-first-search
+
 function depthFirstSearch(graph: number[][], root: number) {
   const visited = new Set();
   const values: number[] = [];
