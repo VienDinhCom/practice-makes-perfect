@@ -13,15 +13,15 @@ class Graph {
     this.size = size;
   }
 
-  // review
   private isValidVertex(vertex: number): boolean {
     return vertex >= 0 && vertex < this.size;
   }
 
-  addEdge(u: number, v: number): void {
-    if (this.isValidVertex(u) && this.isValidVertex(v)) {
-      this.adjMatrix[u][v] = 1;
-      this.adjMatrix[v][u] = 1;
+  // review
+  addEdge(x: number, y: number): void {
+    if (this.isValidVertex(x) && this.isValidVertex(y)) {
+      this.adjMatrix[x][y] = 1;
+      this.adjMatrix[y][x] = 1;
     }
   }
 
