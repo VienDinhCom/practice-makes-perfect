@@ -24,40 +24,36 @@ class Graph {
     }
   }
 
-  // review
   addVertexData(vertex: number, data: string): void {
     if (this.isValidVertex(vertex)) {
       this.vertexData[vertex] = data;
     }
   }
 
-  breadthFirstSearch(startVertex: number): number[] {
-    if (!this.isValidVertex(startVertex)) {
-      return [];
-    }
+  breadthFirstSearch(start: number): number[] {
+    if (!this.isValidVertex(start)) return [];
 
-    const visited: boolean[] = Array(this.size).fill(false);
-    const result: number[] = [];
+    const visited = new Set();
     const queue: number[] = [];
+    const vertices: number[] = [];
 
-    // Start BFS from the given vertex
-    visited[startVertex] = true;
-    queue.push(startVertex);
+    queue.push(start);
+    visited.add(start);
 
-    while (queue.length > 0) {
-      const currentVertex = queue.shift()!;
-      result.push(currentVertex);
+    while (queue.length) {
+      const current = queue.shift()!;
 
-      // Visit all adjacent vertices
-      for (let i = 0; i < this.size; i++) {
-        if (this.adjMatrix[currentVertex][i] === 1 && !visited[i]) {
-          visited[i] = true;
-          queue.push(i);
+      vertices.push(current);
+
+      this.adjMatrix[current].forEach((connected, neighbor) => {
+        if (connected && !visited.has(neighbor)) {
+          queue.push(neighbor);
+          visited.add(neighbor);
         }
-      }
+      });
     }
 
-    return result;
+    return vertices;
   }
 
   depthFirstSearch(startVertex: number): number[] {
