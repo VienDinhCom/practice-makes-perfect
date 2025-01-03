@@ -5,7 +5,6 @@ class Graph {
   private vertexData: string[];
   private size: number;
 
-  // review
   constructor(size: number) {
     this.adjMatrix = Array(size)
       .fill(null)
@@ -14,6 +13,7 @@ class Graph {
     this.size = size;
   }
 
+  // review
   private isValidVertex(vertex: number): boolean {
     return vertex >= 0 && vertex < this.size;
   }
