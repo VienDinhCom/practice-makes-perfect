@@ -56,27 +56,26 @@ class Graph {
     return vertices;
   }
 
-  depthFirstSearch(startVertex: number): number[] {
-    const visited: boolean[] = Array(this.size).fill(false);
-    const result: number[] = [];
+  depthFirstSearch(start: number): number[] {
+    if (!this.isValidVertex(start)) return [];
 
-    if (!this.isValidVertex(startVertex)) {
-      return result;
-    }
+    const vertices: number[] = [];
+    const visited = new Set<number>();
 
-    const dfsHelper = (vertex: number): void => {
-      visited[vertex] = true;
-      result.push(vertex);
+    const traverse = (current: number) => {
+      visited.add(current);
+      vertices.push(current);
 
-      for (let i = 0; i < this.size; i++) {
-        if (this.adjMatrix[vertex][i] === 1 && !visited[i]) {
-          dfsHelper(i);
+      this.adjMatrix[current].forEach((connected, neighbor) => {
+        if (connected && !visited.has(neighbor)) {
+          traverse(neighbor);
         }
-      }
+      });
     };
 
-    dfsHelper(startVertex);
-    return result;
+    traverse(start);
+
+    return vertices;
   }
 
   printGraph(): void {
