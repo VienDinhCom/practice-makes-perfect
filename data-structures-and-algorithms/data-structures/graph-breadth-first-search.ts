@@ -2,24 +2,23 @@ import { expect } from 'jsr:@std/expect';
 
 // https://www.freecodecamp.org/learn/coding-interview-prep/data-structures/breadth-first-search
 
-function breadthFirstSearch(graph: number[][], root: number) {
+function breadthFirstSearch(graph: number[][], start: number) {
   const distances: Record<number, number> = {};
-  const queue: number[] = [];
 
-  graph.forEach((_, index) => {
-    distances[index] = Infinity;
+  graph.forEach((_, vertex) => {
+    distances[vertex] = Infinity;
   });
 
-  distances[root] = 0;
-  queue.push(root);
+  distances[start] = 0;
 
-  while (queue.length) {
+  const queue: number[] = [start];
+
+  while (queue.length > 0) {
     const current = queue.shift()!;
 
     graph[current].forEach((connected, neighbor) => {
       if (connected && distances[neighbor] === Infinity) {
         distances[neighbor] = distances[current] + 1;
-
         queue.push(neighbor);
       }
     });
