@@ -1,16 +1,14 @@
 import { expect } from 'jsr:@std/expect';
 
 class Graph {
+  private size: number;
   private adjMatrix: number[][];
   private vertexData: string[];
-  private size: number;
 
   constructor(size: number) {
-    this.adjMatrix = Array(size)
-      .fill(null)
-      .map(() => Array(size).fill(0));
-    this.vertexData = Array(size).fill('');
     this.size = size;
+    this.adjMatrix = new Array(size).fill(null).map(() => new Array(size).fill(0));
+    this.vertexData = new Array(size).fill('');
   }
 
   private isValidVertex(vertex: number): boolean {
