@@ -11,6 +11,7 @@ class Graph {
     this.vertexData = new Array(size).fill('');
   }
 
+  // review
   private isValidVertex(vertex: number): boolean {
     return vertex >= 0 && vertex < this.size;
   }
