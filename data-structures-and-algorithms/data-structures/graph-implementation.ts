@@ -11,11 +11,11 @@ class Graph {
     this.vertexData = new Array(size).fill('');
   }
 
-  // review
   private isValidVertex(vertex: number): boolean {
     return vertex >= 0 && vertex < this.size;
   }
 
+  // review
   addEdge(x: number, y: number): void {
     if (this.isValidVertex(x) && this.isValidVertex(y)) {
       this.adjMatrix[x][y] = 1;
