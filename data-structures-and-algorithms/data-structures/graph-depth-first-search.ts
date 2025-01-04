@@ -2,22 +2,22 @@ import { expect } from 'jsr:@std/expect';
 
 // https://www.freecodecamp.org/learn/coding-interview-prep/data-structures/depth-first-search
 
-function depthFirstSearch(graph: number[][], root: number) {
-  const visited = new Set();
+function depthFirstSearch(graph: number[][], start: number) {
   const values: number[] = [];
+  const visited = new Set<number>();
 
-  const traverse = (node: number) => {
-    visited.add(node);
-    values.push(node);
+  const traverse = (current: number) => {
+    visited.add(current);
+    values.push(current);
 
-    graph[node].forEach((connected, neighbor) => {
+    graph[current].forEach((connected, neighbor) => {
       if (connected && !visited.has(neighbor)) {
         traverse(neighbor);
       }
     });
   };
 
-  traverse(root);
+  traverse(start);
 
   return values;
 }
