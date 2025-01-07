@@ -5,16 +5,16 @@ type Inventory = [number, string][];
 function updateInventory(curInv: Inventory, newInv: Inventory): Inventory {
   const updatedInvObj: Record<string, number> = {};
 
-  curInv.forEach(([quantities, item]) => {
-    updatedInvObj[item] = quantities;
+  curInv.forEach(([quantity, item]) => {
+    updatedInvObj[item] = quantity;
   });
 
-  newInv.forEach(([quantities, item]) => {
+  newInv.forEach(([quantity, item]) => {
     updatedInvObj[item] ??= 0;
-    updatedInvObj[item] += quantities;
+    updatedInvObj[item] += quantity;
   });
 
-  const updatedInv: Inventory = Object.entries(updatedInvObj).map(([item, quantities]) => [quantities, item]);
+  const updatedInv: Inventory = Object.entries(updatedInvObj).map(([item, quantity]) => [quantity, item]);
 
   return updatedInv.sort((a, b) => a[1].localeCompare(b[1]));
 }
