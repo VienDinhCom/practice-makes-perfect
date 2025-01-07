@@ -3,9 +3,9 @@ import { expect } from 'jsr:@std/expect';
 // https://www.freecodecamp.org/learn/coding-interview-prep/algorithms/find-the-symmetric-difference
 
 function symmetricDifference(...args: number[][]): number[] {
-  const symDiff = args.reduce((prev, current) => {
-    const leftDiff = prev.filter((value) => !current.includes(value));
-    const rightDiff = current.filter((value) => !prev.includes(value));
+  const symDiff = args.reduce((prev, curr) => {
+    const leftDiff = prev.filter((v) => !curr.includes(v));
+    const rightDiff = curr.filter((v) => !prev.includes(v));
 
     return Array.from(new Set([...leftDiff, ...rightDiff]));
   }, []);
