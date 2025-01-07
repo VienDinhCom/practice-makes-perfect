@@ -28,7 +28,6 @@ class Graph {
     }
   }
 
-  // review
   breadthFirstSearch(start: number): number[] {
     if (!this.isValidVertex(start)) return [];
 
@@ -56,17 +55,16 @@ class Graph {
   depthFirstSearch(start: number): number[] {
     if (!this.isValidVertex(start)) return [];
 
+    const values = [start];
     const visited = new Set<number>();
-    const values: number[] = [];
 
     visited.add(start);
-    values.push(start);
 
     const traverse = (current: number) => {
       this.adjMatrix[current].forEach((connected, neighbor) => {
         if (connected && !visited.has(neighbor)) {
-          visited.add(neighbor);
           values.push(neighbor);
+          visited.add(neighbor);
 
           traverse(neighbor);
         }
