@@ -22,32 +22,30 @@ class Graph {
     }
   }
 
-  // review
   addVertexData(vertex: number, data: string): void {
     if (this.isValidVertex(vertex)) {
       this.vertexData[vertex] = data;
     }
   }
 
+  // review
   breadthFirstSearch(start: number): number[] {
     if (!this.isValidVertex(start)) return [];
 
-    const queue: number[] = [];
+    const values = [start];
+    const queue = [start];
     const visited = new Set<number>();
-    const values: number[] = [];
 
-    queue.push(start);
     visited.add(start);
-    values.push(start);
 
     while (queue.length > 0) {
       const current = queue.shift()!;
 
       this.adjMatrix[current].forEach((connected, neighbor) => {
         if (connected && !visited.has(neighbor)) {
-          queue.push(neighbor);
-          visited.add(neighbor);
           values.push(neighbor);
+          visited.add(neighbor);
+          queue.push(neighbor);
         }
       });
     }
