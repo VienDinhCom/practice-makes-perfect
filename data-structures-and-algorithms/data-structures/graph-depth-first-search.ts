@@ -3,15 +3,16 @@ import { expect } from 'jsr:@std/expect';
 // https://www.freecodecamp.org/learn/coding-interview-prep/data-structures/depth-first-search
 
 function depthFirstSearch(graph: number[][], start: number) {
-  const values: number[] = [];
+  const values = [start];
   const visited = new Set<number>();
 
-  const traverse = (current: number) => {
-    visited.add(current);
-    values.push(current);
+  visited.add(start);
 
+  const traverse = (current: number) => {
     graph[current].forEach((connected, neighbor) => {
       if (connected && !visited.has(neighbor)) {
+        values.push(neighbor);
+        visited.add(neighbor);
         traverse(neighbor);
       }
     });
