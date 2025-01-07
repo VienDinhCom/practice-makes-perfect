@@ -1,5 +1,7 @@
 import { expect } from 'jsr:@std/expect';
 
+// https://www.freecodecamp.org/learn/coding-interview-prep/algorithms/no-repeats-please
+
 function getPerms(str: string): string[] {
   if (str.length === 1) {
     return [str];
@@ -21,55 +23,20 @@ function getPerms(str: string): string[] {
 }
 
 function permAlone(str: string): number {
-  const perms: string[] = getPerms(str);
-  const chars: string[] = str.split('');
+  const perms = getPerms(str);
+  const chars = str.split('');
 
-  console.log(perms);
-
-  const noRepeatPerms: string[] = perms.filter((perm) => {
+  const alonePerms = perms.filter((perm) => {
     for (const char of chars) {
-      if (perm.includes(char + char)) {
-        return false;
-      }
+      if (perm.includes(char + char)) return false;
     }
+
     return true;
   });
 
-  return noRepeatPerms.length;
+  return alonePerms.length;
 }
 
-// function permAlone(str: string): number {
-//   const variants: string[] = [];
-
-//   function generate(variant: string) {
-//     // Base case: if the current ID length equals the desired length, add it to the list
-//     if (variant.length === str.length) {
-//       variants.push(variant);
-//       return;
-//     }
-
-//     // Recursive case: append each character and call generate again
-//     for (let i = 0; i < str.length; i++) {
-//       generate(variant + str[i]);
-//     }
-//   }
-
-//   // Start the recursion with an empty string
-//   generate('');
-
-//  const uniqueVariants: string[] = variants.filter((perm) => {
-//     for (const char of str) {
-//       if (perm.includes(char + char)) {
-//         return false;
-//       }
-//     }
-//     return true;
-//   });
-
-//   return uniqueVariants.length
-// }
-
-// Test cases
 Deno.test('permAlone function tests', async (t) => {
   await t.step('should return a number for "aab"', () => {
     expect(typeof permAlone('aab')).toBe('number');
