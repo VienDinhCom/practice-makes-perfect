@@ -2,46 +2,76 @@
 
 import { expect } from 'jsr:@std/expect';
 
-type CashInDrawer = [string, number][];
+const denomination: Record<string, number> = {
+  PENNY: 0.01,
+  NICKEL: 0.05,
+  DIME: 0.1,
+  QUARTER: 0.25,
+  ONE: 1,
+  FIVE: 5,
+  TEN: 10,
+  TWENTY: 20,
+  'ONE HUNDRED': 100,
+};
+
+type Cash = [string, number][];
 
 interface Result {
   status: 'INSUFFICIENT_FUNDS' | 'CLOSED' | 'OPEN';
-  change: [string, number][];
+  change: Cash;
 }
 
-function checkCashRegister(price: number, cash: number, cid: CashInDrawer): Result {
-  const denomination: Record<string, number> = {
-    PENNY: 0.01,
-    NICKEL: 0.05,
-    DIME: 0.1,
-    QUARTER: 0.25,
-    ONE: 1,
-    FIVE: 5,
-    TEN: 10,
-    TWENTY: 20,
-    'ONE HUNDRED': 100,
-  };
+function checkCashRegister(price: number, cash: number, drawer: Cash): Result {
+  const drawerObj: Record<string, number> = {};
+  const drawerAmount = Number(
+    drawer
+      .reduce((prev, curr) => {
+        drawerObj[curr[0]] = curr[1];
 
-  const cashInDrawer: Record<string, number> = {};
+        return prev + curr[1];
+      }, 0)
+      .toFixed(2)
+  );
 
-  const drawerAmount = cid.reduce((prev, curr) => {
-    cashInDrawer[curr[0]] = curr[1];
+  const changeDue = Number((cash - price).toFixed(2));
 
-    return Number((prev + curr[1]).toFixed(2));
-  }, 0);
-
-  const changeAmount = Number((cash - price).toFixed());
-
-  if (changeAmount > drawerAmount) {
+  if (drawerAmount < changeDue) {
     return { status: 'INSUFFICIENT_FUNDS', change: [] };
   }
 
-  return { status: 'CLOSED', change: [] };
+  if (drawerAmount === changeDue) {
+    return { status: 'CLOSED', change: drawer };
+  }
 
-  console.log({ denomination, cashInDrawer, drawerAmount, changeAmount });
+  const drawerUnits = Object.entries(drawerObj)
+    .reverse()
+    .flatMap(([key, value]) => {
+      const units = Math.floor(value / denomination[key]);
+
+      return new Array(units).fill([key, denomination[key]]);
+    });
+
+  const changeObj: Record<string, number> = {};
+  let changeAmount = 0;
+
+  for (const [key, value] of drawerUnits) {
+    const nextChangeAmount = Number((changeAmount + value).toFixed(2));
+
+    if (nextChangeAmount > changeDue) break;
+
+    changeObj[key] ??= 0;
+    changeObj[key] = Number((changeObj[key] + value).toFixed(2));
+    changeAmount = nextChangeAmount;
+  }
+
+  if (changeAmount < changeDue) {
+    return { status: 'INSUFFICIENT_FUNDS', change: [] };
+  }
+
+  return { status: 'OPEN', change: Object.entries(changeObj) };
 }
 
-checkCashRegister(19.5, 20, [
+const r = checkCashRegister(19.5, 20, [
   ['PENNY', 1.01],
   ['NICKEL', 2.05],
   ['DIME', 3.1],
@@ -52,6 +82,8 @@ checkCashRegister(19.5, 20, [
   ['TWENTY', 60],
   ['ONE HUNDRED', 100],
 ]);
+
+console.log(r);
 
 Deno.test('Test 1: Should return an object', () => {
   const result = checkCashRegister(19.5, 20, [
