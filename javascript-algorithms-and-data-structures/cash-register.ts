@@ -34,17 +34,21 @@ function checkCashRegister(price: number, cash: number, drawer: Cash): Result {
   const changeGiven: Cash = [];
 
   for (const [currency, value] of currencyMap) {
-    const availableAmount = drawerMap.get(currency) || 0;
+    const neededUnits = Math.floor(remainingChange / value);
 
-    if (availableAmount > 0 && remainingChange >= value) {
-      const numCoins = Math.floor(remainingChange / value);
-      const amountPossible = Math.min(calculate(numCoins * value), availableAmount);
+    if (neededUnits === 0) continue;
 
-      if (amountPossible > 0) {
-        changeGiven.push([currency, amountPossible]);
-        remainingChange = calculate(remainingChange - amountPossible);
-      }
+    const availableUnits = Math.floor((drawerMap.get(currency) || 0) / value);
+    let availableAmount = 0;
+
+    if (availableUnits <= neededUnits) {
+      availableAmount = calculate(availableUnits * value);
+    } else {
+      availableAmount = calculate(neededUnits * value);
     }
+
+    changeGiven.push([currency, availableAmount]);
+    remainingChange = calculate(remainingChange - availableAmount);
   }
 
   if (remainingChange === 0) {
@@ -58,19 +62,19 @@ function calculate(expression: number): number {
   return Number(expression.toFixed(2));
 }
 
-const r = checkCashRegister(19.5, 20, [
-  ['PENNY', 1.01],
-  ['NICKEL', 2.05],
-  ['DIME', 3.1],
-  ['QUARTER', 4.25],
-  ['ONE', 90],
-  ['FIVE', 55],
-  ['TEN', 20],
-  ['TWENTY', 60],
-  ['ONE HUNDRED', 100],
-]);
+// const r = checkCashRegister(3.26, 100, [
+//   ['PENNY', 1.01],
+//   ['NICKEL', 2.05],
+//   ['DIME', 3.1],
+//   ['QUARTER', 4.25],
+//   ['ONE', 90],
+//   ['FIVE', 55],
+//   ['TEN', 20],
+//   ['TWENTY', 60],
+//   ['ONE HUNDRED', 100],
+// ]);
 
-console.log(r);
+// console.log(r);
 
 Deno.test('Test 1: Should return an object', () => {
   const result = checkCashRegister(19.5, 20, [
