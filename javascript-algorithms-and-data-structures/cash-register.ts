@@ -3,15 +3,15 @@
 import { expect } from 'jsr:@std/expect';
 
 const denomination: Record<string, number> = {
-  PENNY: 0.01,
-  NICKEL: 0.05,
-  DIME: 0.1,
-  QUARTER: 0.25,
-  ONE: 1,
-  FIVE: 5,
-  TEN: 10,
-  TWENTY: 20,
   'ONE HUNDRED': 100,
+  TWENTY: 20,
+  TEN: 10,
+  FIVE: 5,
+  ONE: 1,
+  QUARTER: 0.25,
+  DIME: 0.1,
+  NICKEL: 0.05,
+  PENNY: 0.01,
 };
 
 type Cash = [string, number][];
@@ -23,17 +23,15 @@ interface Result {
 
 function checkCashRegister(price: number, cash: number, drawer: Cash): Result {
   const drawerObj: Record<string, number> = {};
-  const drawerAmount = Number(
-    drawer
-      .reduce((prev, curr) => {
-        drawerObj[curr[0]] = curr[1];
+  const drawerAmount = caculate(
+    drawer.reduce((prev, curr) => {
+      drawerObj[curr[0]] = curr[1];
 
-        return prev + curr[1];
-      }, 0)
-      .toFixed(2)
+      return prev + curr[1];
+    }, 0)
   );
 
-  const changeDue = Number((cash - price).toFixed(2));
+  const changeDue = caculate(cash - price);
 
   if (drawerAmount < changeDue) {
     return { status: 'INSUFFICIENT_FUNDS', change: [] };
@@ -43,32 +41,32 @@ function checkCashRegister(price: number, cash: number, drawer: Cash): Result {
     return { status: 'CLOSED', change: drawer };
   }
 
-  const drawerUnits = Object.entries(drawerObj)
-    .reverse()
-    .flatMap(([key, value]) => {
-      const units = Math.floor(value / denomination[key]);
-
-      return new Array(units).fill([key, denomination[key]]);
-    });
-
   const changeObj: Record<string, number> = {};
-  let changeAmount = 0;
 
-  for (const [key, value] of drawerUnits) {
-    const nextChangeAmount = Number((changeAmount + value).toFixed(2));
+  console.log({ drawerObj });
 
-    if (nextChangeAmount > changeDue) break;
+  for (const key in denomination) {
+    while (drawerObj[key] > 0) {
+      changeObj[key] ??= 0;
+      changeObj[key] = caculate(changeObj[key] + denomination[key]);
 
-    changeObj[key] ??= 0;
-    changeObj[key] = Number((changeObj[key] + value).toFixed(2));
-    changeAmount = nextChangeAmount;
+      drawerObj[key] = caculate(drawerObj[key] - denomination[key]);
+
+      const nextChange = caculate(Object.values(changeObj).reduce((prev, curr) => prev + curr, 0) + denomination[key]);
+
+      if (nextChange > changeDue) {
+        return { status: 'OPEN', change: Object.entries(changeObj) };
+      }
+    }
   }
 
-  if (changeAmount < changeDue) {
-    return { status: 'INSUFFICIENT_FUNDS', change: [] };
-  }
+  console.log({ drawerObj });
 
-  return { status: 'OPEN', change: Object.entries(changeObj) };
+  return { status: 'INSUFFICIENT_FUNDS', change: [] };
+}
+
+function caculate(expression: number) {
+  return Number(expression.toFixed(2));
 }
 
 const r = checkCashRegister(19.5, 20, [
