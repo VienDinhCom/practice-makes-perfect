@@ -26,6 +26,10 @@ function checkCashRegister(price: number, cash: number, drawer: Cash): Result {
   const drawerMap = new Map(drawer);
   const totalInDrawer = calculate(drawer.reduce((sum, [_, amount]) => sum + amount, 0));
 
+  if (totalInDrawer < changeDue) {
+    return { status: 'INSUFFICIENT_FUNDS', change: [] };
+  }
+
   if (totalInDrawer === changeDue) {
     return { status: 'CLOSED', change: drawer };
   }
