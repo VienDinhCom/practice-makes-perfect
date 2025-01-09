@@ -38,17 +38,18 @@ function checkCashRegister(price: number, cash: number, drawer: Cash): Result {
 
     if (neededUnits === 0) continue;
 
+    let changeAmount = 0;
+
     const availableUnits = Math.floor((drawerMap.get(currency) || 0) / value);
-    let availableAmount = 0;
 
     if (availableUnits <= neededUnits) {
-      availableAmount = calculate(availableUnits * value);
+      changeAmount = calculate(availableUnits * value);
     } else {
-      availableAmount = calculate(neededUnits * value);
+      changeAmount = calculate(neededUnits * value);
     }
 
-    changeGiven.push([currency, availableAmount]);
-    remainingChange = calculate(remainingChange - availableAmount);
+    changeGiven.push([currency, changeAmount]);
+    remainingChange = calculate(remainingChange - changeAmount);
   }
 
   if (remainingChange === 0) {
