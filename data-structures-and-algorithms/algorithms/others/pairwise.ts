@@ -1,20 +1,22 @@
 import { expect } from 'jsr:@std/expect';
 
-function pairwise(nums: number[], sum: number): number {
-  const indices = new Set<number>();
+function pairwise(nums: number[], targetSum: number): number {
+  const indicies = new Set<number>();
 
   for (let i = 0; i < nums.length; i++) {
     for (let j = 0; j < nums.length; j++) {
-      if (i !== j && nums[i] + nums[j] === sum) {
-        if (!indices.has(i) && !indices.has(j)) {
-          indices.add(i);
-          indices.add(j);
+      const sum = nums[i] + nums[j];
+
+      if (i !== j && sum === targetSum) {
+        if (!indicies.has(i) && !indicies.has(j)) {
+          indicies.add(i);
+          indicies.add(j);
         }
       }
     }
   }
 
-  return Array.from(indices).reduce((sum, curr) => sum + curr, 0);
+  return Array.from(indicies).reduce((sum, curr) => sum + curr, 0);
 }
 
 Deno.test('pairwise function test cases', async (t) => {
