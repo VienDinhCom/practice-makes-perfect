@@ -3,20 +3,20 @@ import { expect } from 'jsr:@std/expect';
 type Inventory = [number, string][];
 
 function updateInventory(curInv: Inventory, newInv: Inventory): Inventory {
-  const updatedInvObj: Record<string, number> = {};
+  const invObj: Record<string, number> = {};
 
-  curInv.forEach(([quantity, item]) => {
-    updatedInvObj[item] = quantity;
+  curInv.forEach(([quant, item]) => {
+    invObj[item] = quant;
   });
 
-  newInv.forEach(([quantity, item]) => {
-    updatedInvObj[item] ??= 0;
-    updatedInvObj[item] += quantity;
+  newInv.forEach(([quant, item]) => {
+    invObj[item] ??= 0;
+    invObj[item] += quant;
   });
 
-  const updatedInv: Inventory = Object.entries(updatedInvObj).map(([item, quantity]) => [quantity, item]);
+  const inv: Inventory = Object.entries(invObj).map(([item, quant]) => [quant, item]);
 
-  return updatedInv.sort((a, b) => a[1].localeCompare(b[1]));
+  return inv.sort((a, b) => a[1].localeCompare(b[1]));
 }
 
 Deno.test('Inventory update tests', async (t) => {
