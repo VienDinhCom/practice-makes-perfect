@@ -2,6 +2,7 @@
 
 import { expect } from 'jsr:@std/expect';
 
+// review
 function palindrome(str: string) {
   const cleanedStr = str.toLowerCase().replace(/[^a-z0-9]/g, '');
 
