@@ -34,29 +34,28 @@ function checkCashRegister(price: number, cash: number, drawer: Cash): Result {
     return { status: 'CLOSED', change: drawer };
   }
 
-  let remainingChange = changeDue;
+  let changeRemain = changeDue;
   const changeGiven: Cash = [];
 
   for (const [currency, value] of currencyMap) {
-    const neededUnits = Math.floor(remainingChange / value);
+    const needed = Math.floor(changeRemain / value);
+    const available = Math.floor((drawerMap.get(currency) || 0) / value);
 
-    if (neededUnits === 0) continue;
+    let amount = 0;
 
-    let changeAmount = 0;
-
-    const availableUnits = Math.floor((drawerMap.get(currency) || 0) / value);
-
-    if (availableUnits <= neededUnits) {
-      changeAmount = calculate(availableUnits * value);
+    if (available <= needed) {
+      amount = calculate(available * value);
     } else {
-      changeAmount = calculate(neededUnits * value);
+      amount = calculate(needed * value);
     }
 
-    changeGiven.push([currency, changeAmount]);
-    remainingChange = calculate(remainingChange - changeAmount);
+    if (amount > 0) {
+      changeGiven.push([currency, amount]);
+      changeRemain = calculate(changeRemain - amount);
+    }
   }
 
-  if (remainingChange === 0) {
+  if (changeRemain === 0) {
     return { status: 'OPEN', change: changeGiven };
   }
 
