@@ -20,13 +20,14 @@ function convertToRoman(num: number): string {
   ];
 
   let result = '';
-  let remain = num;
+  let remainder = num;
 
   for (const [roman, value] of romanNumerals) {
-    while (remain >= value) {
-      result += roman;
-      remain -= value;
-    }
+    const neededRoman = Math.floor(remainder / value);
+    const neededValue = neededRoman * value;
+
+    remainder -= neededValue;
+    result += roman.repeat(neededRoman);
   }
 
   return result;
