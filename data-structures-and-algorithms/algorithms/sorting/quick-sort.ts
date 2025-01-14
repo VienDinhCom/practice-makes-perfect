@@ -1,36 +1,36 @@
 import { expect } from 'jsr:@std/expect';
 
-function quickSort(nums: number[], left: number = 0, right: number = nums.length - 1): number[] {
-  if (left < right) {
-    const pivotIndex = partition(nums, left, right);
+// Animation: https://www.youtube.com/watch?v=WprjBK0p6rw
 
-    quickSort(nums, left, pivotIndex - 1);
-    quickSort(nums, pivotIndex + 1, right);
-  }
+function quickSort(nums: number[], leftIndex: number = 0, rightIndex: number = nums.length - 1): number[] {
+  if (leftIndex >= rightIndex) return nums;
+
+  const pivotIndex = partition(nums, leftIndex, rightIndex);
+
+  quickSort(nums, leftIndex, pivotIndex - 1);
+  quickSort(nums, pivotIndex + 1, rightIndex);
 
   return nums;
 }
 
-function partition(nums: number[], left: number, right: number): number {
-  const pivot = nums[right];
+function partition(nums: number[], leftIndex: number, rightIndex: number): number {
+  const pivotValue = nums[rightIndex];
 
-  let i = left - 1;
+  let trackIndex = leftIndex - 1;
 
-  for (let j = left; j < right; j++) {
-    if (nums[j] <= pivot) {
-      i++;
+  for (let i = leftIndex; i < rightIndex; i++) {
+    if (nums[i] <= pivotValue) {
+      trackIndex++;
 
-      if (i !== j) {
-        [nums[i], nums[j]] = [nums[j], nums[i]];
+      if (i !== trackIndex) {
+        [nums[i], nums[trackIndex]] = [nums[trackIndex], nums[i]];
       }
     }
   }
 
-  const pivotIndex = i + 1;
+  const pivotIndex = trackIndex + 1;
 
-  if (pivotIndex !== right) {
-    [nums[pivotIndex], nums[right]] = [nums[right], nums[pivotIndex]];
-  }
+  [nums[pivotIndex], nums[rightIndex]] = [nums[rightIndex], nums[pivotIndex]];
 
   return pivotIndex;
 }
