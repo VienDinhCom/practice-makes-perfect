@@ -6,14 +6,11 @@ function insertionSort(nums: number[]): number[] {
   for (let i = 1; i < nums.length; i++) {
     const tmp = nums[i];
 
-    delete nums[i];
-
     let j = i - 1;
 
     while (j >= 0) {
       if (nums[j] > tmp) {
         nums[j + 1] = nums[j];
-        delete nums[j];
       } else {
         break;
       }
