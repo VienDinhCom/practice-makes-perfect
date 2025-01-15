@@ -1,29 +1,15 @@
 import { expect } from 'jsr:@std/expect';
 
+// Animation: https://www.youtube.com/watch?v=5Z9dn2WTg9o
+
 function mergeSort(nums: number[]): number[] {
   if (nums.length <= 1) return nums;
 
-  const midIndex = Math.floor(nums.length / 2);
+  const midIndex = Math.floor()
 
-  const left = mergeSort(nums.slice(0, midIndex));
-  const right = mergeSort(nums.slice(midIndex));
-
-  return merge(left, right);
 }
 
-function merge(left: number[], right: number[]): number[] {
-  const sortedNums: number[] = [];
-
-  while (left.length && right.length) {
-    if (left[0] < right[0]) {
-      sortedNums.push(left.shift()!);
-    } else {
-      sortedNums.push(right.shift()!);
-    }
-  }
-
-  return [...sortedNums, ...left, ...right];
-}
+function merge(leftHalf: number[], rightHalf: number[]): number[] {}
 
 // https://visualgo.net/en/sorting
 // https://www.youtube.com/watch?v=WprjBK0p6rw
