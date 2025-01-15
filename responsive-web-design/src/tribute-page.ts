@@ -1,0 +1,1 @@
+import './tribute-page.css';
