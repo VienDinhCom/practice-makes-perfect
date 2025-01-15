@@ -1,0 +1,165 @@
+/* Roman-inspired color palette */
+:root {
+  --imperial-purple: #4b0082;
+  --roman-gold: #ffd700;
+  --marble-white: #f5f5f5;
+  --stone-gray: #696969;
+  --parchment: #f4ecd8;
+}
+
+/* Base styles */
+body {
+  font-family: 'Crimson Text', Georgia, 'Times New Roman', serif;
+  line-height: 1.6;
+  margin: 0;
+  color: var(--stone-gray);
+  background-color: var(--parchment);
+}
+
+#main {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: var(--marble-white);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Header styles */
+#title {
+  font-family: 'Trajan Pro', 'Cinzel', serif;
+  color: var(--imperial-purple);
+  text-align: center;
+  font-size: 3.5rem;
+  margin-bottom: 0.5rem;
+  letter-spacing: 0.1em;
+  border-bottom: 2px solid var(--roman-gold);
+  padding-bottom: 0.5rem;
+}
+
+#title + p {
+  text-align: center;
+  font-style: italic;
+  font-size: 1.2rem;
+  margin-top: 0.5rem;
+  color: var(--stone-gray);
+}
+
+/* Image styles */
+#img-div {
+  text-align: center;
+  margin: 2rem auto; /* Changed to auto for horizontal centering */
+  padding: 1rem;
+  background: linear-gradient(to bottom, var(--marble-white), var(--parchment));
+  border: 1px solid #ddd;
+  max-width: 100%;
+  display: flex; /* Added flex container */
+  flex-direction: column; /* Stack children vertically */
+  align-items: center; /* Center children horizontally */
+}
+
+#image {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  border: 8px solid var(--marble-white);
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+}
+
+#img-caption {
+  margin-top: 1rem;
+  font-style: italic;
+  color: var(--stone-gray);
+}
+
+/* Timeline section */
+#headline {
+  font-family: 'Trajan Pro', 'Cinzel', serif;
+  color: var(--imperial-purple);
+  text-align: center;
+  margin: 2rem 0;
+  font-size: 1.8rem;
+}
+
+/* Timeline list styles */
+ul {
+  max-width: 800px;
+  margin: 0 auto;
+  padding-left: 0;
+}
+
+li {
+  margin: 1.5rem 0;
+  padding-left: 2rem;
+  position: relative;
+  list-style: none;
+}
+
+li::before {
+  content: '•';
+  color: var(--roman-gold);
+  font-size: 1.5rem;
+  position: absolute;
+  left: 0;
+  top: -0.2rem;
+}
+
+li strong {
+  color: var(--imperial-purple);
+  margin-right: 0.5rem;
+}
+
+/* Quote styles */
+blockquote {
+  margin: 2rem auto;
+  max-width: 800px;
+  padding: 2rem;
+  background: linear-gradient(to right, transparent, var(--parchment), transparent);
+  border-left: 4px solid var(--roman-gold);
+}
+
+blockquote p {
+  font-size: 1.3rem;
+  font-style: italic;
+  margin: 0;
+  color: var(--stone-gray);
+}
+
+cite {
+  display: block;
+  margin-top: 1rem;
+  color: var(--imperial-purple);
+  font-style: normal;
+  text-align: right;
+}
+
+/* Link styles */
+#tribute-link {
+  color: var(--imperial-purple);
+  text-decoration: none;
+  border-bottom: 2px solid var(--roman-gold);
+  transition: all 0.3s ease;
+}
+
+#tribute-link:hover {
+  color: var(--roman-gold);
+  border-bottom-color: var(--imperial-purple);
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  #title {
+    font-size: 2.5rem;
+  }
+
+  #main {
+    padding: 10px;
+  }
+
+  li {
+    padding-left: 1.5rem;
+  }
+
+  blockquote {
+    padding: 1rem;
+  }
+}

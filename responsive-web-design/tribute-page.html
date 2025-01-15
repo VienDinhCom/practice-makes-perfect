@@ -4,54 +4,94 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Tribute Page</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" />
   </head>
   <body>
     <main id="main">
       <h1 id="title">Marcus Aurelius</h1>
-      <p>The Philosopher King</p>
+      <p>The Philosopher Emperor who guided Rome through crisis</p>
       <figure id="img-div">
-        <img
-          id="image"
-          src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f6/0_Marcus_Aurelius_Exedra_-_Palazzo_dei_Conservatori_-_Musei_Capitolini_%281%29.jpg/793px-0_Marcus_Aurelius_Exedra_-_Palazzo_dei_Conservatori_-_Musei_Capitolini_%281%29.jpg"
-          alt="Statue of Marcus Aurelius"
-          width="793"
-          height="1024"
-        />
+        <img id="image" src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f6/0_Marcus_Aurelius_Exedra_-_Palazzo_dei_Conservatori_-_Musei_Capitolini_%281%29.jpg/793px-0_Marcus_Aurelius_Exedra_-_Palazzo_dei_Conservatori_-_Musei_Capitolini_%281%29.jpg" alt="Bronze equestrian statue of Marcus Aurelius in Rome" />
         <figcaption id="img-caption">
-          Marcus Aurelius, Roman Emperor and Stoic philosopher, is immortalized in this ancient statue.
+          The famous bronze equestrian statue of Marcus Aurelius - one of the few surviving Roman bronze statues and a
+          symbol of philosophical leadership.
         </figcaption>
       </figure>
       <section id="tribute-info">
-        <h3 id="headline">Here's a timeline of Marcus Aurelius's life:</h3>
+        <h3 id="headline">Here's a time line of Marcus Aurelius's life:</h3>
         <ul>
-          <li><strong>121 CE</strong> - Born in Rome, Italy</li>
+          <li><strong>121 CE</strong> - Born in Rome to a prominent political family</li>
           <li>
-            <strong>138 CE</strong> - Adopted by Emperor Antoninus Pius, marking the beginning of his path to leadership
-          </li>
-          <li><strong>161 CE</strong> - Becomes Roman Emperor alongside Lucius Verus</li>
-          <li>
-            <strong>167 CE</strong> - Faces the Marcomannic Wars, demonstrating his leadership and dedication to the
-            empire
+            <strong>127 CE</strong> - Catches the attention of Emperor Hadrian, who nicknames him "Verissimus" (most
+            truthful) for his honest character
           </li>
           <li>
-            <strong>170 CE</strong> - Begins writing "Meditations," his philosophical reflections and guide to
-            self-improvement
+            <strong>132 CE</strong> - Begins studying philosophy under Diognetus, who introduces him to Stoic philosophy
+            and ethical living
           </li>
-          <li><strong>175 CE</strong> - Faces internal rebellion but successfully restores stability to the empire</li>
           <li>
-            <strong>180 CE</strong> - Dies in Vindobona (modern-day Vienna), leaving behind a legacy as a philosopher
-            and ruler
+            <strong>136 CE</strong> - Betrothed to Ceionia Fabia at Hadrian's arrangement, though this would later be
+            changed
+          </li>
+          <li>
+            <strong>138 CE</strong> - Adopted by Antoninus Pius as part of the succession plan arranged by Hadrian,
+            making him heir to the empire
+          </li>
+          <li>
+            <strong>145 CE</strong> - Marries Faustina the Younger, daughter of Antoninus Pius. Their marriage would
+            last 31 years and produce 13 children
+          </li>
+          <li>
+            <strong>161 CE</strong> - Becomes Emperor upon the death of Antoninus Pius, immediately making his adopted
+            brother Lucius Verus co-emperor
+          </li>
+          <li>
+            <strong>165 CE</strong> - Faces the first major crisis of his reign as the Antonine Plague begins spreading
+            throughout the empire
+          </li>
+          <li>
+            <strong>167 CE</strong> - Personally leads troops against Germanic tribes in the Marcomannic Wars while
+            continuing to write philosophical reflections
+          </li>
+          <li>
+            <strong>169 CE</strong> - Death of co-emperor Lucius Verus forces Marcus to bear sole responsibility for the
+            empire during increasingly difficult times
+          </li>
+          <li>
+            <strong>170-174 CE</strong> - Writes much of his philosophical work "Meditations" during military campaigns,
+            never intending it for publication
+          </li>
+          <li>
+            <strong>175 CE</strong> - Deals with the rebellion of Avidius Cassius in Syria, showing clemency to the
+            rebel's family after his defeat
+          </li>
+          <li>
+            <strong>176 CE</strong> - Establishes four chairs of philosophy in Athens, one for each major school:
+            Platonic, Aristotelian, Stoic, and Epicurean
+          </li>
+          <li>
+            <strong>178 CE</strong> - Returns to the northern frontier with his son Commodus to continue the Germanic
+            campaigns
+          </li>
+          <li>
+            <strong>180 CE</strong> - Dies at Vindobona (modern Vienna) during a military campaign, leaving the empire
+            to his son Commodus
           </li>
         </ul>
-        <blockquote cite="https://en.wikipedia.org/wiki/Marcus_Aurelius">
-          <p>"You have power over your mind - not outside events. Realize this, and you will find strength."</p>
-          <cite>-- Marcus Aurelius, from Meditations</cite>
+        <blockquote>
+          <p>
+            "Accept the things to which fate binds you, and love the people with whom fate brings you together, but do
+            so with all your heart."
+          </p>
+          <cite>-- Marcus Aurelius, Meditations</cite>
         </blockquote>
         <h3>
-          If you have time, you should read more about this remarkable individual on his
+          If you have time, you should read more about this remarkable philosopher-emperor on his
           <a id="tribute-link" href="https://en.wikipedia.org/wiki/Marcus_Aurelius" target="_blank">Wikipedia entry</a>.
         </h3>
       </section>
     </main>
+
+    <script type="module" src="/src/tribute-page.ts"></script>
   </body>
 </html>
