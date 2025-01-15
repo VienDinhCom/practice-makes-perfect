@@ -5,11 +5,27 @@ import { expect } from 'jsr:@std/expect';
 function mergeSort(nums: number[]): number[] {
   if (nums.length <= 1) return nums;
 
-  const midIndex = Math.floor()
+  const midIndex = Math.floor(nums.length / 2);
 
+  const leftHalf = mergeSort(nums.slice(0, midIndex));
+  const rightHalf = mergeSort(nums.slice(midIndex));
+
+  return merge(leftHalf, rightHalf);
 }
 
-function merge(leftHalf: number[], rightHalf: number[]): number[] {}
+function merge(leftHalf: number[], rightHalf: number[]): number[] {
+  const sortedNums: number[] = [];
+
+  while (leftHalf.length && rightHalf.length) {
+    if (leftHalf[0] < rightHalf[0]) {
+      sortedNums.push(leftHalf.shift()!);
+    } else {
+      sortedNums.push(rightHalf.shift()!);
+    }
+  }
+
+  return [...sortedNums, ...leftHalf, ...rightHalf];
+}
 
 // https://visualgo.net/en/sorting
 // https://www.youtube.com/watch?v=WprjBK0p6rw
