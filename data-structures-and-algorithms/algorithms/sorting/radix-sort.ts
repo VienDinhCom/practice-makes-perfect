@@ -1,15 +1,29 @@
 import { expect } from 'jsr:@std/expect';
 
+function getMaxDigits(nums: number[]): number {
+  // return Math.max(...nums).toString().length;
+
+  // return Math.floor(Math.log10(Math.max(...nums)) + 1);
+
+  return Math.max(...nums.map((num) => num.toString().length));
+}
+
+function getDigit(num: number, place: number): number {
+  // return Math.floor(num / Math.pow(10, place)) % 10;
+
+  return Number(num.toString().split('').reverse()[place]) || 0;
+}
+
 function radixSort(nums: number[]): number[] {
   if (nums.length <= 1) return nums;
 
   const maxDigits = getMaxDigits(nums);
 
-  for (let k = 0; k < maxDigits; k++) {
-    const buckets: number[][] = new Array(10).fill(0).map(() => []);
+  for (let place = 0; place < maxDigits; place++) {
+    const buckets: number[][] = new Array(10).fill(null).map(() => []);
 
     for (const num of nums) {
-      const digit = getDigit(num, k);
+      const digit = getDigit(num, place);
 
       buckets[digit].push(num);
     }
@@ -18,36 +32,6 @@ function radixSort(nums: number[]): number[] {
   }
 
   return nums;
-}
-
-function getMaxDigits(nums: number[]): number {
-  let maxDigits = 0;
-
-  for (const num of nums) {
-    // maxDigits = Math.max(maxDigits, Math.floor(Math.log10(num) + 1));
-
-    const digits = String(num).length;
-
-    if (digits > maxDigits) {
-      maxDigits = digits;
-    }
-  }
-
-  return maxDigits;
-}
-
-function getDigit(num: number, place: number): number {
-  // const digit = Math.floor(num / Math.pow(10, place)) % 10;
-
-  // console.log({ num, place, digit });
-
-  // return digit;
-
-  const digit = Number(String(num).split('').reverse()[place]) || 0;
-
-  // console.log({ num, str, place, digit });
-
-  return digit;
 }
 
 // https://visualgo.net/en/sorting
