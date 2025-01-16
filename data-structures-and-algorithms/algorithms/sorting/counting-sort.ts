@@ -13,10 +13,10 @@ function countingSort(nums: number[]): number[] {
 
   const sortedNums: number[] = [];
 
-  for (let i = 0; i < count.length; i++) {
-    while (count[i] > 0) {
-      sortedNums.push(i);
-      count[i]--;
+  for (let num = 0; num < count.length; num++) {
+    while (count[num] > 0) {
+      sortedNums.push(num);
+      count[num]--;
     }
   }
 
