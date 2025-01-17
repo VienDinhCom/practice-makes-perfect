@@ -1,0 +1,163 @@
+/* Global styles and dark mode colors */
+:root {
+  --bg-primary: #1a1a1a;
+  --bg-secondary: #2d2d2d;
+  --text-primary: #e0e0e0;
+  --text-secondary: #b0b0b0;
+  --accent: #4a9eff;
+  --code-bg: #2b2b2b;
+  --border-color: #404040;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: system-ui, -apple-system, sans-serif;
+  line-height: 1.6;
+  color: var(--text-primary);
+  background: var(--bg-primary);
+  display: flex;
+}
+
+/* Navigation styles */
+#navbar {
+  position: fixed;
+  min-width: 290px;
+  height: 100vh;
+  border-right: 2px solid var(--border-color);
+  background-color: var(--bg-secondary);
+}
+
+#navbar header {
+  color: var(--text-primary);
+  font-size: 1.8rem;
+  padding: 1.5rem;
+  text-align: center;
+  border-bottom: 2px solid var(--border-color);
+}
+
+#navbar ul {
+  list-style: none;
+  overflow-y: auto;
+  max-height: calc(100vh - 80px);
+}
+
+#navbar ul li {
+  border-bottom: 1px solid var(--border-color);
+}
+
+.nav-link {
+  display: block;
+  padding: 1rem 2rem;
+  color: var(--text-secondary);
+  text-decoration: none;
+  transition: background 0.3s, color 0.3s;
+}
+
+.nav-link:hover {
+  background-color: var(--bg-primary);
+  color: var(--accent);
+}
+
+/* Main content styles */
+#main-doc {
+  margin-left: 290px;
+  padding: 2rem;
+  max-width: 1200px;
+}
+
+.main-section {
+  margin-bottom: 4rem;
+}
+
+.main-section header {
+  font-size: 1.8rem;
+  color: var(--accent);
+  margin-bottom: 1.5rem;
+}
+
+.main-section article {
+  color: var(--text-primary);
+}
+
+.main-section p {
+  margin: 1rem 0;
+}
+
+.main-section ul {
+  margin: 1rem 0;
+  padding-left: 2.5rem;
+}
+
+.main-section li {
+  margin: 0.5rem 0;
+  color: var(--text-secondary);
+}
+
+/* Code block styles */
+code {
+  display: block;
+  background: var(--code-bg);
+  padding: 1.2rem;
+  margin: 1rem 0;
+  border-radius: 4px;
+  white-space: pre-wrap;
+  font-family: 'Courier New', Courier, monospace;
+  border-left: 4px solid var(--accent);
+}
+
+/* Links */
+a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* Responsive design */
+@media screen and (max-width: 768px) {
+  body {
+    flex-direction: column;
+  }
+
+  #navbar {
+    position: relative;
+    width: 100%;
+    height: auto;
+    border-right: none;
+    border-bottom: 2px solid var(--border-color);
+  }
+
+  #navbar ul {
+    max-height: 300px;
+  }
+
+  #main-doc {
+    margin-left: 0;
+    padding: 1rem;
+  }
+}
+
+/* Scrollbar customization */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-secondary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border-color);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent);
+}
