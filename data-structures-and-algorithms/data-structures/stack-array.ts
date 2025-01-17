@@ -1,5 +1,6 @@
 import { expect } from 'jsr:@std/expect';
 
+// review
 class Stack<T> {
   private items: T[];
 
