@@ -1,35 +1,35 @@
 import { expect } from 'jsr:@std/expect';
 
 class PriorityQueue<T> {
-  private items: [T, number][];
+  private items: { value: T; priority: number }[];
 
   constructor() {
     this.items = [];
   }
 
   enqueue(value: T, priority: number): void {
-    // this.items.push([value, priority]);
-    // this.items.sort((a, b) => a[1] - b[1]);
+    // this.items.push({ value, priority });
+    // this.items.sort((a, b) => a.priority - b.priority);
 
-    const index = this.items.findIndex(([_, p]) => priority < p);
+    const index = this.items.findIndex((item) => item.priority > priority);
 
     if (index === -1) {
-      this.items.push([value, priority]);
+      this.items.push({ value, priority });
     } else {
-      this.items.splice(index, 0, [value, priority]);
+      this.items.splice(index, 0, { value, priority });
     }
   }
 
   dequeue(): T | undefined {
     const item = this.items.shift();
 
-    return item ? item[0] : undefined;
+    return item ? item.value : undefined;
   }
 
   front(): T | undefined {
     const item = this.items[0];
 
-    return item ? item[0] : undefined;
+    return item ? item.value : undefined;
   }
 
   size(): number {
