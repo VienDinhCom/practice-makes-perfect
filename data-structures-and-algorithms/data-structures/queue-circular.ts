@@ -1,5 +1,7 @@
 import { expect } from 'jsr:@std/expect';
 
+// https://www.freecodecamp.org/learn/coding-interview-prep/data-structures/create-a-circular-queue
+
 class CircularQueue<T> {
   private items: Array<T | null>;
   private read: number;
@@ -9,12 +11,14 @@ class CircularQueue<T> {
   constructor(size: number) {
     this.items = new Array(size).fill(null);
 
+    // Indices
     this.read = 0;
     this.write = 0;
     this.max = size - 1;
   }
 
   enqueue(item: T) {
+    // isFull
     if (this.items[this.write] !== null) return null;
 
     this.items[this.write] = item;
@@ -29,17 +33,14 @@ class CircularQueue<T> {
   }
 
   dequeue() {
+    // isEmpty
     if (this.items[this.read] === null) return null;
 
     const item = this.items[this.read];
 
     this.items[this.read] = null;
 
-    if (this.read >= this.max) {
-      this.read = 0;
-    } else {
-      this.read++;
-    }
+    this.read = this.read >= this.max ? 0 : this.read + 1;
 
     return item;
   }
