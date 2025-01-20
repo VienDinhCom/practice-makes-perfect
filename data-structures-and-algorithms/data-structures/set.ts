@@ -53,6 +53,18 @@ class Set {
     return newSet;
   }
 
+  intersection(other: Set): Set {
+    const newSet = new Set();
+
+    this.forEach((value) => {
+      if (other.has(value)) {
+        newSet.add(value);
+      }
+    });
+
+    return newSet;
+  }
+
   difference(other: Set): Set {
     const newSet = new Set();
 
@@ -65,13 +77,15 @@ class Set {
     return newSet;
   }
 
-  intersection(other: Set): Set {
+  symmetricDifference(other: Set): Set {
     const newSet = new Set();
 
     this.forEach((value) => {
-      if (other.has(value)) {
-        newSet.add(value);
-      }
+      if (!other.has(value)) newSet.add(value);
+    });
+
+    other.forEach((value) => {
+      if (!this.has(value)) newSet.add(value);
     });
 
     return newSet;
@@ -154,13 +168,16 @@ Deno.test('Set - Set Operations', () => {
   const union = set1.union(set2);
   expect(union.values()).toStrictEqual([1, 2, 3, 4]);
 
+  // Test intersection
+  const intersection = set1.intersection(set2);
+  expect(intersection.values()).toStrictEqual([2, 3]);
+
   // Test difference
   const difference = set1.difference(set2);
   expect(difference.values()).toStrictEqual([1]);
 
-  // Test intersection
-  const intersection = set1.intersection(set2);
-  expect(intersection.values()).toStrictEqual([2, 3]);
+  const symmetricDifference = set1.symmetricDifference(set2);
+  expect(symmetricDifference.values()).toStrictEqual([1, 4]);
 });
 
 Deno.test('Set - Set Relations', () => {
