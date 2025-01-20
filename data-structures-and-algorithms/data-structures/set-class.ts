@@ -1,7 +1,7 @@
 import { expect } from 'jsr:@std/expect';
 
 class Set {
-  private dictionary: { [key: number]: number };
+  private dictionary: Record<number, number>;
   private length: number;
 
   constructor() {
@@ -31,23 +31,22 @@ class Set {
   }
 
   remove(element: number): number {
-    const item = this.dictionary[element];
-
     delete this.dictionary[element];
+
     this.length--;
 
-    return item;
+    return element;
   }
 
   union(anotherSet: Set): Set {
     const newSet = new Set();
 
-    this.values().forEach((elm) => {
-      newSet.add(elm);
+    this.values().forEach((element) => {
+      newSet.add(element);
     });
 
-    anotherSet.values().forEach((elm) => {
-      newSet.add(elm);
+    anotherSet.values().forEach((element) => {
+      newSet.add(element);
     });
 
     return newSet;
@@ -56,10 +55,8 @@ class Set {
   intersection(anotherSet: Set): Set {
     const newSet = new Set();
 
-    anotherSet.values().forEach((elm) => {
-      if (this.has(elm)) {
-        newSet.add(elm);
-      }
+    this.values().forEach((element) => {
+      if (anotherSet.has(element)) newSet.add(element);
     });
 
     return newSet;
@@ -68,20 +65,16 @@ class Set {
   difference(anotherSet: Set): Set {
     const newSet = new Set();
 
-    this.values().forEach((elm) => {
-      if (!anotherSet.has(elm)) {
-        newSet.add(elm);
-      }
+    this.values().forEach((element) => {
+      if (!anotherSet.has(element)) newSet.add(element);
     });
 
     return newSet;
   }
 
   isSubsetOf(anotherSet: Set): boolean {
-    for (const elm of this.values()) {
-      if (!anotherSet.has(elm)) {
-        return false;
-      }
+    for (const element of this.values()) {
+      if (!anotherSet.has(element)) return false;
     }
 
     return true;
