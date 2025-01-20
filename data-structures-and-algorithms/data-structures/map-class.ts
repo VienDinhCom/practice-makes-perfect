@@ -20,7 +20,9 @@ class MapClass<T> {
   }
 
   get(key: string) {
-    return this.object[key];
+    if (this.has(key)) return this.object[key];
+
+    return null;
   }
 
   remove(key: string) {
@@ -36,9 +38,9 @@ class MapClass<T> {
   }
 
   clear() {
-    Object.keys(this.object).forEach((key) => {
-      this.remove(key);
-    });
+    for (const key of Object.keys(this.object)) {
+      delete this.object[key];
+    }
   }
 
   size() {
