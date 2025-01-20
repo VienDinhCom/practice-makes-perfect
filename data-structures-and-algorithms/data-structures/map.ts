@@ -1,48 +1,48 @@
 import { expect } from 'jsr:@std/expect';
 
 class Map<T> {
-  private table: Record<string, T>;
+  private map: Record<string, T>;
 
   constructor() {
-    this.table = {};
+    this.map = {};
   }
 
   set(key: string, value: T): Map<T> {
-    this.table[key] = value;
+    this.map[key] = value;
 
     return this;
   }
 
   get(key: string): T | undefined {
-    return this.table[key];
+    return this.map[key];
   }
 
   has(key: string): boolean {
-    return this.table[key] !== undefined;
+    return this.map[key] !== undefined;
   }
 
   size(): number {
-    return Object.keys(this.table).length;
+    return Object.keys(this.map).length;
   }
 
   delete(key: string): void {
-    delete this.table[key];
+    delete this.map[key];
   }
 
   clear(): void {
-    for (const key of Object.keys(this.table)) {
+    for (const key of Object.keys(this.map)) {
       this.delete(key);
     }
   }
 
   entries(): [string, T][] {
-    return Object.entries(this.table);
+    return Object.entries(this.map);
   }
 
   forEach(callback: (value: T, key: string) => void): void {
-    for (const key in this.table) {
-      if (Object.prototype.hasOwnProperty.call(this.table, key)) {
-        const value = this.table[key];
+    for (const key in this.map) {
+      if (Object.prototype.hasOwnProperty.call(this.map, key)) {
+        const value = this.map[key];
 
         callback(value, key);
       }
@@ -50,79 +50,79 @@ class Map<T> {
   }
 
   keys(): string[] {
-    return Object.keys(this.table);
+    return Object.keys(this.map);
   }
 
   values(): T[] {
-    return Object.values(this.table);
+    return Object.values(this.map);
   }
 }
 
 Deno.test('set and get methods', () => {
-  const hashTable = new Map<number>();
+  const map = new Map<number>();
 
-  hashTable.set('key1', 100);
+  map.set('key1', 100);
 
-  expect(hashTable.get('key1')).toStrictEqual(100);
+  expect(map.get('key1')).toStrictEqual(100);
 });
 
 Deno.test('has method', () => {
-  const hashTable = new Map<number>();
+  const map = new Map<number>();
 
-  hashTable.set('key1', 100);
+  map.set('key1', 100);
 
-  expect(hashTable.has('key1')).toStrictEqual(true);
-  expect(hashTable.has('key2')).toStrictEqual(false);
+  expect(map.has('key1')).toStrictEqual(true);
+  expect(map.has('key2')).toStrictEqual(false);
 });
 
 Deno.test('size method', () => {
-  const hashTable = new Map<number>();
+  const map = new Map<number>();
 
-  hashTable.set('key1', 100).set('key2', 200);
+  map.set('key1', 100).set('key2', 200);
 
-  expect(hashTable.size()).toStrictEqual(2);
+  expect(map.size()).toStrictEqual(2);
 });
 
 Deno.test('clear method', () => {
-  const hashTable = new Map<number>();
+  const map = new Map<number>();
 
-  hashTable.set('key1', 100).set('key2', 200);
-  hashTable.clear();
+  map.set('key1', 100).set('key2', 200);
+  map.clear();
 
-  expect(hashTable.size()).toStrictEqual(0);
-  expect(hashTable.has('key1')).toStrictEqual(false);
+  expect(map.size()).toStrictEqual(0);
+  expect(map.has('key1')).toStrictEqual(false);
 });
 
 Deno.test('delete method', () => {
-  const hashTable = new Map<number>();
+  const map = new Map<number>();
 
-  hashTable.set('key1', 100);
-  hashTable.delete('key1');
+  map.set('key1', 100);
+  map.delete('key1');
 
-  expect(hashTable.get('key1')).toStrictEqual(undefined);
-  expect(hashTable.size()).toStrictEqual(0);
+  expect(map.get('key1')).toStrictEqual(undefined);
+  expect(map.size()).toStrictEqual(0);
 });
 
 Deno.test('entries method', () => {
-  const hashTable = new Map<number>();
+  const map = new Map<number>();
 
-  hashTable.set('key1', 100).set('key2', 200);
+  map.set('key1', 100).set('key2', 200);
 
-  expect(hashTable.entries()).toStrictEqual([
+  expect(map.entries()).toStrictEqual([
     ['key1', 100],
     ['key2', 200],
   ]);
 });
 
 Deno.test('forEach method', () => {
-  const hashTable = new Map<number>();
+  const map = new Map<number>();
 
-  hashTable.set('key1', 100).set('key2', 200);
+  map.set('key1', 100).set('key2', 200);
 
   const keys: string[] = [];
   const values: number[] = [];
 
-  hashTable.forEach((value, key) => {
+  map.forEach((value, key) => {
     keys.push(key);
     values.push(value);
   });
@@ -132,17 +132,17 @@ Deno.test('forEach method', () => {
 });
 
 Deno.test('keys method', () => {
-  const hashTable = new Map<number>();
+  const map = new Map<number>();
 
-  hashTable.set('key1', 100).set('key2', 200);
+  map.set('key1', 100).set('key2', 200);
 
-  expect(hashTable.keys()).toStrictEqual(['key1', 'key2']);
+  expect(map.keys()).toStrictEqual(['key1', 'key2']);
 });
 
 Deno.test('values method', () => {
-  const hashTable = new Map<number>();
+  const map = new Map<number>();
 
-  hashTable.set('key1', 100).set('key2', 200);
+  map.set('key1', 100).set('key2', 200);
 
-  expect(hashTable.values()).toStrictEqual([100, 200]);
+  expect(map.values()).toStrictEqual([100, 200]);
 });
