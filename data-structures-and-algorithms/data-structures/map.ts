@@ -1,57 +1,65 @@
 import { expect } from 'jsr:@std/expect';
 
-class HashTable<T> {
-  private table: Map<string, T>;
+class Map<T> {
+  private table: Record<string, T>;
 
   constructor() {
-    this.table = new Map();
+    this.table = {};
   }
 
-  set(key: string, value: T): HashTable<T> {
-    this.table.set(key, value);
+  set(key: string, value: T): Map<T> {
+    this.table[key] = value;
 
     return this;
   }
 
   get(key: string): T | undefined {
-    return this.table.get(key);
+    return this.table[key];
   }
 
   has(key: string): boolean {
-    return this.table.has(key);
+    return this.table[key] !== undefined;
   }
 
   size(): number {
-    return this.table.size;
-  }
-
-  clear(): void {
-    this.table.clear();
+    return Object.keys(this.table).length;
   }
 
   delete(key: string): void {
-    this.table.delete(key);
+    delete this.table[key];
+  }
+
+  clear(): void {
+    for (const key of Object.keys(this.table)) {
+      this.delete(key);
+    }
   }
 
   entries(): [string, T][] {
-    return this.table.entries().toArray();
+    return Object.entries(this.table);
   }
 
   forEach(callback: (value: T, key: string) => void): void {
-    this.table.forEach(callback);
+    for (const key in this.table) {
+      if (Object.prototype.hasOwnProperty.call(this.table, key)) {
+        const value = this.table[key];
+
+        callback(value, key);
+      }
+    }
   }
 
   keys(): string[] {
-    return this.table.keys().toArray();
+    return Object.keys(this.table);
   }
 
   values(): T[] {
-    return this.table.values().toArray();
+    return Object.values(this.table);
   }
 }
 
 Deno.test('set and get methods', () => {
-  const hashTable = new HashTable<number>();
+  const hashTable = new Map<number>();
 
   hashTable.set('key1', 100);
 
@@ -59,7 +67,7 @@ Deno.test('set and get methods', () => {
 });
 
 Deno.test('has method', () => {
-  const hashTable = new HashTable<number>();
+  const hashTable = new Map<number>();
 
   hashTable.set('key1', 100);
 
@@ -68,7 +76,7 @@ Deno.test('has method', () => {
 });
 
 Deno.test('size method', () => {
-  const hashTable = new HashTable<number>();
+  const hashTable = new Map<number>();
 
   hashTable.set('key1', 100).set('key2', 200);
 
@@ -76,7 +84,7 @@ Deno.test('size method', () => {
 });
 
 Deno.test('clear method', () => {
-  const hashTable = new HashTable<number>();
+  const hashTable = new Map<number>();
 
   hashTable.set('key1', 100).set('key2', 200);
   hashTable.clear();
@@ -86,7 +94,7 @@ Deno.test('clear method', () => {
 });
 
 Deno.test('delete method', () => {
-  const hashTable = new HashTable<number>();
+  const hashTable = new Map<number>();
 
   hashTable.set('key1', 100);
   hashTable.delete('key1');
@@ -96,7 +104,7 @@ Deno.test('delete method', () => {
 });
 
 Deno.test('entries method', () => {
-  const hashTable = new HashTable<number>();
+  const hashTable = new Map<number>();
 
   hashTable.set('key1', 100).set('key2', 200);
 
@@ -107,7 +115,7 @@ Deno.test('entries method', () => {
 });
 
 Deno.test('forEach method', () => {
-  const hashTable = new HashTable<number>();
+  const hashTable = new Map<number>();
 
   hashTable.set('key1', 100).set('key2', 200);
 
@@ -124,7 +132,7 @@ Deno.test('forEach method', () => {
 });
 
 Deno.test('keys method', () => {
-  const hashTable = new HashTable<number>();
+  const hashTable = new Map<number>();
 
   hashTable.set('key1', 100).set('key2', 200);
 
@@ -132,7 +140,7 @@ Deno.test('keys method', () => {
 });
 
 Deno.test('values method', () => {
-  const hashTable = new HashTable<number>();
+  const hashTable = new Map<number>();
 
   hashTable.set('key1', 100).set('key2', 200);
 
