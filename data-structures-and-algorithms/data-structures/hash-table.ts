@@ -9,11 +9,11 @@ class HashTable<T> {
     this.size = 0;
   }
 
-  private hash(str: string) {
+  private hash(key: string): number {
     let hash = 0;
 
-    for (let i = 0; i < str.length; i++) {
-      hash += str.charCodeAt(i);
+    for (const char of key) {
+      hash += char.charCodeAt(0);
     }
 
     return hash;
@@ -22,18 +22,16 @@ class HashTable<T> {
   set(key: string, value: T): HashTable<T> {
     const hash = this.hash(key);
 
-    if (this.table[hash]) {
-      const index = this.table[hash].findIndex(([k]) => k === key);
+    this.table[hash] ??= [];
 
-      if (index >= 0) {
-        this.table[hash][index] = [key, value];
-      } else {
-        this.table[hash].push([key, value]);
-        this.size++;
-      }
-    } else {
-      this.table[hash] = [[key, value]];
+    const bucket = this.table[hash];
+    const index = bucket.findIndex(([k, _v]) => k === key);
+
+    if (index === -1) {
+      bucket.push([key, value]);
       this.size++;
+    } else {
+      bucket[index] = [key, value];
     }
 
     return this;
