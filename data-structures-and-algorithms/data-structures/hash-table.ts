@@ -77,9 +77,7 @@ class HashTable<T> {
   keys(): string[] {
     const keys: string[] = [];
 
-    this.forEach((_, key) => {
-      keys.push(key);
-    });
+    this.forEach((_value, key) => keys.push(key));
 
     return keys;
   }
@@ -87,9 +85,7 @@ class HashTable<T> {
   values(): T[] {
     const values: T[] = [];
 
-    this.forEach((value) => {
-      values.push(value);
-    });
+    this.forEach((value) => values.push(value));
 
     return values;
   }
