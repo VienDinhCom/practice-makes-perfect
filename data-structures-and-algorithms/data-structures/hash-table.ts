@@ -42,24 +42,19 @@ class HashTable<T> {
     const bucket = this.table[hash] || [];
     const item = bucket.find(([k, _v]) => k === key);
 
-    if (item) return item[1];
+    return item ? item[1] : undefined;
   }
 
   delete(key: string): void {
     const hash = this.hash(key);
+    const bucket = this.table[hash] || [];
 
-    if (this.table[hash]) {
-      const index = this.table[hash].findIndex(([k]) => k === key);
+    const index = bucket.findIndex(([k, _v]) => k === key);
 
-      if (index >= 0) {
-        this.table[hash].splice(index, 1);
-        this.size--;
+    if (index === -1) return;
 
-        if (this.table[hash].length === 0) {
-          this.table.slice(hash, 1);
-        }
-      }
-    }
+    bucket.splice(index, 1);
+    this.size--;
   }
 
   has(key: string): boolean {
