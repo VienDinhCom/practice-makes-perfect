@@ -60,17 +60,18 @@ class HashTable<T> {
   has(key: string): boolean {
     const hash = this.hash(key);
     const bucket = this.table[hash] || [];
-    const index = bucket.findIndex(([k, _v]) => k === key);
 
-    return index === -1 ? false : true;
+    return bucket.some(([k, _v]) => k === key);
   }
 
   forEach(callback: (value: T, key: string) => void): void {
-    this.table.forEach((bucket) => {
-      bucket.forEach(([key, value]) => {
+    for (let bucket of this.table) {
+      bucket ??= [];
+
+      for (const [key, value] of bucket) {
         callback(value, key);
-      });
-    });
+      }
+    }
   }
 
   keys(): string[] {
