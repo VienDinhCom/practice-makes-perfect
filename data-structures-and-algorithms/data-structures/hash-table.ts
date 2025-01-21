@@ -39,16 +39,10 @@ class HashTable<T> {
 
   get(key: string): T | undefined {
     const hash = this.hash(key);
+    const bucket = this.table[hash] || [];
+    const item = bucket.find(([k, _v]) => k === key);
 
-    const bucket = this.table[hash];
-
-    if (bucket) {
-      const item = bucket.find(([k]) => k === key);
-
-      if (item) {
-        return item[1];
-      }
-    }
+    if (item) return item[1];
   }
 
   delete(key: string): void {
