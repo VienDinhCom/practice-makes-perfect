@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "dev": "node --watch index.js",
-    "start": "node index.js"
+    "start": "node index.js",
+    "serve": "ngrok http 3000"
   },
   "dependencies": {
     "cors": "^2.8.1",
