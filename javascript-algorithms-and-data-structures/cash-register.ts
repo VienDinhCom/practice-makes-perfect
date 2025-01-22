@@ -23,40 +23,37 @@ function checkCashRegister(price: number, cash: number, drawer: Cash): Result {
   ]);
 
   const changeDue = calculate(cash - price);
-  const drawerMap = new Map(drawer);
-  const totalInDrawer = calculate(drawer.reduce((sum, [_, amount]) => sum + amount, 0));
+  const totalInDrawer = calculate(drawer.reduce((acc, [, value]) => acc + value, 0));
 
-  if (totalInDrawer < changeDue) {
-    return { status: 'INSUFFICIENT_FUNDS', change: [] };
-  }
-
-  if (totalInDrawer === changeDue) {
+  if (changeDue === totalInDrawer) {
     return { status: 'CLOSED', change: drawer };
   }
 
-  let changeRemain = changeDue;
-  const changeGiven: Cash = [];
+  if (changeDue > totalInDrawer) {
+    return { status: 'INSUFFICIENT_FUNDS', change: [] };
+  }
 
-  for (const [currency, value] of currencyMap) {
-    const needed = Math.floor(changeRemain / value);
-    const available = Math.floor((drawerMap.get(currency) || 0) / value);
+  const change: Cash = [];
+  const drawerMap = new Map(drawer.reverse());
 
-    let amount = 0;
+  let remainderValue = changeDue;
 
-    if (available <= needed) {
-      amount = calculate(available * value);
-    } else {
-      amount = calculate(needed * value);
-    }
+  for (const [currency, availableValue] of drawerMap) {
+    const currencyValue = currencyMap.get(currency)!;
 
-    if (amount > 0) {
-      changeGiven.push([currency, amount]);
-      changeRemain = calculate(changeRemain - amount);
+    const neededUnits = Math.floor(remainderValue / currencyValue);
+    const availableUnits = Math.floor(availableValue / currencyValue);
+
+    const neededValue = calculate((availableUnits >= neededUnits ? neededUnits : availableUnits) * currencyValue);
+
+    if (neededValue) {
+      change.push([currency, neededValue]);
+      remainderValue = calculate(remainderValue - neededValue);
     }
   }
 
-  if (changeRemain === 0) {
-    return { status: 'OPEN', change: changeGiven };
+  if (remainderValue === 0) {
+    return { status: 'OPEN', change };
   }
 
   return { status: 'INSUFFICIENT_FUNDS', change: [] };
