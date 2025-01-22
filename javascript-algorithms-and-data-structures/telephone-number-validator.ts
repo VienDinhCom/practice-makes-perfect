@@ -2,6 +2,7 @@
 
 import { expect } from 'jsr:@std/expect';
 
+// review
 function telephoneCheck(str: string) {
   const regexs: RegExp[] = [
     /^1 \d{3}-\d{3}-\d{4}$/,
