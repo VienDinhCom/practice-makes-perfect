@@ -22,12 +22,12 @@ function convertToRoman(num: number): string {
   let result = '';
   let remainder = num;
 
-  for (const [roman, value] of romanNumerals) {
-    const neededRoman = Math.floor(remainder / value);
-    const neededValue = neededRoman * value;
+  for (const [symbol, value] of romanNumerals) {
+    const neededUnits = Math.floor(remainder / value);
 
-    remainder -= neededValue;
-    result += roman.repeat(neededRoman);
+    result += symbol.repeat(neededUnits);
+
+    remainder -= neededUnits * value;
   }
 
   return result;
