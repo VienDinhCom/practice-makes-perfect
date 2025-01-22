@@ -9,14 +9,16 @@ function rot13(str: string): string {
   let result = '';
 
   for (const char of str) {
-    if (/[A-Z]/i.test(char)) {
-      let code = char.charCodeAt(0) + 13;
+    const code = char.charCodeAt(0);
 
-      if (code > ZCode) {
-        code = code - ZCode + ACode - 1;
+    if (code >= ACode && code <= ZCode) {
+      const shiftedCode = code + 13;
+
+      if (shiftedCode > ZCode) {
+        result += String.fromCharCode(ACode + (shiftedCode - ZCode - 1));
+      } else {
+        result += String.fromCharCode(shiftedCode);
       }
-
-      result += String.fromCharCode(code);
     } else {
       result += char;
     }
