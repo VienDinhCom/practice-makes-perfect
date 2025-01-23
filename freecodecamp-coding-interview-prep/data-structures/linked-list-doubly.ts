@@ -24,7 +24,7 @@ class DoublyLinkedList<T> {
   add(data: T) {
     const node = new Node(data);
 
-    if (this.head === null) {
+    if (this.head === null && this.tail === null) {
       this.head = node;
       this.tail = node;
     } else {
