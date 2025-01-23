@@ -38,23 +38,22 @@ class SinglyLinkedList<T> {
   }
 
   remove(element: T) {
-    if (this.head?.element === element) {
-      this.head = this.head.next;
-      this.length--;
-    } else {
-      let prev = this.head;
-      let current = this.head?.next;
+    let previous: Node<T> | null = null;
+    let current: Node<T> | null = this.head;
 
-      while (current) {
-        if (current.element === element) {
-          prev!.next = current.next;
-          this.length--;
-          return;
+    while (current) {
+      if (current.element === element) {
+        if (current === this.head) {
+          this.head = current.next;
+        } else {
+          previous!.next = current.next;
         }
 
-        prev = current;
-        current = current.next;
+        this.length--;
       }
+
+      previous = current;
+      current = current.next;
     }
   }
 
