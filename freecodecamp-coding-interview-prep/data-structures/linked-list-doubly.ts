@@ -45,13 +45,8 @@ class DoublyLinkedList<T> {
         const prev = current.prev;
         const next = current.next;
 
-        if (prev) {
-          prev.next = next;
-        }
-
-        if (next) {
-          next.prev = prev;
-        }
+        if (prev) prev.next = next;
+        if (next) next.prev = prev;
 
         if (current === this.head) {
           this.head = next;
@@ -60,8 +55,6 @@ class DoublyLinkedList<T> {
         if (current === this.tail) {
           this.tail = prev;
         }
-
-        return;
       }
 
       current = current.next;
