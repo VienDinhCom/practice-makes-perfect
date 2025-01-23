@@ -25,9 +25,9 @@ class SinglyLinkedList<T> {
     if (this.head === null) {
       this.head = node;
     } else {
-      let current = this.head;
+      let current: Node<T> | null = this.head;
 
-      while (current.next) {
+      while (current?.next) {
         current = current.next;
       }
 
