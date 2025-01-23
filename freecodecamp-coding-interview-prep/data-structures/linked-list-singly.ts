@@ -19,7 +19,7 @@ class SinglyLinkedList<T> {
     this.length = 0;
   }
 
-  add(element: T) {
+  add(element: T): void {
     const node = new Node(element);
 
     if (this.head === null) {
@@ -37,7 +37,7 @@ class SinglyLinkedList<T> {
     this.length++;
   }
 
-  remove(element: T) {
+  remove(element: T): void {
     let previous: Node<T> | null = null;
     let current: Node<T> | null = this.head;
 
@@ -57,25 +57,22 @@ class SinglyLinkedList<T> {
     }
   }
 
-  isEmpty() {
+  isEmpty(): boolean {
     return this.length === 0;
   }
 
-  indexOf = (element: T) => {
-    if (this.head?.element === element) {
-      return 0;
-    } else {
-      let current = this.head?.next;
-      let index = 1;
+  indexOf = (element: T): number => {
+    let index: number = 0;
+    let current: Node<T> | null = this.head;
 
-      while (current) {
-        if (current.element === element) {
-          return index;
-        }
-
-        index++;
-        current = current.next;
+    while (current) {
+      if (current.element === element) {
+        return index;
       }
+
+      index++;
+
+      current = current.next;
     }
 
     return -1;
