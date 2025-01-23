@@ -79,11 +79,11 @@ class SinglyLinkedList<T> {
   };
 
   elementAt(at: number) {
-    let index = 0;
-    let current = this.head;
+    let index: number = 0;
+    let current: Node<T> | null = this.head;
 
     while (current) {
-      if (at === index) {
+      if (index === at) {
         return current.element;
       }
 
