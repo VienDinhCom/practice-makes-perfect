@@ -77,17 +77,17 @@ class BinarySearchTree {
     return null;
   }
 
-  isPresent(value: number) {
-    if (this.root === null) return false;
-
-    let current = this.root;
+  isPresent(value: number): boolean {
+    let current: Node | null = this.root;
 
     while (current) {
-      const dirrection = value < current!.value ? 'left' : 'right';
+      if (current.value === value) {
+        return true;
+      }
 
-      if (current.value === value) return true;
+      const dirrection: Dirrection = value < current.value ? 'left' : 'right';
 
-      current = current[dirrection]!;
+      current = current[dirrection];
     }
 
     return false;
