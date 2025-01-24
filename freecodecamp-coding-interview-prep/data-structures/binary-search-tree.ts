@@ -63,10 +63,8 @@ class BinarySearchTree {
     return null;
   }
 
-  findMax(node = this.root) {
-    if (node === null) return null;
-
-    let current = node;
+  findMax(node = this.root): number | null {
+    let current: Node | null = node;
 
     while (current) {
       if (current.right === null) {
@@ -75,6 +73,8 @@ class BinarySearchTree {
 
       current = current.right;
     }
+
+    return null;
   }
 
   isPresent(value: number) {
