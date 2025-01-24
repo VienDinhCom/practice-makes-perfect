@@ -154,7 +154,7 @@ class BinarySearchTree {
   }
 
   isBalanced() {
-    return this.findMaxHeight() === this.findMinHeight();
+    return this.findMinHeight() === this.findMaxHeight();
   }
 
   // Should return a sorted array
