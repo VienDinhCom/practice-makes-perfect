@@ -21,7 +21,7 @@ class BinarySearchTree {
     this.root = null;
   }
 
-  add(value: number) {
+  add(value: number): void {
     const node = new Node(value);
 
     if (this.root === null) {
@@ -49,10 +49,8 @@ class BinarySearchTree {
     }
   }
 
-  findMin(node = this.root) {
-    if (node === null) return null;
-
-    let current = node;
+  findMin(node = this.root): number | null {
+    let current: Node | null = node;
 
     while (current) {
       if (current.left === null) {
@@ -61,6 +59,8 @@ class BinarySearchTree {
 
       current = current.left;
     }
+
+    return null;
   }
 
   findMax(node = this.root) {
