@@ -12,6 +12,8 @@ class Node {
   }
 }
 
+type Dirrection = 'left' | 'right';
+
 class BinarySearchTree {
   root: Node | null;
 
@@ -24,17 +26,18 @@ class BinarySearchTree {
 
     if (this.root === null) {
       this.root = node;
+
       return;
     }
 
-    let current: Node = this.root;
+    let current: Node | null = this.root;
 
     while (current) {
       if (current.value === node.value) {
         return;
       }
 
-      const dirrection = node.value < current.value ? 'left' : 'right';
+      const dirrection: Dirrection = value < current.value ? 'left' : 'right';
 
       if (current[dirrection] === null) {
         current[dirrection] = node;
