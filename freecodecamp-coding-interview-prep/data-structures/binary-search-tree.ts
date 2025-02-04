@@ -26,18 +26,14 @@ class BinarySearchTree {
 
     if (this.root === null) {
       this.root = node;
-
-      return;
     }
 
     let current: Node | null = this.root;
 
     while (current) {
-      if (current.value === node.value) {
-        return;
-      }
+      if (current.value === value) return;
 
-      const dirrection: Dirrection = value < current.value ? 'left' : 'right';
+      const dirrection: Dirrection = value > current.value ? 'right' : 'left';
 
       if (current[dirrection] === null) {
         current[dirrection] = node;
