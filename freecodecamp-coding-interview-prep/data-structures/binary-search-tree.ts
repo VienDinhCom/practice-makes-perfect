@@ -26,6 +26,7 @@ class BinarySearchTree {
 
     if (this.root === null) {
       this.root = node;
+      return;
     }
 
     let current: Node | null = this.root;
