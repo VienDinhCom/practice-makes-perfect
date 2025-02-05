@@ -160,19 +160,19 @@ class BinarySearchTree {
   inOrder = () => {
     if (this.root === null) return null;
 
-    const values: number[] = [];
-
     const traverse = (node: Node | null) => {
-      if (node === null) return;
+      if (node === null) return [];
 
-      traverse(node.left);
+      const values: number[] = [];
+
+      values.push(...traverse(node.left))
       values.push(node.value);
-      traverse(node.right);
+      values.push(...traverse(node.right))
+
+      return values;
     };
 
-    traverse(this.root);
-
-    return values;
+    return traverse(this.root);
   };
 
   // Root first
@@ -182,19 +182,19 @@ class BinarySearchTree {
   preOrder() {
     if (this.root === null) return null;
 
-    const traverse = (node: Node | null) => {
-      if (node === null) return [];
+    const values: number[] = [];
 
-      const values: number[] = [];
+    const traverse = (node: Node | null) => {
+      if (node === null) return;
 
       values.push(node.value);
-      values.push(...traverse(node.left));
-      values.push(...traverse(node.right));
-
-      return values;
+      traverse(node.left);
+      traverse(node.right);
     };
 
-    return traverse(this.root);
+    traverse(this.root);
+
+    return values;
   }
 
   // Children first
