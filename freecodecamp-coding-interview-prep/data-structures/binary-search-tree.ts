@@ -323,8 +323,8 @@ class BinarySearchTree {
 
       [node.left, node.right] = [node.right, node.left];
 
-      traverse(node.left);
       traverse(node.right);
+      traverse(node.left);
     };
 
     traverse(this.root);
