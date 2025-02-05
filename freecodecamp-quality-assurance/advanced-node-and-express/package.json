@@ -6,8 +6,8 @@
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
-    "dev": "node --watch server.js",
-    "serve": "ngrok http 3000"
+    "dev": "nodemon server.js",
+    "serve": "ngrok http 8080"
   },
   "dependencies": {
     "bcrypt": "~5.0.0",
