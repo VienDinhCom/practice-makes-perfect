@@ -256,18 +256,16 @@ class BinarySearchTree {
     return values;
   };
 
-  findNode(value: number) {
+  findNode(value: number): { parent: Node | null; current: Node | null } {
     if (this.root === null) return { parent: null, current: null };
 
     let parent: Node | null = null;
     let current: Node | null = this.root;
 
     while (current) {
-      if (current.value === value) {
-        return { parent, current };
-      }
+      if (current.value === value) break;
 
-      const dirrection: 'left' | 'right' = value < current.value ? 'left' : 'right';
+      const dirrection: Dirrection = value < current.value ? 'left' : 'right';
 
       parent = current;
       current = current[dirrection];
