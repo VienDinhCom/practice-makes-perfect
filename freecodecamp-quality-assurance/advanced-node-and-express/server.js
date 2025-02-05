@@ -15,7 +15,7 @@ app.set('view engine', 'pug');
 app.set('views', './views/pug');
 
 app.route('/').get((req, res) => {
-  res.render('index');
+  res.render('index', { title: 'Hello', message: 'Please log in' });
 });
 
 const PORT = process.env.PORT || 3000;
