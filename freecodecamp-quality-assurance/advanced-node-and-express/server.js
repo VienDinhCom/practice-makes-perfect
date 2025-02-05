@@ -11,8 +11,11 @@ app.use('/public', express.static(process.cwd() + '/public'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-app.route('/').get((req, res) => {
+app.set('view engine', 'pug');
+app.set('views', './views/pug');
 
+app.route('/').get((req, res) => {
+  res.render('index');
 });
 
 const PORT = process.env.PORT || 3000;
