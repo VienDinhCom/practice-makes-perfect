@@ -223,9 +223,8 @@ class BinarySearchTree {
   levelOrder = () => {
     if (this.root === null) return null;
 
-    const queue: Node[] = [this.root];
-
     const values: number[] = [];
+    const queue: Node[] = [this.root];
 
     while (queue.length > 0) {
       const node = queue.shift()!;
@@ -242,8 +241,8 @@ class BinarySearchTree {
   reverseLevelOrder = () => {
     if (this.root === null) return null;
 
-    const queue: Node[] = [this.root];
     const values: number[] = [];
+    const queue: Node[] = [this.root];
 
     while (queue.length > 0) {
       const node = queue.shift()!;
