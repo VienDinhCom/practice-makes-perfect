@@ -1,3 +1,6 @@
+'use strict';
+require('dotenv').config();
+
 const passport = require('passport');
 
 module.exports = function (app, myDataBase) {
