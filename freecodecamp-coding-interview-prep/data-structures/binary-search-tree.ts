@@ -279,10 +279,10 @@ class BinarySearchTree {
 
     if (current === null) return null;
 
-    const hasNoChild = current.left === null && current.right == null;
+    const hasNoChild = current.left === null && current.right === null;
     const hasOneChild = (current.left === null) !== (current.right === null);
 
-    const dirrection = current === parent?.left ? 'left' : 'right';
+    const dirrection: Dirrection = parent?.left === current ? 'left' : 'right';
 
     if (hasNoChild) {
       if (current === this.root) {
@@ -295,22 +295,22 @@ class BinarySearchTree {
     }
 
     if (hasOneChild) {
+      const child = current.left || current.right;
+
       if (current === this.root) {
-        this.root = current.left || current.right;
+        this.root = child;
       } else {
-        parent![dirrection] = current.left || current.right;
+       parent![dirrection] = child;
       }
 
       return current;
     }
 
-    const node = current === this.root ? this.root : current;
-
-    const successorValue = this.findMin(node)!;
+    const successorValue = this.findMin(current)!;
 
     this.remove(successorValue);
 
-    node.value = successorValue;
+    current.value = successorValue;
 
     return current;
   }
