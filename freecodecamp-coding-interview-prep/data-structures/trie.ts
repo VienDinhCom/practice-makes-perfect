@@ -1,5 +1,8 @@
 import { expect } from 'jsr:@std/expect';
 
+// https://www.freecodecamp.org/learn/coding-interview-prep/data-structures/create-a-trie-search-tree
+// https://www.geeksforgeeks.org/trie-insert-and-search/
+
 class Node {
   children: Map<string, Node>;
   isEndOfWord: boolean;
@@ -18,7 +21,7 @@ class Trie {
   }
 
   add(word: string) {
-    let current = this.root;
+    let current: Node = this.root;
 
     for (const char of word) {
       if (!current.children.has(char)) {
@@ -32,7 +35,7 @@ class Trie {
   }
 
   isWord(word: string) {
-    let current = this.root;
+    let current: Node = this.root;
 
     for (const char of word) {
       if (!current.children.has(char)) {
@@ -42,7 +45,7 @@ class Trie {
       current = current.children.get(char)!;
     }
 
-    return current.isEndOfWord;
+    return current.isEndOfWord
   }
 
   // review
