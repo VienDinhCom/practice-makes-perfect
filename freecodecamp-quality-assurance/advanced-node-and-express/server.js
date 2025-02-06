@@ -40,6 +40,7 @@ myDB(async (client) => {
     res.render('index', {
       title: 'Connected to Database',
       message: 'Please login',
+      showLogin: true,
     });
   });
 
@@ -66,6 +67,12 @@ myDB(async (client) => {
       });
     })
   );
+
+  app.route('/login').post(passport.authenticate('local', { failureRedirect: '/' }), (req, res) => {
+    res.redirect('/profile');
+  });
+
+  
 }).catch((e) => {
   app.route('/').get((req, res) => {
     res.render('index', { title: e, message: 'Unable to connect to database' });
