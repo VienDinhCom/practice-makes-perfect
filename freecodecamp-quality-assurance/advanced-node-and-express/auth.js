@@ -1,5 +1,9 @@
+'use strict';
+require('dotenv').config();
+
 const { ObjectID } = require('mongodb');
 const LocalStrategy = require('passport-local');
+const GitHubStrategy = require('passport-github').Strategy;
 const bcrypt = require('bcrypt');
 const session = require('express-session');
 const passport = require('passport');
@@ -43,5 +47,19 @@ module.exports = function (app, myDataBase) {
         return done(null, user);
       });
     })
+  );
+
+  passport.use(
+    new GitHubStrategy(
+      {
+        clientID: process.env.GITHUB_CLIENT_ID,
+        clientSecret: process.env.GITHUB_CLIENT_SECRET,
+        callbackURL: '/auth/callback/github',
+      },
+      function (accessToken, refreshToken, profile, cb) {
+        console.log(profile);
+        //Database logic here with callback containing your user object
+      }
+    )
   );
 };
