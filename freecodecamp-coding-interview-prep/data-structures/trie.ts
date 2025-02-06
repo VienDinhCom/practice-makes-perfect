@@ -45,11 +45,10 @@ class Trie {
       current = current.children.get(char)!;
     }
 
-    return current.isEndOfWord
+    return current.isEndOfWord;
   }
 
-  // review
-  print() {
+  print(): string[] {
     const words: string[] = [];
 
     const traverse = (node: Node, prefix: string) => {
