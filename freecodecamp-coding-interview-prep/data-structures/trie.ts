@@ -20,7 +20,7 @@ class Trie {
     this.root = new Node();
   }
 
-  add(word: string) {
+  add(word: string): void {
     let current: Node = this.root;
 
     for (const char of word) {
@@ -34,7 +34,7 @@ class Trie {
     current.isEndOfWord = true;
   }
 
-  isWord(word: string) {
+  isWord(word: string): boolean {
     let current: Node = this.root;
 
     for (const char of word) {
