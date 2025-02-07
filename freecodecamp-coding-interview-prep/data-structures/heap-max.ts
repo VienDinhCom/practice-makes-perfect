@@ -27,7 +27,7 @@ class MaxHeap {
 
   // https://media.geeksforgeeks.org/wp-content/uploads/20230901130152/Insertion-In-Max-Heap.png
 
-  // Thêm vào và đưa về đầu mảng
+  // Thêm vào cuối mảng sau đó đưa về đúng vị trí
   insert(value: number) {
     this.heap.push(value);
 
