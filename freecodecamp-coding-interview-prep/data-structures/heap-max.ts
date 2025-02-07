@@ -45,44 +45,41 @@ class MaxHeap {
     bubbleUp(this.heap.length - 1);
   }
 
-  remove() {
-    if (this.heap.length === 1) {
-      throw new Error('Heap is empty, cannot remove elements.');
-    }
+  remove(): number {
+    if (this.heap.length === 1) throw new Error('Heap is empty, cannot remove elements.');
 
-    if (this.heap.length === 2) {
-      return this.heap.pop();
-    }
+    if (this.heap.length === 2) return this.heap.pop()!;
 
-    const result = this.heap[1];
+    const bubbleDown = (currentIndex: number) => {
+      const leftIndex = this.leftChildIndex(currentIndex);
+      const rightIndex = this.rightChildIndex(currentIndex);
 
-    this.heap[1] = this.heap.pop()!;
+      const current = this.heap[currentIndex]!;
+      const left = this.heap[leftIndex]!;
+      const right = this.heap[rightIndex]!;
 
-    const bubbleDown = (current: number) => {
-      const left = this.leftChildIndex(current);
-      const right = this.rightChildIndex(current);
+      let largestIndex = currentIndex;
 
-      let largest = current;
-
-      if (left < this.heap.length && this.heap[left]! > this.heap[largest]!) {
-        largest = left;
+      if (currentIndex < this.heap.length && current > left) {
+        largestIndex = leftIndex;
       }
 
-      if (right < this.heap.length && this.heap[right]! > this.heap[largest]!) {
-        largest = right;
+      if (currentIndex < this.heap.length && current > right) {
+        largestIndex = rightIndex;
       }
 
-      if (largest !== current) {
-        [this.heap[current], this.heap[largest]] = [this.heap[largest], this.heap[current]];
+      if (largestIndex !== currentIndex) {
+        [this.heap[largestIndex], this.heap[currentIndex]] = [this.heap[currentIndex], this.heap[largestIndex]];
 
-        bubbleDown(right);
+        bubbleDown(rightIndex);
       }
     };
 
     bubbleDown(1);
 
-    return result;
+    return this.heap.pop()!;
   }
+
   peek(): number | null {
     return this.heap.length > 1 ? this.heap[1] : null;
   }
