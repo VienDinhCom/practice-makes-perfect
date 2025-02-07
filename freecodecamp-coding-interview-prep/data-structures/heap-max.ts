@@ -26,6 +26,8 @@ class MaxHeap {
   }
 
   // https://media.geeksforgeeks.org/wp-content/uploads/20230901130152/Insertion-In-Max-Heap.png
+
+  // Thêm vào và đưa về đầu mảng
   insert(value: number) {
     this.heap.push(value);
 
@@ -45,6 +47,7 @@ class MaxHeap {
     bubbleUp(this.heap.length - 1);
   }
 
+  // Đưa về cuối mảng và lấy ra
   remove(): number {
     if (this.heap.length === 1) throw new Error('Heap is empty, cannot remove elements.');
 
