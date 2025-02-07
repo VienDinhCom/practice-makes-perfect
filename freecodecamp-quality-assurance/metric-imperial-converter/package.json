@@ -5,7 +5,8 @@
 	"main": "server.js",
 	"scripts": {
 		"start": "node server.js",
-		"test": "mocha ./tests/ --ui tdd"
+		"test": "mocha ./tests/ --ui tdd",
+		"serve": "ngrok http 3000"
 	},
 	"dependencies": {
 		"body-parser": "^1.19.0",
