@@ -25,16 +25,20 @@ class MinHeap {
     return [...this.heap];
   }
 
+  // Thêm vào cuối mảng sau đó đưa về đúng vị trí
   insert(value: number) {
     this.heap.push(value);
 
-    const bubbleUp = (current: number) => {
-      const parent = this.parentIndex(current);
+    const bubbleUp = (currentIndex: number) => {
+      const parentIndex = this.parentIndex(currentIndex);
 
-      if (current > 1 && this.heap[parent]! > this.heap[current]!) {
-        [this.heap[current], this.heap[parent]] = [this.heap[parent], this.heap[current]];
+      const parent = this.heap[parentIndex]!;
+      const current = this.heap[currentIndex]!;
 
-        bubbleUp(parent);
+      if (currentIndex > 1 && parent > current) {
+        [this.heap[currentIndex], this.heap[parentIndex]] = [this.heap[parentIndex], this.heap[currentIndex]];
+
+        bubbleUp(parentIndex);
       }
     };
 
