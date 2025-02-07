@@ -74,6 +74,10 @@ myDB(async (client) => {
       currentUsers,
       connected: true,
     });
+
+    socket.on('chat message', (message) => {
+      io.emit('chat message', { username: socket.request.user.username, message });
+    });
   });
 }).catch((e) => {
   app.route('/').get((req, res) => {
@@ -94,6 +98,7 @@ function onAuthorizeFail(data, message, error, accept) {
 }
 
 const PORT = process.env.PORT || 3000;
+
 http.listen(PORT, () => {
   console.log(`Listening on port ${PORT}`);
 });
