@@ -63,11 +63,11 @@ class MaxHeap {
 
       let largestIndex = currentIndex;
 
-      if (currentIndex < this.heap.length && current > left) {
+      if (leftIndex < this.heap.length && current > left) {
         largestIndex = leftIndex;
       }
 
-      if (currentIndex < this.heap.length && current > right) {
+      if (rightIndex < this.heap.length && current > right) {
         largestIndex = rightIndex;
       }
 
