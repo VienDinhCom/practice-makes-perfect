@@ -68,6 +68,12 @@ myDB(async (client) => {
       --currentUsers;
       io.emit('user count', currentUsers);
     });
+
+    io.emit('user', {
+      username: socket.request.user.username,
+      currentUsers,
+      connected: true,
+    });
   });
 }).catch((e) => {
   app.route('/').get((req, res) => {
