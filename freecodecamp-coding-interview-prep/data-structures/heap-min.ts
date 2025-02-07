@@ -35,7 +35,7 @@ class MinHeap {
       const parent = this.heap[parentIndex]!;
       const current = this.heap[currentIndex]!;
 
-      if (currentIndex > 1 && parent > current) {
+      if (parentIndex > 0 && parent > current) {
         [this.heap[currentIndex], this.heap[parentIndex]] = [this.heap[parentIndex], this.heap[currentIndex]];
 
         bubbleUp(parentIndex);
@@ -45,43 +45,38 @@ class MinHeap {
     bubbleUp(this.heap.length - 1);
   }
 
-  remove() {
-    if (this.heap.length === 1) {
-      throw new Error('Heap is empty, cannot remove elements.');
-    }
+  remove(): number {
+    if (this.heap.length === 1) throw new Error('Heap is empty, cannot remove elements.');
+    if (this.heap.length === 2) return this.heap.pop()!;
 
-    if (this.heap.length === 2) {
-      return this.heap.pop();
-    }
-
-    const result = this.heap[1];
+    const value = this.heap[1]!;
 
     this.heap[1] = this.heap.pop()!;
 
-    const bubbleDown = (current: number) => {
-      const left = this.leftChildIndex(current);
-      const right = this.rightChildIndex(current);
+    const bubbleDown = (currentIndex: number) => {
+      const leftIndex = this.leftChildIndex(currentIndex);
+      const rightIndex = this.rightChildIndex(currentIndex);
 
-      let smallest = current;
+      let smallestIndex = currentIndex;
 
-      if (left < this.heap.length && this.heap[left]! < this.heap[smallest]!) {
-        smallest = left;
+      if (leftIndex < this.heap.length && this.heap[leftIndex]! < this.heap[smallestIndex]!) {
+        smallestIndex = leftIndex;
       }
 
-      if (right < this.heap.length && this.heap[right]! < this.heap[smallest]!) {
-        smallest = right;
+      if (rightIndex < this.heap.length && this.heap[rightIndex]! < this.heap[smallestIndex]!) {
+        smallestIndex = rightIndex;
       }
 
-      if (smallest !== current) {
-        [this.heap[current], this.heap[smallest]] = [this.heap[smallest], this.heap[current]];
+      if (smallestIndex !== currentIndex) {
+        [this.heap[currentIndex], this.heap[smallestIndex]] = [this.heap[smallestIndex], this.heap[currentIndex]];
 
-        bubbleDown(right);
+        bubbleDown(smallestIndex);
       }
     };
 
     bubbleDown(1);
 
-    return result;
+    return value;
   }
 
   peek(): number | null {
