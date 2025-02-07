@@ -90,15 +90,15 @@ class MinHeap {
   sort() {
     const temp = [...this.heap];
 
-    const result: number[] = [];
+    const values: number[] = [];
 
     while (this.heap.length > 1) {
-      result.push(this.remove()!);
+      values.push(this.remove());
     }
 
     this.heap = temp;
 
-    return result;
+    return values;
   }
 }
 
