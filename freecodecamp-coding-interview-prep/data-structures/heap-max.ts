@@ -25,16 +25,20 @@ class MaxHeap {
     return [...this.heap];
   }
 
+  // https://media.geeksforgeeks.org/wp-content/uploads/20230901130152/Insertion-In-Max-Heap.png
   insert(value: number) {
     this.heap.push(value);
 
-    const bubbleUp = (current: number) => {
-      const parent = this.parentIndex(current);
+    const bubbleUp = (currentIndex: number) => {
+      const parentIndex = this.parentIndex(currentIndex);
 
-      if (current > 1 && this.heap[parent]! < this.heap[current]!) {
-        [this.heap[current], this.heap[parent]] = [this.heap[parent], this.heap[current]];
+      const current = this.heap[currentIndex]!;
+      const parent = this.heap[parentIndex]!;
 
-        bubbleUp(parent);
+      if (currentIndex > 1 && parent < current) {
+        [this.heap[currentIndex], this.heap[parentIndex]] = [this.heap[parentIndex], this.heap[currentIndex]];
+
+        bubbleUp(parentIndex);
       }
     };
 
