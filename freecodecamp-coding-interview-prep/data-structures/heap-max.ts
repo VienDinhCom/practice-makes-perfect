@@ -59,13 +59,17 @@ class MaxHeap {
       const leftIndex = this.leftChildIndex(currentIndex);
       const rightIndex = this.rightChildIndex(currentIndex);
 
+      const current = this.heap[currentIndex]!;
+      const left = this.heap[leftIndex]!;
+      const right = this.heap[rightIndex]!;
+
       let largestIndex = currentIndex;
 
-      if (leftIndex < this.heap.length && this.heap[leftIndex]! > this.heap[largestIndex]!) {
+      if (leftIndex < this.heap.length && left > current) {
         largestIndex = leftIndex;
       }
 
-      if (rightIndex < this.heap.length && this.heap[rightIndex]! > this.heap[largestIndex]!) {
+      if (rightIndex < this.heap.length && right > current) {
         largestIndex = rightIndex;
       }
 
