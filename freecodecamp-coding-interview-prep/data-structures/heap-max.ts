@@ -34,8 +34,8 @@ class MaxHeap {
     const bubbleUp = (currentIndex: number) => {
       const parentIndex = this.parentIndex(currentIndex);
 
-      const current = this.heap[currentIndex]!;
       const parent = this.heap[parentIndex]!;
+      const current = this.heap[currentIndex]!;
 
       if (parentIndex > 0 && parent < current) {
         [this.heap[currentIndex], this.heap[parentIndex]] = [this.heap[parentIndex], this.heap[currentIndex]];
