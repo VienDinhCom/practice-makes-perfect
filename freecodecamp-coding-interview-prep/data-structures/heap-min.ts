@@ -57,13 +57,17 @@ class MinHeap {
       const leftIndex = this.leftChildIndex(currentIndex);
       const rightIndex = this.rightChildIndex(currentIndex);
 
+      const left = this.heap[leftIndex]!;
+      const right = this.heap[rightIndex]!;
+      const current = this.heap[currentIndex]!;
+
       let smallestIndex = currentIndex;
 
-      if (leftIndex < this.heap.length && this.heap[leftIndex]! < this.heap[smallestIndex]!) {
+      if (leftIndex > 0 && left < current) {
         smallestIndex = leftIndex;
       }
 
-      if (rightIndex < this.heap.length && this.heap[rightIndex]! < this.heap[smallestIndex]!) {
+      if (rightIndex > 0 && right < current) {
         smallestIndex = rightIndex;
       }
 
