@@ -32,8 +32,8 @@ class MinHeap {
     const bubbleUp = (currentIndex: number) => {
       const parentIndex = this.parentIndex(currentIndex);
 
-      const parent = this.heap[parentIndex]!;
       const current = this.heap[currentIndex]!;
+      const parent = this.heap[parentIndex]!;
 
       if (parentIndex > 0 && parent > current) {
         [this.heap[currentIndex], this.heap[parentIndex]] = [this.heap[parentIndex], this.heap[currentIndex]];
