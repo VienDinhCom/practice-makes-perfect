@@ -3,15 +3,13 @@ import { expect } from 'jsr:@std/expect';
 // https://www.freecodecamp.org/learn/coding-interview-prep/data-structures/depth-first-search
 
 function depthFirstSearch(graph: number[][], start: number) {
-  const values = [start];
   const visited = new Set<number>();
 
   visited.add(start);
 
-  const traverse = (current: number) => {
-    graph[current].forEach((connected, neighbor) => {
+  const traverse = (node: number) => {
+    graph[node].forEach((connected, neighbor) => {
       if (connected && !visited.has(neighbor)) {
-        values.push(neighbor);
         visited.add(neighbor);
         traverse(neighbor);
       }
@@ -20,7 +18,7 @@ function depthFirstSearch(graph: number[][], start: number) {
 
   traverse(start);
 
-  return values;
+  return Array.from(visited);
 }
 
 Deno.test('DFS from node 1 in a fully connected graph', () => {
