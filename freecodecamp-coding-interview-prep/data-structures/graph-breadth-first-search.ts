@@ -5,21 +5,22 @@ import { expect } from 'jsr:@std/expect';
 function breadthFirstSearch(graph: number[][], start: number) {
   const distances: Record<number, number> = {};
 
-  graph.forEach((_, vertex) => {
-    distances[vertex] = Infinity;
+  graph.forEach((_, node) => {
+    distances[node] = Infinity;
   });
 
   distances[start] = 0;
 
-  const queue = [start];
+  const queue: number[] = [start];
 
   while (queue.length > 0) {
-    const current = queue.shift()!;
+    const node = queue.shift()!;
 
-    graph[current].forEach((connected, neighbor) => {
+    graph[node].forEach((connected, neighbor) => {
       if (connected && distances[neighbor] === Infinity) {
+        distances[neighbor] = distances[node] + 1;
+
         queue.push(neighbor);
-        distances[neighbor] = distances[current] + 1;
       }
     });
   }
