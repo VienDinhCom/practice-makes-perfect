@@ -22,7 +22,6 @@ class Graph {
     }
   }
 
-  // review
   addVertexData(vertex: number, data: string): void {
     if (this.isValidVertex(vertex)) {
       this.vertexData[vertex] = data;
@@ -32,41 +31,36 @@ class Graph {
   breadthFirstSearch(start: number): number[] {
     if (!this.isValidVertex(start)) return [];
 
-    const values = [start];
-    const queue = [start];
+    const queue: number[] = [start];
     const visited = new Set<number>();
 
     visited.add(start);
 
     while (queue.length > 0) {
-      const current = queue.shift()!;
+      const node = queue.shift()!;
 
-      this.adjMatrix[current].forEach((connected, neighbor) => {
+      this.adjMatrix[node].forEach((connected, neighbor) => {
         if (connected && !visited.has(neighbor)) {
-          values.push(neighbor);
-          visited.add(neighbor);
           queue.push(neighbor);
+          visited.add(neighbor);
         }
       });
     }
 
-    return values;
+    return Array.from(visited);
   }
 
   depthFirstSearch(start: number): number[] {
     if (!this.isValidVertex(start)) return [];
 
-    const values = [start];
     const visited = new Set<number>();
 
     visited.add(start);
 
-    const traverse = (current: number) => {
-      this.adjMatrix[current].forEach((connected, neighbor) => {
+    const traverse = (node: number) => {
+      this.adjMatrix[node].forEach((connected, neighbor) => {
         if (connected && !visited.has(neighbor)) {
-          values.push(neighbor);
           visited.add(neighbor);
-
           traverse(neighbor);
         }
       });
@@ -74,7 +68,7 @@ class Graph {
 
     traverse(start);
 
-    return values;
+    return Array.from(visited);
   }
 
   printGraph(): void {
