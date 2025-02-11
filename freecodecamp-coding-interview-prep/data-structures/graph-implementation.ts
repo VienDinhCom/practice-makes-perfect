@@ -1,14 +1,14 @@
 import { expect } from 'jsr:@std/expect';
 
-class Graph {
+class Graph<T> {
   private size: number;
   private adjMatrix: number[][];
-  private vertexData: string[];
+  private vertexData: T[];
 
   constructor(size: number) {
     this.size = size;
     this.adjMatrix = new Array(size).fill(null).map(() => new Array(size).fill(0));
-    this.vertexData = new Array(size).fill('');
+    this.vertexData = new Array(size);
   }
 
   private isValidVertex(vertex: number): boolean {
@@ -22,7 +22,7 @@ class Graph {
     }
   }
 
-  addVertexData(vertex: number, data: string): void {
+  addVertexData(vertex: number, data: T): void {
     if (this.isValidVertex(vertex)) {
       this.vertexData[vertex] = data;
     }
@@ -85,7 +85,7 @@ class Graph {
 }
 
 Deno.test('Graph initialization and basic operations', () => {
-  const graph = new Graph(5);
+  const graph = new Graph<string>(5);
 
   // Test initial state
   expect(graph['size']).toBe(5);
@@ -108,11 +108,11 @@ Deno.test('Graph initialization and basic operations', () => {
 
   // Test invalid vertex data addition
   graph.addVertexData(5, 'Invalid');
-  expect(graph['vertexData'][4]).toBe(''); // Should remain unchanged
+  expect(graph['vertexData'][4]).toBe(undefined); // Should remain unchanged
 });
 
 Deno.test('Graph BFS traversal', () => {
-  const graph = new Graph(6);
+  const graph = new Graph<string>(6);
 
   // Create a test graph
   //     0
@@ -140,7 +140,7 @@ Deno.test('Graph BFS traversal', () => {
 });
 
 Deno.test('Graph DFS traversal', () => {
-  const graph = new Graph(6);
+  const graph = new Graph<string>(6);
 
   // Create the same test graph
   //     0
@@ -168,7 +168,7 @@ Deno.test('Graph DFS traversal', () => {
 });
 
 Deno.test('Complex graph operations', () => {
-  const graph = new Graph(4);
+  const graph = new Graph<string>(4);
 
   // Create a fully connected graph
   graph.addEdge(0, 1);
