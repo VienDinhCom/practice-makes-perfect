@@ -15,7 +15,6 @@ class Graph {
     return vertex >= 0 && vertex < this.size;
   }
 
-  // review
   addEdge(x: number, y: number): void {
     if (this.isValidVertex(x) && this.isValidVertex(y)) {
       this.adjMatrix[x][y] = 1;
@@ -23,6 +22,7 @@ class Graph {
     }
   }
 
+  // review
   addVertexData(vertex: number, data: string): void {
     if (this.isValidVertex(vertex)) {
       this.vertexData[vertex] = data;
