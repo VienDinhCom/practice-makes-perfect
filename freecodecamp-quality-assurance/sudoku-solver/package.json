@@ -4,7 +4,9 @@
   "description": "Quality Assurance 4: Sudoku Solver",
   "main": "server.js",
   "scripts": {
-    "start": "nodemon server.js",
+    "dev": "nodemon server.js",
+    "start": "node erver.js",
+    "serve": "ngrok http 3000",
     "test": "mocha --timeout 5000 --require @babel/register --recursive --exit --ui tdd tests/"
   },
   "dependencies": {
