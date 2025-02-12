@@ -27,9 +27,7 @@ function permAlone(str: string): number {
 
   perms = perms.filter((perm) => {
     for (const char of str) {
-      if (perm.includes(char + char)) {
-        return false;
-      }
+      if (perm.includes(char + char)) return false;
     }
 
     return true;
