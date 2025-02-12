@@ -1,22 +1,24 @@
 import { expect } from 'jsr:@std/expect';
 
+// https://www.freecodecamp.org/learn/coding-interview-prep/algorithms/inventory-update
+
 type Inventory = [number, string][];
 
 function updateInventory(curInv: Inventory, newInv: Inventory): Inventory {
-  const invObj: Record<string, number> = {};
+  const upInvObj: Record<string, number> = {};
 
   curInv.forEach(([quant, item]) => {
-    invObj[item] = quant;
+    upInvObj[item] = quant;
   });
 
   newInv.forEach(([quant, item]) => {
-    invObj[item] ??= 0;
-    invObj[item] += quant;
+    upInvObj[item] ??= 0;
+    upInvObj[item] += quant;
   });
 
-  const inv: Inventory = Object.entries(invObj).map(([item, quant]) => [quant, item]);
+  const upInv: Inventory = Object.entries(upInvObj).map(([item, quant]) => [quant, item]);
 
-  return inv.sort((a, b) => a[1].localeCompare(b[1]));
+  return upInv.sort((a, b) => a[1].localeCompare(b[1]));
 }
 
 Deno.test('Inventory update tests', async (t) => {
