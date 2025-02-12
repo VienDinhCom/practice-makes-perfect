@@ -8,7 +8,7 @@ function symmetricDifference(...args: number[][]): number[] {
     const rightDiff = right.filter((v) => !left.includes(v));
 
     return Array.from(new Set([...leftDiff, ...rightDiff]));
-  }, []);
+  }, [] as number[]);
 
   return symDiff.sort((a, b) => a - b);
 }
