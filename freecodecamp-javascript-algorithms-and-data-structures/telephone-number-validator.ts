@@ -2,7 +2,6 @@
 
 import { expect } from 'jsr:@std/expect';
 
-// review
 function telephoneCheck(str: string) {
   const regexs: RegExp[] = [
     /^1 \d{3}-\d{3}-\d{4}$/,
@@ -10,8 +9,8 @@ function telephoneCheck(str: string) {
     /^\d{10}$/,
     /^\d{3}-\d{3}-\d{4}$/,
     /^\(\d{3}\)\d{3}-\d{4}$/,
-    /^1 \d{3} \d{3} \d{4}$/,
     /^1\(\d{3}\)\d{3}-\d{4}$/,
+    /^1 \d{3} \d{3} \d{4}$/,
   ];
 
   return regexs.some((regex) => regex.test(str));
