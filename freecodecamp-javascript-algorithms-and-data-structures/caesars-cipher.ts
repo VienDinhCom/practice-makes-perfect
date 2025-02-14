@@ -6,25 +6,25 @@ function rot13(str: string): string {
   const ACode = 65;
   const ZCode = 90;
 
-  let result = '';
+  let shiftedStr = '';
 
   for (const char of str) {
     const code = char.charCodeAt(0);
 
     if (code >= ACode && code <= ZCode) {
-      const shiftedCode = code + 13;
+      let shiftedCode = code + 13;
 
       if (shiftedCode > ZCode) {
-        result += String.fromCharCode(ACode + (shiftedCode - ZCode - 1));
-      } else {
-        result += String.fromCharCode(shiftedCode);
+        shiftedCode = shiftedCode - ZCode + ACode - 1;
       }
+
+      shiftedStr += String.fromCharCode(shiftedCode);
     } else {
-      result += char;
+      shiftedStr += char;
     }
   }
 
-  return result;
+  return shiftedStr;
 }
 
 Deno.test("rot13('SERR PBQR PNZC') should decode to 'FREE CODE CAMP'", () => {
