@@ -10,6 +10,17 @@ interface Result {
 }
 
 function checkCashRegister(price: number, cash: number, drawer: Cash): Result {
+  const changeDue = calculate(cash - price);
+  const totalInDrawer = calculate(drawer.reduce((total, [_, value]) => total + value, 0));
+
+  if (changeDue === totalInDrawer) {
+    return { status: 'CLOSED', change: drawer };
+  }
+
+  if (totalInDrawer < changeDue) {
+    return { status: 'INSUFFICIENT_FUNDS', change: [] };
+  }
+
   const currencyMap = new Map<string, number>([
     ['ONE HUNDRED', 100],
     ['TWENTY', 20],
@@ -22,37 +33,33 @@ function checkCashRegister(price: number, cash: number, drawer: Cash): Result {
     ['PENNY', 0.01],
   ]);
 
-  const changeDue = calculate(cash - price);
-  const totalInDrawer = calculate(drawer.reduce((acc, [, value]) => acc + value, 0));
-
-  if (changeDue === totalInDrawer) {
-    return { status: 'CLOSED', change: drawer };
-  }
-
-  if (changeDue > totalInDrawer) {
-    return { status: 'INSUFFICIENT_FUNDS', change: [] };
-  }
+  const drawerMap = new Map<string, number>(drawer.reverse());
 
   const change: Cash = [];
-  const drawerMap = new Map(drawer.reverse());
+  let remain = changeDue;
 
-  let remainderValue = changeDue;
+  for (const [currency, amount] of drawerMap) {
+    const value = currencyMap.get(currency)!;
 
-  for (const [currency, availableValue] of drawerMap) {
-    const currencyValue = currencyMap.get(currency)!;
+    const neededUnits = Math.floor(remain / value);
+    const availableUnits = Math.floor(amount / value);
 
-    const neededUnits = Math.floor(remainderValue / currencyValue);
-    const availableUnits = Math.floor(availableValue / currencyValue);
+    if (neededUnits === 0) continue;
 
-    const neededValue = calculate((availableUnits >= neededUnits ? neededUnits : availableUnits) * currencyValue);
+    if (availableUnits <= neededUnits) {
+      const neededAmount = calculate(availableUnits * value);
 
-    if (neededValue) {
-      change.push([currency, neededValue]);
-      remainderValue = calculate(remainderValue - neededValue);
+      change.push([currency, neededAmount]);
+      remain = calculate(remain - neededAmount);
+    } else {
+      const neededAmount = calculate(neededUnits * value);
+
+      change.push([currency, neededAmount]);
+      remain = calculate(remain - neededAmount);
     }
   }
 
-  if (remainderValue === 0) {
+  if (remain === 0) {
     return { status: 'OPEN', change };
   }
 
