@@ -13,7 +13,7 @@ function selectionSort(nums: number[]): number[] {
     }
 
     if (minIndex !== i) {
-      [nums[i], nums[minIndex]] = [nums[minIndex], nums[i]];
+      [nums[minIndex], nums[i]] = [nums[i], nums[minIndex]];
     }
   }
 
