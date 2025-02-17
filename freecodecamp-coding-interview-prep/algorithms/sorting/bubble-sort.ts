@@ -9,11 +9,12 @@ function bubbleSort(nums: number[]): number[] {
     for (let j = 0; j < nums.length - i - 1; j++) {
       if (nums[j] > nums[j + 1]) {
         [nums[j], nums[j + 1]] = [nums[j + 1], nums[j]];
+
         swapped = true;
       }
     }
 
-    if (swapped === false) break;
+    if (swapped === false) return nums;
   }
 
   return nums;
