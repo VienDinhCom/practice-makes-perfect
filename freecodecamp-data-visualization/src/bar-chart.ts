@@ -31,4 +31,16 @@ const barWidth = width / data.data.length;
 
 const chart = d3.select('#chart').append('svg').attr('width', width).attr('height', height);
 
+/* X Axis
+=========================================================================*/
+const yearsDate = data.data.map(([date]) => new Date(date));
 
+const xMin = d3.min(yearsDate)!;
+const xMax = d3.max(yearsDate)!;
+
+xMax.setMonth(xMax.getMonth() + 3);
+
+const xScale = d3.scaleTime().domain([xMin, xMax]).range([0, width]);
+const xAxis = d3.axisBottom(xScale);
+
+chart.append('g').call(xAxis).attr('id', 'x-axis').attr('transform', 'translate(60, 400)');
