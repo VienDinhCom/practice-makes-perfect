@@ -13,6 +13,13 @@ function quickSort(nums: number[], leftIndex: number = 0, rightIndex: number = n
   return nums;
 }
 
+// Bởi vì chúng ta sắp xếp trực tiếp trên mảng,
+// cho nên không thể tạo thêm phần tử ở bên phải pivotIndex được.
+
+// Thay vì thế, chúng ta tạo ra một trackIndex
+// để giữ những phần tử nhỏ hơn nó bên trái
+// và chuyển những phần tử lớn hơn sang bên phải nó.
+
 function partition(nums: number[], leftIndex: number, rightIndex: number): number {
   const pivotValue = nums[rightIndex];
 
