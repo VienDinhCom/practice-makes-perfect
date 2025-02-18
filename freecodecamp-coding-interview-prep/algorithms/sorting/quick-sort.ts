@@ -1,6 +1,6 @@
 import { expect } from 'jsr:@std/expect';
 
-// Animation: https://www.youtube.com/watch?v=WprjBK0p6rw
+// https://viendinh.com/posts/zzzu-sap-xep-nhanh/
 
 function quickSort(nums: number[], leftIndex: number = 0, rightIndex: number = nums.length - 1): number[] {
   if (leftIndex >= rightIndex) return nums;
@@ -12,6 +12,13 @@ function quickSort(nums: number[], leftIndex: number = 0, rightIndex: number = n
 
   return nums;
 }
+
+// Bởi vì chúng ta sắp xếp trực tiếp trên mảng,
+// cho nên không thể tạo thêm phần tử ở bên phải pivotIndex được.
+
+// Thay vì thế, chúng ta tạo ra một trackIndex
+// để giữ những phần tử nhỏ hơn nó bên trái
+// và chuyển những phần tử lớn hơn sang bên phải nó.
 
 function partition(nums: number[], leftIndex: number, rightIndex: number): number {
   const pivotValue = nums[rightIndex];
@@ -38,6 +45,8 @@ function partition(nums: number[], leftIndex: number, rightIndex: number): numbe
 // https://visualgo.net/en/sorting
 // https://www.youtube.com/watch?v=WprjBK0p6rw
 // https://www.w3schools.com/dsa/dsa_algo_quickSort.php
+
+// Animation: https://www.youtube.com/watch?v=WprjBK0p6rw
 
 Deno.test('standard array', () => {
   const input = [3, 15, 7, 1, 12, 19, 5, 8, 2, 10];
