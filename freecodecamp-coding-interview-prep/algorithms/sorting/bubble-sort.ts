@@ -1,5 +1,7 @@
 import { expect } from 'jsr:@std/expect';
 
+// https://viendinh.com/posts/zzzx-sap-xep-noi-bot/
+
 function bubbleSort(nums: number[]): number[] {
   if (nums.length <= 1) return nums;
 
