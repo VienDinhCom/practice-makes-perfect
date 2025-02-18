@@ -43,4 +43,7 @@ xMax.setMonth(xMax.getMonth() + 3);
 const xScale = d3.scaleTime().domain([xMin, xMax]).range([0, width]);
 const xAxis = d3.axisBottom(xScale);
 
-chart.append('g').call(xAxis).attr('id', 'x-axis').attr('transform', 'translate(60, 400)');
+chart.append('g').call(xAxis).attr('id', 'x-axis').attr('transform', `translate(60, ${height - 60})`);
+
+/* Y Axis
+=========================================================================*/
