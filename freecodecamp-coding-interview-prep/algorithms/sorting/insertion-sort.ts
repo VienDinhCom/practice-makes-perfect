@@ -1,5 +1,7 @@
 import { expect } from 'jsr:@std/expect';
 
+// https://viendinh.com/posts/zzzv-sap-xep-chen/
+
 function insertionSort(nums: number[]): number[] {
   if (nums.length <= 1) return nums;
 
