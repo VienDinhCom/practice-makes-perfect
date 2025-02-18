@@ -1,5 +1,7 @@
 import { expect } from 'jsr:@std/expect';
 
+// https://viendinh.com/posts/zzzw-sap-xep-chon/
+
 function selectionSort(nums: number[]): number[] {
   if (nums.length <= 1) return nums;
 
