@@ -27,23 +27,39 @@ const data = await d3
 
 const width = 800;
 const height = 400;
+const padding = 100;
 const barWidth = width / data.data.length;
 
-const chart = d3.select('#chart').append('svg').attr('width', width).attr('height', height);
+const chart = d3
+  .select('#chart')
+  .append('svg')
+  .attr('width', width + padding * 2)
+  .attr('height', height + padding * 2);
 
 /* X Axis
 =========================================================================*/
-const yearsDate = data.data.map(([date]) => new Date(date));
+const dates = data.data.map(([date]) => new Date(date));
 
-const xMin = d3.min(yearsDate)!;
-const xMax = d3.max(yearsDate)!;
+const xMin = d3.min(dates)!;
+const xMax = d3.max(dates)!;
 
 xMax.setMonth(xMax.getMonth() + 3);
 
 const xScale = d3.scaleTime().domain([xMin, xMax]).range([0, width]);
 const xAxis = d3.axisBottom(xScale);
 
-chart.append('g').call(xAxis).attr('id', 'x-axis').attr('transform', `translate(60, ${height - 60})`);
+chart
+  .append('g')
+  .call(xAxis)
+  .attr('id', 'x-axis')
+  .attr('transform', `translate(${padding}, ${height + padding})`);
 
 /* Y Axis
 =========================================================================*/
+const gdp = data.data.map(([_date, gdp]) => gdp);
+
+const yMax = d3.max(gdp)!;
+const yScale = d3.scaleLinear().domain([0, yMax]).range([height, 0]);
+const yAxis = d3.axisLeft(yScale);
+
+chart.append('g').call(yAxis).attr('id', 'y-axis').attr('transform', `translate(${padding}, ${padding})`);
