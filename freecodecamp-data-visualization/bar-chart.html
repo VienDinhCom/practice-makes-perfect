@@ -8,13 +8,49 @@
 
     <style>
       #chart {
+        padding-top: 5%;
+        text-align: center;
+        position: relative;
+      }
+
+      #chart #title {
+        display: block;
+        width: 100%;
+        position: absolute;
+        top: 60px;
+        z-index: 1;
+      }
+
+      #chart svg {
         background-color: lightblue;
+        position: relative;
+        border-radius: 10px;
+      }
+
+      #chart svg .bar {
+        fill: green;
+      }
+
+      #chart svg .bar:hover {
+        fill: red;
+      }
+
+      #tooltip {
+        opacity: 0;
+        position: absolute;
+        background-color: rgba(0, 0, 0, 0.8);
+        color: white;
+        padding: 8px;
+        border-radius: 4px;
+        pointer-events: none;
+        font-size: 14px;
       }
     </style>
   </head>
   <body>
-    <h1 id="title">United States GDP</h1>
-    <div id="chart"></div>
+    <div id="chart">
+      <h1 id="title">United States GDP</h1>
+    </div>
 
     <script src="https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js"></script>
     <script type="module" src="/src/bar-chart.ts"></script>

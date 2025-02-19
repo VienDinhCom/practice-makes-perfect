@@ -1,6 +1,6 @@
 import { expect } from 'jsr:@std/expect';
 
-// Animation: https://www.youtube.com/watch?v=5Z9dn2WTg9o
+// https://viendinh.com/posts/zzzt-sap-xep-tron/
 
 function mergeSort(nums: number[]): number[] {
   if (nums.length <= 1) return nums;
@@ -30,6 +30,8 @@ function merge(leftHalf: number[], rightHalf: number[]): number[] {
 // https://visualgo.net/en/sorting
 // https://www.youtube.com/watch?v=WprjBK0p6rw
 // https://www.w3schools.com/dsa/dsa_algo_mergeSort.php
+
+// Animation: https://www.youtube.com/watch?v=5Z9dn2WTg9o
 
 Deno.test('standard array', () => {
   const input = [3, 15, 7, 1, 12, 19, 5, 8, 2, 10];
