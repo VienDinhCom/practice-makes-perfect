@@ -9,7 +9,31 @@
     <style>
       #chart svg {
         background-color: lightblue;
+        position: relative;
       }
+
+      #chart svg .bar {
+        fill: green;
+      }
+
+      #chart svg .bar:hover {
+        fill: red;
+      }
+
+      #tooltip {
+        opacity: 0;
+        position: absolute;
+        background-color: rgba(0, 0, 0, 0.8);
+        color: white;
+        padding: 8px;
+        border-radius: 4px;
+        pointer-events: none;
+        font-size: 14px;
+      }
+
+      /* #chart sgv .bar:hover {
+        background: red;
+      } */
     </style>
   </head>
   <body>

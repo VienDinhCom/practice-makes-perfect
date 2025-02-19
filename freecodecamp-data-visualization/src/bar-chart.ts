@@ -65,7 +65,9 @@ chart.append('g').call(yAxis).attr('id', 'y-axis').attr('transform', `translate(
 
 /* Bars 
 =========================================================================*/
-const barWidth = width / data.data.length - 1;
+const barWidth = width / data.data.length;
+
+const tooltip = d3.select('#chart').append('div').attr('id', 'tooltip');
 
 d3.select('svg')
   .selectAll('rect')
@@ -79,4 +81,22 @@ d3.select('svg')
   .attr('y', ([, gdp]) => padding + yScale(gdp))
   .attr('width', barWidth)
   .attr('height', ([_, gdp]) => height - yScale(gdp))
-  .style('fill', 'green');
+  .on('mouseover', function (event: MouseEvent, [dateStr, gdp]) {
+    const date = new Date(dateStr);
+    const year = date.getFullYear();
+    const month = date.getMonth();
+    const quarter = Math.floor(month / 3) + 1;
+
+    tooltip
+      .style('opacity', 1)
+      .attr('data-date', dateStr)
+      .html(`${year} Q${quarter}: $${gdp}B`)
+      .style('left', `${event.pageX + 10}px`)
+      .style('top', `${event.pageY - 40}px`);
+  })
+  .on('mouseout', () => {
+    tooltip.style('opacity', 0);
+  })
+  .on('mousemove', (event: MouseEvent) => {
+    tooltip.style('left', `${event.pageX + 10}px`).style('top', `${event.pageY - 40}px`);
+  });
