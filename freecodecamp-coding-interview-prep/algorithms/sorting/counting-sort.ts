@@ -1,8 +1,8 @@
 import { expect } from 'jsr:@std/expect';
 
-function countingSort(nums: number[]): number[] {
-  if (nums.length <= 1) return nums;
+// https://viendinh.com/posts/zzzg-sap-xep-phan-phoi/
 
+function countingSort(nums: number[]): number[] {
   const max = Math.max(...nums);
 
   const count = new Array(max + 1).fill(0);
