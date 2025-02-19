@@ -1,31 +1,12 @@
 import * as d3 from 'd3';
 
-interface Data {
-  errors: { [key: string]: any };
-  id: number;
-  source_name: string;
-  source_code: string;
-  code: string;
-  name: string;
-  urlize_name: string;
-  display_url: string;
-  description: string;
-  updated_at: string;
-  frequency: string;
-  from_date: string;
-  to_date: string;
-  column_names: string[];
-  private: boolean;
-  type: null;
-  premium: boolean;
-  data: [string, number][];
-}
-
 (async () => {
   try {
-    const data = await d3
-      .json<Data>('https://raw.githubusercontent.com/FreeCodeCamp/ProjectReferenceData/master/GDP-data.json')
-      .then((data) => data!);
+    type Data = [string, number][];
+
+    const data: Data = await d3
+      .json('https://raw.githubusercontent.com/FreeCodeCamp/ProjectReferenceData/master/GDP-data.json')
+      .then((data: any) => data.data!);
 
     const width = 800;
     const height = 400;
@@ -39,7 +20,7 @@ interface Data {
 
     /* X Axis
     =========================================================================*/
-    const dates = data.data.map(([date]) => new Date(date));
+    const dates = data.map(([date]) => new Date(date));
 
     const xMin = d3.min(dates)!;
     const xMax = d3.max(dates)!;
@@ -57,7 +38,7 @@ interface Data {
 
     /* Y Axis
     =========================================================================*/
-    const gdp = data.data.map(([, gdp]) => gdp);
+    const gdp = data.map(([, gdp]) => gdp);
 
     const yMax = d3.max(gdp)!;
     const yScale = d3.scaleLinear().domain([0, yMax]).range([height, 0]);
@@ -67,13 +48,13 @@ interface Data {
 
     /* Bars 
     =========================================================================*/
-    const barWidth = width / data.data.length;
+    const barWidth = width / data.length;
 
     const tooltip = d3.select('#chart').append('div').attr('id', 'tooltip');
 
     d3.select('svg')
       .selectAll('rect')
-      .data(data.data)
+      .data(data)
       .enter()
       .append('rect')
       .attr('class', 'bar')
