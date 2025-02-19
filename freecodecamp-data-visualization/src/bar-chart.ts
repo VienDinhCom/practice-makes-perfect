@@ -28,7 +28,6 @@ const data = await d3
 const width = 800;
 const height = 400;
 const padding = 100;
-const barWidth = width / data.data.length;
 
 const chart = d3
   .select('#chart')
@@ -56,10 +55,28 @@ chart
 
 /* Y Axis
 =========================================================================*/
-const gdp = data.data.map(([_date, gdp]) => gdp);
+const gdp = data.data.map(([, gdp]) => gdp);
 
 const yMax = d3.max(gdp)!;
 const yScale = d3.scaleLinear().domain([0, yMax]).range([height, 0]);
 const yAxis = d3.axisLeft(yScale);
 
 chart.append('g').call(yAxis).attr('id', 'y-axis').attr('transform', `translate(${padding}, ${padding})`);
+
+/* Bars 
+=========================================================================*/
+const barWidth = width / data.data.length - 1;
+
+d3.select('svg')
+  .selectAll('rect')
+  .data(data.data)
+  .enter()
+  .append('rect')
+  .attr('class', 'bar')
+  .attr('data-date', ([date]) => date)
+  .attr('data-gdp', ([, gdp]) => gdp)
+  .attr('x', ([date]) => padding + xScale(new Date(date)))
+  .attr('y', ([, gdp]) => padding + yScale(gdp))
+  .attr('width', barWidth)
+  .attr('height', ([_, gdp]) => height - yScale(gdp))
+  .style('fill', 'green');
