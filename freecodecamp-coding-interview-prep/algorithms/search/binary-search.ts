@@ -1,5 +1,7 @@
 import { expect } from 'jsr:@std/expect';
 
+// https://viendinh.com/posts/zzzm-tim-kiem-nhi-phan/
+
 function binarySearch(nums: number[], target: number): number {
   let leftIndex = 0;
   let rightIndex = nums.length - 1;
@@ -7,7 +9,7 @@ function binarySearch(nums: number[], target: number): number {
   while (leftIndex <= rightIndex) {
     const midIndex = Math.floor((leftIndex + rightIndex) / 2);
 
-    if (target === nums[midIndex]) {
+    if (nums[midIndex] === target) {
       return midIndex;
     }
 
