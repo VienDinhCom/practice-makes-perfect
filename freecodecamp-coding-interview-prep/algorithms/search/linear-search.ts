@@ -1,8 +1,12 @@
 import { expect } from 'jsr:@std/expect';
 
+// https://viendinh.com/posts/zzzl-tim-kiem-tuan-tu/
+
 function linearSearch(nums: number[], target: number): number {
   for (let i = 0; i < nums.length; i++) {
-    if (nums[i] === target) return i;
+    if (nums[i] === target) {
+      return i;
+    }
   }
 
   return -1;

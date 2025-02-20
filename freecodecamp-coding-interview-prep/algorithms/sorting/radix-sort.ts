@@ -1,11 +1,11 @@
 import { expect } from 'jsr:@std/expect';
 
-function getMaxDigits(nums: number[]): number {
-  // return Math.max(...nums).toString().length;
+// https://viendinh.com/posts/zzze-sap-xep-theo-co-so/
 
+function getMaxDigits(nums: number[]): number {
   // return Math.floor(Math.log10(Math.max(...nums)) + 1);
 
-  return Math.max(...nums.map((num) => num.toString().length));
+  return Math.max(...nums).toString().length;
 }
 
 function getDigit(num: number, place: number): number {
