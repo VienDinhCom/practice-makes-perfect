@@ -11,7 +11,8 @@ export default defineConfig({
     rollupOptions: {
       input: {
         main: resolve(__dirname, 'index.html'),
-        drum: resolve(__dirname, 'bar-chart.html'),
+        barChar: resolve(__dirname, 'projects/bar-chart/bar-chart.html'),
+        scatterplotGraph: resolve(__dirname, 'projects/scatterplot-graph/scatterplot-graph.html'),
       },
     },
   },
