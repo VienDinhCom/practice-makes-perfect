@@ -4,9 +4,35 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Scatterplot Graph</title>
+    <title>Doping in Professional Bicycle Racing</title>
+
+    <style>
+      #chart {
+        padding-top: 5%;
+        text-align: center;
+        position: relative;
+      }
+
+      #chart #title {
+        display: block;
+        width: 100%;
+        position: absolute;
+        top: 60px;
+        z-index: 1;
+      }
+
+      #chart svg {
+        background-color: lightblue;
+        position: relative;
+        border-radius: 10px;
+      }
+    </style>
   </head>
   <body>
+    <div id="chart">
+      <h1 id="title">United States GDP</h1>
+    </div>
+
     <script src="https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js"></script>
     <script type="module" src="/projects/scatterplot-graph/scatterplot-graph.ts"></script>
   </body>
