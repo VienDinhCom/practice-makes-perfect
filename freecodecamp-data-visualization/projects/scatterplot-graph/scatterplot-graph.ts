@@ -15,7 +15,7 @@ import * as d3 from 'd3';
         data.map(({ Name, Year, Seconds, Doping }: any) => ({
           name: Name,
           year: Year,
-          time: new Date(1970, 0, 1, 0, Math.floor(Seconds / 60), Seconds % 60), // Fixed date creation
+          time: new Date(1, 1, 1, 1, Math.floor(Seconds / 60), Seconds % 60),
           doping: Doping,
         }))
       );
@@ -38,7 +38,7 @@ import * as d3 from 'd3';
     const xScale = d3
       .scaleLinear()
       .domain([xMin, xMax])
-      .range([padding, width + padding]); // Adjusted range
+      .range([padding, width + padding]);
 
     const xAxis = d3.axisBottom(xScale).tickFormat((year) => String(year));
 
@@ -56,7 +56,7 @@ import * as d3 from 'd3';
     const yScale = d3
       .scaleTime()
       .domain([yMin, yMax])
-      .range([padding, height + padding]); // Adjusted range
+      .range([padding, height + padding]);
 
     const yAxis = d3.axisLeft(yScale).tickFormat((time) => {
       const date = new Date(time as number);
