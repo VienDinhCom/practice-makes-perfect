@@ -4,7 +4,9 @@ import * as d3 from 'd3';
   try {
     interface Data {
       name: string;
+      year: number;
       date: Date;
+      time: string;
       seconds: number;
       doping?: string;
     }
@@ -12,9 +14,11 @@ import * as d3 from 'd3';
     const data: Data[] = await d3
       .json('https://raw.githubusercontent.com/FreeCodeCamp/ProjectReferenceData/master/cyclist-data.json')
       .then((data: any) =>
-        data.map(({ Name, Year, Seconds, Doping }: any) => ({
+        data.map(({ Name, Year, Seconds, Time, Doping }: any) => ({
           name: Name,
+          year: Year,
           date: new Date(`${Year}-01-01`),
+          time: Time,
           seconds: Seconds,
           doping: Doping,
         }))
@@ -32,19 +36,15 @@ import * as d3 from 'd3';
 
     /* X Axis
     =========================================================================*/
-
-    const xMin = d3.min(data, ({ date }) => date)!;
-    const xMax = d3.max(data, ({ date }) => date)!;
-
-    xMin.setMonth(xMin.getMonth() - 12);
-    xMax.setMonth(xMax.getMonth() + 12);
+    const xMin = d3.min(data, ({ year }) => year)! - 1;
+    const xMax = d3.max(data, ({ year }) => year)! + 1;
 
     const xScale = d3
-      .scaleTime()
+      .scaleLinear()
       .domain([xMin, xMax])
       .range([padding, width - padding]);
 
-    const xAxis = d3.axisBottom(xScale);
+    const xAxis = d3.axisBottom(xScale).tickFormat((year) => String(year));
 
     chart
       .append('g')
@@ -77,6 +77,29 @@ import * as d3 from 'd3';
 
     /* Dots 
     =========================================================================*/
+
+    chart
+      .selectAll('.dot')
+      .data(data)
+      .enter()
+      .append('circle')
+      .attr('class', 'dot')
+      .attr('r', 6)
+      .attr('cx', function ({ year }) {
+        return padding + xScale(year);
+      })
+      .attr('cy', function ({ seconds }) {
+        return padding + yScale(seconds);
+      })
+      .attr('data-xvalue', function ({ year }) {
+        return year;
+      })
+      .attr('data-yvalue', function ({ time }) {
+        return time;
+      })
+      .style('fill', function ({ doping }) {
+        return doping ? 'red' : 'green';
+      });
   } catch (error) {
     console.error(error);
   }
