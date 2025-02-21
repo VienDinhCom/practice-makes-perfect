@@ -1,8 +1,9 @@
 import { expect } from 'jsr:@std/expect';
 
-// review
+// https://viendinh.com/posts/zzzb-ngan-xep/
+
 class Stack<T> {
-  private items: T[];
+  items: T[];
 
   constructor() {
     this.items = [];
