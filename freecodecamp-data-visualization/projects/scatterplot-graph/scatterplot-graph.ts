@@ -15,7 +15,7 @@ import * as d3 from 'd3';
         data.map(({ Name, Year, Seconds, Doping }: any) => ({
           name: Name,
           year: Year,
-          time: new Date(0, 0, 0, 0, 0, Seconds),
+          time: new Date(1970, 0, 1, 0, Math.floor(Seconds / 60), Seconds % 60), // Fixed date creation
           doping: Doping,
         }))
       );
@@ -38,7 +38,7 @@ import * as d3 from 'd3';
     const xScale = d3
       .scaleLinear()
       .domain([xMin, xMax])
-      .range([padding, width - padding]);
+      .range([padding, width + padding]); // Adjusted range
 
     const xAxis = d3.axisBottom(xScale).tickFormat((year) => String(year));
 
@@ -53,15 +53,19 @@ import * as d3 from 'd3';
     const yMin = d3.min(data, ({ time }) => time)!;
     const yMax = d3.max(data, ({ time }) => time)!;
 
-    const yScale = d3.scaleTime().domain([yMax, yMin]).range([height, 0]);
+    const yScale = d3
+      .scaleTime()
+      .domain([yMin, yMax])
+      .range([padding, height + padding]); // Adjusted range
 
-    const yAxis = d3.axisLeft(yScale).tickFormat((seconds) => {
-      const mins = Math.floor((seconds as number) / 60);
-      const secs = (seconds as number) % 60;
+    const yAxis = d3.axisLeft(yScale).tickFormat((time) => {
+      const date = new Date(time as number);
+      const mins = date.getMinutes();
+      const secs = date.getSeconds();
       return `${mins}:${String(secs).padStart(2, '0')}`;
     });
 
-    chart.append('g').call(yAxis).attr('id', 'y-axis').attr('transform', `translate(${padding}, ${padding})`);
+    chart.append('g').call(yAxis).attr('id', 'y-axis').attr('transform', `translate(${padding}, 0)`);
 
     /* Dots 
     =========================================================================*/
@@ -73,10 +77,33 @@ import * as d3 from 'd3';
       .attr('class', 'dot')
       .attr('r', 6)
       .attr('cx', ({ year }) => xScale(year))
-      .attr('cy', ({ time }) => yScale(time) + padding)
+      .attr('cy', ({ time }) => yScale(time))
       .attr('data-xvalue', ({ year }) => year)
       .attr('data-yvalue', ({ time }) => time.toISOString())
       .style('fill', ({ doping }) => (doping ? 'red' : 'green'));
+
+    /* Legend
+    =========================================================================*/
+    const legend = chart
+      .append('g')
+      .attr('id', 'legend')
+      .attr('transform', `translate(${width - 100}, ${padding})`);
+
+    legend.append('rect').attr('x', -padding).attr('y', 0).attr('width', 20).attr('height', 20).style('fill', 'green');
+
+    legend
+      .append('text')
+      .attr('x', -padding + 30)
+      .attr('y', 15)
+      .text('No doping allegations');
+
+    legend.append('rect').attr('x', -padding).attr('y', 30).attr('width', 20).attr('height', 20).style('fill', 'red');
+
+    legend
+      .append('text')
+      .attr('x', -padding + 30)
+      .attr('y', 45)
+      .text('Riders with doping allegations');
   } catch (error) {
     console.error(error);
   }
