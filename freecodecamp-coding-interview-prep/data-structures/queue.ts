@@ -1,8 +1,9 @@
 import { expect } from 'jsr:@std/expect';
 
-// Review
+// https://viendinh.com/posts/zzza-hang-doi/
+
 class Queue<T> {
-  private items: T[];
+  items: T[];
 
   constructor() {
     this.items = [];

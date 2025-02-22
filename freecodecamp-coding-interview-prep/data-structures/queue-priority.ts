@@ -1,5 +1,7 @@
 import { expect } from 'jsr:@std/expect';
 
+// https://www.freecodecamp.org/learn/coding-interview-prep/data-structureds/create-a-priority-queue-class
+
 class PriorityQueue<T> {
   private items: { value: T; priority: number }[];
 
@@ -21,15 +23,11 @@ class PriorityQueue<T> {
   }
 
   dequeue(): T | undefined {
-    const item = this.items.shift();
-
-    return item ? item.value : undefined;
+    return this.items.shift()?.value;
   }
 
   front(): T | undefined {
-    const item = this.items[0];
-
-    return item ? item.value : undefined;
+    return this.items[0]?.value;
   }
 
   size(): number {
@@ -40,8 +38,6 @@ class PriorityQueue<T> {
     return this.items.length === 0;
   }
 }
-
-// https://www.freecodecamp.org/learn/coding-interview-prep/data-structures/create-a-priority-queue-class
 
 Deno.test('PriorityQueue: enqueue adds elements with correct priorities', () => {
   const queue = new PriorityQueue<number>();

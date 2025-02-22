@@ -23,10 +23,10 @@ class CircularQueue<T> {
 
     this.items[this.write] = item;
 
-    if (this.write >= this.max) {
+    this.write++;
+
+    if (this.write > this.max) {
       this.write = 0;
-    } else {
-      this.write++;
     }
 
     return item;
@@ -40,7 +40,11 @@ class CircularQueue<T> {
 
     this.items[this.read] = null;
 
-    this.read = this.read >= this.max ? 0 : this.read + 1;
+    this.read++;
+
+    if (this.read > this.max) {
+      this.read = 0;
+    }
 
     return item;
   }
