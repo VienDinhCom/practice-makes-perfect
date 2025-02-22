@@ -105,7 +105,7 @@ function App() {
         </div>
         <a
           className="btn border-top"
-          href="https://github.com/VienDinhCom/practice-makes-perfect/tree/main/front-end-development-libraries"
+          href="https://github.com/VienDinhCom/practice-makes-perfect/tree/main/freecodecamp-front-end-development-libraries/projects/markdown-previewer"
           target="_blank"
         >
           Source on GitHub

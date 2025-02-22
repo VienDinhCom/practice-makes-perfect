@@ -22,5 +22,5 @@
     "noFallthroughCasesInSwitch": true,
     "noUncheckedSideEffectImports": true
   },
-  "include": ["src", "projects/random-quote-machine"]
+  "include": ["src", "projects/random-quote-machine", "projects/markdown-previewer/markdown-previewer.tsx"]
 }
