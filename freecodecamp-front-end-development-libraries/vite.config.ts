@@ -8,7 +8,7 @@ export default defineConfig({
     rollupOptions: {
       input: {
         main: resolve(__dirname, 'index.html'),
-        quote: resolve(__dirname, 'random-quote-machine.html'),
+        quote: resolve(__dirname, 'projects/random-quote-machine/random-quote-machine.html'),
         markdown: resolve(__dirname, 'markdown-previewer.html'),
         drum: resolve(__dirname, 'drum-machine.html'),
         calculator: resolve(__dirname, 'javascript-calculator.html'),
