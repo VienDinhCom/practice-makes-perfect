@@ -30,6 +30,12 @@ import * as d3 from 'd3';
       .attr('width', width + padding * 2)
       .attr('height', height + padding * 2);
 
+    function formatTime(date: Date) {
+      const mins = date.getMinutes();
+      const secs = date.getSeconds();
+      return `${mins}:${String(secs).padStart(2, '0')}`;
+    }
+
     /* X Axis
     =========================================================================*/
     const xMin = d3.min(data, ({ year }) => year)! - 1;
@@ -58,52 +64,68 @@ import * as d3 from 'd3';
       .domain([yMin, yMax])
       .range([padding, height + padding]);
 
-    const yAxis = d3.axisLeft(yScale).tickFormat((time) => {
-      const date = new Date(time as number);
-      const mins = date.getMinutes();
-      const secs = date.getSeconds();
-      return `${mins}:${String(secs).padStart(2, '0')}`;
-    });
+    const yAxis = d3.axisLeft(yScale).tickFormat((time) => formatTime(new Date(time as number)));
 
     chart.append('g').call(yAxis).attr('id', 'y-axis').attr('transform', `translate(${padding}, 0)`);
 
     /* Dots 
     =========================================================================*/
+    const tooltip = d3
+      .select('body')
+      .append('div')
+      .attr('id', 'tooltip')
+      .style('position', 'absolute')
+      .style('visibility', 'hidden')
+      .style('background-color', 'rgba(0,0,0,0.8)')
+      .style('color', 'white')
+      .style('padding', '10px')
+      .style('border-radius', '5px')
+      .style('font-size', '12px');
+
     chart
       .selectAll('.dot')
       .data(data)
       .enter()
       .append('circle')
       .attr('class', 'dot')
-      .attr('r', 6)
+      .attr('r', 5)
       .attr('cx', ({ year }) => xScale(year))
       .attr('cy', ({ time }) => yScale(time))
       .attr('data-xvalue', ({ year }) => year)
       .attr('data-yvalue', ({ time }) => time.toISOString())
-      .style('fill', ({ doping }) => (doping ? 'red' : 'green'));
+      .attr('fill', ({ doping }) => (doping ? 'red' : 'green'))
+      .attr('stroke', 'white')
+      .on('mouseover', (event, { name, year, time, doping }) => {
+        tooltip
+          .style('visibility', 'visible')
+          .style('left', `${event.pageX + 10}px`)
+          .style('top', `${event.pageY - 10}px`)
+          .attr('data-year', year)
+          .html(
+            `
+              ${name}, Year: ${year}, Time: ${formatTime(time)}<br/>
+              ${doping ? `<br/>${doping}` : ''}
+            `
+          );
+      })
+      .on('mouseout', () => {
+        tooltip.style('visibility', 'hidden');
+      });
 
     /* Legend
     =========================================================================*/
     const legend = chart
       .append('g')
       .attr('id', 'legend')
-      .attr('transform', `translate(${width - 100}, ${padding})`);
+      .attr('transform', `translate(${width - 150}, ${padding})`);
 
-    legend.append('rect').attr('x', -padding).attr('y', 0).attr('width', 20).attr('height', 20).style('fill', 'green');
+    legend.append('rect').attr('x', 0).attr('y', 0).attr('width', 20).attr('height', 20).style('fill', 'green');
 
-    legend
-      .append('text')
-      .attr('x', -padding + 30)
-      .attr('y', 15)
-      .text('No doping allegations');
+    legend.append('text').attr('x', 30).attr('y', 15).text('No doping allegations');
 
-    legend.append('rect').attr('x', -padding).attr('y', 30).attr('width', 20).attr('height', 20).style('fill', 'red');
+    legend.append('rect').attr('x', 0).attr('y', 30).attr('width', 20).attr('height', 20).style('fill', 'red');
 
-    legend
-      .append('text')
-      .attr('x', -padding + 30)
-      .attr('y', 45)
-      .text('Riders with doping allegations');
+    legend.append('text').attr('x', 30).attr('y', 45).text('Riders with doping allegations');
   } catch (error) {
     console.error(error);
   }
