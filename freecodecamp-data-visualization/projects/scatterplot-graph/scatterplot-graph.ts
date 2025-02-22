@@ -76,11 +76,6 @@ import * as d3 from 'd3';
       .attr('id', 'tooltip')
       .style('position', 'absolute')
       .style('visibility', 'hidden')
-      .style('background-color', 'rgba(0,0,0,0.8)')
-      .style('color', 'white')
-      .style('padding', '10px')
-      .style('border-radius', '5px')
-      .style('font-size', '12px');
 
     chart
       .selectAll('.dot')
