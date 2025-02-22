@@ -12,7 +12,7 @@ export default defineConfig({
         markdown: resolve(__dirname, 'projects/markdown-previewer/markdown-previewer.html'),
         drum: resolve(__dirname, 'projects/drum-machine/drum-machine.html'),
         calculator: resolve(__dirname, 'projects/javascript-calculator/javascript-calculator.html'),
-        clock: resolve(__dirname, '25--5-clock.html'),
+        clock: resolve(__dirname, 'projects/25--5-clock/25--5-clock.html'),
       },
     },
   },
