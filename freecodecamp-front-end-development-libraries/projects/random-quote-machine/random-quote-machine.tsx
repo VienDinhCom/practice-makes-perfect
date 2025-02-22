@@ -130,7 +130,7 @@ function App() {
 
         <a
           className="btn border-top"
-          href="https://github.com/VienDinhCom/freecodecamp-front-end-development-libraries/projects/random-quote-machine"
+          href="https://github.com/VienDinhCom/practice-makes-perfect/tree/main/freecodecamp-front-end-development-libraries/projects/random-quote-machine"
           target="_blank"
         >
           Source on GitHub
