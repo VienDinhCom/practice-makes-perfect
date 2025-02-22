@@ -112,7 +112,7 @@ import * as d3 from 'd3';
     const legend = chart
       .append('g')
       .attr('id', 'legend')
-      .attr('transform', `translate(${width - 150}, ${padding})`);
+      .attr('transform', `translate(${width - 120}, ${padding + 20})`);
 
     legend.append('rect').attr('x', 0).attr('y', 0).attr('width', 20).attr('height', 20).style('fill', 'green');
 
