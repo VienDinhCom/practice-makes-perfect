@@ -11,7 +11,7 @@ export default defineConfig({
         quote: resolve(__dirname, 'projects/random-quote-machine/random-quote-machine.html'),
         markdown: resolve(__dirname, 'projects/markdown-previewer/markdown-previewer.html'),
         drum: resolve(__dirname, 'projects/drum-machine/drum-machine.html'),
-        calculator: resolve(__dirname, 'javascript-calculator.html'),
+        calculator: resolve(__dirname, 'projects/javascript-calculator/javascript-calculator.html'),
         clock: resolve(__dirname, '25--5-clock.html'),
       },
     },

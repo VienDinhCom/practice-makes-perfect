@@ -211,7 +211,7 @@ function App() {
         <div className="card-footer text-body-secondary d-flex justify-content-between"></div>
         <a
           className="btn border-top"
-          href="https://github.com/VienDinhCom/practice-makes-perfect/tree/main/front-end-development-libraries"
+          href="https://github.com/VienDinhCom/practice-makes-perfect/tree/main/freecodecamp-front-end-development-libraries/projects/javascript-calculator"
           target="_blank"
         >
           Source on GitHub
