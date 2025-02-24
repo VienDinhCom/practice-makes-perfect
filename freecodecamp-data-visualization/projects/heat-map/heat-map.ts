@@ -45,6 +45,17 @@ import * as d3 from 'd3';
 
     /* Y Axis
     =========================================================================*/
+    const yMin = d3.min(monthlyVariance, ({ month }) => month)!;
+    const yMax = d3.max(monthlyVariance, ({ month }) => month)!;
+
+    const yScale = d3
+      .scaleLinear()
+      .domain([yMin, yMax])
+      .range([padding, height + padding]);
+
+    const yAxis = d3.axisLeft(yScale);
+
+    chart.append('g').call(yAxis).attr('id', 'y-axis').attr('transform', `translate(${padding}, 0)`);
 
     /* Bars 
     =========================================================================*/
