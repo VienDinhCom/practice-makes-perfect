@@ -95,7 +95,9 @@ class Set {
 
   isSupersetOf(other: Set): boolean {
     for (const value of other.values()) {
-      if (!this.has(value)) return false;
+      if (!this.has(value)) {
+        return false;
+      }
     }
 
     return true;
