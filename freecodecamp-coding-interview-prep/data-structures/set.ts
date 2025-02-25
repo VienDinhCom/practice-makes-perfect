@@ -42,13 +42,9 @@ class Set {
   union(other: Set): Set {
     const newSet = new Set();
 
-    this.forEach((value) => {
-      newSet.add(value);
-    });
+    this.forEach((value) => newSet.add(value));
 
-    other.forEach((value) => {
-      newSet.add(value);
-    });
+    other.forEach((value) => newSet.add(value));
 
     return newSet;
   }
