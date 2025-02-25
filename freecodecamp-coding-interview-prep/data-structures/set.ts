@@ -63,9 +63,7 @@ class Set {
     const newSet = new Set();
 
     this.forEach((value) => {
-      if (!other.has(value)) {
-        newSet.add(value);
-      }
+      if (!other.has(value)) newSet.add(value);
     });
 
     return newSet;
