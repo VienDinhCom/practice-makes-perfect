@@ -1,15 +1,13 @@
 import { expect } from 'jsr:@std/expect';
 
 class Set {
-  private set: Record<number, number>;
+  private set: Record<string, number>;
 
   constructor() {
     this.set = {};
   }
 
   add(value: number): Set {
-    if (this.has(value)) return this;
-
     this.set[value] = value;
 
     return this;
@@ -24,7 +22,7 @@ class Set {
   }
 
   forEach(callback: (value: number) => void): void {
-    this.values().forEach((value) => callback(value));
+    this.values().forEach(callback);
   }
 
   delete(value: number): boolean {
@@ -36,19 +34,17 @@ class Set {
   }
 
   clear(): void {
-    this.forEach((key) => this.delete(key));
+    for (const key in this.set) {
+      this.delete(Number(key));
+    }
   }
 
   union(other: Set): Set {
     const newSet = new Set();
 
-    this.forEach((value) => {
-      newSet.add(value);
-    });
+    this.forEach((value) => newSet.add(value));
 
-    other.forEach((value) => {
-      newSet.add(value);
-    });
+    other.forEach((value) => newSet.add(value));
 
     return newSet;
   }
@@ -56,10 +52,8 @@ class Set {
   intersection(other: Set): Set {
     const newSet = new Set();
 
-    this.forEach((value) => {
-      if (other.has(value)) {
-        newSet.add(value);
-      }
+    other.forEach((value) => {
+      if (this.has(value)) newSet.add(value);
     });
 
     return newSet;
@@ -69,9 +63,7 @@ class Set {
     const newSet = new Set();
 
     this.forEach((value) => {
-      if (!other.has(value)) {
-        newSet.add(value);
-      }
+      if (!other.has(value)) newSet.add(value);
     });
 
     return newSet;
@@ -80,12 +72,12 @@ class Set {
   symmetricDifference(other: Set): Set {
     const newSet = new Set();
 
-    this.forEach((value) => {
-      if (!other.has(value)) newSet.add(value);
-    });
-
     other.forEach((value) => {
       if (!this.has(value)) newSet.add(value);
+    });
+
+    this.forEach((value) => {
+      if (!other.has(value)) newSet.add(value);
     });
 
     return newSet;
@@ -93,7 +85,9 @@ class Set {
 
   isSubsetOf(other: Set): boolean {
     for (const value of this.values()) {
-      if (!other.has(value)) return false;
+      if (!other.has(value)) {
+        return false;
+      }
     }
 
     return true;
@@ -101,7 +95,9 @@ class Set {
 
   isSupersetOf(other: Set): boolean {
     for (const value of other.values()) {
-      if (!this.has(value)) return false;
+      if (!this.has(value)) {
+        return false;
+      }
     }
 
     return true;
@@ -109,7 +105,9 @@ class Set {
 
   isDisjointFrom(other: Set): boolean {
     for (const value of this.values()) {
-      if (other.has(value)) return false;
+      if (other.has(value)) {
+        return false;
+      }
     }
 
     return true;
