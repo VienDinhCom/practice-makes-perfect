@@ -85,7 +85,9 @@ class Set {
 
   isSubsetOf(other: Set): boolean {
     for (const value of this.values()) {
-      if (!other.has(value)) return false;
+      if (!other.has(value)) {
+        return false;
+      }
     }
 
     return true;
