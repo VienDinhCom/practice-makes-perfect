@@ -37,7 +37,7 @@ import * as d3 from 'd3';
     const xAxis = d3
       .axisBottom(xScale)
       .tickValues(xScale.domain().filter((year) => Number(year) % 10 === 0))
-      .tickFormat(function (year) {
+      .tickFormat((year) => {
         const date = new Date(0);
         date.setUTCFullYear(Number(year));
         return d3.utcFormat('%Y')(date);
@@ -72,6 +72,18 @@ import * as d3 from 'd3';
 
     /* Cells 
     =========================================================================*/
+    const tooltip = d3
+      .select('body')
+      .append('div')
+      .attr('id', 'tooltip')
+      .style('opacity', 0)
+      .style('position', 'absolute')
+      .style('background-color', 'rgba(0, 0, 0, 0.8)')
+      .style('color', 'white')
+      .style('padding', '10px')
+      .style('border-radius', '5px')
+      .style('pointer-events', 'none');
+
     chart
       .selectAll('rect')
       .data(monthlyVariance)
@@ -87,16 +99,23 @@ import * as d3 from 'd3';
       .attr('width', () => xScale.bandwidth())
       .attr('height', () => yScale.bandwidth())
       .attr('fill', (d) => d3.interpolateRdYlBu(1 - (baseTemperature + d.variance) / 10))
-      .append('title')
-      .text((d) => {
+      .on('mouseover', (event, d) => {
         const temp = baseTemperature + d.variance;
         const date = new Date(d.year, d.month - 1);
 
-        return `${d3.timeFormat('%Y - %B')(date)}\n${temp.toFixed(2)}°C\n${d.variance.toFixed(2)}°C`;
+        tooltip
+          .style('opacity', 0.9)
+          .html(`${d3.timeFormat('%Y - %B')(date)}<br>${temp.toFixed(2)}°C<br>${d.variance.toFixed(2)}°C`)
+          .attr('data-year', d.year)
+          .style('left', event.pageX + 10 + 'px')
+          .style('top', event.pageY - 28 + 'px');
+      })
+      .on('mouseout', () => {
+        tooltip.style('opacity', 0);
       });
 
     /* Legend 
-  =========================================================================*/
+    =========================================================================*/
     const legendWidth = 300;
 
     const minTemp = d3.min(monthlyVariance, (d) => baseTemperature + d.variance) || 0;
