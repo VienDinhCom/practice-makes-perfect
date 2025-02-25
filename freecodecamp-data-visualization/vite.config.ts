@@ -13,6 +13,7 @@ export default defineConfig({
         main: resolve(__dirname, 'index.html'),
         barChar: resolve(__dirname, 'projects/bar-chart/bar-chart.html'),
         scatterplotGraph: resolve(__dirname, 'projects/scatterplot-graph/scatterplot-graph.html'),
+        heatMap: resolve(__dirname, 'projects/heat-map/heat-map.html'),
       },
     },
   },
