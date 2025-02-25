@@ -37,7 +37,7 @@ import * as d3 from 'd3';
     const xAxis = d3
       .axisBottom(xScale)
       .tickValues(xScale.domain().filter((year) => Number(year) % 10 === 0))
-      .tickFormat(function (year) {
+      .tickFormat((year) => {
         const date = new Date(0);
         date.setUTCFullYear(Number(year));
         return d3.utcFormat('%Y')(date);
@@ -99,7 +99,7 @@ import * as d3 from 'd3';
       .attr('width', () => xScale.bandwidth())
       .attr('height', () => yScale.bandwidth())
       .attr('fill', (d) => d3.interpolateRdYlBu(1 - (baseTemperature + d.variance) / 10))
-      .on('mouseover', function (event, d) {
+      .on('mouseover', (event, d) => {
         const temp = baseTemperature + d.variance;
         const date = new Date(d.year, d.month - 1);
 
@@ -110,7 +110,7 @@ import * as d3 from 'd3';
           .style('left', event.pageX + 10 + 'px')
           .style('top', event.pageY - 28 + 'px');
       })
-      .on('mouseout', function () {
+      .on('mouseout', () => {
         tooltip.style('opacity', 0);
       });
 
