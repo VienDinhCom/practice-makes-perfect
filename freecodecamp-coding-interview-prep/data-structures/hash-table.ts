@@ -66,9 +66,12 @@ class HashTable<T> {
 
   has(key: string): boolean {
     const hash = this.hash(key);
+
     const bucket = this.table[hash] || [];
 
-    return bucket.some(([k, _v]) => k === key);
+    const index = bucket.findIndex((item) => item[0] === key);
+
+    return index >= 0;
   }
 
   forEach(callback: (value: T, key: string) => void): void {
