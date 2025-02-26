@@ -75,12 +75,8 @@ class HashTable<T> {
   }
 
   forEach(callback: (value: T, key: string) => void): void {
-    for (let bucket of this.table) {
-      bucket ??= [];
-
-      for (const [key, value] of bucket) {
-        callback(value, key);
-      }
+    for (const bucket of this.table) {
+      (bucket || []).forEach(([key, value]) => callback(value, key));
     }
   }
 
