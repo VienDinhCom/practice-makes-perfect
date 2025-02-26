@@ -1,5 +1,7 @@
 import { expect } from 'jsr:@std/expect';
 
+// https://viendinh.com/posts/zzyv-bang-anh-xa/
+
 class Map<T> {
   private map: Record<string, T>;
 
