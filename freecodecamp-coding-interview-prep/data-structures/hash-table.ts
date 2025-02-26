@@ -52,14 +52,16 @@ class HashTable<T> {
 
   delete(key: string): void {
     const hash = this.hash(key);
+
     const bucket = this.table[hash] || [];
 
-    const index = bucket.findIndex(([k, _v]) => k === key);
+    const index = bucket.findIndex((item) => item[0] === key);
 
-    if (index === -1) return;
+    if (index >= 0) {
+      bucket.splice(index, 1);
 
-    bucket.splice(index, 1);
-    this.size--;
+      this.size--;
+    }
   }
 
   has(key: string): boolean {
