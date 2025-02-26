@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Choropleth Map</title>
+
+    <style>
+      #chart {
+        padding-top: 5%;
+        text-align: center;
+        position: relative;
+      }
+
+      #chart #title {
+        display: block;
+        width: 100%;
+        position: absolute;
+        top: 50px;
+        z-index: 1;
+        font-size: 24px;
+      }
+
+      .source-code {
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="chart">
+      <h1 id="title">United States Educational Attainment</h1>
+    </div>
+    <div class="source-code">
+      <a
+        href="https://github.com/VienDinhCom/practice-makes-perfect/tree/main/freecodecamp-data-visualization/projects/choropleth-map"
+        >Source Code</a
+      >
+    </div>
+    <script src="https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js"></script>
+    <script type="module" src="./choropleth-map.ts"></script>
+  </body>
+</html>
