@@ -1,5 +1,7 @@
 import { expect } from 'jsr:@std/expect';
 
+// https://viendinh.com/posts/zzzi-bang-bam/
+
 class HashTable<T> {
   private table: [string, T][][];
   public size: number;
@@ -9,6 +11,7 @@ class HashTable<T> {
     this.size = 0;
   }
 
+  // review
   private hash(key: string): number {
     let hash = 0;
 
