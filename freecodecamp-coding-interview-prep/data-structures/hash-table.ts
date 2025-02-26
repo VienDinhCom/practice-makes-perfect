@@ -96,19 +96,18 @@ class HashTable<T> {
     return values;
   }
 
-  // review
   clear(): void {
     this.keys().forEach((key) => this.delete(key));
   }
 
   entries(): [string, T][] {
-    const entries: [string, T][] = [];
+    const result: [string, T][] = [];
 
     this.forEach((value, key) => {
-      entries.push([key, value]);
+      result.push([key, value]);
     });
 
-    return entries;
+    return result;
   }
 }
 
