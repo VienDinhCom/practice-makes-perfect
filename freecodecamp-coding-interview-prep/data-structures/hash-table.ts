@@ -11,7 +11,6 @@ class HashTable<T> {
     this.size = 0;
   }
 
-  // review
   private hash(key: string): number {
     let hash = 0;
 
@@ -28,10 +27,11 @@ class HashTable<T> {
     this.table[hash] ??= [];
 
     const bucket = this.table[hash];
-    const index = bucket.findIndex(([k, _v]) => k === key);
+    const index = bucket.findIndex((item) => item[0] === key);
 
     if (index === -1) {
       bucket.push([key, value]);
+
       this.size++;
     } else {
       bucket[index] = [key, value];
