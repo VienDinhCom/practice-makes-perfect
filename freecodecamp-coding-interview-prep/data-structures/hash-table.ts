@@ -88,6 +88,7 @@ class HashTable<T> {
     return keys;
   }
 
+  // review
   values(): T[] {
     const values: T[] = [];
 
