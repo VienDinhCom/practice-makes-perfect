@@ -88,7 +88,6 @@ class HashTable<T> {
     return keys;
   }
 
-  // review
   values(): T[] {
     const values: T[] = [];
 
@@ -97,6 +96,7 @@ class HashTable<T> {
     return values;
   }
 
+  // review
   clear(): void {
     this.keys().forEach((key) => this.delete(key));
   }
