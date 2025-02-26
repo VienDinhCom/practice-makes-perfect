@@ -42,10 +42,12 @@ class HashTable<T> {
 
   get(key: string): T | undefined {
     const hash = this.hash(key);
-    const bucket = this.table[hash] || [];
-    const item = bucket.find(([k, _v]) => k === key);
 
-    return item ? item[1] : undefined;
+    const bucket = this.table[hash] || [];
+
+    const index = bucket.findIndex((item) => item[0] === key);
+
+    if (index >= 0) return bucket[index][1];
   }
 
   delete(key: string): void {
