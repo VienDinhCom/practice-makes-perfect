@@ -1,5 +1,7 @@
 import { expect } from 'jsr:@std/expect';
 
+// https://viendinh.com/posts/zzzi-bang-bam/
+
 class HashTable<T> {
   private table: [string, T][][];
   public size: number;
@@ -25,10 +27,11 @@ class HashTable<T> {
     this.table[hash] ??= [];
 
     const bucket = this.table[hash];
-    const index = bucket.findIndex(([k, _v]) => k === key);
+    const index = bucket.findIndex((item) => item[0] === key);
 
     if (index === -1) {
       bucket.push([key, value]);
+
       this.size++;
     } else {
       bucket[index] = [key, value];
@@ -39,45 +42,48 @@ class HashTable<T> {
 
   get(key: string): T | undefined {
     const hash = this.hash(key);
-    const bucket = this.table[hash] || [];
-    const item = bucket.find(([k, _v]) => k === key);
 
-    return item ? item[1] : undefined;
+    const bucket = this.table[hash] || [];
+
+    const index = bucket.findIndex((item) => item[0] === key);
+
+    if (index >= 0) return bucket[index][1];
   }
 
   delete(key: string): void {
     const hash = this.hash(key);
+
     const bucket = this.table[hash] || [];
 
-    const index = bucket.findIndex(([k, _v]) => k === key);
+    const index = bucket.findIndex((item) => item[0] === key);
 
-    if (index === -1) return;
+    if (index >= 0) {
+      bucket.splice(index, 1);
 
-    bucket.splice(index, 1);
-    this.size--;
+      this.size--;
+    }
   }
 
   has(key: string): boolean {
     const hash = this.hash(key);
+
     const bucket = this.table[hash] || [];
 
-    return bucket.some(([k, _v]) => k === key);
+    const index = bucket.findIndex((item) => item[0] === key);
+
+    return index >= 0;
   }
 
   forEach(callback: (value: T, key: string) => void): void {
-    for (let bucket of this.table) {
-      bucket ??= [];
-
-      for (const [key, value] of bucket) {
-        callback(value, key);
-      }
+    for (const bucket of this.table) {
+      (bucket || []).forEach(([key, value]) => callback(value, key));
     }
   }
 
   keys(): string[] {
     const keys: string[] = [];
 
-    this.forEach((_value, key) => keys.push(key));
+    this.forEach((_, key) => keys.push(key));
 
     return keys;
   }
@@ -95,13 +101,13 @@ class HashTable<T> {
   }
 
   entries(): [string, T][] {
-    const entries: [string, T][] = [];
+    const result: [string, T][] = [];
 
     this.forEach((value, key) => {
-      entries.push([key, value]);
+      result.push([key, value]);
     });
 
-    return entries;
+    return result;
   }
 }
 

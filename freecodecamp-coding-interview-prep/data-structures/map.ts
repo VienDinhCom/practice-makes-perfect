@@ -1,5 +1,7 @@
 import { expect } from 'jsr:@std/expect';
 
+// https://viendinh.com/posts/zzyv-bang-anh-xa/
+
 class Map<T> {
   private map: Record<string, T>;
 
@@ -30,8 +32,8 @@ class Map<T> {
   }
 
   clear(): void {
-    for (const key of Object.keys(this.map)) {
-      this.delete(key);
+    for (const key in this.map) {
+      delete this.map[key];
     }
   }
 
@@ -41,11 +43,7 @@ class Map<T> {
 
   forEach(callback: (value: T, key: string) => void): void {
     for (const key in this.map) {
-      if (Object.prototype.hasOwnProperty.call(this.map, key)) {
-        const value = this.map[key];
-
-        callback(value, key);
-      }
+      callback(this.map[key], key);
     }
   }
 

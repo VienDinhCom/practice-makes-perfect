@@ -1,5 +1,7 @@
 import { expect } from 'jsr:@std/expect';
 
+// https://viendinh.com/posts/zzyw-tap-hop/
+
 class Set {
   private set: Record<string, number>;
 
