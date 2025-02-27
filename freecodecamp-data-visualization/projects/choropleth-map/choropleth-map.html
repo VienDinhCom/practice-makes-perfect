@@ -17,49 +17,48 @@
         display: block;
         width: 100%;
         position: absolute;
-        top: 50px;
+        top: 10px;
         z-index: 1;
         font-size: 24px;
       }
 
-      #chart svg {
-        background-color: lightblue;
-        position: relative;
-        border-radius: 10px;
+      #chart #description {
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 13px;
       }
 
       #tooltip {
+        opacity: 0;
         position: absolute;
         background-color: rgba(0, 0, 0, 0.8);
         color: white;
-        padding: 6px 8px;
+        padding: 3px 9px;
         border-radius: 4px;
         pointer-events: none;
         font-size: 12px;
         font-family: Arial, Helvetica, sans-serif;
       }
 
-      #legend {
-        font-size: 12px;
-        font-family: Arial, Helvetica, sans-serif;
-      }
-
       .source-code {
+        margin-top: 20px;
         text-align: center;
       }
     </style>
   </head>
   <body>
     <div id="chart">
-      <h1 id="title">Doping in Professional Bicycle Racing</h1>
+      <header>
+        <h1 id="title">United States Educational Attainment</h1>
+        <p id="description">Percentage of adults age 25 and older with a bachelor's degree or higher (2010-2014)</p>
+      </header>
     </div>
     <div class="source-code">
       <a
-        href="https://github.com/VienDinhCom/practice-makes-perfect/tree/main/freecodecamp-data-visualization/projects/scatterplot-graph"
+        href="https://github.com/VienDinhCom/practice-makes-perfect/tree/main/freecodecamp-data-visualization/projects/choropleth-map"
         >Source Code</a
       >
     </div>
     <script src="https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js"></script>
-    <script type="module" src="/projects/scatterplot-graph/scatterplot-graph.ts"></script>
+    <script type="module" src="./choropleth-map.ts"></script>
   </body>
 </html>
