@@ -30,13 +30,8 @@ import type { FeatureCollection, GeometryObject } from 'geojson';
     // Set up dimensions
     const width = 960;
     const height = 600;
-    const padding = 60;
 
-    const chart = d3
-      .select('#chart')
-      .append('svg')
-      .attr('width', width + padding * 2)
-      .attr('height', height + padding * 2);
+    const chart = d3.select('#chart').append('svg').attr('width', width).attr('height', height);
 
     /* Map 
     =========================================================================*/
@@ -86,7 +81,7 @@ import type { FeatureCollection, GeometryObject } from 'geojson';
     const legend = chart
       .append('g')
       .attr('id', 'legend')
-      .attr('transform', `translate(${width / 2 - legendWidth / 2}, ${height + 50})`);
+      .attr('transform', `translate(${width / 2 + 50}, ${30})`);
 
     // Add legend rectangles
     legend
