@@ -60,6 +60,41 @@ import type { FeatureCollection, GeometryObject } from 'geojson';
         return colorScale(county ? county.bachelorsOrHigher : 0);
       })
       .attr('d', path);
+
+    /* Legend 
+    =========================================================================*/
+    const legendWidth = 300;
+    const legendRectWidth = legendWidth / colorScale.range().length;
+
+    const legend = chart
+      .append('g')
+      .attr('id', 'legend')
+      .attr('transform', `translate(${width / 2 - legendWidth / 2}, ${height + 50})`);
+
+    // Add legend rectangles
+    legend
+      .selectAll('rect')
+      .data(colorScale.range())
+      .enter()
+      .append('rect')
+      .attr('x', (_, i) => legendRectWidth * i)
+      .attr('y', 0)
+      .attr('width', legendRectWidth)
+      .attr('height', 10)
+      .attr('fill', (d) => d);
+
+    // Add legend labels
+    const legendDomain = [0, ...colorScale.domain(), 100];
+
+    legend
+      .selectAll('text')
+      .data(legendDomain)
+      .enter()
+      .append('text')
+      .attr('x', (_, i) => legendRectWidth * i)
+      .attr('y', 20)
+      .style('font-size', '10px')
+      .text((d) => `${d}%`);
   } catch (error) {
     console.error(error);
   }
