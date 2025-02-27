@@ -43,6 +43,8 @@ import type { FeatureCollection, GeometryObject } from 'geojson';
     const path = d3.geoPath();
     const colorScale = d3.scaleThreshold<number, string>().domain([15, 30, 45, 60]).range(d3.schemeBlues[5]);
 
+    const tooltip = d3.select('body').append('div').attr('id', 'tooltip');
+
     chart
       .append('g')
       .selectAll('path')
@@ -59,7 +61,22 @@ import type { FeatureCollection, GeometryObject } from 'geojson';
         const county = education.get(d.id.toString());
         return colorScale(county ? county.bachelorsOrHigher : 0);
       })
-      .attr('d', path);
+      .attr('d', path)
+      .on('mouseover', function (event: any, d: any) {
+        const county = education.get(d.id.toString());
+
+        if (!county) return;
+
+        tooltip
+          .attr('data-education', county.bachelorsOrHigher)
+          .style('left', event.pageX + 10 + 'px')
+          .style('top', event.pageY - 28 + 'px')
+          .style('opacity', 0.9)
+          .html(`<p>${county.area_name}, ${county.state}: ${county.bachelorsOrHigher}%</p>`);
+      })
+      .on('mouseout', function () {
+        tooltip.style('opacity', 0);
+      });
 
     /* Legend 
     =========================================================================*/
