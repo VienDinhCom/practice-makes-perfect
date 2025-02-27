@@ -15,6 +15,7 @@ export default defineConfig({
         scatterplotGraph: resolve(__dirname, 'projects/scatterplot-graph/scatterplot-graph.html'),
         heatMap: resolve(__dirname, 'projects/heat-map/heat-map.html'),
         choroplethMap: resolve(__dirname, 'projects/choropleth-map/choropleth-map.html'),
+        treemapDiagram: resolve(__dirname, 'projects/treemap-diagram/treemap-diagram.html'),
       },
     },
   },
