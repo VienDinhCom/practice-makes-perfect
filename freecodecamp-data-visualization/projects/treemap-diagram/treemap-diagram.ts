@@ -119,4 +119,35 @@ import * as d3 from 'd3';
     .text((d) => d)
     .attr('font-size', '8px')
     .attr('fill', 'black');
+
+  /* Tooltips 
+  =========================================================================*/
+  const tooltip = d3
+    .select('body')
+    .append('div')
+    .attr('id', 'tooltip')
+    .style('position', 'absolute')
+    .style('visibility', 'hidden')
+    .style('background-color', 'rgba(0, 0, 0, 0.8)')
+    .style('color', 'white')
+    .style('padding', '10px')
+    .style('border-radius', '5px')
+    .style('pointer-events', 'none');
+
+  tile
+    .on('mousemove', function (event: MouseEvent, d: TreemapNode) {
+      const xPosition = event.pageX + 10;
+      const yPosition = event.pageY + 10;
+      const nodeData = d.data as Item;
+
+      tooltip
+        .style('left', xPosition + 'px')
+        .style('top', yPosition + 'px')
+        .style('visibility', 'visible')
+        .attr('data-value', nodeData.value)
+        .html(`Name: ${nodeData.name}<br>` + `Category: ${nodeData.category}<br>` + `Value: ${nodeData.value}`);
+    })
+    .on('mouseout', function () {
+      tooltip.style('visibility', 'hidden');
+    });
 })();
