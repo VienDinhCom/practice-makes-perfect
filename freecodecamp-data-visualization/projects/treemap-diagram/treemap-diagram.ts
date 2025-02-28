@@ -49,8 +49,13 @@ import * as d3 from 'd3';
 
   const width = 960;
   const height = 570;
+  const padding = 100;
 
-  const svg = d3.select('#chart').append('svg').attr('width', width).attr('height', height);
+  const svg = d3
+    .select('#chart')
+    .append('svg')
+    .attr('width', width)
+    .attr('height', height + padding);
 
   /* Treemap 
   =========================================================================*/
@@ -150,4 +155,46 @@ import * as d3 from 'd3';
     .on('mouseout', function () {
       tooltip.style('visibility', 'hidden');
     });
+
+  /* Legend 
+  =========================================================================*/
+  const legendHeight = 50;
+  const treemapHeight = height - legendHeight;
+
+  const legend = svg
+    .append('g')
+    .attr('id', 'legend')
+    .attr('transform', `translate(40, ${treemapHeight + 75})`);
+
+  const legendRectSize = 15;
+  const legendSpacing = 5;
+  const legendItemWidth = 120;
+  const legendItemsPerRow = Math.floor(width / legendItemWidth);
+
+  const legendItems = legend
+    .selectAll('.legend-item-group')
+    .data(categories)
+    .enter()
+    .append('g')
+    .attr('class', 'legend-item-group')
+    .attr('transform', (_, i) => {
+      // Calculate position in a horizontal grid
+      const row = Math.floor(i / legendItemsPerRow);
+      const col = i % legendItemsPerRow;
+      return `translate(${col * legendItemWidth}, ${row * (legendRectSize + legendSpacing)})`;
+    });
+
+  legendItems
+    .append('rect')
+    .attr('class', 'legend-item')
+    .attr('width', legendRectSize)
+    .attr('height', legendRectSize)
+    .attr('fill', (d) => colorScale(d));
+
+  legendItems
+    .append('text')
+    .attr('x', legendRectSize + legendSpacing)
+    .attr('y', legendRectSize - 2)
+    .text((d) => d)
+    .attr('font-size', '12px');
 })();
