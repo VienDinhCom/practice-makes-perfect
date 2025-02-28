@@ -7,24 +7,27 @@
     <title>Treemap Diagram</title>
 
     <style>
+      body {
+        font-family: Arial, Helvetica, sans-serif;
+      }
+
       #chart {
         padding-top: 5%;
         text-align: center;
         position: relative;
-        background-color: lightblue;
       }
 
-      #chart svg {
-        background-color: lightgrey;
-      }
-
-      #chart #title {
+      #title {
         display: block;
         width: 100%;
         position: absolute;
         top: 10px;
         z-index: 1;
         font-size: 24px;
+      }
+
+      #description {
+        margin: 0 0 20px 0;
       }
 
       .source-code {
