@@ -80,17 +80,17 @@ class SinglyLinkedList<T> {
     return -1;
   };
 
-  elementAt(at: number) {
+  elementAt(at: number): T | undefined {
     let index: number = 0;
-    let current: Node<T> | null = this.head;
+    let curr: Node<T> | null = this.head;
 
-    while (current) {
+    while (curr) {
       if (index === at) {
-        return current.element;
+        return curr.element;
       }
 
       index++;
-      current = current.next;
+      curr = curr.next;
     }
   }
 
