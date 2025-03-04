@@ -7,3 +7,11 @@ It took me back to basics—structuring content with HTML, styling with CSS. I s
 By the end, I was designing layouts that adapt beautifully—Flexbox for a photo gallery, CSS Grid for a magazine page.
 
 Turns out, even experienced developers have more to learn. And that’s the fun part.
+
+## Certification Projects
+
+- [Source](projects/survey-form) - Survey Form
+- [Source](projects/tribute-page) - Tribute Page
+- [Source](projects/technical-documentation-page) - Technical Documentation Page
+- [Source](projects/product-landing-page) - Product Landing Page
+- [Source](projects/personal-portfolio-webpage) - Personal Portfolio Webpage
