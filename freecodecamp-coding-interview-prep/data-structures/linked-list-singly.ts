@@ -12,10 +12,13 @@ class Node<T> {
 
 class SinglyLinkedList<T> {
   private head: Node<T> | null;
+  private tail: Node<T> | null;
+
   length: number;
 
   constructor() {
     this.head = null;
+    this.tail = null;
     this.length = 0;
   }
 
