@@ -14,6 +14,7 @@ export default defineConfig({
         portfolio: resolve(__dirname, 'projects/personal-portfolio-webpage/personal-portfolio-webpage.html'),
         product: resolve(__dirname, 'projects/product-landing-page/product-landing-page.html'),
         survey: resolve(__dirname, 'projects/survey-form/survey-form.html'),
+        documentation: resolve(__dirname, 'projects/technical-documentation-page/technical-documentation-page.html'),
       },
     },
   },
