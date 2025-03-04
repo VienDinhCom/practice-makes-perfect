@@ -8,6 +8,8 @@ By the end, I was designing layouts that adapt beautifully—Flexbox for a photo
 
 Turns out, even experienced developers have more to learn. And that’s the fun part.
 
+You can find the course here: [Responsive Web Design](https://www.freecodecamp.org/learn/2022/responsive-web-design/) & [Certificate](https://www.freecodecamp.org/certification/VienDinhCom/responsive-web-design)
+
 ## Projects
 
 - [Source](projects/survey-form) - [Demo](https://responsive-web-design-vien.vercel.app/projects/survey-form/survey-form.html) - Survey Form
