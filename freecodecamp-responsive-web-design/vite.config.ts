@@ -13,6 +13,7 @@ export default defineConfig({
         main: resolve(__dirname, 'index.html'),
         portfolio: resolve(__dirname, 'projects/personal-portfolio-webpage/personal-portfolio-webpage.html'),
         product: resolve(__dirname, 'projects/product-landing-page/product-landing-page.html'),
+        survey: resolve(__dirname, 'projects/survey-form/survey-form.html'),
       },
     },
   },
