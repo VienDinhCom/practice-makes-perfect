@@ -12,13 +12,10 @@ class Node<T> {
 
 class SinglyLinkedList<T> {
   private head: Node<T> | null;
-  private tail: Node<T> | null;
-
   length: number;
 
   constructor() {
     this.head = null;
-    this.tail = null;
     this.length = 0;
   }
 
@@ -28,9 +25,9 @@ class SinglyLinkedList<T> {
     if (this.head === null) {
       this.head = node;
     } else {
-      let current: Node<T> | null = this.head;
+      let current = this.head;
 
-      while (current?.next) {
+      while (current.next) {
         current = current.next;
       }
 
