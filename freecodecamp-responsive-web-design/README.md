@@ -18,6 +18,6 @@ Turns out, even experienced developers have more to learn. And that’s the fun 
 
 ## Certificate
 
-<a href="https://www.freecodecamp.org/certification/VienDinhCom/responsive-web-design" target="_blank">
+<a href="https://www.freecodecamp.org/certification/VienDinhCom/responsive-web-design">
   <img src="certificate.png" alt="Responsive Web Design">
 </a>
