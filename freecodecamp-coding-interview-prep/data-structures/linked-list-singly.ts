@@ -25,35 +25,37 @@ class SinglyLinkedList<T> {
     if (this.head === null) {
       this.head = node;
     } else {
-      let current: Node<T> | null = this.head;
+      let curr: Node<T> | null = this.head;
 
-      while (current?.next) {
-        current = current.next;
+      while (curr.next) {
+        curr = curr.next;
       }
 
-      current.next = node;
+      curr.next = node;
     }
 
     this.length++;
   }
 
   remove(element: T): void {
-    let previous: Node<T> | null = null;
-    let current: Node<T> | null = this.head;
+    let prev: Node<T> | null = null;
+    let curr: Node<T> | null = this.head;
 
-    while (current) {
-      if (current.element === element) {
-        if (current === this.head) {
-          this.head = current.next;
+    while (curr) {
+      if (curr.element === element) {
+        if (curr === this.head) {
+          this.head = curr.next;
         } else {
-          previous!.next = current.next;
+          prev!.next = curr.next;
         }
 
         this.length--;
+
+        return;
       }
 
-      previous = current;
-      current = current.next;
+      prev = curr;
+      curr = curr.next;
     }
   }
 
@@ -78,43 +80,43 @@ class SinglyLinkedList<T> {
     return -1;
   };
 
-  elementAt(at: number) {
+  elementAt(at: number): T | undefined {
     let index: number = 0;
-    let current: Node<T> | null = this.head;
+    let curr: Node<T> | null = this.head;
 
-    while (current) {
+    while (curr) {
       if (index === at) {
-        return current.element;
+        return curr.element;
       }
 
       index++;
-      current = current.next;
+      curr = curr.next;
     }
   }
 
   addAt(at: number, element: T) {
+    const node = new Node(element);
+
     let index: number = 0;
-    let previous: Node<T> | null = null;
-    let current: Node<T> | null = this.head;
+    let prev: Node<T> | null = null;
+    let curr: Node<T> | null = this.head;
 
-    while (current) {
+    while (curr) {
       if (index === at) {
-        const node = new Node(element);
-
-        node.next = current;
-
-        if (current === this.head) {
+        if (curr === this.head) {
+          node.next = this.head;
           this.head = node;
         } else {
-          previous!.next = node;
+          prev!.next = node;
+          node.next = curr;
         }
 
         this.length++;
       }
 
       index++;
-      previous = current;
-      current = current.next;
+      prev = curr;
+      curr = curr.next;
     }
   }
 }

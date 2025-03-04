@@ -5,14 +5,66 @@
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Responsive Web Design</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f4f4f4;
+        text-align: center;
+      }
+
+      h1 {
+        color: #333;
+        margin-top: 20px;
+      }
+
+      ul {
+        list-style-type: none;
+        padding: 0;
+        max-width: 400px;
+        margin: 20px auto;
+      }
+
+      li {
+        background: #fff;
+        margin: 10px 0;
+        padding: 15px;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        transition: transform 0.2s;
+      }
+
+      li:hover {
+        transform: scale(1.05);
+      }
+
+      a {
+        text-decoration: none;
+        color: #007bff;
+        font-weight: bold;
+        display: block;
+      }
+
+      a:hover {
+        color: #0056b3;
+      }
+
+      @media (max-width: 600px) {
+        ul {
+          max-width: 90%;
+        }
+      }
+    </style>
   </head>
   <body>
+    <h1>Responsive Web Design</h1>
     <ul>
-      <li><a href="/survey-form.html">Survey Form</a></li>
-      <li><a href="/tribute-page.html">Tribute Page</a></li>
-      <li><a href="/technical-documentation-page.html">Technical Documentation Page</a></li>
-      <li><a href="/product-landing-page.html">Product Landing Page</a></li>
-      <li><a href="/personal-portfolio-webpage.html">Personal Portfolio Webpage</a></li>
+      <li><a href="/projects/survey-form/survey-form.html">Survey Form</a></li>
+      <li><a href="/projects/tribute-page/tribute-page.html">Tribute Page</a></li>
+      <li><a href="/projects/technical-documentation-page/technical-documentation-page.html">Technical Documentation Page</a></li>
+      <li><a href="/projects/product-landing-page/product-landing-page.html">Product Landing Page</a></li>
+      <li><a href="/projects/personal-portfolio-webpage/personal-portfolio-webpage.html">Personal Portfolio Webpage</a></li>
     </ul>
   </body>
 </html>
