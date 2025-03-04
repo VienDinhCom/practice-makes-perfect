@@ -95,28 +95,28 @@ class SinglyLinkedList<T> {
   }
 
   addAt(at: number, element: T) {
+    const node = new Node(element);
+
     let index: number = 0;
-    let previous: Node<T> | null = null;
-    let current: Node<T> | null = this.head;
+    let prev: Node<T> | null = null;
+    let curr: Node<T> | null = this.head;
 
-    while (current) {
+    while (curr) {
       if (index === at) {
-        const node = new Node(element);
-
-        node.next = current;
-
-        if (current === this.head) {
+        if (curr === this.head) {
+          node.next = this.head;
           this.head = node;
         } else {
-          previous!.next = node;
+          prev!.next = node;
+          node.next = curr;
         }
 
         this.length++;
       }
 
       index++;
-      previous = current;
-      current = current.next;
+      prev = curr;
+      curr = curr.next;
     }
   }
 }
