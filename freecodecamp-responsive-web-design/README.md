@@ -10,8 +10,8 @@ Turns out, even experienced developers have more to learn. And that’s the fun 
 
 ## Certification Projects
 
-- [Source](projects/survey-form) - Survey Form
-- [Source](projects/tribute-page) - Tribute Page
-- [Source](projects/technical-documentation-page) - Technical Documentation Page
-- [Source](projects/product-landing-page) - Product Landing Page
-- [Source](projects/personal-portfolio-webpage) - Personal Portfolio Webpage
+- [Source](projects/survey-form) - [Demo](https://responsive-web-design-vien.vercel.app/projects/survey-form/survey-form.html) - Survey Form
+- [Source](projects/tribute-page) - [Demo](https://responsive-web-design-vien.vercel.app/projects/tribute-page/tribute-page.html) - Tribute Page
+- [Source](projects/technical-documentation-page) - [Demo](https://responsive-web-design-vien.vercel.app/projects/technical-documentation-page/technical-documentation-page.html) - Technical Documentation Page
+- [Source](projects/product-landing-page) - [Demo](https://responsive-web-design-vien.vercel.app/projects/product-landing-page/product-landing-page.html) - Product Landing Page
+- [Source](projects/personal-portfolio-webpage) - [Demo](https://responsive-web-design-vien.vercel.app/projects/personal-portfolio-webpage/personal-portfolio-webpage.html) - Personal Portfolio Webpage
