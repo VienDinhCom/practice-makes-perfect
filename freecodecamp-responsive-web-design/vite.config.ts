@@ -11,10 +11,8 @@ export default defineConfig({
     rollupOptions: {
       input: {
         main: resolve(__dirname, 'index.html'),
-        personalPortfolioWebpage: resolve(
-          __dirname,
-          'projects/personal-portfolio-webpage/personal-portfolio-webpage.html'
-        ),
+        portfolio: resolve(__dirname, 'projects/personal-portfolio-webpage/personal-portfolio-webpage.html'),
+        product: resolve(__dirname, 'projects/product-landing-page/product-landing-page.html'),
       },
     },
   },
