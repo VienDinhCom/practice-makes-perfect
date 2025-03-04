@@ -25,35 +25,37 @@ class SinglyLinkedList<T> {
     if (this.head === null) {
       this.head = node;
     } else {
-      let current = this.head;
+      let curr: Node<T> | null = this.head;
 
-      while (current.next) {
-        current = current.next;
+      while (curr.next) {
+        curr = curr.next;
       }
 
-      current.next = node;
+      curr.next = node;
     }
 
     this.length++;
   }
 
   remove(element: T): void {
-    let previous: Node<T> | null = null;
-    let current: Node<T> | null = this.head;
+    let prev: Node<T> | null = null;
+    let curr: Node<T> | null = this.head;
 
-    while (current) {
-      if (current.element === element) {
-        if (current === this.head) {
-          this.head = current.next;
+    while (curr) {
+      if (curr.element === element) {
+        if (curr === this.head) {
+          this.head = curr.next;
         } else {
-          previous!.next = current.next;
+          prev!.next = curr.next;
         }
 
         this.length--;
+
+        return;
       }
 
-      previous = current;
-      current = current.next;
+      prev = curr;
+      curr = curr.next;
     }
   }
 
