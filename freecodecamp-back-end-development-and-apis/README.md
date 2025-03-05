@@ -4,7 +4,7 @@ You know, I’ve worked with different ways to build APIs—Express.js, Next.js,
 
 I really got to understand HTTP—methods, headers, status codes, all the little details. I built backend apps with Node.js, used Express for web applications, and created microservices with MongoDB and Mongoose.
 
-I also learned to run MongoDB using Docker and Docker Compose. That was a game changer for development.
+I also ran MongoDB using Docker and Docker Compose. That was a game changer for development.
 
 It’s one thing to use tools—it’s another to really understand them. And that’s what this course helped me do.
 
