@@ -28,8 +28,8 @@ class DoublyLinkedList<T> {
       this.head = node;
       this.tail = node;
     } else {
-      node.prev = this.tail;
       this.tail!.next = node;
+      node.prev = this.tail;
 
       this.tail = node;
     }
@@ -76,7 +76,7 @@ class DoublyLinkedList<T> {
   reverse() {
     this.head = this.tail;
 
-    let curr = this.tail;
+    let curr = this.head;
 
     while (curr) {
       [curr.prev, curr.next] = [curr.next, curr.prev];
