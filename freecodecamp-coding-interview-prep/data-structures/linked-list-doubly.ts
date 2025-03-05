@@ -37,26 +37,26 @@ class DoublyLinkedList<T> {
   }
 
   remove(data: T) {
-    let current: Node<T> | null = this.head;
+    let curr: Node<T> | null = this.head;
 
-    while (current) {
-      if (current.data === data) {
-        const prev = current.prev;
-        const next = current.next;
+    while (curr) {
+      const prev = curr.prev;
+      const next = curr.next;
 
+      if (curr.data === data) {
         if (prev) prev.next = next;
         if (next) next.prev = prev;
 
-        if (current === this.head) {
+        if (curr === this.head) {
           this.head = next;
         }
 
-        if (current === this.tail) {
+        if (curr === this.tail) {
           this.tail = prev;
         }
       }
 
-      current = current.next;
+      curr = next;
     }
   }
 
