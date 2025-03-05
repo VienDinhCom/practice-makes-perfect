@@ -8,44 +8,52 @@
     <style>
       body {
         font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
         background-color: #f4f4f4;
         text-align: center;
-        padding: 20px;
       }
 
       h1 {
-        font-size: 24px;
-        margin-bottom: 20px;
-      }
-
-      h1 a {
-        text-decoration: none;
         color: #333;
-        transition: color 0.3s ease-in-out;
-      }
-
-      h1 a:hover {
-        color: #007bff;
+        margin-top: 20px;
       }
 
       ul {
         list-style-type: none;
         padding: 0;
+        max-width: 400px;
+        margin: 20px auto;
       }
 
       li {
+        background: #fff;
         margin: 10px 0;
+        padding: 15px;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        transition: transform 0.2s;
       }
 
-      li a {
+      li:hover {
+        transform: scale(1.05);
+      }
+
+      a {
         text-decoration: none;
-        font-size: 18px;
         color: #007bff;
-        transition: color 0.3s ease-in-out;
+        font-weight: bold;
+        display: block;
       }
 
-      li a:hover {
+      a:hover {
         color: #0056b3;
+      }
+
+      @media (max-width: 600px) {
+        ul {
+          max-width: 90%;
+        }
       }
     </style>
   </head>
