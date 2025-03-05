@@ -93,12 +93,12 @@ class DoublyLinkedList<T> {
   values(): T[] {
     const values: T[] = [];
 
-    let current = this.head;
+    let curr: Node<T> | null = this.head;
 
-    while (current) {
-      values.push(current.data);
+    while (curr) {
+      values.push(curr.data);
 
-      current = current.next;
+      curr = curr.next;
     }
 
     return values;
