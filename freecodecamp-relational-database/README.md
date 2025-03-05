@@ -10,11 +10,11 @@ You can find the course here: [Relational Database](https://www.freecodecamp.org
 
 ## Projects
 
-- [Source](projects/celestial-bodies/) - Celestial Bodies
-- [Source](projects/world-cup/) - World Cup
-- [Source](projects/salon-appointment-scheduler/) - Salon Appointment Scheduler
-- [Source](projects/periodic-table/) - Periodic Table
-- [Source](projects/number-guessing-game/) - Number Guessing Game
+- [Brief](https://www.freecodecamp.org/learn/relational-database/build-a-celestial-bodies-database-project/build-a-celestial-bodies-database) - [Source](projects/celestial-bodies/) - Celestial Bodies
+- [Brief](https://www.freecodecamp.org/learn/relational-database/build-a-world-cup-database-project/build-a-world-cup-database) - [Source](projects/world-cup/) - World Cup
+- [Brief](https://www.freecodecamp.org/learn/relational-database/build-a-salon-appointment-scheduler-project/build-a-salon-appointment-scheduler) - [Source](projects/salon-appointment-scheduler/) - Salon Appointment Scheduler
+- [Brief](https://www.freecodecamp.org/learn/relational-database/build-a-periodic-table-database-project/build-a-periodic-table-database) - [Source](projects/periodic-table/) - Periodic Table
+- [Brief](https://www.freecodecamp.org/learn/relational-database/build-a-number-guessing-game-project/build-a-number-guessing-game) - [Source](projects/number-guessing-game/) - Number Guessing Game
 
 ## Certificate
 
