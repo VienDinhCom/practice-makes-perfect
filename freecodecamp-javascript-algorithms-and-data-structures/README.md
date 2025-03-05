@@ -12,11 +12,11 @@ You can find the course here: [JavaScript Algorithms and Data Structures](https:
 
 ## Projects
 
-- [Source](projects/palindrome-checker.ts) - Palindrome Checker
-- [Source](projects/roman-numeral-converter.ts) - Roman Numeral Converter
-- [Source](projects/telephone-number-validator.ts) - Telephone Number Validator
-- [Source](projects/cash-register.ts) - Cash Register
-- [Source](projects/pokemon-search.ts) - Pokémon Search
+- [Brief](https://www.freecodecamp.org/learn/javascript-algorithms-and-data-structures-v8/build-a-palindrome-checker-project/build-a-palindrome-checker) - [Source](projects/palindrome-checker.ts) - Palindrome Checker
+- [Brief](https://www.freecodecamp.org/learn/javascript-algorithms-and-data-structures-v8/build-a-roman-numeral-converter-project/build-a-roman-numeral-converter) - [Source](projects/roman-numeral-converter.ts) - Roman Numeral Converter
+- [Brief](https://www.freecodecamp.org/learn/javascript-algorithms-and-data-structures-v8/build-a-telephone-number-validator-project/build-a-telephone-number-validator) - [Source](projects/telephone-number-validator.ts) - Telephone Number Validator
+- [Brief](https://www.freecodecamp.org/learn/javascript-algorithms-and-data-structures-v8/build-a-cash-register-project/build-a-cash-register) - [Source](projects/cash-register.ts) - Cash Register
+- [Brief](https://www.freecodecamp.org/learn/javascript-algorithms-and-data-structures-v8/build-a-pokemon-search-app-project/build-a-pokemon-search-app) - [Source](projects/pokemon-search.ts) - Pokémon Search
 
 ## Certificate
 
