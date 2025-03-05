@@ -12,11 +12,11 @@ You can find the course here: [Front End Development Libraries](https://www.free
 
 ## Projects
 
-- [Source](projects/random-quote-machine) - [Demo](https://front-end-development-libraries.vercel.app/projects/random-quote-machine/random-quote-machine.html) - Random Quote Machine
-- [Source](projects/markdown-previewer) - [Demo](https://front-end-development-libraries.vercel.app/projects/markdown-previewer/markdown-previewer.html) - Markdown Previewer
-- [Source](projects/drum-machine) - [Demo](https://front-end-development-libraries.vercel.app/projects/drum-machine/drum-machine.html) - Drum Machine
-- [Source](projects/javascript-calculator) - [Demo](https://front-end-development-libraries.vercel.app/projects/javascript-calculator/javascript-calculator.html) - JavaScript Calculator
-- [Source](projects/25--5-clock) - [Demo](https://front-end-development-libraries.vercel.app/projects/25--5-clock/25--5-clock.html) - 25 + 5 Clock
+- [Brief](https://www.freecodecamp.org/learn/front-end-development-libraries/front-end-development-libraries-projects/build-a-random-quote-machine) - [Source](projects/random-quote-machine) - [Demo](https://front-end-development-libraries.vercel.app/projects/random-quote-machine/random-quote-machine.html) - Random Quote Machine
+- [Brief](https://www.freecodecamp.org/learn/front-end-development-libraries/front-end-development-libraries-projects/build-a-markdown-previewer) - [Source](projects/markdown-previewer) - [Demo](https://front-end-development-libraries.vercel.app/projects/markdown-previewer/markdown-previewer.html) - Markdown Previewer
+- [Brief](https://www.freecodecamp.org/learn/front-end-development-libraries/front-end-development-libraries-projects/build-a-drum-machine) - [Source](projects/drum-machine) - [Demo](https://front-end-development-libraries.vercel.app/projects/drum-machine/drum-machine.html) - Drum Machine
+- [Brief](https://www.freecodecamp.org/learn/front-end-development-libraries/front-end-development-libraries-projects/build-a-javascript-calculator) - [Source](projects/javascript-calculator) - [Demo](https://front-end-development-libraries.vercel.app/projects/javascript-calculator/javascript-calculator.html) - JavaScript Calculator
+- [Brief](https://www.freecodecamp.org/learn/front-end-development-libraries/front-end-development-libraries-projects/build-a-25--5-clock) - [Source](projects/25--5-clock) - [Demo](https://front-end-development-libraries.vercel.app/projects/25--5-clock/25--5-clock.html) - 25 + 5 Clock
 
 ## Certificate
 
