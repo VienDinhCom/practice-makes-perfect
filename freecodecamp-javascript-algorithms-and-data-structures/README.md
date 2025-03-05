@@ -4,7 +4,7 @@ You know, I’ve been building apps with React and Node for years. But this cour
 
 I revisited JavaScript fundamentals—variables, loops, objects, the DOM. Then, I explored Object-Oriented and Functional Programming, sharpened my algorithmic thinking, and learned to fetch data efficiently.
 
-After building projects with JavaScript and Bootstrap, I took it further. I rewrote them in TypeScript, then tested them with Deno.
+After building projects with HTML, JavaScript and Bootstrap, I took it further. I rewrote them in TypeScript, then tested them with Deno.
 
 It wasn’t just about learning—it was about refining. Strengthening the foundation. Because mastery isn’t about knowing—it’s about understanding, applying, and evolving.
 
