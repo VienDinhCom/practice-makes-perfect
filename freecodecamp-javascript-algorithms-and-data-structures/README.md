@@ -13,5 +13,5 @@ You can find the course here: [JavaScript Algorithms and Data Structures](https:
 ## Certificate
 
 <a href="https://www.freecodecamp.org/certification/VienDinhCom/javascript-algorithms-and-data-structures-v8">
-  <img src="certificate.png" alt="Responsive Web Design" title="Click here to verify it on freeCodeCamp">
+  <img src="certificate.png" alt="JavaScript Algorithms and Data Structures" title="Click here to verify it on freeCodeCamp">
 </a>
