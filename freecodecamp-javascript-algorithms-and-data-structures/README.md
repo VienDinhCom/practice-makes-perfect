@@ -1,17 +1,25 @@
 # JavaScript Algorithms and Data Structures
 
+You know, I’ve been building apps with React and Node for years. But this course—it pushed me deeper. It made me rethink the basics.
+
+I revisited JavaScript fundamentals—variables, loops, objects, the DOM. Then, I explored Object-Oriented and Functional Programming, sharpened my algorithmic thinking, and learned to fetch data efficiently.
+
+After building projects with JavaScript and Bootstrap, I took it further. I rewrote them in TypeScript, then tested them with Deno.
+
+It wasn’t just about learning—it was about refining. Strengthening the foundation. Because mastery isn’t about knowing—it’s about understanding, applying, and evolving.
+
 You can find the course here: [JavaScript Algorithms and Data Structures](https://www.freecodecamp.org/learn/javascript-algorithms-and-data-structures-v8/) & [Certificate](https://www.freecodecamp.org/certification/VienDinhCom/javascript-algorithms-and-data-structures-v8)
 
 ## Projects
 
-- [Source](projects/survey-form) - [Demo](https://responsive-web-design-vien.vercel.app/projects/survey-form/survey-form.html) - Survey Form
-- [Source](projects/tribute-page) - [Demo](https://responsive-web-design-vien.vercel.app/projects/tribute-page/tribute-page.html) - Tribute Page
-- [Source](projects/technical-documentation-page) - [Demo](https://responsive-web-design-vien.vercel.app/projects/technical-documentation-page/technical-documentation-page.html) - Technical Documentation Page
-- [Source](projects/product-landing-page) - [Demo](https://responsive-web-design-vien.vercel.app/projects/product-landing-page/product-landing-page.html) - Product Landing Page
-- [Source](projects/personal-portfolio-webpage) - [Demo](https://responsive-web-design-vien.vercel.app/projects/personal-portfolio-webpage/personal-portfolio-webpage.html) - Personal Portfolio Webpage
+- [Source](/projects/palindrome-checker.ts) - Palindrome Checker
+- [Source](/projects/roman-numeral-converter.ts) - Roman Numeral Converter
+- [Source](/projects/telephone-number-validator.ts) - Telephone Number Validator
+- [Source](/projects/cash-register.ts) - Cash Register
+- [Source](/projects/pokemon-search.ts) - Pokémon Search
 
 ## Certificate
 
 <a href="https://www.freecodecamp.org/certification/VienDinhCom/javascript-algorithms-and-data-structures-v8">
-  <img src="certificate.png" alt="Responsive Web Design" title="Click here to verify it on freeCodeCamp">
+  <img src="certificate.png" alt="JavaScript Algorithms and Data Structures Certificate" title="Click here to verify it on freeCodeCamp">
 </a>

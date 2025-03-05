@@ -28,42 +28,40 @@ class DoublyLinkedList<T> {
       this.head = node;
       this.tail = node;
     } else {
-      const tail = this.tail!;
-
-      tail.next = node;
-      node.prev = tail;
+      this.tail!.next = node;
+      node.prev = this.tail;
 
       this.tail = node;
     }
   }
 
   remove(data: T) {
-    let current: Node<T> | null = this.head;
+    let curr: Node<T> | null = this.head;
 
-    while (current) {
-      if (current.data === data) {
-        const prev = current.prev;
-        const next = current.next;
+    while (curr) {
+      const prev = curr.prev;
+      const next = curr.next;
 
+      if (curr.data === data) {
         if (prev) prev.next = next;
         if (next) next.prev = prev;
 
-        if (current === this.head) {
+        if (curr === this.head) {
           this.head = next;
         }
 
-        if (current === this.tail) {
+        if (curr === this.tail) {
           this.tail = prev;
         }
       }
 
-      current = current.next;
+      curr = next;
     }
   }
 
   // reverse() {
-  //   let left = this.head;
-  //   let right = this.tail;
+  //   let left: Node<T> | null = this.head;
+  //   let right: Node<T> | null = this.tail;
 
   //   while (true) {
   //     if (left === right || left?.prev === right) break;
@@ -78,28 +76,28 @@ class DoublyLinkedList<T> {
   reverse() {
     this.head = this.tail;
 
-    let current = this.head;
+    let curr = this.head;
 
-    while (current) {
-      [current.prev, current.next] = [current.next, current.prev];
+    while (curr) {
+      [curr.prev, curr.next] = [curr.next, curr.prev];
 
-      if (current.next === null) {
-        this.tail = current;
+      if (curr.next === null) {
+        this.tail = curr;
       }
 
-      current = current.next;
+      curr = curr.next;
     }
   }
 
   values(): T[] {
     const values: T[] = [];
 
-    let current = this.head;
+    let curr: Node<T> | null = this.head;
 
-    while (current) {
-      values.push(current.data);
+    while (curr) {
+      values.push(curr.data);
 
-      current = current.next;
+      curr = curr.next;
     }
 
     return values;
