@@ -12,11 +12,11 @@ You can find the course here: [JavaScript Algorithms and Data Structures](https:
 
 ## Projects
 
-- [Source](/projects/palindrome-checker.ts) - Palindrome Checker
-- [Source](/projects/roman-numeral-converter.ts) - Roman Numeral Converter
-- [Source](/projects/telephone-number-validator.ts) - Telephone Number Validator
-- [Source](/projects/cash-register.ts) - Cash Register
-- [Source](/projects/pokemon-search.ts) - Pokémon Search
+- [Source](projects/palindrome-checker.ts) - Palindrome Checker
+- [Source](projects/roman-numeral-converter.ts) - Roman Numeral Converter
+- [Source](projects/telephone-number-validator.ts) - Telephone Number Validator
+- [Source](projects/cash-register.ts) - Cash Register
+- [Source](projects/pokemon-search.ts) - Pokémon Search
 
 ## Certificate
 
