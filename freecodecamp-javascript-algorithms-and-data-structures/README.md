@@ -1,14 +1,6 @@
-# Responsive Web Design
+# JavaScript Algorithms and Data Structures
 
-You know, I thought I had responsive web design figured out. I’ve built plenty of templates with HTML, CSS, and BEM. But this course? It humbled me.
-
-It took me back to basics—structuring content with HTML, styling with CSS. I started simple, building a cat photo app. Then, I explored CSS variables with a penguin and improved accessibility with a quiz site.
-
-By the end, I was designing layouts that adapt beautifully—Flexbox for a photo gallery, CSS Grid for a magazine page.
-
-Turns out, even experienced developers have more to learn. And that’s the fun part.
-
-You can find the course here: [Responsive Web Design](https://www.freecodecamp.org/learn/2022/responsive-web-design/) & [Certificate](https://www.freecodecamp.org/certification/VienDinhCom/responsive-web-design)
+You can find the course here: [JavaScript Algorithms and Data Structures](https://www.freecodecamp.org/learn/javascript-algorithms-and-data-structures-v8/) & [Certificate](https://www.freecodecamp.org/certification/VienDinhCom/javascript-algorithms-and-data-structures-v8)
 
 ## Projects
 
@@ -20,6 +12,6 @@ You can find the course here: [Responsive Web Design](https://www.freecodecamp.o
 
 ## Certificate
 
-<a href="https://www.freecodecamp.org/certification/VienDinhCom/responsive-web-design">
+<a href="https://www.freecodecamp.org/certification/VienDinhCom/javascript-algorithms-and-data-structures-v8">
   <img src="certificate.png" alt="Responsive Web Design" title="Click here to verify it on freeCodeCamp">
 </a>
