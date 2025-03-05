@@ -21,5 +21,5 @@ You can find the course here: [Responsive Web Design](https://www.freecodecamp.o
 ## Certificate
 
 <a href="https://www.freecodecamp.org/certification/VienDinhCom/responsive-web-design">
-  <img src="certificate.png" alt="Responsive Web Design" title="Click here to verify it on freeCodeCamp">
+  <img src="certificate.png" alt="Responsive Web Design Certificate" title="Click here to verify it on freeCodeCamp">
 </a>
