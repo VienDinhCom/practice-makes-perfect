@@ -60,35 +60,35 @@ class DoublyLinkedList<T> {
     }
   }
 
-  // reverse() {
-  //   let left = this.head;
-  //   let right = this.tail;
-
-  //   while (true) {
-  //     if (left === right || left?.prev === right) break;
-
-  //     [left!.data, right!.data] = [right!.data, left!.data];
-
-  //     left = left!.next;
-  //     right = right!.prev;
-  //   }
-  // }
-
   reverse() {
-    this.head = this.tail;
+    let left: Node<T> | null = this.head;
+    let right: Node<T> | null = this.tail;
 
-    let current = this.head;
+    while (true) {
+      if (left === right || left?.prev === right) break;
 
-    while (current) {
-      [current.prev, current.next] = [current.next, current.prev];
+      [left!.data, right!.data] = [right!.data, left!.data];
 
-      if (current.next === null) {
-        this.tail = current;
-      }
-
-      current = current.next;
+      left = left!.next;
+      right = right!.prev;
     }
   }
+
+  // reverse() {
+  //   this.head = this.tail;
+
+  //   let current = this.head;
+
+  //   while (current) {
+  //     [current.prev, current.next] = [current.next, current.prev];
+
+  //     if (current.next === null) {
+  //       this.tail = current;
+  //     }
+
+  //     current = current.next;
+  //   }
+  // }
 
   values(): T[] {
     const values: T[] = [];
