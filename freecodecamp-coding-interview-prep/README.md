@@ -8,8 +8,6 @@ So, I went back to the basics—sorting, searching, linked list, set, map, tree,
 
 I didn’t just write these data structures and algorithms in JavaScript; for review purposes, I also rewrote them in TypeScript and tested them with Deno.
 
-And something clicked. I wasn’t just coding—I was thinking better, solving problems faster.
-
 It turns out, shortcuts only get me so far. Understanding the foundation? That changed everything for me as a developer.
 
 You can find the course here: [Coding Interview Prep](https://www.freecodecamp.org/learn/coding-interview-prep/)
@@ -22,18 +20,26 @@ You can find the course here: [Coding Interview Prep](https://www.freecodecamp.o
 - [Article](https://viendinh.com/posts/zzzu-sap-xep-nhanh/) - [Source](algorithms/sorting/quick-sort.ts) - Quick Sort
 - [Article](https://viendinh.com/posts/zzzt-sap-xep-tron/) - [Source](algorithms/sorting/merge-sort.ts) - Merge Sort
 - [Article](https://viendinh.com/posts/zzzg-sap-xep-phan-phoi/) - [Source](algorithms/sorting/counting-sort.ts) - Counting Sort
-- [Article]() - [Source](algorithms) - Radix Sort
+- [Article](https://viendinh.com/posts/zzze-sap-xep-theo-co-so/) - [Source](algorithms/sorting/radix-sort.ts) - Radix Sort
 - [Article](https://viendinh.com/posts/zzzl-tim-kiem-tuan-tu/) - [Source](algorithms/search/linear-search.ts) - Linear Search
 - [Article](https://viendinh.com/posts/zzzm-tim-kiem-nhi-phan/) - [Source](algorithms/search/binary-search.ts) - Binary Search
 
 ## Data Structures
 
-- [Article]() - [Source](algorithms) -
-- [Article]() - [Source](algorithms) -
-- [Article]() - [Source](algorithms) -
-- [Article]() - [Source](algorithms) -
-- [Article]() - [Source](algorithms) -
-- [Article]() - [Source](algorithms) -
+- [Article](https://viendinh.com/posts/zzzb-ngan-xep/) - [Source](data-structures/stack.ts) - Stack
+- [Article](https://viendinh.com/posts/zzza-hang-doi/) - [Source](data-structures/queue.ts) - Queue
+- [Article](https://www.freecodecamp.org/learn/coding-interview-prep/data-structures/create-a-priority-queue-class) - [Source](data-structures/queue-priority.ts) - Priority Queue
+- [Article](https://www.freecodecamp.org/learn/coding-interview-prep/data-structures/create-a-circular-queue) - [Source](data-structures/queue-circular.ts) - Circular Queue
+- [Article](https://viendinh.com/posts/zzyw-tap-hop/) - [Source](data-structures/set.ts) - Set
+- [Article](https://viendinh.com/posts/zzyv-bang-anh-xa/) - [Source](data-structures/map.ts) - Map
+- [Article](https://viendinh.com/posts/zzzi-bang-bam/) - [Source](data-structures/hash-table.ts) - Hash Table
+- [Article](https://viendinh.com/posts/zzyu-danh-sach-lien-ket-don/) - [Source](data-structures/linked-list-singly.ts) - Singly Linked List
+- [Article](https://viendinh.com/posts/zzyt-danh-sach-lien-ket-doi/) - [Source](data-structures/linked-list-doubly.ts) - Doubly Linked List
+- [Article](https://viendinh.com/posts/zzys-cay-tim-kiem-nhi-phan/) - [Source](data-structures/binary-search-tree.ts) - Binary Search Tree
+- [Article](https://viendinh.com/posts/zzyr-trie/) - [Source](data-structures/trie.ts) - Trie
+- [Article](https://viendinh.com/posts/zzyq-dong-nhi-phan/) - [Source](data-structures/heap-min.ts) - Min Heap
+- [Article](https://viendinh.com/posts/zzyq-dong-nhi-phan/) - [Source](data-structures/heap-max.ts) - Max Heap
+- [Article](https://viendinh.com/posts/zzzj-do-thi/) - [Source](data-structures/graph-implementation.ts) - Graph
 
 ## Others
 
