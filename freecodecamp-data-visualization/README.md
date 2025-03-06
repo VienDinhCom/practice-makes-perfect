@@ -8,7 +8,7 @@ And in the end? I wrapped it all in TypeScript, powered by Vite, and built real 
 
 It wasn’t easy. But now, I don’t just use charts—I understand them. And that changes everything.
 
-You can find the course here: [Data Visualization](https://www.freecodecamp.org/learn/2022/responsive-web-design/) & [Certificate](https://www.freecodecamp.org/certification/VienDinhCom/responsive-web-design)
+You can find the course here: [Data Visualization](https://www.freecodecamp.org/learn/2022/responsive-web-design/) & [Certificate](https://www.freecodecamp.org/certification/VienDinhCom/data-visualization)
 
 ## Projects
 
@@ -20,6 +20,6 @@ You can find the course here: [Data Visualization](https://www.freecodecamp.org/
 
 ## Certificate
 
-<a href="https://www.freecodecamp.org/certification/VienDinhCom/responsive-web-design">
+<a href="https://www.freecodecamp.org/certification/VienDinhCom/data-visualization">
   <img src="certificate.png" alt="Data Visualization Certificate" title="Click here to verify it on freeCodeCamp">
 </a>
