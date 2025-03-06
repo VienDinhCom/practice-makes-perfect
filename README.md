@@ -9,3 +9,4 @@
 - [Relational Database](/freecodecamp-relational-database/)
 - [Back End Development and APIs](/freecodecamp-back-end-development-and-apis/)
 - [Quality Assurance](/freecodecamp-quality-assurance/)
+- [Data Structures and Algorithms](/freecodecamp-coding-interview-prep/)
