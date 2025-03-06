@@ -2,9 +2,9 @@
 
 You know, I’ve worked with Chart.js and React Charts before—they’re high-level and easy to use. But this time, it was different.
 
-I built bar charts, scatterplots, heat maps—each one telling a unique story. D3.js wasn’t just a tool; it was a challenge. I wrestled with axes, scales, legends—figured out tooltips, data fetching, transformations.
+I built bar charts, scatterplots, heat maps—each one telling a unique story. D3.js wasn’t just a tool; it was a challenge. I wrestled with svg, axes, scales, legends—figured out tooltips, data fetching, transformations.
 
-And in the end? I wrapped it all in TypeScript, powered by Vite, and built real projects.
+And in the end? I wrapped it all in TypeScript, powered by Vite, and built certification projects.
 
 It wasn’t easy. But now, I don’t just use charts—I understand them. And that changes everything.
 
