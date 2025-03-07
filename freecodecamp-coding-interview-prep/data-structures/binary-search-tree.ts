@@ -1,14 +1,16 @@
 import { expect } from 'jsr:@std/expect';
 
+// https://viendinh.com/posts/zzys-cay-tim-kiem-nhi-phan/
+
 class Node {
-  value: number;
   left: Node | null;
   right: Node | null;
+  value: number;
 
   constructor(value: number) {
-    this.value = value;
     this.left = null;
     this.right = null;
+    this.value = value;
   }
 }
 
@@ -29,109 +31,106 @@ class BinarySearchTree {
       return;
     }
 
-    let current: Node | null = this.root;
+    let curr = this.root;
 
-    while (current) {
-      if (current.value === value) return;
+    while (curr) {
+      if (curr.value === value) return;
 
-      const dirrection: Dirrection = value > current.value ? 'right' : 'left';
+      const dirrection: Dirrection = value < curr.value ? 'left' : 'right';
 
-      if (current[dirrection] === null) {
-        current[dirrection] = node;
-
+      if (curr[dirrection] === null) {
+        curr[dirrection] = node;
         return;
       }
 
-      current = current[dirrection];
+      curr = curr[dirrection];
     }
   }
 
   findMin(node = this.root): number | null {
-    let current: Node | null = node;
+    let curr: Node | null = node;
 
-    while (current) {
-      if (current.left === null) {
-        return current.value;
+    while (curr) {
+      if (curr.left === null) {
+        return curr.value;
       }
 
-      current = current.left;
+      curr = curr.left;
     }
 
     return null;
   }
 
   findMax(node = this.root): number | null {
-    let current: Node | null = node;
+    let curr: Node | null = node;
 
-    while (current) {
-      if (current.right === null) {
-        return current.value;
+    while (curr) {
+      if (curr.right === null) {
+        return curr.value;
       }
 
-      current = current.right;
+      curr = curr.right;
     }
 
     return null;
   }
 
   isPresent(value: number): boolean {
-    let current: Node | null = this.root;
+    let curr: Node | null = this.root;
 
-    while (current) {
-      if (current.value === value) {
+    while (curr) {
+      if (curr.value === value) {
         return true;
       }
 
-      const dirrection: Dirrection = value < current.value ? 'left' : 'right';
+      const dirrection: Dirrection = value < curr.value ? 'left' : 'right';
 
-      current = current[dirrection];
+      curr = curr[dirrection];
     }
 
     return false;
   }
 
   // https://forum.freecodecamp.org/t/freecodecamp-challenge-guide-find-the-minimum-and-maximum-height-of-a-binary-search-tree/301641
-  findMaxHeight(): number {
-    const heights: number[] = [];
-
-    const traverse = (node: Node | null, height: number) => {
-      if (node === null) {
-        heights.push(height);
-        return;
-      }
-
-      traverse(node.left, height + 1);
-      traverse(node.right, height + 1);
-    };
-
-    traverse(this.root, -1);
-
-    return Math.max(...heights);
-  }
-
   // findMaxHeight(): number {
-  //   const traverse = (node: Node | null): number => {
-  //     if (node === null) return -1;
+  //   const heights: number[] = [];
 
-  //     return Math.max(traverse(node.left), traverse(node.right)) + 1;
+  //   const traverse = (curr: Node | null, height: number) => {
+  //     if (curr === null) {
+  //       heights.push(height);
+  //       return;
+  //     }
+
+  //     traverse(curr.left, height + 1);
+  //     traverse(curr.right, height + 1);
   //   };
 
-  //   return traverse(this.root);
+  //   traverse(this.root, -1);
+
+  //   return Math.max(...heights);
   // }
+
+  findMaxHeight(): number {
+    const traverse = (curr: Node | null): number => {
+      if (curr === null) return -1;
+
+      return 1 + Math.max(traverse(curr.left), traverse(curr.right));
+    };
+
+    return traverse(this.root);
+  }
 
   // findMinHeight(): number {
   //   const heights: number[] = [];
 
-  //   const traverse = (node: Node | null, height: number) => {
-  //     if (node === null) {
+  //   const traverse = (curr: Node | null, height: number) => {
+  //     if (curr === null) {
   //       heights.push(height);
-
   //       return;
   //     }
 
-  //     traverse(node.left, height + 1);
-
-  //     traverse(node.right, height + 1);
+  //     traverse(curr.left, height + 1);
+  //     traverse(curr.right, height + 1);
   //   };
 
   //   traverse(this.root, -1);
@@ -140,17 +139,17 @@ class BinarySearchTree {
   // }
 
   findMinHeight(): number {
-    const traverse = (node: Node | null): number => {
-      if (node === null) return -1;
+    const traverse = (curr: Node | null): number => {
+      if (curr === null) return -1;
 
-      return 1 + Math.min(traverse(node.left), traverse(node.right));
+      return 1 + Math.min(traverse(curr.left), traverse(curr.right));
     };
 
     return traverse(this.root);
   }
 
   isBalanced() {
-    return this.findMinHeight() === this.findMaxHeight();
+    return this.findMaxHeight() === this.findMinHeight();
   }
 
   // Should return a sorted array
@@ -300,7 +299,7 @@ class BinarySearchTree {
       if (current === this.root) {
         this.root = child;
       } else {
-       parent![dirrection] = child;
+        parent![dirrection] = child;
       }
 
       return current;
