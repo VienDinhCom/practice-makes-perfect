@@ -95,14 +95,14 @@ class BinarySearchTree {
   findMaxHeight(): number {
     const heights: number[] = [];
 
-    const traverse = (node: Node | null, height: number) => {
-      if (node === null) {
+    const traverse = (curr: Node | null, height: number) => {
+      if (curr === null) {
         heights.push(height);
         return;
       }
 
-      traverse(node.left, height + 1);
-      traverse(node.right, height + 1);
+      traverse(curr.left, height + 1);
+      traverse(curr.right, height + 1);
     };
 
     traverse(this.root, -1);
