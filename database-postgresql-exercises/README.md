@@ -15,5 +15,5 @@ You can find the course here: [PostgreSQL Exercises](https://pgexercises.com/)
 ## Diagram
 
 <a href="https://www.freecodecamp.org/certification/VienDinhCom/responsive-web-design">
-  <img src="diagram.svg" alt="PostgreSQL Exercises" style="background: white; padding: 20px; box-sizing: border-box;" />
+  <img src="diagram.png" alt="PostgreSQL Exercises" />
 </a>
