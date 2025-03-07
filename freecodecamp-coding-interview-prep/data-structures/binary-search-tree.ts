@@ -120,35 +120,33 @@ class BinarySearchTree {
     return traverse(this.root);
   }
 
-  // findMinHeight(): number {
-  //   const heights: number[] = [];
-
-  //   const traverse = (node: Node | null, height: number) => {
-  //     if (node === null) {
-  //       heights.push(height);
-
-  //       return;
-  //     }
-
-  //     traverse(node.left, height + 1);
-
-  //     traverse(node.right, height + 1);
-  //   };
-
-  //   traverse(this.root, -1);
-
-  //   return Math.min(...heights);
-  // }
-
   findMinHeight(): number {
-    const traverse = (node: Node | null): number => {
-      if (node === null) return -1;
+    const heights: number[] = [];
 
-      return 1 + Math.min(traverse(node.left), traverse(node.right));
+    const traverse = (curr: Node | null, height: number) => {
+      if (curr === null) {
+        heights.push(height);
+        return;
+      }
+
+      traverse(curr.left, height + 1);
+      traverse(curr.right, height + 1);
     };
 
-    return traverse(this.root);
+    traverse(this.root, -1);
+
+    return Math.min(...heights);
   }
+
+  // findMinHeight(): number {
+  //   const traverse = (node: Node | null): number => {
+  //     if (node === null) return -1;
+
+  //     return 1 + Math.min(traverse(node.left), traverse(node.right));
+  //   };
+
+  //   return traverse(this.root);
+  // }
 
   isBalanced() {
     return this.findMinHeight() === this.findMaxHeight();
