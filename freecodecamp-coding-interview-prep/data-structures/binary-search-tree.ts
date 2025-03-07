@@ -76,16 +76,16 @@ class BinarySearchTree {
   }
 
   isPresent(value: number): boolean {
-    let current: Node | null = this.root;
+    let curr: Node | null = this.root;
 
-    while (current) {
-      if (current.value === value) {
+    while (curr) {
+      if (curr.value === value) {
         return true;
       }
 
-      const dirrection: Dirrection = value < current.value ? 'left' : 'right';
+      const dirrection: Dirrection = value < curr.value ? 'left' : 'right';
 
-      current = current[dirrection];
+      curr = curr[dirrection];
     }
 
     return false;
