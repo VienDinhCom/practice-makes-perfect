@@ -1,6 +1,14 @@
 # PostgreSQL Exercises
 
-You can find the course here: [PostgreSQL Exercises](https://pgexercises.com/)
+You know, I started with the basics of [Relational Database](../freecodecamp-relational-database/)—tables, queries, all that. Felt good. But then I realized... there’s more. A lot more.
+
+Joins, subqueries, aggregates—they’re like puzzle pieces, making data more useful. Window functions? Game-changer. Recursive queries? Mind-bending, but powerful.
+
+I worked through exercises, testing, failing, trying again. Each concept clicked, one by one. And suddenly, databases weren’t just about storing data. They were about shaping it, optimizing it, making it work smarter.
+
+It’s a process. But if you push past the basics, you see the real power of PostgreSQL. And that’s where things get interesting.
+
+You can find the exercises here: [PostgreSQL Exercises](https://pgexercises.com/)
 
 ## Projects
 
