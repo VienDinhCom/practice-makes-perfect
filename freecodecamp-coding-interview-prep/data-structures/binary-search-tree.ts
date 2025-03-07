@@ -48,14 +48,14 @@ class BinarySearchTree {
   }
 
   findMin(node = this.root): number | null {
-    let current: Node | null = node;
+    let curr: Node | null = node;
 
-    while (current) {
-      if (current.left === null) {
-        return current.value;
+    while (curr) {
+      if (curr.left === null) {
+        return curr.value;
       }
 
-      current = current.left;
+      curr = curr.left;
     }
 
     return null;
