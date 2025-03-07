@@ -92,33 +92,33 @@ class BinarySearchTree {
   }
 
   // https://forum.freecodecamp.org/t/freecodecamp-challenge-guide-find-the-minimum-and-maximum-height-of-a-binary-search-tree/301641
-  findMaxHeight(): number {
-    const heights: number[] = [];
-
-    const traverse = (curr: Node | null, height: number) => {
-      if (curr === null) {
-        heights.push(height);
-        return;
-      }
-
-      traverse(curr.left, height + 1);
-      traverse(curr.right, height + 1);
-    };
-
-    traverse(this.root, -1);
-
-    return Math.max(...heights);
-  }
-
   // findMaxHeight(): number {
-  //   const traverse = (node: Node | null): number => {
-  //     if (node === null) return -1;
+  //   const heights: number[] = [];
 
-  //     return Math.max(traverse(node.left), traverse(node.right)) + 1;
+  //   const traverse = (curr: Node | null, height: number) => {
+  //     if (curr === null) {
+  //       heights.push(height);
+  //       return;
+  //     }
+
+  //     traverse(curr.left, height + 1);
+  //     traverse(curr.right, height + 1);
   //   };
 
-  //   return traverse(this.root);
+  //   traverse(this.root, -1);
+
+  //   return Math.max(...heights);
   // }
+
+  findMaxHeight(): number {
+    const traverse = (curr: Node | null): number => {
+      if (curr === null) return -1;
+
+      return 1 + Math.max(traverse(curr.left), traverse(curr.right));
+    };
+
+    return traverse(this.root);
+  }
 
   // findMinHeight(): number {
   //   const heights: number[] = [];
