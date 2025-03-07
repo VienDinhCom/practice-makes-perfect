@@ -1,5 +1,7 @@
 import { expect } from 'jsr:@std/expect';
 
+// https://viendinh.com/posts/zzys-cay-tim-kiem-nhi-phan/
+
 class Node {
   left: Node | null;
   right: Node | null;
@@ -29,20 +31,19 @@ class BinarySearchTree {
       return;
     }
 
-    let current: Node | null = this.root;
+    let curr = this.root;
 
-    while (current) {
-      if (current.value === value) return;
+    while (curr) {
+      if (curr.value === value) return;
 
-      const dirrection: Dirrection = value > current.value ? 'right' : 'left';
+      const dirrection: Dirrection = value < curr.value ? 'left' : 'right';
 
-      if (current[dirrection] === null) {
-        current[dirrection] = node;
-
+      if (curr[dirrection] === null) {
+        curr[dirrection] = node;
         return;
       }
 
-      current = current[dirrection];
+      curr = curr[dirrection];
     }
   }
 
