@@ -22,6 +22,6 @@ You can find the exercises here: [PostgreSQL Exercises](https://pgexercises.com/
 
 ## Diagram
 
-<a href="https://www.freecodecamp.org/certification/VienDinhCom/responsive-web-design">
+<a href="https://pgexercises.com/gettingstarted.html">
   <img src="diagram.png" alt="PostgreSQL Exercises" />
 </a>
