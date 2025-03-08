@@ -181,19 +181,13 @@ class BinarySearchTree {
   preOrder() {
     if (this.root === null) return null;
 
-    const values: number[] = [];
+    const traverse = (curr: Node | null): number[] => {
+      if (curr === null) return [];
 
-    const traverse = (node: Node | null) => {
-      if (node === null) return;
-
-      values.push(node.value);
-      traverse(node.left);
-      traverse(node.right);
+      return [curr.value, ...traverse(curr.left), ...traverse(curr.right)];
     };
 
-    traverse(this.root);
-
-    return values;
+    return traverse(this.root);
   }
 
   // Children first
