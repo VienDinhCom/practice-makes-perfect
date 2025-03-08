@@ -236,6 +236,7 @@ class BinarySearchTree {
     if (this.root === null) return null;
 
     const values: number[] = [];
+
     const queue: Node[] = [this.root];
 
     while (queue.length > 0) {
