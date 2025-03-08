@@ -10,7 +10,7 @@ That’s why I created this repository. A place to sharpen my core skills and st
 
 It’s simple: practice, adapt, grow.
 
-## Topics
+## Skills
 
 - [Responsive Web Design](/freecodecamp-responsive-web-design/)
 - [JavaScript Algorithms and Data Structures](/freecodecamp-javascript-algorithms-and-data-structures/)
