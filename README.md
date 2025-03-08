@@ -12,7 +12,7 @@ It’s simple: practice, adapt, grow.
 
 ## Topics
 
-- [Responsive Web Design](/freecodecamp-responsive-web-design/)
+- <img  src="https://simpleicons.org/icons/react.svg" width="10" height="10" /> [Responsive Web Design](/freecodecamp-responsive-web-design/)
 - [JavaScript Algorithms and Data Structures](/freecodecamp-javascript-algorithms-and-data-structures/)
 - [Front End Development Libraries](/freecodecamp-front-end-development-libraries/)
 - [Data Visualization](/freecodecamp-data-visualization/)
