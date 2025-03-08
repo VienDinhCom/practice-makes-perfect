@@ -197,14 +197,14 @@ class BinarySearchTree {
   postOrder = () => {
     if (this.root === null) return null;
 
-    const traverse = (node: Node | null): number[] => {
-      if (node === null) return [];
+    const traverse = (curr: Node | null) => {
+      if (curr === null) return [];
 
       const values: number[] = [];
 
-      values.push(...traverse(node.left));
-      values.push(...traverse(node.right));
-      values.push(node.value);
+      values.push(...traverse(curr.left));
+      values.push(...traverse(curr.right));
+      values.push(curr.value);
 
       return values;
     };
