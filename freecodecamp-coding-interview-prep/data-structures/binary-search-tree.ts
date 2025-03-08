@@ -159,19 +159,19 @@ class BinarySearchTree {
   inOrder = () => {
     if (this.root === null) return null;
 
-    const traverse = (node: Node | null) => {
-      if (node === null) return [];
+    const values: number[] = [];
 
-      const values: number[] = [];
+    const traverse = (curr: Node | null) => {
+      if (curr === null) return;
 
-      values.push(...traverse(node.left));
-      values.push(node.value);
-      values.push(...traverse(node.right));
-
-      return values;
+      traverse(curr.left);
+      values.push(curr.value);
+      traverse(curr.right);
     };
 
-    return traverse(this.root);
+    traverse(this.root);
+
+    return values;
   };
 
   // Root first
@@ -181,19 +181,13 @@ class BinarySearchTree {
   preOrder() {
     if (this.root === null) return null;
 
-    const values: number[] = [];
+    const traverse = (curr: Node | null): number[] => {
+      if (curr === null) return [];
 
-    const traverse = (node: Node | null) => {
-      if (node === null) return;
-
-      values.push(node.value);
-      traverse(node.left);
-      traverse(node.right);
+      return [curr.value, ...traverse(curr.left), ...traverse(curr.right)];
     };
 
-    traverse(this.root);
-
-    return values;
+    return traverse(this.root);
   }
 
   // Children first
@@ -203,14 +197,14 @@ class BinarySearchTree {
   postOrder = () => {
     if (this.root === null) return null;
 
-    const traverse = (node: Node | null): number[] => {
-      if (node === null) return [];
+    const traverse = (curr: Node | null) => {
+      if (curr === null) return [];
 
       const values: number[] = [];
 
-      values.push(...traverse(node.left));
-      values.push(...traverse(node.right));
-      values.push(node.value);
+      values.push(...traverse(curr.left));
+      values.push(...traverse(curr.right));
+      values.push(curr.value);
 
       return values;
     };
@@ -223,6 +217,7 @@ class BinarySearchTree {
     if (this.root === null) return null;
 
     const values: number[] = [];
+
     const queue: Node[] = [this.root];
 
     while (queue.length > 0) {
@@ -241,6 +236,7 @@ class BinarySearchTree {
     if (this.root === null) return null;
 
     const values: number[] = [];
+
     const queue: Node[] = [this.root];
 
     while (queue.length > 0) {
@@ -255,63 +251,53 @@ class BinarySearchTree {
     return values;
   };
 
-  findNode(value: number): { parent: Node | null; current: Node | null } {
-    if (this.root === null) return { parent: null, current: null };
+  findNode(value: number): { parent: Node | null; node: Node | null } {
+    if (this.root === null) return { parent: null, node: null };
 
-    let parent: Node | null = null;
-    let current: Node | null = this.root;
+    const queue = [{ parent: null as Node | null, node: this.root }];
 
-    while (current) {
-      if (current.value === value) break;
+    while (queue.length > 0) {
+      const { parent, node } = queue.shift()!;
 
-      const dirrection: Dirrection = value < current.value ? 'left' : 'right';
+      if (node.value === value) return { parent, node };
 
-      parent = current;
-      current = current[dirrection];
+      if (node.left) queue.push({ parent: node, node: node.left });
+      if (node.right) queue.push({ parent: node, node: node.right });
     }
 
-    return { parent, current };
+    return { parent: null, node: null };
   }
 
   remove(value: number) {
-    const { parent, current } = this.findNode(value);
+    const { parent, node } = this.findNode(value);
 
-    if (current === null) return null;
+    if (node === null) return null;
 
-    const hasNoChild = current.left === null && current.right === null;
-    const hasOneChild = (current.left === null) !== (current.right === null);
-
-    const dirrection: Dirrection = parent?.left === current ? 'left' : 'right';
-
-    if (hasNoChild) {
-      if (current === this.root) {
+    // no child
+    if (node.left === null && node.right === null) {
+      if (node === this.root) {
         this.root = null;
       } else {
+        const dirrection: Dirrection = node === parent?.left ? 'left' : 'right';
+
         parent![dirrection] = null;
       }
 
-      return current;
+      return;
     }
 
-    if (hasOneChild) {
-      const child = current.left || current.right;
-
-      if (current === this.root) {
-        this.root = child;
+    // one child
+    if ((node.left === null) !== (node.right === null)) {
+      if (node === this.root) {
+        this.root = node.left || node.right;
       } else {
-        parent![dirrection] = child;
+        const dirrection: Dirrection = node === parent?.left ? 'left' : 'right';
+
+        parent![dirrection] = node.left || node.right;
       }
 
-      return current;
+      return;
     }
-
-    const successorValue = this.findMin(current)!;
-
-    this.remove(successorValue);
-
-    current.value = successorValue;
-
-    return current;
   }
 
   invert = () => {
