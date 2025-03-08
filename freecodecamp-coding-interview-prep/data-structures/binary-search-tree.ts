@@ -254,19 +254,18 @@ class BinarySearchTree {
   findNode(value: number): { parent: Node | null; current: Node | null } {
     if (this.root === null) return { parent: null, current: null };
 
-    let parent: Node | null = null;
-    let current: Node | null = this.root;
+    const queue = [{ parent: null as Node | null, current: this.root }];
 
-    while (current) {
-      if (current.value === value) break;
+    while (queue.length > 0) {
+      const { parent, current } = queue.shift()!;
 
-      const dirrection: Dirrection = value < current.value ? 'left' : 'right';
+      if (current.value === value) return { parent, current };
 
-      parent = current;
-      current = current[dirrection];
+      if (current.left) queue.push({ parent: current, current: current.left });
+      if (current.right) queue.push({ parent: current, current: current.right });
     }
 
-    return { parent, current };
+    return { parent: null, current: null };
   }
 
   remove(value: number) {
