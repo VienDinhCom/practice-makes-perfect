@@ -12,15 +12,15 @@ It’s simple: practice, adapt, grow.
 
 ## Topics
 
-- [**Responsive Web Design**](/freecodecamp-responsive-web-design/)
-- [**JavaScript Algorithms and Data Structures**](/freecodecamp-javascript-algorithms-and-data-structures/)
-- [**Front End Development Libraries**](/freecodecamp-front-end-development-libraries/)
-- [**Data Visualization**](/freecodecamp-data-visualization/)
-- [**Relational Database**](/freecodecamp-relational-database/)
-- [**PostgreSQL Exercises**](/database-postgresql-exercises/)
-- [**Back End Development and APIs**](/freecodecamp-back-end-development-and-apis/)
-- [**Quality Assurance**](/freecodecamp-quality-assurance/)
-- [**Data Structures and Algorithms**](/freecodecamp-coding-interview-prep/)
+- [Responsive Web Design](/freecodecamp-responsive-web-design/)
+- [JavaScript Algorithms and Data Structures](/freecodecamp-javascript-algorithms-and-data-structures/)
+- [Front End Development Libraries](/freecodecamp-front-end-development-libraries/)
+- [Data Visualization](/freecodecamp-data-visualization/)
+- [Relational Database](/freecodecamp-relational-database/)
+- [PostgreSQL Exercises](/database-postgresql-exercises/)
+- [Back End Development and APIs](/freecodecamp-back-end-development-and-apis/)
+- [Quality Assurance](/freecodecamp-quality-assurance/)
+- [Data Structures and Algorithms](/freecodecamp-coding-interview-prep/)
 
 ## History
 
