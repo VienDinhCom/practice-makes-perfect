@@ -10,7 +10,7 @@ It’s a process. But if you push past the basics, you see the real power of Pos
 
 You can find the exercises here: [PostgreSQL Exercises](https://pgexercises.com/)
 
-## Projects
+## Exercises
 
 - [Category](https://pgexercises.com/questions/basic/) - [Source](./01-basic/) - Simple SQL Queries
 - [Category](https://pgexercises.com/questions/joins/) - [Source](./02-joins-and-subqueries/) - Joins and Subqueries
