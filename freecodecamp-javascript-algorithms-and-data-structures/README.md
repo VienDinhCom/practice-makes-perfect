@@ -1,6 +1,6 @@
 # JavaScript Algorithms and Data Structures
 
-You know, I’ve been building apps with React and Node for years. But this course—it pushed me deeper. It made me rethink the basics.
+I’ve been building apps with React and Node for years. But this course—it pushed me deeper. It made me rethink the basics.
 
 I revisited JavaScript fundamentals—variables, loops, objects, the DOM. Then, I explored Object-Oriented and Functional Programming, sharpened my algorithmic thinking, and learned to fetch data efficiently.
 
