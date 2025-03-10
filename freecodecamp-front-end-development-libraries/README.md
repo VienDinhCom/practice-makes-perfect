@@ -1,6 +1,6 @@
 # Front End Development Libraries
 
-You know, I’ve built a lot of websites—used BEM, Tailwind, Bootstrap, Sass, jQuery, React, Redux—you name it. But this course took my skills deeper.
+I’ve built a lot of websites—used BEM, Tailwind, Bootstrap, Sass, jQuery, React, Redux—you name it. But this course took my skills deeper.
 
 I dived into Bootstrap and jQuery, then added logic to CSS using Sass. Next, I built a shopping cart—really got into React and Redux, crafting powerful single-page apps.
 
