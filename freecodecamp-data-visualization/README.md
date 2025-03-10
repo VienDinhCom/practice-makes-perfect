@@ -1,6 +1,6 @@
 # Data Visualization
 
-You know, I’ve worked with Chart.js and React Charts before—they’re high-level and easy to use. But this time, it was different.
+I’ve worked with Chart.js and React Charts before—they’re high-level and easy to use. But this time, it was different.
 
 From scratch, I built a Bar Chart, Scatterplot Graph, Heat Map, Choropleth Map, and Treemap Diagram—each telling a unique story. D3.js wasn’t just a tool; it was a challenge. I wrestled with SVG, axes, scales, and legends—figuring out tooltips, data fetching, and transformations.
 
