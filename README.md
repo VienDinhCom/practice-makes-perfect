@@ -1,6 +1,6 @@
 # Practice Makes Perfect
 
-You know, I believe in practice—it’s almost like a religion to me. Doing, not just reading. That’s how I learn best.
+I believe in practice—it’s almost like a religion to me. Doing, not just reading. That’s how I learn best.
 
 I like project-based learning. Getting my hands dirty, especially in tech. Because theory is great, but building something? That’s where real understanding happens.
 
@@ -10,7 +10,7 @@ That’s why I created this repository. A place to sharpen my core skills and st
 
 It’s simple: practice, adapt, grow.
 
-## Skills
+## Fundamentals
 
 - [Responsive Web Design](/freecodecamp-responsive-web-design/)
 - [JavaScript Algorithms and Data Structures](/freecodecamp-javascript-algorithms-and-data-structures/)
