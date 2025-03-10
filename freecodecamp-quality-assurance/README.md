@@ -1,6 +1,6 @@
 # Quality Assurance
 
-You know, I’ve worked with Jest, React Testing Library, and Deno Test before, but with this course, I took things deeper.
+I’ve worked with Jest, React Testing Library, and Deno Test before, but with this course, I took things deeper.
 
 I learned to write tests using Chai and run them with Mocha, making sure my applications behave as expected.
 

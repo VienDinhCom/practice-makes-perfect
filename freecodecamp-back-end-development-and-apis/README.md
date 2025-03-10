@@ -1,6 +1,6 @@
 # Back End Development and APIs
 
-You know, I’ve worked with different ways to build APIs—Express.js, Next.js, serverless, even GraphQL with Hasura. But this course took me deeper.
+I’ve worked with different ways to build APIs—Express.js, Next.js, serverless, even GraphQL with Hasura. But this course took me deeper.
 
 I really got to understand HTTP—methods, headers, status codes, all the little details. I built backend apps with Node.js, used Express for web applications, and created microservices with MongoDB and Mongoose.
 

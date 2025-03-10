@@ -1,6 +1,6 @@
 # Data Structures and Algorithms
 
-You know, for the longest time, I avoided Data Structures and Algorithms. I thought, “Why bother? JavaScript has built-in methods, and libraries like Lodash handle everything.”
+For the longest time, I avoided Data Structures and Algorithms. I thought, “Why bother? JavaScript has built-in methods, and libraries like Lodash handle everything.”
 
 But then, I hit a wall—things like recursion and trees just didn’t click. I realized I was relying on tools without really understanding them.
 
