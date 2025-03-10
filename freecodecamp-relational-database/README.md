@@ -1,6 +1,6 @@
 # Relational Database
 
-You know, I used to avoid writing raw SQL. I relied on ORMs like Prisma or TypeORM to handle everything for me. It worked—until I realized I didn’t really understand databases.
+I used to avoid writing raw SQL. I relied on ORMs like Prisma or TypeORM to handle everything for me. It worked—until I realized I didn’t really understand databases.
 
 So, I took a deep dive. Learned how to create and manage relational databases with PostgreSQL. Got my hands dirty with SQL—actually writing queries, optimizing them. Along the way, I picked up more Bash and Git too.
 
