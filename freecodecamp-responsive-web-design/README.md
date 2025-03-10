@@ -1,6 +1,6 @@
 # Responsive Web Design
 
-You know, I thought I had responsive web design figured out. I’ve built plenty of templates with HTML, CSS, and BEM. But this course? It humbled me.
+I thought I had responsive web design figured out. I’ve built plenty of templates with HTML, CSS, and BEM. But this course? It humbled me.
 
 It took me back to basics—structuring content with HTML, styling with CSS. I started simple, building a cat photo app. Then, I explored CSS variables with a penguin and improved accessibility with a quiz site.
 
