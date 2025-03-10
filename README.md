@@ -12,7 +12,7 @@ It’s simple: practice, adapt, grow.
 
 ## Fundamentals
 
-I use freeCodeCamp to fill my knowledge gaps in full-stack development. It’s a well-known community-driven bootcamp that has helped thousands land jobs at tech companies including Google, Apple, and Amazon. You can see my progress [here](https://www.freecodecamp.org/VienDinhCom).
+I use **freeCodeCamp** to fill my knowledge gaps in full-stack development. It’s a well-known community-driven bootcamp that has helped thousands land jobs at tech companies including Google, Apple, and Amazon. You can see my progress [here](https://www.freecodecamp.org/VienDinhCom).
 
 - [Responsive Web Design](/freecodecamp-responsive-web-design/)
 - [JavaScript Algorithms and Data Structures](/freecodecamp-javascript-algorithms-and-data-structures/)
