@@ -1,6 +1,6 @@
 # PostgreSQL Exercises
 
-You know, I started with the basics of [Relational Database](../freecodecamp-relational-database/)—tables, queries, all that. Felt good. But then I realized... there’s more. A lot more.
+I started with the basics of [Relational Database](../freecodecamp-relational-database/)—tables, queries, all that. Felt good. But then I realized... there’s more. A lot more.
 
 Joins, subqueries, aggregates—they’re like puzzle pieces, making data more useful. Window functions? Game-changer. Recursive queries? Mind-bending, but powerful.
 
