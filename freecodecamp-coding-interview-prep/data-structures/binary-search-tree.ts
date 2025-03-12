@@ -298,6 +298,12 @@ class BinarySearchTree {
 
       return;
     }
+
+    // two childs
+    const successorValue = this.findMin(node)!;
+
+    this.remove(successorValue);
+    node.value = successorValue;
   }
 
   invert = () => {
