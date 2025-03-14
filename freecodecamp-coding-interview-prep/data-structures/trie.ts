@@ -22,17 +22,17 @@ class Trie {
   }
 
   add(word: string): void {
-    let current: Node = this.root;
+    let curr: Node = this.root;
 
     for (const char of word) {
-      if (!current.children.has(char)) {
-        current.children.set(char, new Node());
+      if (!curr.children.has(char)) {
+        curr.children.set(char, new Node());
       }
 
-      current = current.children.get(char)!;
+      curr = curr.children.get(char)!;
     }
 
-    current.isEndOfWord = true;
+    curr.isEndOfWord = true;
   }
 
   isWord(word: string): boolean {
