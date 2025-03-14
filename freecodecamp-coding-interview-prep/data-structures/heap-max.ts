@@ -3,21 +3,21 @@ import { expect } from 'jsr:@std/expect';
 // https://www.youtube.com/watch?v=0wPlzMU-k00
 
 class MaxHeap {
-  heap: (number | null)[];
+  heap: (null | number)[] = [];
 
   constructor() {
     this.heap = [null];
   }
 
-  private leftChildIndex(index: number): number {
+  private leftChildIndex(index: number) {
     return index * 2;
   }
 
-  private rightChildIndex(index: number): number {
+  private rightChildIndex(index: number) {
     return index * 2 + 1;
   }
 
-  private parentIndex(index: number): number {
+  private parentIndex(index: number) {
     return Math.floor(index / 2);
   }
 
@@ -31,22 +31,18 @@ class MaxHeap {
   insert(value: number) {
     this.heap.push(value);
 
-    const bubbleUp = (currentIndex: number) => {
-      const parentIndex = this.parentIndex(currentIndex);
+    let currentIndex = this.heap.length - 1;
+    let parentIndex = this.parentIndex(currentIndex);
 
-      const parent = this.heap[parentIndex]!;
-      const current = this.heap[currentIndex]!;
+    while (parentIndex > 0 && this.heap[currentIndex]! > this.heap[parentIndex]!) {
+      [this.heap[currentIndex], this.heap[parentIndex]] = [this.heap[parentIndex], this.heap[currentIndex]];
 
-      if (parentIndex > 0 && parent < current) {
-        [this.heap[currentIndex], this.heap[parentIndex]] = [this.heap[parentIndex], this.heap[currentIndex]];
-
-        bubbleUp(parentIndex);
-      }
-    };
-
-    bubbleUp(this.heap.length - 1);
+      currentIndex = parentIndex;
+      parentIndex = this.parentIndex(currentIndex);
+    }
   }
 
+  // Lấy phần tử cuối mảng đem về đầu, rồi đẩy xuống
   remove(): number {
     if (this.heap.length === 1) throw new Error('Heap is empty, cannot remove elements.');
     if (this.heap.length === 2) return this.heap.pop()!;
@@ -59,24 +55,20 @@ class MaxHeap {
       const leftIndex = this.leftChildIndex(currentIndex);
       const rightIndex = this.rightChildIndex(currentIndex);
 
-      const current = this.heap[currentIndex]!;
-      const left = this.heap[leftIndex]!;
-      const right = this.heap[rightIndex]!;
+      let smallestIndex = currentIndex;
 
-      let largestIndex = currentIndex;
-
-      if (leftIndex < this.heap.length && left > current) {
-        largestIndex = leftIndex;
+      if (leftIndex < this.heap.length && this.heap[currentIndex]! < this.heap[leftIndex]!) {
+        smallestIndex = leftIndex;
       }
 
-      if (rightIndex < this.heap.length && right > current) {
-        largestIndex = rightIndex;
+      if (rightIndex < this.heap.length && this.heap[currentIndex]! < this.heap[rightIndex]!) {
+        smallestIndex = rightIndex;
       }
 
-      if (largestIndex !== currentIndex) {
-        [this.heap[currentIndex], this.heap[largestIndex]] = [this.heap[largestIndex], this.heap[currentIndex]];
+      if (smallestIndex !== currentIndex) {
+        [this.heap[smallestIndex], this.heap[currentIndex]] = [this.heap[currentIndex], this.heap[smallestIndex]];
 
-        bubbleDown(largestIndex);
+        bubbleDown(smallestIndex);
       }
     };
 
@@ -94,17 +86,17 @@ class MaxHeap {
   }
 
   sort(): number[] {
+    const values: number[] = [];
+
     const temp = [...this.heap];
 
-    const result: number[] = [];
-
     while (this.heap.length > 1) {
-      result.unshift(this.remove());
+      values.unshift(this.remove());
     }
 
     this.heap = temp;
 
-    return result;
+    return values;
   }
 }
 

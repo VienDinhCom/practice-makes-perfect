@@ -298,6 +298,12 @@ class BinarySearchTree {
 
       return;
     }
+
+    // two childs
+    const successorValue = this.findMin(node)!;
+
+    this.remove(successorValue);
+    node.value = successorValue;
   }
 
   invert = () => {
@@ -308,8 +314,8 @@ class BinarySearchTree {
 
       [node.left, node.right] = [node.right, node.left];
 
-      traverse(node.right);
       traverse(node.left);
+      traverse(node.right);
     };
 
     traverse(this.root);
@@ -318,23 +324,19 @@ class BinarySearchTree {
   // static isBinarySearchTree(tree: BinarySearchTree): boolean {
   //   if (tree.root === null) return true;
 
-  //   const queue: Node[] = [tree.root];
+  //   const queue = [tree.root];
 
   //   while (queue.length > 0) {
   //     const node = queue.shift()!;
 
   //     if (node.left) {
-  //       if (node.left.value >= node.value) {
-  //         return false;
-  //       }
+  //       if (node.left.value >= node.value) return false;
 
   //       queue.push(node.left);
   //     }
 
   //     if (node.right) {
-  //       if (node.right.value <= node.value) {
-  //         return false;
-  //       }
+  //       if (node.right.value <= node.value) return false;
 
   //       queue.push(node.right);
   //     }
@@ -347,13 +349,8 @@ class BinarySearchTree {
     const validate = (node: Node | null): boolean => {
       if (node === null) return true;
 
-      if (node.left) {
-        if (node.left.value >= node.value) return false;
-      }
-
-      if (node.right) {
-        if (node.right.value <= node.value) return false;
-      }
+      if (node.left && node.left.value >= node.value) return false;
+      if (node.right && node.right.value <= node.value) return false;
 
       return validate(node.left) && validate(node.right);
     };

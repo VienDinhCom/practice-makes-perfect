@@ -3,6 +3,7 @@ import { expect } from 'jsr:@std/expect';
 // https://www.freecodecamp.org/learn/coding-interview-prep/data-structures/create-a-trie-search-tree
 // https://www.geeksforgeeks.org/trie-insert-and-search/
 
+// review
 class Node {
   children: Map<string, Node>;
   isEndOfWord: boolean;
@@ -21,40 +22,38 @@ class Trie {
   }
 
   add(word: string): void {
-    let current: Node = this.root;
+    let curr: Node = this.root;
 
     for (const char of word) {
-      if (!current.children.has(char)) {
-        current.children.set(char, new Node());
+      if (!curr.children.has(char)) {
+        curr.children.set(char, new Node());
       }
 
-      current = current.children.get(char)!;
+      curr = curr.children.get(char)!;
     }
 
-    current.isEndOfWord = true;
+    curr.isEndOfWord = true;
   }
 
   isWord(word: string): boolean {
-    let current: Node = this.root;
+    let curr = this.root;
 
     for (const char of word) {
-      if (!current.children.has(char)) {
+      if (!curr.children.has(char)) {
         return false;
       }
 
-      current = current.children.get(char)!;
+      curr = curr.children.get(char)!;
     }
 
-    return current.isEndOfWord;
+    return curr.isEndOfWord;
   }
 
   print(): string[] {
-    const words: string[] = [];
+    const result: string[] = [];
 
     const traverse = (node: Node, prefix: string) => {
-      if (node.isEndOfWord) {
-        words.push(prefix);
-      }
+      if (node.isEndOfWord) result.push(prefix);
 
       node.children.forEach((node, char) => {
         traverse(node, prefix + char);
@@ -63,7 +62,7 @@ class Trie {
 
     traverse(this.root, '');
 
-    return words;
+    return result;
   }
 }
 
