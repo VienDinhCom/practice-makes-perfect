@@ -31,20 +31,15 @@ class MaxHeap {
   insert(value: number) {
     this.heap.push(value);
 
-    const bubbleUp = (currentIndex: number) => {
-      const parentIndex = this.parentIndex(currentIndex);
+    let currentIndex = this.heap.length - 1;
+    let parentIndex = this.parentIndex(currentIndex);
 
-      const parent = this.heap[parentIndex]!;
-      const current = this.heap[currentIndex]!;
+    while (parentIndex > 0 && this.heap[currentIndex]! > this.heap[parentIndex]!) {
+      [this.heap[currentIndex], this.heap[parentIndex]] = [this.heap[parentIndex], this.heap[currentIndex]];
 
-      if (parentIndex > 0 && parent < current) {
-        [this.heap[currentIndex], this.heap[parentIndex]] = [this.heap[parentIndex], this.heap[currentIndex]];
-
-        bubbleUp(parentIndex);
-      }
-    };
-
-    bubbleUp(this.heap.length - 1);
+      currentIndex = parentIndex;
+      parentIndex = this.parentIndex(currentIndex);
+    }
   }
 
   remove(): number {
