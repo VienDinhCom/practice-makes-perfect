@@ -42,6 +42,7 @@ class MaxHeap {
     }
   }
 
+  // Lấy phần tử cuối mảng đem về đầu, rồi đẩy xuống
   remove(): number {
     if (this.heap.length === 1) throw new Error('Heap is empty, cannot remove elements.');
     if (this.heap.length === 2) return this.heap.pop()!;
@@ -54,24 +55,20 @@ class MaxHeap {
       const leftIndex = this.leftChildIndex(currentIndex);
       const rightIndex = this.rightChildIndex(currentIndex);
 
-      const current = this.heap[currentIndex]!;
-      const left = this.heap[leftIndex]!;
-      const right = this.heap[rightIndex]!;
+      let smallestIndex = currentIndex;
 
-      let largestIndex = currentIndex;
-
-      if (leftIndex < this.heap.length && left > current) {
-        largestIndex = leftIndex;
+      if (leftIndex < this.heap.length && this.heap[currentIndex]! < this.heap[leftIndex]!) {
+        smallestIndex = leftIndex;
       }
 
-      if (rightIndex < this.heap.length && right > current) {
-        largestIndex = rightIndex;
+      if (rightIndex < this.heap.length && this.heap[currentIndex]! < this.heap[rightIndex]!) {
+        smallestIndex = rightIndex;
       }
 
-      if (largestIndex !== currentIndex) {
-        [this.heap[currentIndex], this.heap[largestIndex]] = [this.heap[largestIndex], this.heap[currentIndex]];
+      if (smallestIndex !== currentIndex) {
+        [this.heap[smallestIndex], this.heap[currentIndex]] = [this.heap[currentIndex], this.heap[smallestIndex]];
 
-        bubbleDown(largestIndex);
+        bubbleDown(smallestIndex);
       }
     };
 
