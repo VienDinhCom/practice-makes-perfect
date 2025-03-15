@@ -85,17 +85,17 @@ class MinHeap {
   }
 
   sort() {
+    const values: number[] = [];
+
     const temp = [...this.heap];
 
-    const result: number[] = [];
-
     while (this.heap.length > 1) {
-      result.push(this.remove());
+      values.push(this.remove());
     }
 
     this.heap = temp;
 
-    return result;
+    return values;
   }
 }
 
