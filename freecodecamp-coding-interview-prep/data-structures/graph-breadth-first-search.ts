@@ -9,9 +9,9 @@ function breadthFirstSearch(graph: number[][], start: number) {
     distances[node] = Infinity;
   });
 
-  distances[start] = 0;
-
   const queue: number[] = [start];
+
+  distances[start] = 0;
 
   while (queue.length > 0) {
     const node = queue.shift()!;
@@ -19,7 +19,6 @@ function breadthFirstSearch(graph: number[][], start: number) {
     graph[node].forEach((connected, neighbor) => {
       if (connected && distances[neighbor] === Infinity) {
         distances[neighbor] = distances[node] + 1;
-
         queue.push(neighbor);
       }
     });
