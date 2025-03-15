@@ -77,7 +77,7 @@ class MinHeap {
   }
 
   peek(): number | null {
-    return this.heap.length > 1 ? this.heap[1] : null;
+    return this.heap[1] !== undefined ? this.heap[1] : null;
   }
 
   size(): number {
