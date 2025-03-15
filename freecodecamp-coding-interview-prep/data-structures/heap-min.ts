@@ -54,24 +54,20 @@ class MinHeap {
       const leftIndex = this.leftChildIndex(currentIndex);
       const rightIndex = this.rightChildIndex(currentIndex);
 
-      const left = this.heap[leftIndex]!;
-      const right = this.heap[rightIndex]!;
-      const current = this.heap[currentIndex]!;
+      let largestIndex = currentIndex;
 
-      let smallestIndex = currentIndex;
-
-      if (leftIndex > 0 && left < current) {
-        smallestIndex = leftIndex;
+      if (leftIndex < this.heap.length && this.heap[currentIndex]! > this.heap[leftIndex]!) {
+        largestIndex = leftIndex;
       }
 
-      if (rightIndex > 0 && right < current) {
-        smallestIndex = rightIndex;
+      if (rightIndex < this.heap.length && this.heap[currentIndex]! > this.heap[rightIndex]!) {
+        largestIndex = rightIndex;
       }
 
-      if (smallestIndex !== currentIndex) {
-        [this.heap[currentIndex], this.heap[smallestIndex]] = [this.heap[smallestIndex], this.heap[currentIndex]];
+      if (currentIndex !== largestIndex) {
+        [this.heap[currentIndex], this.heap[largestIndex]] = [this.heap[largestIndex], this.heap[currentIndex]];
 
-        bubbleDown(smallestIndex);
+        bubbleDown(largestIndex);
       }
     };
 
