@@ -24,7 +24,18 @@ I use **freeCodeCamp** to fill my knowledge gaps in full-stack development. It�
 - [Quality Assurance](/freecodecamp-quality-assurance/)
 - [Data Structures and Algorithms](/freecodecamp-coding-interview-prep/)
 
-I went through countless exercises, built over 35 hands-on projects, earned more than 3,000 points, and completed 7 certifications—representing over 2,100 hours of work. It was intense but practical. You can see my progress [here](https://www.freecodecamp.org/VienDinhCom).
+I went through countless exercises, built over **35** hands-on projects, earned more than **3,000** points, and completed **7** certifications—representing over **2,100** hours of work. It was intense but practical. You can see my progress [here](https://www.freecodecamp.org/VienDinhCom).
+
+## Projects
+
+### Interview Projects
+
+#### [React PDF Reader](interview-project-react-pdf-reader)
+I built a simple PDF reader using React.js, FileReader API, ReactPDF.js, and CSS Modules, making document viewing smooth and efficient.
+
+#### [React Quote Generator](interview-project-react-quote-generator)
+I built a simple Quote Image Generator using React.js, Next.js, Shopify Polaris, and React Query to streamline inspiration-sharing effortlessly.
+
 
 ## History
 
