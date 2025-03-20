@@ -4,7 +4,7 @@ A PDF Reader built with [React.js](https://react.dev/), [FileReader API](https:/
 
 ## Experience
 
-You know, [Ventive](https://www.getventive.com/) gave me this interview project to test my React skills. I built it, submitted it—and I passed. That’s how I got to work on their [Lyght](https://www.getlyght.com/) project.
+You know, [Ventive](https://www.getventive.com/) gave me this interview project to test my React skills. I built it, submitted it—and I passed. That’s how I an oportunity to work on their [Lyght](https://www.getlyght.com/) project.
 
 The stack was simple: [React.js](https://react.dev/) with [Create React App](https://github.com/facebook/create-react-app). I used the [FileReader API](https://developer.mozilla.org/en-US/docs/Web/API/FileReader) to handle files, [ReactPDF.js](https://www.npmjs.com/package/react-pdf-js) to display PDFs. [Normalize CSS](https://www.npmjs.com/package/normalize.css) kept styles consistent, and [CSS Modules](https://github.com/css-modules/css-modules) helped keep things organized.
 
