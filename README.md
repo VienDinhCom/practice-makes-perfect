@@ -28,14 +28,31 @@ I went through countless exercises, built over **35** hands-on projects, earned 
 
 ## Projects
 
+You can explore my work history on my LinkedIn [projects listing](https://www.linkedin.com/in/viendinhcom/details/projects/). My side projects and interview projects, along with their source code, are available here for you to check:
+
+### Side Projects
+
+#### [SuperMemo](https://github.com/VienDinhCom/supermemo)
+
+I built a JavaScript and TypeScript version of the SuperMemo 2 algorithm, making spaced repetition flashcards easier and smarter.
+
+#### [Next Shopify Storefront](https://github.com/VienDinhCom/next-shopify-storefront)
+
+I built a shopping cart using TypeScript, Tailwind CSS, Headless UI, Next.js, React.js, Hydrogen, and a GraphQL API for efficiency.
+
+#### [Bootstrap Shopify Theme](https://github.com/VienDinhCom/bootstrap-shopify-theme)
+
+A simple, free Shopify theme crafted with Bootstrap, BEM, Liquid, Sass, ESNext, Theme Tools, and Webpack for modern, efficient development.
+
 ### Interview Projects
 
 #### [React PDF Reader](interview-project-react-pdf-reader)
+
 I built a simple PDF reader using React.js, FileReader API, ReactPDF.js, and CSS Modules, making document viewing smooth and efficient.
 
 #### [React Quote Generator](interview-project-react-quote-generator)
-I built a simple Quote Image Generator using React.js, Next.js, Shopify Polaris, and React Query to streamline inspiration-sharing effortlessly.
 
+I built a simple Quote Image Generator using React.js, Next.js, Shopify Polaris, and React Query to streamline inspiration-sharing effortlessly.
 
 ## History
 
