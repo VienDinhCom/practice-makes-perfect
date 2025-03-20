@@ -1,27 +1,34 @@
 # React Quote Generator
 
+Quote Image Generator built with [React.js](https://react.dev/), [Next.js](https://nextjs.org/), [Shopify Polaris](https://www.npmjs.com/package/@shopify/polaris), [React Query](https://www.npmjs.com/package/@tanstack/react-query), etc.
+
 ## Experience
 
-In this project, I have used:
+Funny story. A Shopify agency—I forget their name—gave me this React.js test. I built it, passed, and got invited to the next round. But by then, I’d already accepted another job.
 
-- API Routes to build APIs
-- Axios to interact with APIs
-- Shopify Polaris to build UI
-- React Query to cache data
-- Next.js for Server Side Rendering
+For this project, I used [API Routes](https://nextjs.org/docs/pages/building-your-application/routing/api-routes) to build APIs, [Text2PNG](https://www.npmjs.com/package/text2png) and [Jimp](https://www.npmjs.com/package/jimp) to generate images on the server, [Axios](https://www.npmjs.com/package/axios) for API interactions, [Shopify Polaris](https://www.npmjs.com/package/@shopify/polaris) for the UI, [React Query](https://www.npmjs.com/package/@tanstack/react-query) for state management, and [Next.js](https://nextjs.org/) for Server-Side Rendering.
 
-## Demonstration
+It was a good challenge. And in the end, it led me somewhere else. Life works like that sometimes.
 
-https://maxvien-react-quote-generator.herokuapp.com/
+## Usage
 
-## Getting Started
+### `volta setup`
+This project was developed with Node 10 and NPM 6.<br>
 
-First, run the development server:
+To set up a compatible environment, please download [Volta](https://github.com/volta-cli/volta) and run `volta setup`.
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+### `npm run dev`
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Runs the app in the development mode.<br>
+Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+
+The page will reload if you make edits.<br>
+You will also see any lint errors in the console.
+
+### `npm run build`
+
+Builds the app for production to the `.next` folder.<br>
+It correctly bundles React in production mode and optimizes the build for the best performance.
+
+The build is minified and the filenames include the hashes.<br>
+Your app is ready to be deployed!
