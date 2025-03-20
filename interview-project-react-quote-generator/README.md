@@ -1,6 +1,6 @@
 # React Quote Generator
 
-Quote Image Generator built with [React.js](https://react.dev/), [Next.js](https://nextjs.org/), [Shopify Polaris](https://www.npmjs.com/package/@shopify/polaris), [React Query](https://www.npmjs.com/package/@tanstack/react-query), etc.
+A Quote Image Generator built with [React.js](https://react.dev/), [Next.js](https://nextjs.org/), [Shopify Polaris](https://www.npmjs.com/package/@shopify/polaris), [React Query](https://www.npmjs.com/package/@tanstack/react-query), etc.
 
 ## Experience
 
