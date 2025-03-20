@@ -12,13 +12,15 @@ You can find the course here: [Back End Development and APIs](https://www.freeco
 
 ## Projects
 
+These projects were developed with Node 20 and NPM 10. Please download [Volta](https://github.com/volta-cli/volta) or other tools to set up a compatible environment.
+
 - [Brief](https://www.freecodecamp.org/learn/back-end-development-and-apis/back-end-development-and-apis-projects/timestamp-microservice) - [Source](projects/timestamp-microservice/) - Timestamp Microservice
 - [Brief](https://www.freecodecamp.org/learn/back-end-development-and-apis/back-end-development-and-apis-projects/request-header-parser-microservice) - [Source](projects/request-header-parser-microservice/) - Request Header Parser Microservice
 - [Brief](https://www.freecodecamp.org/learn/back-end-development-and-apis/back-end-development-and-apis-projects/url-shortener-microservice) - [Source](projects/url-shortener-microservice/) - URL Shortener Microservice
 - [Brief](https://www.freecodecamp.org/learn/back-end-development-and-apis/back-end-development-and-apis-projects/exercise-tracker) - [Source](projects/exercise-tracker/) - Exercise Tracker
 - [Brief](https://www.freecodecamp.org/learn/back-end-development-and-apis/back-end-development-and-apis-projects/file-metadata-microservice) - [Source](projects/file-metadata-microservice/) - File Metadata Microservice
 
-## Certificate
+## Certification
 
 <a href="https://www.freecodecamp.org/certification/VienDinhCom/back-end-development-and-apis">
   <img src="certificate.png" alt="Back End Development and APIs Certificate" title="Click here to verify it on freeCodeCamp">

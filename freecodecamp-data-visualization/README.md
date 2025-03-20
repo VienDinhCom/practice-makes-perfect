@@ -12,13 +12,15 @@ You can find the course here: [Data Visualization](https://www.freecodecamp.org/
 
 ## Projects
 
+These projects were developed with Node 20 and NPM 10. Please download [Volta](https://github.com/volta-cli/volta) or other tools to set up a compatible environment.
+
 - [Brief](https://www.freecodecamp.org/learn/data-visualization/data-visualization-projects/visualize-data-with-a-bar-chart) - [Source](projects/bar-chart/) - [Demo](https://data-visualization-vien.vercel.app/projects/bar-chart/bar-chart.html) - Bar Chart
 - [Brief](https://www.freecodecamp.org/learn/data-visualization/data-visualization-projects/visualize-data-with-a-scatterplot-graph) - [Source](projects/scatterplot-graph/) - [Demo](https://data-visualization-vien.vercel.app/projects/scatterplot-graph/scatterplot-graph.html) - Scatterplot Graph
 - [Brief](https://www.freecodecamp.org/learn/data-visualization/data-visualization-projects/visualize-data-with-a-heat-map) - [Source](projects/heat-map/) - [Demo](https://data-visualization-vien.vercel.app/projects/heat-map/heat-map.html) - Heat Map
 - [Brief](https://www.freecodecamp.org/learn/data-visualization/data-visualization-projects/visualize-data-with-a-choropleth-map) - [Source](projects/choropleth-map/) - [Demo](https://data-visualization-vien.vercel.app/projects/choropleth-map/choropleth-map.html) - Choropleth Map
 - [Brief](https://www.freecodecamp.org/learn/data-visualization/data-visualization-projects/visualize-data-with-a-treemap-diagram) - [Source](projects/treemap-diagram/) - [Demo](https://data-visualization-vien.vercel.app/projects/treemap-diagram/treemap-diagram.html) - Treemap Diagram
 
-## Certificate
+## Certification
 
 <a href="https://www.freecodecamp.org/certification/VienDinhCom/data-visualization">
   <img src="certificate.png" alt="Data Visualization Certificate" title="Click here to verify it on freeCodeCamp">

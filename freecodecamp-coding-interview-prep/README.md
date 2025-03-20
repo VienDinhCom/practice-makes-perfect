@@ -12,7 +12,11 @@ It turns out, shortcuts only get me so far. Understanding the foundation? That c
 
 You can find the course here: [Coding Interview Prep](https://www.freecodecamp.org/learn/coding-interview-prep/)
 
-## Algorithms
+## Topics
+
+These scripts were developed with Deno v2. Please download the correct runtime to set up a compatible environment.
+
+### Algorithms
 
 - [Article](https://viendinh.com/posts/zzzx-sap-xep-noi-bot/) - [Source](algorithms/sorting/bubble-sort.ts) - Bubble Sort
 - [Article](https://viendinh.com/posts/zzzw-sap-xep-chon/) - [Source](algorithms/sorting/selection-sort.ts) - Selection Sort
@@ -24,7 +28,7 @@ You can find the course here: [Coding Interview Prep](https://www.freecodecamp.o
 - [Article](https://viendinh.com/posts/zzzl-tim-kiem-tuan-tu/) - [Source](algorithms/search/linear-search.ts) - Linear Search
 - [Article](https://viendinh.com/posts/zzzm-tim-kiem-nhi-phan/) - [Source](algorithms/search/binary-search.ts) - Binary Search
 
-## Data Structures
+### Data Structures
 
 - [Article](https://viendinh.com/posts/zzzb-ngan-xep/) - [Source](data-structures/stack.ts) - Stack
 - [Article](https://viendinh.com/posts/zzza-hang-doi/) - [Source](data-structures/queue.ts) - Queue
@@ -41,7 +45,7 @@ You can find the course here: [Coding Interview Prep](https://www.freecodecamp.o
 - [Article](https://viendinh.com/posts/zzyq-dong-nhi-phan/) - [Source](data-structures/heap-max.ts) - Max Heap
 - [Article](https://viendinh.com/posts/zzzj-do-thi/) - [Source](data-structures/graph-implementation.ts) - Graph
 
-## Others
+### Others
 
 - [Article](https://www.freecodecamp.org/learn/coding-interview-prep/algorithms/find-the-symmetric-difference) - [Source](algorithms/others/find-the-symmetric-difference.ts) - Find the Symmetric Difference
 - [Article](https://www.freecodecamp.org/learn/coding-interview-prep/algorithms/inventory-update) - [Source](algorithms/others/inventory-update.ts) - Inventory Update

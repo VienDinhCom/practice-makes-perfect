@@ -12,13 +12,15 @@ You can find the course here: [Quality Assurance](https://www.freecodecamp.org/l
 
 ## Projects
 
+These projects were developed with Node 20 and NPM 10. Please download [Volta](https://github.com/volta-cli/volta) or other tools to set up a compatible environment.
+
 - [Brief](https://www.freecodecamp.org/learn/quality-assurance/quality-assurance-projects/metric-imperial-converter) - [Source](projects/metric-imperial-converter/) - Metric-Imperial Converter
 - [Brief](https://www.freecodecamp.org/learn/quality-assurance/quality-assurance-projects/issue-tracker) - [Source](projects/issue-tracker/) - Issue Tracker
 - [Brief](https://www.freecodecamp.org/learn/quality-assurance/quality-assurance-projects/personal-library) - [Source](projects/personal-library/) - Personal Library
 - [Brief](https://www.freecodecamp.org/learn/quality-assurance/quality-assurance-projects/sudoku-solver) - [Source](projects/sudoku-solver/) - Sudoku Solver
 - [Brief](https://www.freecodecamp.org/learn/quality-assurance/quality-assurance-projects/american-british-translator) - [Source](projects/american-british-translator/) - American British Translator
 
-## Certificate
+## Certification
 
 <a href="https://www.freecodecamp.org/certification/VienDinhCom/quality-assurance-v7">
   <img src="certificate.png" alt="Quality Assurance Certificate" title="Click here to verify it on freeCodeCamp">

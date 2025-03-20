@@ -12,13 +12,15 @@ You can find the course here: [JavaScript Algorithms and Data Structures](https:
 
 ## Projects
 
+These projects were developed with Deno v2. Please download the correct runtime to set up a compatible environment.
+
 - [Brief](https://www.freecodecamp.org/learn/javascript-algorithms-and-data-structures-v8/build-a-palindrome-checker-project/build-a-palindrome-checker) - [Source](projects/palindrome-checker.ts) - Palindrome Checker
 - [Brief](https://www.freecodecamp.org/learn/javascript-algorithms-and-data-structures-v8/build-a-roman-numeral-converter-project/build-a-roman-numeral-converter) - [Source](projects/roman-numeral-converter.ts) - Roman Numeral Converter
 - [Brief](https://www.freecodecamp.org/learn/javascript-algorithms-and-data-structures-v8/build-a-telephone-number-validator-project/build-a-telephone-number-validator) - [Source](projects/telephone-number-validator.ts) - Telephone Number Validator
 - [Brief](https://www.freecodecamp.org/learn/javascript-algorithms-and-data-structures-v8/build-a-cash-register-project/build-a-cash-register) - [Source](projects/cash-register.ts) - Cash Register
 - [Brief](https://www.freecodecamp.org/learn/javascript-algorithms-and-data-structures-v8/build-a-pokemon-search-app-project/build-a-pokemon-search-app) - [Source](projects/pokemon-search.ts) - Pokémon Search
 
-## Certificate
+## Certification
 
 <a href="https://www.freecodecamp.org/certification/VienDinhCom/javascript-algorithms-and-data-structures-v8">
   <img src="certificate.png" alt="JavaScript Algorithms and Data Structures Certificate" title="Click here to verify it on freeCodeCamp">
