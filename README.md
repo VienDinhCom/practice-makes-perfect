@@ -34,11 +34,11 @@ You can explore my work history on my LinkedIn [projects listing](https://www.li
 
 #### [SuperMemo](https://github.com/VienDinhCom/supermemo)
 
-I built a JavaScript and TypeScript version of the SuperMemo 2 algorithm, making spaced repetition flashcards easier and smarter.
+A JavaScript and TypeScript version of the SuperMemo 2 algorithm, making spaced repetition flashcards easier and smarter.
 
 #### [Next Shopify Storefront](https://github.com/VienDinhCom/next-shopify-storefront)
 
-I built a shopping cart using TypeScript, Tailwind CSS, Headless UI, Next.js, React.js, Hydrogen, and a GraphQL API for efficiency.
+A shopping cart using TypeScript, Tailwind CSS, Headless UI, Next.js, React.js, Hydrogen, and a GraphQL API for efficiency.
 
 #### [Bootstrap Shopify Theme](https://github.com/VienDinhCom/bootstrap-shopify-theme)
 
@@ -48,11 +48,11 @@ A simple, free Shopify theme crafted with Bootstrap, BEM, Liquid, Sass, ESNext, 
 
 #### [React PDF Reader](interview-project-react-pdf-reader)
 
-I built a simple PDF reader using React.js, FileReader API, ReactPDF.js, and CSS Modules, making document viewing smooth and efficient.
+A simple PDF reader using React.js, FileReader API, ReactPDF.js, and CSS Modules, making document viewing smooth and efficient.
 
 #### [React Quote Generator](interview-project-react-quote-generator)
 
-I built a simple Quote Image Generator using React.js, Next.js, Shopify Polaris, and React Query to streamline inspiration-sharing effortlessly.
+A simple Quote Image Generator using React.js, Next.js, Shopify Polaris, and React Query to streamline inspiration-sharing effortlessly.
 
 ## History
 
