@@ -1,18 +1,22 @@
 # React PDF Reader
 
+A PDF Reader built with [React.js](https://react.dev/), [FileReader API](https://developer.mozilla.org/en-US/docs/Web/API/FileReader), [ReactPDF.js](https://www.npmjs.com/package/react-pdf-js), [CSS Modules](https://github.com/css-modules/css-modules), etc.
+
 ## Experience
 
-In this project, I have used:
+You know, [Ventive](https://www.getventive.com/) gave me this interview project to test my React skills. I built it, submitted it—and I passed. That’s how I got to work on their [Lyght](https://www.getlyght.com/) project.
 
-- FileReader API to read files
-- React PDF JS to view PDF files
-- Normalize CSS to reset default styles
-- CSS Modules to write component-scoped styles
+The stack was simple: [React.js](https://react.dev/) with [Create React App](https://github.com/facebook/create-react-app). I used the [FileReader API](https://developer.mozilla.org/en-US/docs/Web/API/FileReader) to handle files, [ReactPDF.js](https://www.npmjs.com/package/react-pdf-js) to display PDFs. [Normalize CSS](https://www.npmjs.com/package/normalize.css) kept styles consistent, and [CSS Modules](https://github.com/css-modules/css-modules) helped keep things organized.
 
-## Demonstration
-https://react-pdf-reader.vercel.app/
+It wasn’t just about the tools, though. It was about solving problems, writing clean code, and proving I could do the work. And in the end, that’s what mattered.
+
 
 ## Usage
+
+### `volta setup`
+This project was developed with Node 10 and NPM 6.<br>
+
+To set up a compatible environment, please download [Volta](https://github.com/volta-cli/volta) and run `volta setup`.
 
 ### `npm run dev`
 
