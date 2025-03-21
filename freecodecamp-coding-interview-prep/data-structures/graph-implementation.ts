@@ -5,6 +5,7 @@ class Graph<T> {
   private adjMatrix: number[][];
   private vertexData: T[];
 
+  // review
   constructor(size: number) {
     this.size = size;
     this.adjMatrix = new Array(size).fill(null).map(() => new Array(size).fill(0));
