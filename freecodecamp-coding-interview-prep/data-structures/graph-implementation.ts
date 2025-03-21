@@ -15,6 +15,7 @@ class Graph<T> {
     return vertex < this.size && vertex >= 0;
   }
 
+  // review
   addEdge(x: number, y: number): void {
     if (this.isValidVertex(x) && this.isValidVertex(y)) {
       this.adjMatrix[x][y] = 1;
