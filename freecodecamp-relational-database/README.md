@@ -4,7 +4,7 @@ I used to avoid writing raw SQL. I relied on ORMs like Prisma or TypeORM to hand
 
 So, I took a deep dive. Learned how to create and manage relational databases with PostgreSQL. Got my hands dirty with SQL—actually writing queries, optimizing them. Along the way, I picked up more Bash and Git too.
 
-I also sharpen my skills even further with exercises at [pgexercises.com](../database-postgresql-exercises/). Because knowing SQL? It’s not just useful—it’s essential. And I’m finally starting to appreciate why.
+I also sharpen my skills even further with exercises at [PostgreSQL Exercises](../database-postgresql-exercises/). Because knowing SQL? It’s not just useful—it’s essential. And I’m finally starting to appreciate why.
 
 You can find the course here: [Relational Database](https://www.freecodecamp.org/learn/relational-database/) & [Certificate](https://www.freecodecamp.org/certification/VienDinhCom/relational-database-v8)
 
