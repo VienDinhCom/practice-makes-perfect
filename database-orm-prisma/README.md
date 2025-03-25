@@ -1,4 +1,4 @@
-# Prisma ORM
+# Prisma ORM in Practice
 
 I once built a database for a product I was working on—something for English learners. Simple, but useful.
 
