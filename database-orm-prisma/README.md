@@ -4,7 +4,7 @@ I once built a database for a product I was working on—something for English l
 
 I used Prisma. Designed it to store words, their meanings, and example sentences. Users could create their own lists, picking the words and senses they wanted to practice. They could even track their progress with [SuperMemo](https://github.com/VienDinhCom/supermemo) flashcards.
 
-It never became a big product. But I learned a lot. So now, I’m sharing it. Maybe someone else will find it useful. Maybe it'll spark an idea.
+Although it never became a big product, I learned a lot. Now, I’m sharing it—a minimal database version of my product—in hopes that someone else might find it useful or even be inspired to spark a new idea.
 
 That’s the thing about building—it’s never just about the final product. It’s about what you pick up along the way.
 
