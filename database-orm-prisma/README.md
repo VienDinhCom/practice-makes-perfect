@@ -12,7 +12,7 @@ That’s the thing about building—it’s never just about the final product. I
 
 ### `docker compose up`
 
-First, copy the sample.env file to .env, and then run docker compose to set up the PostgreSQL database for this project.
+First, copy the `sample.env` file to `.env`, and then run docker compose to set up the PostgreSQL database for this project.
 
 ### `volta setup`
 
