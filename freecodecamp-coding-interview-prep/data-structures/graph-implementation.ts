@@ -28,7 +28,6 @@ class Graph<T> {
     }
   }
 
-  // review
   breadthFirstSearch(start: number): number[] {
     if (!this.isValidVertex(start)) return [];
 
@@ -63,6 +62,7 @@ class Graph<T> {
       this.adjMatrix[node].forEach((connected, neighbor) => {
         if (connected && !visited.has(neighbor)) {
           visited.add(neighbor);
+
           traverse(neighbor);
         }
       });
