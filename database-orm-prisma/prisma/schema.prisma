@@ -21,4 +21,18 @@ model User {
 
   email    String  @unique
   verified Boolean
+
+  profile Profile?
+}
+
+model Profile {
+  id String @id @default(uuid()) @db.Uuid
+
+  firstName String
+  lastName  String
+
+  image String
+
+  user   User   @relation(fields: [userId], references: [id])
+  userId String @unique @db.Uuid
 }
