@@ -23,6 +23,8 @@ model User {
   verified Boolean
 
   profile Profile?
+
+  lists List[]
 }
 
 model Profile {
@@ -69,10 +71,13 @@ model Sense {
 
   definition String
 
+  examples Example[]
+
   word   Word   @relation(fields: [wordId], references: [id])
   wordId String @db.Uuid
 
-  examples Example[]
+  list   List   @relation(fields: [listId], references: [id])
+  listId String @db.Uuid
 }
 
 model Example {
@@ -83,4 +88,20 @@ model Example {
 
   sense   Sense  @relation(fields: [senseId], references: [id])
   senseId String @db.Uuid
+}
+
+model List {
+  id String @id @default(uuid()) @db.Uuid
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  name        String
+  description String
+  published   Boolean @default(false)
+
+  senses Sense[]
+
+  owner   User   @relation(fields: [ownerId], references: [id])
+  ownerId String @db.Uuid
 }
