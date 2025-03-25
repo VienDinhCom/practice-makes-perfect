@@ -24,7 +24,8 @@ model User {
 
   profile Profile?
 
-  lists List[]
+  lists        List[]
+  enrolledList EnrolledList[]
 }
 
 model Profile {
@@ -100,8 +101,21 @@ model List {
   description String
   published   Boolean @default(false)
 
-  senses Sense[]
+  senses       Sense[]
+  enrolledList EnrolledList[]
 
   owner   User   @relation(fields: [ownerId], references: [id])
   ownerId String @db.Uuid
+}
+
+model EnrolledList {
+  enrolledAt DateTime @default(now())
+
+  listId String @db.Uuid
+  list   List   @relation(fields: [listId], references: [id])
+
+  leanerId String @db.Uuid
+  learner  User   @relation(fields: [leanerId], references: [id])
+
+  @@id([leanerId, listId])
 }
