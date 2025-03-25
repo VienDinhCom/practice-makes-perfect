@@ -19,12 +19,17 @@ I use **freeCodeCamp** to fill my knowledge gaps in full-stack development. Itâ€
 - [Front End Development Libraries](/freecodecamp-front-end-development-libraries/)
 - [Data Visualization](/freecodecamp-data-visualization/)
 - [Relational Database](/freecodecamp-relational-database/)
-- [PostgreSQL Exercises](/database-postgresql-exercises/)
 - [Back End Development and APIs](/freecodecamp-back-end-development-and-apis/)
 - [Quality Assurance](/freecodecamp-quality-assurance/)
 - [Data Structures and Algorithms](/freecodecamp-coding-interview-prep/)
 
 I went through countless exercises, built over **35** hands-on projects, earned more than **3,000** points, and completed **7** certificationsâ€”representing over **2,100** hours of work. It was intense but practical. You can see my progress [here](https://www.freecodecamp.org/VienDinhCom).
+
+## Database
+
+- [Relational Database](/freecodecamp-relational-database/)
+- [PostgreSQL Exercises](/database-postgresql-exercises/)
+- [Prisma ORM in Practice](/database-orm-prisma/)
 
 ## Projects
 
