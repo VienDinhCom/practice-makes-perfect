@@ -22,7 +22,8 @@ model User {
   email    String  @unique
   verified Boolean
 
-  profile Profile?
+  profile  Profile?
+  practice Practice?
 
   cards        Card[]
   lists        List[]
@@ -37,11 +38,18 @@ model Profile {
 
   image String
 
-  goal  Int
-  count Int
-
   user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
   userId String @unique @db.Uuid
+}
+
+model Practice {
+  id String @id @default(uuid()) @db.Uuid
+
+  goal Int
+  done Int
+
+  learner   User   @relation(fields: [learnerId], references: [id], onDelete: Cascade)
+  learnerId String @unique @db.Uuid
 }
 
 enum Pos {
