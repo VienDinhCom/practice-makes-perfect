@@ -51,10 +51,24 @@ model Word {
   updatedAt DateTime @updatedAt
 
   lemma String
-
   pos   Pos
+
   ipa   String?
   sound String?
 
+  senses Sense[]
+
   @@unique([lemma, pos])
+}
+
+model Sense {
+  id String @id @default(uuid()) @db.Uuid
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  definition String
+
+  word   Word   @relation(fields: [wordId], references: [id])
+  wordId String @db.Uuid
 }
