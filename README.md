@@ -27,9 +27,9 @@ I went through countless exercises, built over **35** hands-on projects, earned 
 
 ## Database
 
+- [Prisma ORM in Practice](/database-orm-prisma/)
 - [Relational Database](/freecodecamp-relational-database/)
 - [PostgreSQL Exercises](/database-postgresql-exercises/)
-- [Prisma ORM in Practice](/database-orm-prisma/)
 
 ## Projects
 
