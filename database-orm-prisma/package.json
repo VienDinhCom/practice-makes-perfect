@@ -4,6 +4,10 @@
   "homepage": "https://github.com/VienDinhCom/practice-makes-perfect/tree/main/database-orm-prisma",
   "license": "MIT",
   "version": "1.0.0",
+  "volta": {
+    "node": "22.14.0",
+    "npm": "10.9.2"
+  },
   "scripts": {
     "migrate:dev": "prisma migrate dev",
     "migrate:reset": "prisma migrate reset",
