@@ -24,6 +24,7 @@ model User {
 
   profile Profile?
 
+  cards        Card[]
   lists        List[]
   enrolledList EnrolledList[]
 }
@@ -35,6 +36,9 @@ model Profile {
   lastName  String
 
   image String
+
+  goal  Int
+  count Int
 
   user   User   @relation(fields: [userId], references: [id])
   userId String @unique @db.Uuid
@@ -72,6 +76,7 @@ model Sense {
 
   definition String
 
+  cards    Card[]
   examples Example[]
 
   word   Word   @relation(fields: [wordId], references: [id])
@@ -118,4 +123,24 @@ model EnrolledList {
   learner  User   @relation(fields: [leanerId], references: [id])
 
   @@id([leanerId, listId])
+}
+
+model Card {
+  createdAt   DateTime @default(now())
+  practicedAt DateTime @default(now())
+
+  interval   Int   @default(0)
+  repetition Int   @default(0)
+  efactor    Float @default(2.5)
+
+  count   Int      @default(0)
+  dueDate DateTime @default(now())
+
+  sense   Sense  @relation(fields: [senseId], references: [id], onDelete: Cascade)
+  senseId String @db.Uuid
+
+  learner   User   @relation(fields: [learnerId], references: [id], onDelete: Cascade)
+  learnerId String @db.Uuid
+
+  @@id([learnerId, senseId])
 }
