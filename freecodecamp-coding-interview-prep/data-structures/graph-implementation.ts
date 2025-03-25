@@ -22,28 +22,29 @@ class Graph<T> {
     }
   }
 
-  // review
   addVertexData(vertex: number, data: T): void {
     if (this.isValidVertex(vertex)) {
       this.vertexData[vertex] = data;
     }
   }
 
+  // review
   breadthFirstSearch(start: number): number[] {
     if (!this.isValidVertex(start)) return [];
 
-    const queue: number[] = [start];
     const visited = new Set<number>();
 
     visited.add(start);
+
+    const queue: number[] = [start];
 
     while (queue.length > 0) {
       const node = queue.shift()!;
 
       this.adjMatrix[node].forEach((connected, neighbor) => {
         if (connected && !visited.has(neighbor)) {
-          queue.push(neighbor);
           visited.add(neighbor);
+          queue.push(neighbor);
         }
       });
     }
