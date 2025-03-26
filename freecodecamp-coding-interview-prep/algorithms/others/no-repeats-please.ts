@@ -23,17 +23,19 @@ function getPerms(str: string): string[] {
 }
 
 function permAlone(str: string): number {
-  let perms = getPerms(str);
+  const perms = getPerms(str);
 
-  perms = perms.filter((perm) => {
+  const alonePerms = perms.filter((perm) => {
     for (const char of str) {
-      if (perm.includes(char + char)) return false;
+      if (perm.includes(char + char)) {
+        return false;
+      }
     }
 
     return true;
   });
 
-  return perms.length;
+  return alonePerms.length;
 }
 
 Deno.test('permAlone function tests', async (t) => {
