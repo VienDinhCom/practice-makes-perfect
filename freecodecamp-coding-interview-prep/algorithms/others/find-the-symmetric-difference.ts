@@ -4,13 +4,13 @@ import { expect } from 'jsr:@std/expect';
 
 function symmetricDifference(...args: number[][]): number[] {
   const symDiff = args.reduce((left, right) => {
-    const leftDiff = left.filter((v) => !right.includes(v));
-    const rightDiff = right.filter((v) => !left.includes(v));
+    const leftDiff = left.filter((num) => !right.includes(num));
+    const rightDiff = right.filter((num) => !left.includes(num));
 
     return Array.from(new Set([...leftDiff, ...rightDiff]));
-  }, [] as number[]);
+  }, []);
 
-  return symDiff.sort((a, b) => a - b);
+  return symDiff.toSorted((a, b) => a - b);
 }
 
 Deno.test('Symmetric Difference Test Suite', async (t) => {
