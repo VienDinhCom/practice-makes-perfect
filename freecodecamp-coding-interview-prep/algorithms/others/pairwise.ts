@@ -1,24 +1,24 @@
 import { expect } from 'jsr:@std/expect';
 
+// https://www.freecodecamp.org/learn/coding-interview-prep/algorithms/pairwise
+
 function pairwise(nums: number[], targetSum: number): number {
-  const indicies = new Set<number>();
+  const indices = new Set<number>();
 
-  nums.forEach((a, i) => {
-    nums.forEach((b, j) => {
-      if (i !== j) {
-        const sum = a + b;
+  for (let i = 0; i < nums.length; i++) {
+    for (let j = i + 1; j < nums.length; j++) {
+      const sum = nums[i] + nums[j];
 
-        if (sum === targetSum) {
-          if (!indicies.has(i) && !indicies.has(j)) {
-            indicies.add(i);
-            indicies.add(j);
-          }
+      if (sum === targetSum) {
+        if (!indices.has(i) && !indices.has(j)) {
+          indices.add(i);
+          indices.add(j);
         }
       }
-    });
-  });
+    }
+  }
 
-  return Array.from(indicies).reduce((sum, num) => sum + num, 0);
+  return Array.from(indices).reduce((prev, curr) => prev + curr, 0);
 }
 
 Deno.test('pairwise function test cases', async (t) => {
