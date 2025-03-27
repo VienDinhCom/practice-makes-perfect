@@ -1,19 +1,23 @@
-// https://www.freecodecamp.org/learn/javascript-algorithms-and-data-structures/javascript-algorithms-and-data-structures-projects/telephone-number-validator
-
 import { expect } from 'jsr:@std/expect';
 
-function telephoneCheck(str: string) {
-  const regexs: RegExp[] = [
-    /^1 \d{3}-\d{3}-\d{4}$/,
-    /^1 \(\d{3}\) \d{3}-\d{4}$/,
-    /^\d{10}$/,
-    /^\d{3}-\d{3}-\d{4}$/,
-    /^\(\d{3}\)\d{3}-\d{4}$/,
-    /^1\(\d{3}\)\d{3}-\d{4}$/,
-    /^1 \d{3} \d{3} \d{4}$/,
-  ];
+// https://www.freecodecamp.org/learn/javascript-algorithms-and-data-structures/javascript-algorithms-and-data-structures-projects/telephone-number-validator
 
-  return regexs.some((regex) => regex.test(str));
+function telephoneCheck(str: string) {
+  // const regexs: RegExp[] = [
+  //   /^1 \d{3}-\d{3}-\d{4}$/,
+  //   /^1 \(\d{3}\) \d{3}-\d{4}$/,
+  //   /^\d{10}$/,
+  //   /^\d{3}-\d{3}-\d{4}$/,
+  //   /^\(\d{3}\)\d{3}-\d{4}$/,
+  //   /^1\(\d{3}\)\d{3}-\d{4}$/,
+  //   /^1 \d{3} \d{3} \d{4}$/,
+  // ];
+
+  // return regexs.some((regex) => regex.test(str));
+
+  const regex = /^(1\s?)?(\(\d{3}\)|\d{3})[-\s]?\d{3}[-\s]?\d{4}$/;
+
+  return regex.test(str);
 }
 
 Deno.test("telephoneCheck('555-555-5555') should return a boolean", () => {
