@@ -1,30 +1,25 @@
-// https://www.freecodecamp.org/learn/javascript-algorithms-and-data-structures/javascript-algorithms-and-data-structures-projects/caesars-cipher
-
 import { expect } from 'jsr:@std/expect';
+
+// https://www.freecodecamp.org/learn/javascript-algorithms-and-data-structures/javascript-algorithms-and-data-structures-projects/caesars-cipher
 
 function rot13(str: string): string {
   const ACode = 65;
   const ZCode = 90;
 
-  let shiftedStr = '';
+  let result = '';
 
   for (const char of str) {
-    const code = char.charCodeAt(0);
+    if (/[a-z]/i.test(char)) {
+      const currentCode = char.charCodeAt(0);
+      const shiftedCode = currentCode + 13;
 
-    if (code >= ACode && code <= ZCode) {
-      let shiftedCode = code + 13;
-
-      if (shiftedCode > ZCode) {
-        shiftedCode = shiftedCode - ZCode + ACode - 1;
-      }
-
-      shiftedStr += String.fromCharCode(shiftedCode);
+      result += String.fromCharCode(shiftedCode <= ZCode ? shiftedCode : shiftedCode - ZCode + ACode - 1);
     } else {
-      shiftedStr += char;
+      result += char;
     }
   }
 
-  return shiftedStr;
+  return result;
 }
 
 Deno.test("rot13('SERR PBQR PNZC') should decode to 'FREE CODE CAMP'", () => {
