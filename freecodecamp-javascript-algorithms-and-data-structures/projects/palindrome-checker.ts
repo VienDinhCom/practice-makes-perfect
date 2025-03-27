@@ -1,12 +1,11 @@
-// https://www.freecodecamp.org/learn/javascript-algorithms-and-data-structures/javascript-algorithms-and-data-structures-projects/palindrome-checker
-
 import { expect } from 'jsr:@std/expect';
 
-// review
+// https://www.freecodecamp.org/learn/javascript-algorithms-and-data-structures/javascript-algorithms-and-data-structures-projects/palindrome-checker
+
 function palindrome(str: string) {
   const cleanedStr = str.toLowerCase().replace(/[^a-z0-9]/g, '');
 
-  return cleanedStr.split('').reverse().join('') === cleanedStr;
+  return cleanedStr === cleanedStr.split('').reverse().join('');
 }
 
 Deno.test('palindrome should return a boolean', () => {
