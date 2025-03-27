@@ -1,6 +1,6 @@
-// https://www.freecodecamp.org/learn/javascript-algorithms-and-data-structures/javascript-algorithms-and-data-structures-projects/cash-register
-
 import { expect } from 'jsr:@std/expect';
+
+// https://www.freecodecamp.org/learn/javascript-algorithms-and-data-structures/javascript-algorithms-and-data-structures-projects/cash-register
 
 type Cash = [string, number][];
 
@@ -17,7 +17,7 @@ function checkCashRegister(price: number, cash: number, drawer: Cash): Result {
     return { status: 'CLOSED', change: drawer };
   }
 
-  if (totalInDrawer < changeDue) {
+  if (changeDue > totalInDrawer) {
     return { status: 'INSUFFICIENT_FUNDS', change: [] };
   }
 
@@ -33,33 +33,31 @@ function checkCashRegister(price: number, cash: number, drawer: Cash): Result {
     ['PENNY', 0.01],
   ]);
 
+  const change: Cash = [];
+  let changeRemainder = changeDue;
+
   const drawerMap = new Map<string, number>(drawer.reverse());
 
-  const change: Cash = [];
-  let remain = changeDue;
+  for (const [currency, availableAmount] of drawerMap) {
+    const currencyValue = currencyMap.get(currency)!;
 
-  for (const [currency, amount] of drawerMap) {
-    const value = currencyMap.get(currency)!;
+    const neededUnits = Math.floor(changeRemainder / currencyValue);
+    const availableUnits = Math.floor(availableAmount / currencyValue);
 
-    const neededUnits = Math.floor(remain / value);
-    const availableUnits = Math.floor(amount / value);
+    if (neededUnits <= 0) continue;
 
-    if (neededUnits === 0) continue;
-
-    if (availableUnits <= neededUnits) {
-      const neededAmount = calculate(availableUnits * value);
+    if (neededUnits <= availableUnits) {
+      const neededAmount = calculate(neededUnits * currencyValue);
 
       change.push([currency, neededAmount]);
-      remain = calculate(remain - neededAmount);
+      changeRemainder = calculate(changeRemainder - neededAmount);
     } else {
-      const neededAmount = calculate(neededUnits * value);
-
-      change.push([currency, neededAmount]);
-      remain = calculate(remain - neededAmount);
+      change.push([currency, availableAmount]);
+      changeRemainder = calculate(changeRemainder - availableAmount);
     }
   }
 
-  if (remain === 0) {
+  if (changeRemainder === 0) {
     return { status: 'OPEN', change };
   }
 
@@ -69,20 +67,6 @@ function checkCashRegister(price: number, cash: number, drawer: Cash): Result {
 function calculate(expression: number): number {
   return Number(expression.toFixed(2));
 }
-
-// const r = checkCashRegister(3.26, 100, [
-//   ['PENNY', 1.01],
-//   ['NICKEL', 2.05],
-//   ['DIME', 3.1],
-//   ['QUARTER', 4.25],
-//   ['ONE', 90],
-//   ['FIVE', 55],
-//   ['TEN', 20],
-//   ['TWENTY', 60],
-//   ['ONE HUNDRED', 100],
-// ]);
-
-// console.log(r);
 
 Deno.test('Test 1: Should return an object', () => {
   const result = checkCashRegister(19.5, 20, [
