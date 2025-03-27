@@ -1,6 +1,6 @@
-// https://www.freecodecamp.org/learn/javascript-algorithms-and-data-structures/javascript-algorithms-and-data-structures-projects/roman-numeral-converter
-
 import { expect } from 'jsr:@std/expect';
+
+// https://www.freecodecamp.org/learn/javascript-algorithms-and-data-structures/javascript-algorithms-and-data-structures-projects/roman-numeral-converter
 
 function convertToRoman(num: number): string {
   const romanNumerals: [string, number][] = [
@@ -20,15 +20,15 @@ function convertToRoman(num: number): string {
   ];
 
   let result = '';
-  let remain = num;
+  let remainder = num;
 
-  for (const [roman, value] of romanNumerals) {
-    const units = Math.floor(remain / value);
+  for (const [symbol, value] of romanNumerals) {
+    const units = Math.floor(remainder / value);
 
-    if (remain <= 0) return result;
+    if (remainder <= 0) return result;
 
-    result += roman.repeat(units);
-    remain -= units * value;
+    result += symbol.repeat(units);
+    remainder -= units * value;
   }
 
   return result;
