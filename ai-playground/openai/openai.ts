@@ -21,6 +21,8 @@ const client = new OpenAI({
   });
 
   for await (const chunk of streamResponse) {
+    // process.stdout.write(chunk.choices[0]?.delta?.content || '');
+
     const encoder = new TextEncoder();
     const content = chunk.choices[0]?.delta?.content || '';
     const data = encoder.encode(content);
