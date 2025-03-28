@@ -1,10 +1,8 @@
 #!/usr/bin/env -S deno run -A
 
-import * as path from 'jsr:@std/path@1';
-import { createTypeScriptJsonValidator } from 'npm:typechat@0/ts';
+import { createZodJsonValidator } from 'npm:typechat@0/zod';
 import { createJsonTranslator, createOpenAILanguageModel } from 'npm:typechat@0';
-
-import { SentimentResponse } from './schema.ts';
+import { SentimentSchema } from './schema.ts';
 
 const config = {
   apiKey: 'ollama',
@@ -13,10 +11,7 @@ const config = {
 };
 
 const model = createOpenAILanguageModel(config.apiKey, config.model, config.endPoint);
-
-const schema = Deno.readTextFileSync(path.join(import.meta.dirname!, 'schema.ts'));
-
-const validator = createTypeScriptJsonValidator<SentimentResponse>(schema, 'SentimentResponse');
+const validator = createZodJsonValidator(SentimentSchema, 'SentimentResponse');
 const translator = createJsonTranslator(model, validator);
 
 const response = await translator.translate('I am sad.');
