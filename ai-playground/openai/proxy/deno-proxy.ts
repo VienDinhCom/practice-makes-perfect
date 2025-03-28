@@ -17,7 +17,6 @@ Deno.serve((req) => {
   }
 
   const { host, href } = new URL(req.url);
-
   const url = href.replace(host, OPENAI_API_HOST);
 
   return fetch(url, {
