@@ -1,6 +1,6 @@
 #!/usr/bin/env -S deno run -A
 
-import ollama from 'ollama';
+import ollama from 'npm:ollama@0';
 
 await (async () => {
   const prompt = 'Tell a story about AI.';

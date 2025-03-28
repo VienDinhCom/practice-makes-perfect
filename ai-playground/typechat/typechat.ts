@@ -1,8 +1,8 @@
 #!/usr/bin/env -S deno run -A
 
-import * as path from '@std/path';
-import { createTypeScriptJsonValidator } from 'typechat/ts';
-import { createJsonTranslator, createOpenAILanguageModel } from 'typechat';
+import * as path from 'jsr:@std/path@1';
+import { createTypeScriptJsonValidator } from 'npm:typechat@0/ts';
+import { createJsonTranslator, createOpenAILanguageModel } from 'npm:typechat@0';
 
 import { SentimentResponse } from './schema.ts';
 

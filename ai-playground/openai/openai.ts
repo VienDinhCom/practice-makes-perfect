@@ -1,6 +1,6 @@
 #!/usr/bin/env -S deno run -A
 
-import OpenAI from '@openai/openai';
+import OpenAI from 'jsr:@openai/openai@4';
 
 const client = new OpenAI({
   baseURL: 'http://localhost:11434/v1',
