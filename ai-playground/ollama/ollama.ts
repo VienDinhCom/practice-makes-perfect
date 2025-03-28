@@ -1,11 +1,11 @@
-#!/usr/bin/env -S deno run -A --env-file
+#!/usr/bin/env -S deno run -A
 
 import ollama from 'ollama';
 
 await (async () => {
   const prompt = 'Tell a story about AI.';
 
-  console.log('\n Asking: ' + prompt + '\n');
+  console.log('\n\n\nAsking: ' + prompt + '\n');
 
   const streamResponse = await ollama.chat({
     model: 'gemma3:1b',
@@ -34,7 +34,7 @@ await (async () => {
 await (async () => {
   const prompt = 'Explain quantum computing in simple terms.';
 
-  console.log('\n Asking: ' + prompt + '\n');
+  console.log('\n\n\nAsking: ' + prompt + '\n');
 
   const chatCompletion = await ollama.chat({
     model: 'gemma3:1b',

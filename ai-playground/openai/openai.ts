@@ -1,4 +1,4 @@
-#!/usr/bin/env -S deno run -A --env-file
+#!/usr/bin/env -S deno run -A
 
 import OpenAI from '@openai/openai';
 
@@ -11,7 +11,7 @@ const client = new OpenAI({
 await (async () => {
   const prompt = 'Explain quantum computing in simple terms.';
 
-  console.log('\n Asking: ' + prompt + '\n');
+  console.log('\n\n\nAsking: ' + prompt + '\n');
 
   const streamResponse = await client.chat.completions.create({
     model: 'gemma3:1b',
@@ -42,7 +42,7 @@ await (async () => {
 await (async () => {
   const prompt = 'Explain quantum computing in simple terms.';
 
-  console.log('\n Asking: ' + prompt + '\n');
+  console.log('\n\n\nAsking: ' + prompt + '\n');
 
   const chatCompletion = await client.chat.completions.create({
     model: 'gemma3:1b',
