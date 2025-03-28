@@ -31,13 +31,11 @@ await (async () => {
   });
 
   for await (const chunk of streamResponse) {
-    // process.stdout.write(chunk.choices[0]?.delta?.content || '');
-
-    const encoder = new TextEncoder();
     const content = chunk.choices[0]?.delta?.content || '';
-    const data = encoder.encode(content);
 
-    Deno.stdout.write(data);
+    // process.stdout.write(content);
+
+    Deno.stdout.write(new TextEncoder().encode(content));
   }
 })();
 
