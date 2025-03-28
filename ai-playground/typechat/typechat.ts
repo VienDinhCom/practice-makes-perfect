@@ -1,6 +1,7 @@
 #!/usr/bin/env -S deno run -A
 
 import { createZodJsonValidator } from 'npm:typechat@0/zod';
+import { processRequests } from 'npm:typechat@0/interactive';
 import { createJsonTranslator, createOpenAILanguageModel } from 'npm:typechat@0';
 import { SentimentSchema } from './schema.ts';
 
@@ -14,10 +15,12 @@ const model = createOpenAILanguageModel(config.apiKey, config.model, config.endP
 const validator = createZodJsonValidator(SentimentSchema, 'SentimentResponse');
 const translator = createJsonTranslator(model, validator);
 
-const response = await translator.translate('I am sad.');
+processRequests('How do you feel? ', Deno.args[1], async (request: string) => {
+  const response = await translator.translate(request);
 
-if (response.success) {
-  console.log(response.data.sentiment);
-} else {
-  console.log('Does not work.');
-}
+  if (response.success) {
+    console.log('You are ' + response.data.sentiment + '.\n');
+  } else {
+    console.log(response.message);
+  }
+});
