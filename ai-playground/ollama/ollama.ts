@@ -2,7 +2,7 @@
 
 import ollama from 'ollama';
 
-(async () => {
+await (async () => {
   const prompt = 'Tell a story about AI.';
 
   console.log('\n Asking: ' + prompt + '\n');
@@ -31,7 +31,7 @@ import ollama from 'ollama';
   }
 })();
 
-(async () => {
+await (async () => {
   const prompt = 'Explain quantum computing in simple terms.';
 
   console.log('\n Asking: ' + prompt + '\n');
