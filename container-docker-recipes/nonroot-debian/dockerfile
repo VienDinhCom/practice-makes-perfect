@@ -1,0 +1,15 @@
+FROM debian:12
+
+ARG USR=user
+ARG UID=1000
+ARG GID=1000
+
+RUN getent passwd ${UID} && userdel $(getent passwd ${UID} | cut -d: -f1) || true
+RUN getent group ${GID} || groupadd --gid ${GID} ${USR}
+RUN useradd --uid ${UID} --gid ${GID} -m ${USR}
+
+WORKDIR /home/${USR}
+
+USER ${USR}
+
+CMD ["tail", "-f", "/dev/null"]
