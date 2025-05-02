@@ -1,0 +1,11 @@
+services:
+  container:
+    container_name: container
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: /sbin/init
+    privileged: true
+    # volumes:
+    #   - /sys/fs/cgroup:/sys/fs/cgroup:ro
+    restart: unless-stopped
