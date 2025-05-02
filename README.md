@@ -25,6 +25,10 @@ I use **freeCodeCamp** to fill my knowledge gaps in full-stack development. Itâ€
 
 I went through countless exercises, built over **35** hands-on projects, earned more than **3,000** points, and completed **7** certificationsâ€”representing over **2,100** hours of work. You can see my progress [here](https://www.freecodecamp.org/VienDinhCom).
 
+## Container
+
+- [Docker VSCode Workspace](https://github.com/VienDinhCom/docker-vscode-fullstack)
+
 ## Database
 
 - [Prisma ORM in Practice](/database-orm-prisma/)
