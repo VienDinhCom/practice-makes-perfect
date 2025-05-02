@@ -1,0 +1,15 @@
+services:
+  container:
+    container_name: container
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        UID: ${PUID}
+        GID: ${PGID}
+    environment:
+      - DISPLAY
+    volumes:
+      - ./shared:/home/user/shared:rw
+      - /tmp/.X11-unix:/tmp/.X11-unix:ro
+    restart: unless-stopped
