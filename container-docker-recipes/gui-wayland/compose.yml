@@ -1,0 +1,15 @@
+services:
+  container:
+    container_name: container
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        UID: ${PUID}
+        GID: ${PGID}
+    environment:
+      - WAYLAND_DISPLAY
+    volumes:
+      - ./shared:/home/user/shared:rw
+      - ${XDG_RUNTIME_DIR}/${WAYLAND_DISPLAY}:${XDG_RUNTIME_DIR}/${WAYLAND_DISPLAY}:ro
+    restart: unless-stopped
