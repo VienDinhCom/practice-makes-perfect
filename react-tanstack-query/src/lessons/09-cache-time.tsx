@@ -41,7 +41,7 @@ function Pokemon() {
 
       return shuffle(pokemons);
     },
-    gcTime: 5000, // cache for 5 seconds
+    gcTime: 5000, // cache time: default is 5 minutes
   });
 
   return queryInfo.isLoading ? (
