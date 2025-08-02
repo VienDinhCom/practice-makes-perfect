@@ -18,7 +18,7 @@ function depthFirstSearch(graph: number[][], start: number) {
 
   traverse(start);
 
-  return Array.from(visited);
+  return visited.values().toArray();
 }
 
 Deno.test('DFS from node 1 in a fully connected graph', () => {

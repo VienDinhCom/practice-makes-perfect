@@ -3,6 +3,8 @@ import { drizzle } from 'drizzle-orm/node-postgres';
 import { eq } from 'drizzle-orm';
 import { usersTable } from './db/schema';
 
+// https://www.youtube.com/watch?v=vLze97zZKsU&t=210s
+
 const db = drizzle(process.env.DATABASE_URL!);
 
 async function main() {

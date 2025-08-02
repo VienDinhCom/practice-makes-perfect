@@ -3,7 +3,7 @@ import { expect } from 'jsr:@std/expect';
 // https://www.youtube.com/watch?v=0wPlzMU-k00
 
 class MinHeap {
-  heap: (number | null)[];
+  heap: (null | number)[];
 
   constructor() {
     this.heap = [null];
@@ -32,10 +32,7 @@ class MinHeap {
     const bubbleUp = (currentIndex: number) => {
       const parentIndex = this.parentIndex(currentIndex);
 
-      const current = this.heap[currentIndex]!;
-      const parent = this.heap[parentIndex]!;
-
-      if (parentIndex > 0 && parent > current) {
+      if (parentIndex > 0 && this.heap[currentIndex]! < this.heap[parentIndex]!) {
         [this.heap[currentIndex], this.heap[parentIndex]] = [this.heap[parentIndex], this.heap[currentIndex]];
 
         bubbleUp(parentIndex);
@@ -57,24 +54,20 @@ class MinHeap {
       const leftIndex = this.leftChildIndex(currentIndex);
       const rightIndex = this.rightChildIndex(currentIndex);
 
-      const left = this.heap[leftIndex]!;
-      const right = this.heap[rightIndex]!;
-      const current = this.heap[currentIndex]!;
+      let largestIndex = currentIndex;
 
-      let smallestIndex = currentIndex;
-
-      if (leftIndex > 0 && left < current) {
-        smallestIndex = leftIndex;
+      if (leftIndex < this.heap.length && this.heap[currentIndex]! > this.heap[leftIndex]!) {
+        largestIndex = leftIndex;
       }
 
-      if (rightIndex > 0 && right < current) {
-        smallestIndex = rightIndex;
+      if (rightIndex < this.heap.length && this.heap[currentIndex]! > this.heap[rightIndex]!) {
+        largestIndex = rightIndex;
       }
 
-      if (smallestIndex !== currentIndex) {
-        [this.heap[currentIndex], this.heap[smallestIndex]] = [this.heap[smallestIndex], this.heap[currentIndex]];
+      if (currentIndex !== largestIndex) {
+        [this.heap[currentIndex], this.heap[largestIndex]] = [this.heap[largestIndex], this.heap[currentIndex]];
 
-        bubbleDown(smallestIndex);
+        bubbleDown(largestIndex);
       }
     };
 
@@ -84,7 +77,7 @@ class MinHeap {
   }
 
   peek(): number | null {
-    return this.heap.length > 1 ? this.heap[1] : null;
+    return this.heap[1] !== undefined ? this.heap[1] : null;
   }
 
   size(): number {
@@ -92,17 +85,17 @@ class MinHeap {
   }
 
   sort() {
+    const values: number[] = [];
+
     const temp = [...this.heap];
 
-    const result: number[] = [];
-
     while (this.heap.length > 1) {
-      result.push(this.remove());
+      values.push(this.remove());
     }
 
     this.heap = temp;
 
-    return result;
+    return values;
   }
 }
 
