@@ -1,7 +1,6 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
-import "./index.css";
-import { App } from "./lessons/06-window-focus.tsx";
+import { App } from "./lessons/07-refetching-indicators.tsx";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
