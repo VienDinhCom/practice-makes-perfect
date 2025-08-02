@@ -25,6 +25,8 @@ function Pokemon() {
     queryFn: async () => {
       await new Promise((resolve) => setTimeout(resolve, 1000));
 
+      throw new Error("Something went wrong");
+
       return axios
         .get("https://pokeapi.co/api/v2/pokemon")
         .then((res) => res.data.results as Data[]);
