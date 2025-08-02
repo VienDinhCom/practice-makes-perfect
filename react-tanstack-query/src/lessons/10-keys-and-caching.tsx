@@ -3,14 +3,18 @@ import {
   QueryClientProvider,
   useQuery,
 } from "@tanstack/react-query";
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import axios from "axios";
+import { shuffle } from "es-toolkit";
 
 const queryClient = new QueryClient();
 
 export function App() {
   return (
     <QueryClientProvider client={queryClient}>
-      <Pokemon />
+      <Pokemon queryKey="pokemons" />
+      <Pokemon queryKey="pokemons" />
+      <ReactQueryDevtools initialIsOpen={false} />
     </QueryClientProvider>
   );
 }
@@ -19,17 +23,17 @@ interface Data {
   name: string;
 }
 
-function Pokemon() {
+function Pokemon(props: { queryKey: string }) {
   const queryInfo = useQuery({
-    queryKey: ["pokemons"],
+    queryKey: [props.queryKey],
     queryFn: async () => {
       await new Promise((resolve) => setTimeout(resolve, 1000));
 
-      throw new Error("Something went wrong");
-
-      return axios
+      const pokemons = await axios
         .get("https://pokeapi.co/api/v2/pokemon")
         .then((res) => res.data.results as Data[]);
+
+      return shuffle(pokemons);
     },
   });
 
@@ -39,6 +43,8 @@ function Pokemon() {
     queryInfo.error?.message
   ) : (
     <div>
+      {queryInfo.isFetching && <div>Updatding...</div>}
+      <br />
       {queryInfo.data?.map((result) => (
         <div key={result.name}>{result.name}</div>
       ))}
