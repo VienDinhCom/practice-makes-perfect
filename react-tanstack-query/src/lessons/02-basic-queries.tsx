@@ -21,7 +21,7 @@ interface Data {
 
 function Pokemon() {
   const queryInfo = useQuery({
-    queryKey: ["pokemon"],
+    queryKey: ["pokemons"],
     queryFn: () =>
       axios
         .get("https://pokeapi.co/api/v2/pokemon")

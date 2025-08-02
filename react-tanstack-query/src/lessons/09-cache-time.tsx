@@ -31,7 +31,7 @@ interface Data {
 
 function Pokemon() {
   const queryInfo = useQuery({
-    queryKey: ["pokemon"],
+    queryKey: ["pokemons"],
     queryFn: async () => {
       await new Promise((resolve) => setTimeout(resolve, 1000));
 

@@ -12,8 +12,8 @@ const queryClient = new QueryClient();
 export function App() {
   return (
     <QueryClientProvider client={queryClient}>
-      <Pokemon queryKey="pokemon1" />
-      <Pokemon queryKey="pokemon1" />
+      <Pokemon queryKey="pokemons" />
+      <Pokemon queryKey="pokemons" />
       <ReactQueryDevtools initialIsOpen={false} />
     </QueryClientProvider>
   );
