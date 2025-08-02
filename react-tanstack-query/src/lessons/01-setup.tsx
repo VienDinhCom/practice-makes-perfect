@@ -1,9 +1,21 @@
-import { useQuery } from "@tanstack/react-query";
+import {
+  QueryClient,
+  QueryClientProvider,
+  useQuery,
+} from "@tanstack/react-query";
 
-function App() {
-  console.log(useQuery);
+const queryClient = new QueryClient();
 
-  return <div>Hello React Query!</div>;
+export function App() {
+  return (
+    <QueryClientProvider client={queryClient}>
+      <Pokemon />
+    </QueryClientProvider>
+  );
 }
 
-export default App;
+function Pokemon() {
+  console.log(useQuery);
+
+  return <div>Hello React Query</div>;
+}

@@ -1,11 +1,25 @@
-import { useQuery } from "@tanstack/react-query";
+import {
+  QueryClient,
+  QueryClientProvider,
+  useQuery,
+} from "@tanstack/react-query";
 import axios from "axios";
 
-interface Pokemon {
+const queryClient = new QueryClient();
+
+export function App() {
+  return (
+    <QueryClientProvider client={queryClient}>
+      <Pokemon />
+    </QueryClientProvider>
+  );
+}
+
+interface Data {
   name: string;
 }
 
-function App() {
+function Pokemon() {
   const queryInfo = useQuery({
     queryKey: ["pokemon"],
     queryFn: async () => {
@@ -13,7 +27,7 @@ function App() {
 
       return axios
         .get("https://pokeapi.co/api/v2/pokemon")
-        .then((res) => res.data.results as Pokemon[]);
+        .then((res) => res.data.results as Data[]);
     },
   });
 
@@ -27,5 +41,3 @@ function App() {
     </div>
   );
 }
-
-export default App;
