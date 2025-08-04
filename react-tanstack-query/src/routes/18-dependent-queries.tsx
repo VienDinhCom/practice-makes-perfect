@@ -1,3 +1,4 @@
+import { createFileRoute } from '@tanstack/react-router';
 import {
   QueryClient,
   QueryClientProvider,
@@ -7,7 +8,11 @@ import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 
 const queryClient = new QueryClient();
 
-export function App() {
+export const Route = createFileRoute('/18-dependent-queries')({
+  component: Lesson,
+});
+
+function Lesson() {
   return (
     <QueryClientProvider client={queryClient}>
       <Posts />

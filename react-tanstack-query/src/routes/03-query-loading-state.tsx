@@ -1,20 +1,21 @@
+import { createFileRoute } from '@tanstack/react-router';
 import {
   QueryClient,
   QueryClientProvider,
   useQuery,
 } from "@tanstack/react-query";
-import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import axios from "axios";
-import { shuffle } from "es-toolkit";
 
 const queryClient = new QueryClient();
 
-export function App() {
+export const Route = createFileRoute('/03-query-loading-state')({
+  component: Lesson,
+});
+
+function Lesson() {
   return (
     <QueryClientProvider client={queryClient}>
-      <Pokemon queryKey="pokemons" />
-      <Pokemon queryKey="pokemons" />
-      <ReactQueryDevtools initialIsOpen={false} />
+      <Pokemon />
     </QueryClientProvider>
   );
 }
@@ -23,28 +24,22 @@ interface Data {
   name: string;
 }
 
-function Pokemon(props: { queryKey: string }) {
+function Pokemon() {
   const queryInfo = useQuery({
-    queryKey: [props.queryKey],
+    queryKey: ["pokemons"],
     queryFn: async () => {
       await new Promise((resolve) => setTimeout(resolve, 1000));
 
-      const pokemons = await axios
+      return axios
         .get("https://pokeapi.co/api/v2/pokemon")
         .then((res) => res.data.results as Data[]);
-
-      return shuffle(pokemons);
     },
   });
 
   return queryInfo.isLoading ? (
     "Loading..."
-  ) : queryInfo.isError ? (
-    queryInfo.error?.message
   ) : (
     <div>
-      {queryInfo.isFetching && <div>Updatding...</div>}
-      <br />
       {queryInfo.data?.map((result) => (
         <div key={result.name}>{result.name}</div>
       ))}

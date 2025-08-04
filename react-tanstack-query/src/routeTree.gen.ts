@@ -9,8 +9,116 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as R18DependentQueriesRouteImport } from './routes/18-dependent-queries'
+import { Route as R17QueryCancellationRouteImport } from './routes/17-query-cancellation'
+import { Route as R16QueryRetriesRouteImport } from './routes/16-query-retries'
+import { Route as R15MultipartQueryKeysRouteImport } from './routes/15-multipart-query-keys'
+import { Route as R14DisablingQueriesRouteImport } from './routes/14-disabling-queries'
+import { Route as R13PropsAndStateRouteImport } from './routes/13-props-and-state'
+import { Route as R12ParallelQueriesRouteImport } from './routes/12-parallel-queries'
+import { Route as R11ReuseQueriesRouteImport } from './routes/11-reuse-queries'
+import { Route as R10KeysAndCachingRouteImport } from './routes/10-keys-and-caching'
+import { Route as R09CacheTimeRouteImport } from './routes/09-cache-time'
+import { Route as R08StaleTimeRouteImport } from './routes/08-stale-time'
+import { Route as R07RefetchingIndicatorsRouteImport } from './routes/07-refetching-indicators'
+import { Route as R06WindowFocusRouteImport } from './routes/06-window-focus'
+import { Route as R05DevtoolsRouteImport } from './routes/05-devtools'
+import { Route as R04QueryErrorStateRouteImport } from './routes/04-query-error-state'
+import { Route as R03QueryLoadingStateRouteImport } from './routes/03-query-loading-state'
+import { Route as R02BasicQueriesRouteImport } from './routes/02-basic-queries'
+import { Route as R01SetupRouteImport } from './routes/01-setup'
 import { Route as IndexRouteImport } from './routes/index'
 
+const R18DependentQueriesRoute = R18DependentQueriesRouteImport.update({
+  id: '/18-dependent-queries',
+  path: '/18-dependent-queries',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const R17QueryCancellationRoute = R17QueryCancellationRouteImport.update({
+  id: '/17-query-cancellation',
+  path: '/17-query-cancellation',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const R16QueryRetriesRoute = R16QueryRetriesRouteImport.update({
+  id: '/16-query-retries',
+  path: '/16-query-retries',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const R15MultipartQueryKeysRoute = R15MultipartQueryKeysRouteImport.update({
+  id: '/15-multipart-query-keys',
+  path: '/15-multipart-query-keys',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const R14DisablingQueriesRoute = R14DisablingQueriesRouteImport.update({
+  id: '/14-disabling-queries',
+  path: '/14-disabling-queries',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const R13PropsAndStateRoute = R13PropsAndStateRouteImport.update({
+  id: '/13-props-and-state',
+  path: '/13-props-and-state',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const R12ParallelQueriesRoute = R12ParallelQueriesRouteImport.update({
+  id: '/12-parallel-queries',
+  path: '/12-parallel-queries',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const R11ReuseQueriesRoute = R11ReuseQueriesRouteImport.update({
+  id: '/11-reuse-queries',
+  path: '/11-reuse-queries',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const R10KeysAndCachingRoute = R10KeysAndCachingRouteImport.update({
+  id: '/10-keys-and-caching',
+  path: '/10-keys-and-caching',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const R09CacheTimeRoute = R09CacheTimeRouteImport.update({
+  id: '/09-cache-time',
+  path: '/09-cache-time',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const R08StaleTimeRoute = R08StaleTimeRouteImport.update({
+  id: '/08-stale-time',
+  path: '/08-stale-time',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const R07RefetchingIndicatorsRoute = R07RefetchingIndicatorsRouteImport.update({
+  id: '/07-refetching-indicators',
+  path: '/07-refetching-indicators',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const R06WindowFocusRoute = R06WindowFocusRouteImport.update({
+  id: '/06-window-focus',
+  path: '/06-window-focus',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const R05DevtoolsRoute = R05DevtoolsRouteImport.update({
+  id: '/05-devtools',
+  path: '/05-devtools',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const R04QueryErrorStateRoute = R04QueryErrorStateRouteImport.update({
+  id: '/04-query-error-state',
+  path: '/04-query-error-state',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const R03QueryLoadingStateRoute = R03QueryLoadingStateRouteImport.update({
+  id: '/03-query-loading-state',
+  path: '/03-query-loading-state',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const R02BasicQueriesRoute = R02BasicQueriesRouteImport.update({
+  id: '/02-basic-queries',
+  path: '/02-basic-queries',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const R01SetupRoute = R01SetupRouteImport.update({
+  id: '/01-setup',
+  path: '/01-setup',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -19,28 +127,284 @@ const IndexRoute = IndexRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/01-setup': typeof R01SetupRoute
+  '/02-basic-queries': typeof R02BasicQueriesRoute
+  '/03-query-loading-state': typeof R03QueryLoadingStateRoute
+  '/04-query-error-state': typeof R04QueryErrorStateRoute
+  '/05-devtools': typeof R05DevtoolsRoute
+  '/06-window-focus': typeof R06WindowFocusRoute
+  '/07-refetching-indicators': typeof R07RefetchingIndicatorsRoute
+  '/08-stale-time': typeof R08StaleTimeRoute
+  '/09-cache-time': typeof R09CacheTimeRoute
+  '/10-keys-and-caching': typeof R10KeysAndCachingRoute
+  '/11-reuse-queries': typeof R11ReuseQueriesRoute
+  '/12-parallel-queries': typeof R12ParallelQueriesRoute
+  '/13-props-and-state': typeof R13PropsAndStateRoute
+  '/14-disabling-queries': typeof R14DisablingQueriesRoute
+  '/15-multipart-query-keys': typeof R15MultipartQueryKeysRoute
+  '/16-query-retries': typeof R16QueryRetriesRoute
+  '/17-query-cancellation': typeof R17QueryCancellationRoute
+  '/18-dependent-queries': typeof R18DependentQueriesRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/01-setup': typeof R01SetupRoute
+  '/02-basic-queries': typeof R02BasicQueriesRoute
+  '/03-query-loading-state': typeof R03QueryLoadingStateRoute
+  '/04-query-error-state': typeof R04QueryErrorStateRoute
+  '/05-devtools': typeof R05DevtoolsRoute
+  '/06-window-focus': typeof R06WindowFocusRoute
+  '/07-refetching-indicators': typeof R07RefetchingIndicatorsRoute
+  '/08-stale-time': typeof R08StaleTimeRoute
+  '/09-cache-time': typeof R09CacheTimeRoute
+  '/10-keys-and-caching': typeof R10KeysAndCachingRoute
+  '/11-reuse-queries': typeof R11ReuseQueriesRoute
+  '/12-parallel-queries': typeof R12ParallelQueriesRoute
+  '/13-props-and-state': typeof R13PropsAndStateRoute
+  '/14-disabling-queries': typeof R14DisablingQueriesRoute
+  '/15-multipart-query-keys': typeof R15MultipartQueryKeysRoute
+  '/16-query-retries': typeof R16QueryRetriesRoute
+  '/17-query-cancellation': typeof R17QueryCancellationRoute
+  '/18-dependent-queries': typeof R18DependentQueriesRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/01-setup': typeof R01SetupRoute
+  '/02-basic-queries': typeof R02BasicQueriesRoute
+  '/03-query-loading-state': typeof R03QueryLoadingStateRoute
+  '/04-query-error-state': typeof R04QueryErrorStateRoute
+  '/05-devtools': typeof R05DevtoolsRoute
+  '/06-window-focus': typeof R06WindowFocusRoute
+  '/07-refetching-indicators': typeof R07RefetchingIndicatorsRoute
+  '/08-stale-time': typeof R08StaleTimeRoute
+  '/09-cache-time': typeof R09CacheTimeRoute
+  '/10-keys-and-caching': typeof R10KeysAndCachingRoute
+  '/11-reuse-queries': typeof R11ReuseQueriesRoute
+  '/12-parallel-queries': typeof R12ParallelQueriesRoute
+  '/13-props-and-state': typeof R13PropsAndStateRoute
+  '/14-disabling-queries': typeof R14DisablingQueriesRoute
+  '/15-multipart-query-keys': typeof R15MultipartQueryKeysRoute
+  '/16-query-retries': typeof R16QueryRetriesRoute
+  '/17-query-cancellation': typeof R17QueryCancellationRoute
+  '/18-dependent-queries': typeof R18DependentQueriesRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/01-setup'
+    | '/02-basic-queries'
+    | '/03-query-loading-state'
+    | '/04-query-error-state'
+    | '/05-devtools'
+    | '/06-window-focus'
+    | '/07-refetching-indicators'
+    | '/08-stale-time'
+    | '/09-cache-time'
+    | '/10-keys-and-caching'
+    | '/11-reuse-queries'
+    | '/12-parallel-queries'
+    | '/13-props-and-state'
+    | '/14-disabling-queries'
+    | '/15-multipart-query-keys'
+    | '/16-query-retries'
+    | '/17-query-cancellation'
+    | '/18-dependent-queries'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/01-setup'
+    | '/02-basic-queries'
+    | '/03-query-loading-state'
+    | '/04-query-error-state'
+    | '/05-devtools'
+    | '/06-window-focus'
+    | '/07-refetching-indicators'
+    | '/08-stale-time'
+    | '/09-cache-time'
+    | '/10-keys-and-caching'
+    | '/11-reuse-queries'
+    | '/12-parallel-queries'
+    | '/13-props-and-state'
+    | '/14-disabling-queries'
+    | '/15-multipart-query-keys'
+    | '/16-query-retries'
+    | '/17-query-cancellation'
+    | '/18-dependent-queries'
+  id:
+    | '__root__'
+    | '/'
+    | '/01-setup'
+    | '/02-basic-queries'
+    | '/03-query-loading-state'
+    | '/04-query-error-state'
+    | '/05-devtools'
+    | '/06-window-focus'
+    | '/07-refetching-indicators'
+    | '/08-stale-time'
+    | '/09-cache-time'
+    | '/10-keys-and-caching'
+    | '/11-reuse-queries'
+    | '/12-parallel-queries'
+    | '/13-props-and-state'
+    | '/14-disabling-queries'
+    | '/15-multipart-query-keys'
+    | '/16-query-retries'
+    | '/17-query-cancellation'
+    | '/18-dependent-queries'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  R01SetupRoute: typeof R01SetupRoute
+  R02BasicQueriesRoute: typeof R02BasicQueriesRoute
+  R03QueryLoadingStateRoute: typeof R03QueryLoadingStateRoute
+  R04QueryErrorStateRoute: typeof R04QueryErrorStateRoute
+  R05DevtoolsRoute: typeof R05DevtoolsRoute
+  R06WindowFocusRoute: typeof R06WindowFocusRoute
+  R07RefetchingIndicatorsRoute: typeof R07RefetchingIndicatorsRoute
+  R08StaleTimeRoute: typeof R08StaleTimeRoute
+  R09CacheTimeRoute: typeof R09CacheTimeRoute
+  R10KeysAndCachingRoute: typeof R10KeysAndCachingRoute
+  R11ReuseQueriesRoute: typeof R11ReuseQueriesRoute
+  R12ParallelQueriesRoute: typeof R12ParallelQueriesRoute
+  R13PropsAndStateRoute: typeof R13PropsAndStateRoute
+  R14DisablingQueriesRoute: typeof R14DisablingQueriesRoute
+  R15MultipartQueryKeysRoute: typeof R15MultipartQueryKeysRoute
+  R16QueryRetriesRoute: typeof R16QueryRetriesRoute
+  R17QueryCancellationRoute: typeof R17QueryCancellationRoute
+  R18DependentQueriesRoute: typeof R18DependentQueriesRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/18-dependent-queries': {
+      id: '/18-dependent-queries'
+      path: '/18-dependent-queries'
+      fullPath: '/18-dependent-queries'
+      preLoaderRoute: typeof R18DependentQueriesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/17-query-cancellation': {
+      id: '/17-query-cancellation'
+      path: '/17-query-cancellation'
+      fullPath: '/17-query-cancellation'
+      preLoaderRoute: typeof R17QueryCancellationRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/16-query-retries': {
+      id: '/16-query-retries'
+      path: '/16-query-retries'
+      fullPath: '/16-query-retries'
+      preLoaderRoute: typeof R16QueryRetriesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/15-multipart-query-keys': {
+      id: '/15-multipart-query-keys'
+      path: '/15-multipart-query-keys'
+      fullPath: '/15-multipart-query-keys'
+      preLoaderRoute: typeof R15MultipartQueryKeysRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/14-disabling-queries': {
+      id: '/14-disabling-queries'
+      path: '/14-disabling-queries'
+      fullPath: '/14-disabling-queries'
+      preLoaderRoute: typeof R14DisablingQueriesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/13-props-and-state': {
+      id: '/13-props-and-state'
+      path: '/13-props-and-state'
+      fullPath: '/13-props-and-state'
+      preLoaderRoute: typeof R13PropsAndStateRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/12-parallel-queries': {
+      id: '/12-parallel-queries'
+      path: '/12-parallel-queries'
+      fullPath: '/12-parallel-queries'
+      preLoaderRoute: typeof R12ParallelQueriesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/11-reuse-queries': {
+      id: '/11-reuse-queries'
+      path: '/11-reuse-queries'
+      fullPath: '/11-reuse-queries'
+      preLoaderRoute: typeof R11ReuseQueriesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/10-keys-and-caching': {
+      id: '/10-keys-and-caching'
+      path: '/10-keys-and-caching'
+      fullPath: '/10-keys-and-caching'
+      preLoaderRoute: typeof R10KeysAndCachingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/09-cache-time': {
+      id: '/09-cache-time'
+      path: '/09-cache-time'
+      fullPath: '/09-cache-time'
+      preLoaderRoute: typeof R09CacheTimeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/08-stale-time': {
+      id: '/08-stale-time'
+      path: '/08-stale-time'
+      fullPath: '/08-stale-time'
+      preLoaderRoute: typeof R08StaleTimeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/07-refetching-indicators': {
+      id: '/07-refetching-indicators'
+      path: '/07-refetching-indicators'
+      fullPath: '/07-refetching-indicators'
+      preLoaderRoute: typeof R07RefetchingIndicatorsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/06-window-focus': {
+      id: '/06-window-focus'
+      path: '/06-window-focus'
+      fullPath: '/06-window-focus'
+      preLoaderRoute: typeof R06WindowFocusRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/05-devtools': {
+      id: '/05-devtools'
+      path: '/05-devtools'
+      fullPath: '/05-devtools'
+      preLoaderRoute: typeof R05DevtoolsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/04-query-error-state': {
+      id: '/04-query-error-state'
+      path: '/04-query-error-state'
+      fullPath: '/04-query-error-state'
+      preLoaderRoute: typeof R04QueryErrorStateRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/03-query-loading-state': {
+      id: '/03-query-loading-state'
+      path: '/03-query-loading-state'
+      fullPath: '/03-query-loading-state'
+      preLoaderRoute: typeof R03QueryLoadingStateRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/02-basic-queries': {
+      id: '/02-basic-queries'
+      path: '/02-basic-queries'
+      fullPath: '/02-basic-queries'
+      preLoaderRoute: typeof R02BasicQueriesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/01-setup': {
+      id: '/01-setup'
+      path: '/01-setup'
+      fullPath: '/01-setup'
+      preLoaderRoute: typeof R01SetupRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -53,6 +417,24 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  R01SetupRoute: R01SetupRoute,
+  R02BasicQueriesRoute: R02BasicQueriesRoute,
+  R03QueryLoadingStateRoute: R03QueryLoadingStateRoute,
+  R04QueryErrorStateRoute: R04QueryErrorStateRoute,
+  R05DevtoolsRoute: R05DevtoolsRoute,
+  R06WindowFocusRoute: R06WindowFocusRoute,
+  R07RefetchingIndicatorsRoute: R07RefetchingIndicatorsRoute,
+  R08StaleTimeRoute: R08StaleTimeRoute,
+  R09CacheTimeRoute: R09CacheTimeRoute,
+  R10KeysAndCachingRoute: R10KeysAndCachingRoute,
+  R11ReuseQueriesRoute: R11ReuseQueriesRoute,
+  R12ParallelQueriesRoute: R12ParallelQueriesRoute,
+  R13PropsAndStateRoute: R13PropsAndStateRoute,
+  R14DisablingQueriesRoute: R14DisablingQueriesRoute,
+  R15MultipartQueryKeysRoute: R15MultipartQueryKeysRoute,
+  R16QueryRetriesRoute: R16QueryRetriesRoute,
+  R17QueryCancellationRoute: R17QueryCancellationRoute,
+  R18DependentQueriesRoute: R18DependentQueriesRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

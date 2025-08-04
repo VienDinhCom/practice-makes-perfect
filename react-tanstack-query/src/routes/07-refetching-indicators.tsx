@@ -1,3 +1,4 @@
+import { createFileRoute } from '@tanstack/react-router';
 import {
   QueryClient,
   QueryClientProvider,
@@ -5,21 +6,17 @@ import {
 } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import axios from "axios";
-import { useState } from "react";
 
 const queryClient = new QueryClient();
 
-export function App() {
-  const [pokemon, setPokemon] = useState("");
+export const Route = createFileRoute('/07-refetching-indicators')({
+  component: Lesson,
+});
 
+function Lesson() {
   return (
     <QueryClientProvider client={queryClient}>
-      <input
-        type="text"
-        value={pokemon}
-        onChange={(e) => setPokemon(e.target.value)}
-      />
-      <SearchPokemon pokemon={pokemon} />
+      <Pokemon />
       <ReactQueryDevtools initialIsOpen={false} />
     </QueryClientProvider>
   );
@@ -27,23 +24,19 @@ export function App() {
 
 interface Data {
   name: string;
-  sprites: {
-    front_default: string;
-  };
 }
 
-function SearchPokemon(props: { pokemon: string }) {
+function Pokemon() {
   const queryInfo = useQuery({
-    queryKey: [props.pokemon],
+    queryKey: ["pokemons"],
     queryFn: async () => {
       await new Promise((resolve) => setTimeout(resolve, 1000));
 
-      const pokemon = await axios
-        .get(`https://pokeapi.co/api/v2/pokemon/${props.pokemon}`)
-        .then((res) => res.data as Data);
-
-      return pokemon;
+      return axios
+        .get("https://pokeapi.co/api/v2/pokemon")
+        .then((res) => res.data.results as Data[]);
     },
+    refetchOnWindowFocus: true,
   });
 
   return queryInfo.isLoading ? (
@@ -54,11 +47,9 @@ function SearchPokemon(props: { pokemon: string }) {
     <div>
       {queryInfo.isFetching && <div>Updatding...</div>}
       <br />
-      {queryInfo.data?.sprites?.front_default ? (
-        <img src={queryInfo.data?.sprites?.front_default} />
-      ) : (
-        "Pokemon not found"
-      )}
+      {queryInfo.data?.map((result) => (
+        <div key={result.name}>{result.name}</div>
+      ))}
     </div>
   );
 }

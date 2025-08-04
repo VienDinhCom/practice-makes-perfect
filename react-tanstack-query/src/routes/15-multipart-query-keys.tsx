@@ -1,3 +1,4 @@
+import { createFileRoute } from '@tanstack/react-router';
 import {
   QueryClient,
   QueryClientProvider,
@@ -9,7 +10,11 @@ import { useState } from "react";
 
 const queryClient = new QueryClient();
 
-export function App() {
+export const Route = createFileRoute('/15-multipart-query-keys')({
+  component: Lesson,
+});
+
+function Lesson() {
   const [pokemon, setPokemon] = useState("");
 
   return (

@@ -1,3 +1,4 @@
+import { createFileRoute } from '@tanstack/react-router';
 import {
   QueryClient,
   QueryClientProvider,
@@ -9,7 +10,11 @@ import { shuffle } from "es-toolkit";
 
 const queryClient = new QueryClient();
 
-export function App() {
+export const Route = createFileRoute('/12-parallel-queries')({
+  component: Lesson,
+});
+
+function Lesson() {
   return (
     <QueryClientProvider client={queryClient}>
       <Berries queryKey="berries" />

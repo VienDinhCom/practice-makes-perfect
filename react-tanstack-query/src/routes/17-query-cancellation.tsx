@@ -1,15 +1,19 @@
+import { createFileRoute } from '@tanstack/react-router';
 import {
   QueryClient,
   QueryClientProvider,
   useQuery,
 } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
-import axios from "axios";
 import { useState } from "react";
 
 const queryClient = new QueryClient();
 
-export function App() {
+export const Route = createFileRoute('/17-query-cancellation')({
+  component: Lesson,
+});
+
+function Lesson() {
   const [pokemon, setPokemon] = useState("");
 
   return (

@@ -1,3 +1,4 @@
+import { createFileRoute } from '@tanstack/react-router';
 import {
   QueryClient,
   QueryClientProvider,
@@ -9,7 +10,11 @@ import { useState } from "react";
 
 const queryClient = new QueryClient();
 
-export function App() {
+export const Route = createFileRoute('/13-props-and-state')({
+  component: Lesson,
+});
+
+function Lesson() {
   const [pokemon, setPokemon] = useState("");
 
   return (
@@ -34,7 +39,7 @@ interface Data {
 
 function SearchPokemon(props: { pokemon: string }) {
   const queryInfo = useQuery({
-    queryKey: ["pokemon", props.pokemon],
+    queryKey: [props.pokemon],
     queryFn: async () => {
       await new Promise((resolve) => setTimeout(resolve, 1000));
 
@@ -44,9 +49,6 @@ function SearchPokemon(props: { pokemon: string }) {
 
       return pokemon;
     },
-    retry: 2, // Retry 2 times
-    retryDelay: 1000, // Wait 1 second between retries
-    enabled: props.pokemon !== "", // Disable query when pokemon is empty
   });
 
   return queryInfo.isLoading ? (
