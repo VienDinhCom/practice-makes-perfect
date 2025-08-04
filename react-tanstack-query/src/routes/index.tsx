@@ -72,6 +72,11 @@ function Index() {
         <li>
           <Link to="/21-related-lists-and-items">Related Lists and Items</Link>
         </li>
+        <li>
+          <Link to="/22-seeding-initial-data-from-other-queries">
+            Seeding Initial Data from Other Queries
+          </Link>
+        </li>
       </ol>
     </div>
   );

@@ -9,6 +9,7 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as R22SeedingInitialDataFromOtherQueriesRouteImport } from './routes/22-seeding-initial-data-from-other-queries'
 import { Route as R21RelatedListsAndItemsRouteImport } from './routes/21-related-lists-and-items'
 import { Route as R20InitialDataAsStaleRouteImport } from './routes/20-initial-data-as-stale'
 import { Route as R19InitialDataRouteImport } from './routes/19-initial-data'
@@ -32,6 +33,12 @@ import { Route as R02BasicQueriesRouteImport } from './routes/02-basic-queries'
 import { Route as R01SetupRouteImport } from './routes/01-setup'
 import { Route as IndexRouteImport } from './routes/index'
 
+const R22SeedingInitialDataFromOtherQueriesRoute =
+  R22SeedingInitialDataFromOtherQueriesRouteImport.update({
+    id: '/22-seeding-initial-data-from-other-queries',
+    path: '/22-seeding-initial-data-from-other-queries',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 const R21RelatedListsAndItemsRoute = R21RelatedListsAndItemsRouteImport.update({
   id: '/21-related-lists-and-items',
   path: '/21-related-lists-and-items',
@@ -166,6 +173,7 @@ export interface FileRoutesByFullPath {
   '/19-initial-data': typeof R19InitialDataRoute
   '/20-initial-data-as-stale': typeof R20InitialDataAsStaleRoute
   '/21-related-lists-and-items': typeof R21RelatedListsAndItemsRoute
+  '/22-seeding-initial-data-from-other-queries': typeof R22SeedingInitialDataFromOtherQueriesRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -190,6 +198,7 @@ export interface FileRoutesByTo {
   '/19-initial-data': typeof R19InitialDataRoute
   '/20-initial-data-as-stale': typeof R20InitialDataAsStaleRoute
   '/21-related-lists-and-items': typeof R21RelatedListsAndItemsRoute
+  '/22-seeding-initial-data-from-other-queries': typeof R22SeedingInitialDataFromOtherQueriesRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -215,6 +224,7 @@ export interface FileRoutesById {
   '/19-initial-data': typeof R19InitialDataRoute
   '/20-initial-data-as-stale': typeof R20InitialDataAsStaleRoute
   '/21-related-lists-and-items': typeof R21RelatedListsAndItemsRoute
+  '/22-seeding-initial-data-from-other-queries': typeof R22SeedingInitialDataFromOtherQueriesRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -241,6 +251,7 @@ export interface FileRouteTypes {
     | '/19-initial-data'
     | '/20-initial-data-as-stale'
     | '/21-related-lists-and-items'
+    | '/22-seeding-initial-data-from-other-queries'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -265,6 +276,7 @@ export interface FileRouteTypes {
     | '/19-initial-data'
     | '/20-initial-data-as-stale'
     | '/21-related-lists-and-items'
+    | '/22-seeding-initial-data-from-other-queries'
   id:
     | '__root__'
     | '/'
@@ -289,6 +301,7 @@ export interface FileRouteTypes {
     | '/19-initial-data'
     | '/20-initial-data-as-stale'
     | '/21-related-lists-and-items'
+    | '/22-seeding-initial-data-from-other-queries'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -314,10 +327,18 @@ export interface RootRouteChildren {
   R19InitialDataRoute: typeof R19InitialDataRoute
   R20InitialDataAsStaleRoute: typeof R20InitialDataAsStaleRoute
   R21RelatedListsAndItemsRoute: typeof R21RelatedListsAndItemsRoute
+  R22SeedingInitialDataFromOtherQueriesRoute: typeof R22SeedingInitialDataFromOtherQueriesRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/22-seeding-initial-data-from-other-queries': {
+      id: '/22-seeding-initial-data-from-other-queries'
+      path: '/22-seeding-initial-data-from-other-queries'
+      fullPath: '/22-seeding-initial-data-from-other-queries'
+      preLoaderRoute: typeof R22SeedingInitialDataFromOtherQueriesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/21-related-lists-and-items': {
       id: '/21-related-lists-and-items'
       path: '/21-related-lists-and-items'
@@ -498,6 +519,8 @@ const rootRouteChildren: RootRouteChildren = {
   R19InitialDataRoute: R19InitialDataRoute,
   R20InitialDataAsStaleRoute: R20InitialDataAsStaleRoute,
   R21RelatedListsAndItemsRoute: R21RelatedListsAndItemsRoute,
+  R22SeedingInitialDataFromOtherQueriesRoute:
+    R22SeedingInitialDataFromOtherQueriesRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
