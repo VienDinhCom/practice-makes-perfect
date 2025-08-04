@@ -77,6 +77,11 @@ function Index() {
             Seeding Initial Data from Other Queries
           </Link>
         </li>
+        <li>
+          <Link to="/23-seeding-future-queries">
+            Seeding Initial Data for Future Queries
+          </Link>
+        </li>
       </ol>
     </div>
   );
