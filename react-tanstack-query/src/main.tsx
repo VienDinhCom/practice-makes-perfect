@@ -1,6 +1,6 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
-import { App } from "./lessons/15-multipart-query-keys.tsx";
+import { App } from "./lessons/16-query-retries.tsx";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
