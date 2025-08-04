@@ -9,7 +9,7 @@ import { useState } from "react";
 
 const queryClient = new QueryClient();
 
-export const Route = createFileRoute("/20-related-lists-and-items")({
+export const Route = createFileRoute("/21-related-lists-and-items")({
   component: Lesson,
 });
 

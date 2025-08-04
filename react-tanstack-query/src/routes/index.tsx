@@ -67,7 +67,10 @@ function Index() {
           <Link to="/19-initial-data">Initial Data</Link>
         </li>
         <li>
-          <Link to="/20-related-lists-and-items">Related Lists and Items</Link>
+          <Link to="/20-initial-data-as-stale">Initial Data as Stale</Link>
+        </li>
+        <li>
+          <Link to="/21-related-lists-and-items">Related Lists and Items</Link>
         </li>
       </ol>
     </div>
