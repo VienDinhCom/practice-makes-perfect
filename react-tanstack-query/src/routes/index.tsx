@@ -63,6 +63,9 @@ function Index() {
         <li>
           <Link to="/18-dependent-queries">Dependent Queries</Link>
         </li>
+        <li>
+          <Link to="/19-initial-data">Initial Data</Link>
+        </li>
       </ol>
     </div>
   );

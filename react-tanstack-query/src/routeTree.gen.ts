@@ -9,6 +9,7 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as R19InitialDataRouteImport } from './routes/19-initial-data'
 import { Route as R18DependentQueriesRouteImport } from './routes/18-dependent-queries'
 import { Route as R17QueryCancellationRouteImport } from './routes/17-query-cancellation'
 import { Route as R16QueryRetriesRouteImport } from './routes/16-query-retries'
@@ -29,6 +30,11 @@ import { Route as R02BasicQueriesRouteImport } from './routes/02-basic-queries'
 import { Route as R01SetupRouteImport } from './routes/01-setup'
 import { Route as IndexRouteImport } from './routes/index'
 
+const R19InitialDataRoute = R19InitialDataRouteImport.update({
+  id: '/19-initial-data',
+  path: '/19-initial-data',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const R18DependentQueriesRoute = R18DependentQueriesRouteImport.update({
   id: '/18-dependent-queries',
   path: '/18-dependent-queries',
@@ -145,6 +151,7 @@ export interface FileRoutesByFullPath {
   '/16-query-retries': typeof R16QueryRetriesRoute
   '/17-query-cancellation': typeof R17QueryCancellationRoute
   '/18-dependent-queries': typeof R18DependentQueriesRoute
+  '/19-initial-data': typeof R19InitialDataRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -166,6 +173,7 @@ export interface FileRoutesByTo {
   '/16-query-retries': typeof R16QueryRetriesRoute
   '/17-query-cancellation': typeof R17QueryCancellationRoute
   '/18-dependent-queries': typeof R18DependentQueriesRoute
+  '/19-initial-data': typeof R19InitialDataRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -188,6 +196,7 @@ export interface FileRoutesById {
   '/16-query-retries': typeof R16QueryRetriesRoute
   '/17-query-cancellation': typeof R17QueryCancellationRoute
   '/18-dependent-queries': typeof R18DependentQueriesRoute
+  '/19-initial-data': typeof R19InitialDataRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -211,6 +220,7 @@ export interface FileRouteTypes {
     | '/16-query-retries'
     | '/17-query-cancellation'
     | '/18-dependent-queries'
+    | '/19-initial-data'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -232,6 +242,7 @@ export interface FileRouteTypes {
     | '/16-query-retries'
     | '/17-query-cancellation'
     | '/18-dependent-queries'
+    | '/19-initial-data'
   id:
     | '__root__'
     | '/'
@@ -253,6 +264,7 @@ export interface FileRouteTypes {
     | '/16-query-retries'
     | '/17-query-cancellation'
     | '/18-dependent-queries'
+    | '/19-initial-data'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -275,10 +287,18 @@ export interface RootRouteChildren {
   R16QueryRetriesRoute: typeof R16QueryRetriesRoute
   R17QueryCancellationRoute: typeof R17QueryCancellationRoute
   R18DependentQueriesRoute: typeof R18DependentQueriesRoute
+  R19InitialDataRoute: typeof R19InitialDataRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/19-initial-data': {
+      id: '/19-initial-data'
+      path: '/19-initial-data'
+      fullPath: '/19-initial-data'
+      preLoaderRoute: typeof R19InitialDataRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/18-dependent-queries': {
       id: '/18-dependent-queries'
       path: '/18-dependent-queries'
@@ -435,6 +455,7 @@ const rootRouteChildren: RootRouteChildren = {
   R16QueryRetriesRoute: R16QueryRetriesRoute,
   R17QueryCancellationRoute: R17QueryCancellationRoute,
   R18DependentQueriesRoute: R18DependentQueriesRoute,
+  R19InitialDataRoute: R19InitialDataRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
