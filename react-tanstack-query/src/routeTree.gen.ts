@@ -9,6 +9,7 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as R20RelatedListsAndItemsRouteImport } from './routes/20-related-lists-and-items'
 import { Route as R19InitialDataRouteImport } from './routes/19-initial-data'
 import { Route as R18DependentQueriesRouteImport } from './routes/18-dependent-queries'
 import { Route as R17QueryCancellationRouteImport } from './routes/17-query-cancellation'
@@ -30,6 +31,11 @@ import { Route as R02BasicQueriesRouteImport } from './routes/02-basic-queries'
 import { Route as R01SetupRouteImport } from './routes/01-setup'
 import { Route as IndexRouteImport } from './routes/index'
 
+const R20RelatedListsAndItemsRoute = R20RelatedListsAndItemsRouteImport.update({
+  id: '/20-related-lists-and-items',
+  path: '/20-related-lists-and-items',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const R19InitialDataRoute = R19InitialDataRouteImport.update({
   id: '/19-initial-data',
   path: '/19-initial-data',
@@ -152,6 +158,7 @@ export interface FileRoutesByFullPath {
   '/17-query-cancellation': typeof R17QueryCancellationRoute
   '/18-dependent-queries': typeof R18DependentQueriesRoute
   '/19-initial-data': typeof R19InitialDataRoute
+  '/20-related-lists-and-items': typeof R20RelatedListsAndItemsRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -174,6 +181,7 @@ export interface FileRoutesByTo {
   '/17-query-cancellation': typeof R17QueryCancellationRoute
   '/18-dependent-queries': typeof R18DependentQueriesRoute
   '/19-initial-data': typeof R19InitialDataRoute
+  '/20-related-lists-and-items': typeof R20RelatedListsAndItemsRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -197,6 +205,7 @@ export interface FileRoutesById {
   '/17-query-cancellation': typeof R17QueryCancellationRoute
   '/18-dependent-queries': typeof R18DependentQueriesRoute
   '/19-initial-data': typeof R19InitialDataRoute
+  '/20-related-lists-and-items': typeof R20RelatedListsAndItemsRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -221,6 +230,7 @@ export interface FileRouteTypes {
     | '/17-query-cancellation'
     | '/18-dependent-queries'
     | '/19-initial-data'
+    | '/20-related-lists-and-items'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -243,6 +253,7 @@ export interface FileRouteTypes {
     | '/17-query-cancellation'
     | '/18-dependent-queries'
     | '/19-initial-data'
+    | '/20-related-lists-and-items'
   id:
     | '__root__'
     | '/'
@@ -265,6 +276,7 @@ export interface FileRouteTypes {
     | '/17-query-cancellation'
     | '/18-dependent-queries'
     | '/19-initial-data'
+    | '/20-related-lists-and-items'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -288,10 +300,18 @@ export interface RootRouteChildren {
   R17QueryCancellationRoute: typeof R17QueryCancellationRoute
   R18DependentQueriesRoute: typeof R18DependentQueriesRoute
   R19InitialDataRoute: typeof R19InitialDataRoute
+  R20RelatedListsAndItemsRoute: typeof R20RelatedListsAndItemsRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/20-related-lists-and-items': {
+      id: '/20-related-lists-and-items'
+      path: '/20-related-lists-and-items'
+      fullPath: '/20-related-lists-and-items'
+      preLoaderRoute: typeof R20RelatedListsAndItemsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/19-initial-data': {
       id: '/19-initial-data'
       path: '/19-initial-data'
@@ -456,6 +476,7 @@ const rootRouteChildren: RootRouteChildren = {
   R17QueryCancellationRoute: R17QueryCancellationRoute,
   R18DependentQueriesRoute: R18DependentQueriesRoute,
   R19InitialDataRoute: R19InitialDataRoute,
+  R20RelatedListsAndItemsRoute: R20RelatedListsAndItemsRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
