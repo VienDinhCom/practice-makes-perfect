@@ -9,6 +9,7 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as R24QuerySideEffectsRouteImport } from './routes/24-query-side-effects'
 import { Route as R23SeedingFutureQueriesRouteImport } from './routes/23-seeding-future-queries'
 import { Route as R22SeedingInitialDataFromOtherQueriesRouteImport } from './routes/22-seeding-initial-data-from-other-queries'
 import { Route as R21RelatedListsAndItemsRouteImport } from './routes/21-related-lists-and-items'
@@ -34,6 +35,11 @@ import { Route as R02BasicQueriesRouteImport } from './routes/02-basic-queries'
 import { Route as R01SetupRouteImport } from './routes/01-setup'
 import { Route as IndexRouteImport } from './routes/index'
 
+const R24QuerySideEffectsRoute = R24QuerySideEffectsRouteImport.update({
+  id: '/24-query-side-effects',
+  path: '/24-query-side-effects',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const R23SeedingFutureQueriesRoute = R23SeedingFutureQueriesRouteImport.update({
   id: '/23-seeding-future-queries',
   path: '/23-seeding-future-queries',
@@ -181,6 +187,7 @@ export interface FileRoutesByFullPath {
   '/21-related-lists-and-items': typeof R21RelatedListsAndItemsRoute
   '/22-seeding-initial-data-from-other-queries': typeof R22SeedingInitialDataFromOtherQueriesRoute
   '/23-seeding-future-queries': typeof R23SeedingFutureQueriesRoute
+  '/24-query-side-effects': typeof R24QuerySideEffectsRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -207,6 +214,7 @@ export interface FileRoutesByTo {
   '/21-related-lists-and-items': typeof R21RelatedListsAndItemsRoute
   '/22-seeding-initial-data-from-other-queries': typeof R22SeedingInitialDataFromOtherQueriesRoute
   '/23-seeding-future-queries': typeof R23SeedingFutureQueriesRoute
+  '/24-query-side-effects': typeof R24QuerySideEffectsRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -234,6 +242,7 @@ export interface FileRoutesById {
   '/21-related-lists-and-items': typeof R21RelatedListsAndItemsRoute
   '/22-seeding-initial-data-from-other-queries': typeof R22SeedingInitialDataFromOtherQueriesRoute
   '/23-seeding-future-queries': typeof R23SeedingFutureQueriesRoute
+  '/24-query-side-effects': typeof R24QuerySideEffectsRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -262,6 +271,7 @@ export interface FileRouteTypes {
     | '/21-related-lists-and-items'
     | '/22-seeding-initial-data-from-other-queries'
     | '/23-seeding-future-queries'
+    | '/24-query-side-effects'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -288,6 +298,7 @@ export interface FileRouteTypes {
     | '/21-related-lists-and-items'
     | '/22-seeding-initial-data-from-other-queries'
     | '/23-seeding-future-queries'
+    | '/24-query-side-effects'
   id:
     | '__root__'
     | '/'
@@ -314,6 +325,7 @@ export interface FileRouteTypes {
     | '/21-related-lists-and-items'
     | '/22-seeding-initial-data-from-other-queries'
     | '/23-seeding-future-queries'
+    | '/24-query-side-effects'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -341,10 +353,18 @@ export interface RootRouteChildren {
   R21RelatedListsAndItemsRoute: typeof R21RelatedListsAndItemsRoute
   R22SeedingInitialDataFromOtherQueriesRoute: typeof R22SeedingInitialDataFromOtherQueriesRoute
   R23SeedingFutureQueriesRoute: typeof R23SeedingFutureQueriesRoute
+  R24QuerySideEffectsRoute: typeof R24QuerySideEffectsRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/24-query-side-effects': {
+      id: '/24-query-side-effects'
+      path: '/24-query-side-effects'
+      fullPath: '/24-query-side-effects'
+      preLoaderRoute: typeof R24QuerySideEffectsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/23-seeding-future-queries': {
       id: '/23-seeding-future-queries'
       path: '/23-seeding-future-queries'
@@ -542,6 +562,7 @@ const rootRouteChildren: RootRouteChildren = {
   R22SeedingInitialDataFromOtherQueriesRoute:
     R22SeedingInitialDataFromOtherQueriesRoute,
   R23SeedingFutureQueriesRoute: R23SeedingFutureQueriesRoute,
+  R24QuerySideEffectsRoute: R24QuerySideEffectsRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

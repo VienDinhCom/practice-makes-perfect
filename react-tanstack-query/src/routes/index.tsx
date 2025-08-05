@@ -82,6 +82,9 @@ function Index() {
             Seeding Initial Data for Future Queries
           </Link>
         </li>
+        <li>
+          <Link to="/24-query-side-effects">Query Side Effects</Link>
+        </li>
       </ol>
     </div>
   );
