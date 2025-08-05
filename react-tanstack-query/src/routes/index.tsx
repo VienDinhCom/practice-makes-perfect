@@ -88,6 +88,9 @@ function Index() {
         <li>
           <Link to="/25-scroll-restoration">Scroll Restoration</Link>
         </li>
+        <li>
+          <Link to="/26-refetch-intervals">Refetching Intervals</Link>
+        </li>
       </ol>
     </div>
   );

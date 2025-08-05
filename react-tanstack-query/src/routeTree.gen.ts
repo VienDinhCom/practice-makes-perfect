@@ -9,6 +9,7 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as R26RefetchIntervalsRouteImport } from './routes/26-refetch-intervals'
 import { Route as R25ScrollRestorationRouteImport } from './routes/25-scroll-restoration'
 import { Route as R24QuerySideEffectsRouteImport } from './routes/24-query-side-effects'
 import { Route as R23SeedingFutureQueriesRouteImport } from './routes/23-seeding-future-queries'
@@ -36,6 +37,11 @@ import { Route as R02BasicQueriesRouteImport } from './routes/02-basic-queries'
 import { Route as R01SetupRouteImport } from './routes/01-setup'
 import { Route as IndexRouteImport } from './routes/index'
 
+const R26RefetchIntervalsRoute = R26RefetchIntervalsRouteImport.update({
+  id: '/26-refetch-intervals',
+  path: '/26-refetch-intervals',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const R25ScrollRestorationRoute = R25ScrollRestorationRouteImport.update({
   id: '/25-scroll-restoration',
   path: '/25-scroll-restoration',
@@ -195,6 +201,7 @@ export interface FileRoutesByFullPath {
   '/23-seeding-future-queries': typeof R23SeedingFutureQueriesRoute
   '/24-query-side-effects': typeof R24QuerySideEffectsRoute
   '/25-scroll-restoration': typeof R25ScrollRestorationRoute
+  '/26-refetch-intervals': typeof R26RefetchIntervalsRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -223,6 +230,7 @@ export interface FileRoutesByTo {
   '/23-seeding-future-queries': typeof R23SeedingFutureQueriesRoute
   '/24-query-side-effects': typeof R24QuerySideEffectsRoute
   '/25-scroll-restoration': typeof R25ScrollRestorationRoute
+  '/26-refetch-intervals': typeof R26RefetchIntervalsRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -252,6 +260,7 @@ export interface FileRoutesById {
   '/23-seeding-future-queries': typeof R23SeedingFutureQueriesRoute
   '/24-query-side-effects': typeof R24QuerySideEffectsRoute
   '/25-scroll-restoration': typeof R25ScrollRestorationRoute
+  '/26-refetch-intervals': typeof R26RefetchIntervalsRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -282,6 +291,7 @@ export interface FileRouteTypes {
     | '/23-seeding-future-queries'
     | '/24-query-side-effects'
     | '/25-scroll-restoration'
+    | '/26-refetch-intervals'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -310,6 +320,7 @@ export interface FileRouteTypes {
     | '/23-seeding-future-queries'
     | '/24-query-side-effects'
     | '/25-scroll-restoration'
+    | '/26-refetch-intervals'
   id:
     | '__root__'
     | '/'
@@ -338,6 +349,7 @@ export interface FileRouteTypes {
     | '/23-seeding-future-queries'
     | '/24-query-side-effects'
     | '/25-scroll-restoration'
+    | '/26-refetch-intervals'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -367,10 +379,18 @@ export interface RootRouteChildren {
   R23SeedingFutureQueriesRoute: typeof R23SeedingFutureQueriesRoute
   R24QuerySideEffectsRoute: typeof R24QuerySideEffectsRoute
   R25ScrollRestorationRoute: typeof R25ScrollRestorationRoute
+  R26RefetchIntervalsRoute: typeof R26RefetchIntervalsRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/26-refetch-intervals': {
+      id: '/26-refetch-intervals'
+      path: '/26-refetch-intervals'
+      fullPath: '/26-refetch-intervals'
+      preLoaderRoute: typeof R26RefetchIntervalsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/25-scroll-restoration': {
       id: '/25-scroll-restoration'
       path: '/25-scroll-restoration'
@@ -584,6 +604,7 @@ const rootRouteChildren: RootRouteChildren = {
   R23SeedingFutureQueriesRoute: R23SeedingFutureQueriesRoute,
   R24QuerySideEffectsRoute: R24QuerySideEffectsRoute,
   R25ScrollRestorationRoute: R25ScrollRestorationRoute,
+  R26RefetchIntervalsRoute: R26RefetchIntervalsRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
