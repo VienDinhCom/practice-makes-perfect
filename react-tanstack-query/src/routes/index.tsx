@@ -85,6 +85,9 @@ function Index() {
         <li>
           <Link to="/24-query-side-effects">Query Side Effects</Link>
         </li>
+        <li>
+          <Link to="/25-scroll-restoration">Scroll Restoration</Link>
+        </li>
       </ol>
     </div>
   );
