@@ -91,6 +91,9 @@ function Index() {
         <li>
           <Link to="/26-refetch-intervals">Refetching Intervals</Link>
         </li>
+        <li>
+          <Link to="/27-invalidation-basics">Invalidation Basics</Link>
+        </li>
       </ol>
     </div>
   );
