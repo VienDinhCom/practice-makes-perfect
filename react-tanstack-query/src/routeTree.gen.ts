@@ -9,6 +9,7 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as R28InvalidatingWithoutRefetchingActiveQueriesRouteImport } from './routes/28-invalidating-without-refetching-active-queries'
 import { Route as R27InvalidationBasicsRouteImport } from './routes/27-invalidation-basics'
 import { Route as R26RefetchIntervalsRouteImport } from './routes/26-refetch-intervals'
 import { Route as R25ScrollRestorationRouteImport } from './routes/25-scroll-restoration'
@@ -38,6 +39,12 @@ import { Route as R02BasicQueriesRouteImport } from './routes/02-basic-queries'
 import { Route as R01SetupRouteImport } from './routes/01-setup'
 import { Route as IndexRouteImport } from './routes/index'
 
+const R28InvalidatingWithoutRefetchingActiveQueriesRoute =
+  R28InvalidatingWithoutRefetchingActiveQueriesRouteImport.update({
+    id: '/28-invalidating-without-refetching-active-queries',
+    path: '/28-invalidating-without-refetching-active-queries',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 const R27InvalidationBasicsRoute = R27InvalidationBasicsRouteImport.update({
   id: '/27-invalidation-basics',
   path: '/27-invalidation-basics',
@@ -209,6 +216,7 @@ export interface FileRoutesByFullPath {
   '/25-scroll-restoration': typeof R25ScrollRestorationRoute
   '/26-refetch-intervals': typeof R26RefetchIntervalsRoute
   '/27-invalidation-basics': typeof R27InvalidationBasicsRoute
+  '/28-invalidating-without-refetching-active-queries': typeof R28InvalidatingWithoutRefetchingActiveQueriesRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -239,6 +247,7 @@ export interface FileRoutesByTo {
   '/25-scroll-restoration': typeof R25ScrollRestorationRoute
   '/26-refetch-intervals': typeof R26RefetchIntervalsRoute
   '/27-invalidation-basics': typeof R27InvalidationBasicsRoute
+  '/28-invalidating-without-refetching-active-queries': typeof R28InvalidatingWithoutRefetchingActiveQueriesRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -270,6 +279,7 @@ export interface FileRoutesById {
   '/25-scroll-restoration': typeof R25ScrollRestorationRoute
   '/26-refetch-intervals': typeof R26RefetchIntervalsRoute
   '/27-invalidation-basics': typeof R27InvalidationBasicsRoute
+  '/28-invalidating-without-refetching-active-queries': typeof R28InvalidatingWithoutRefetchingActiveQueriesRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -302,6 +312,7 @@ export interface FileRouteTypes {
     | '/25-scroll-restoration'
     | '/26-refetch-intervals'
     | '/27-invalidation-basics'
+    | '/28-invalidating-without-refetching-active-queries'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -332,6 +343,7 @@ export interface FileRouteTypes {
     | '/25-scroll-restoration'
     | '/26-refetch-intervals'
     | '/27-invalidation-basics'
+    | '/28-invalidating-without-refetching-active-queries'
   id:
     | '__root__'
     | '/'
@@ -362,6 +374,7 @@ export interface FileRouteTypes {
     | '/25-scroll-restoration'
     | '/26-refetch-intervals'
     | '/27-invalidation-basics'
+    | '/28-invalidating-without-refetching-active-queries'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -393,10 +406,18 @@ export interface RootRouteChildren {
   R25ScrollRestorationRoute: typeof R25ScrollRestorationRoute
   R26RefetchIntervalsRoute: typeof R26RefetchIntervalsRoute
   R27InvalidationBasicsRoute: typeof R27InvalidationBasicsRoute
+  R28InvalidatingWithoutRefetchingActiveQueriesRoute: typeof R28InvalidatingWithoutRefetchingActiveQueriesRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/28-invalidating-without-refetching-active-queries': {
+      id: '/28-invalidating-without-refetching-active-queries'
+      path: '/28-invalidating-without-refetching-active-queries'
+      fullPath: '/28-invalidating-without-refetching-active-queries'
+      preLoaderRoute: typeof R28InvalidatingWithoutRefetchingActiveQueriesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/27-invalidation-basics': {
       id: '/27-invalidation-basics'
       path: '/27-invalidation-basics'
@@ -626,6 +647,8 @@ const rootRouteChildren: RootRouteChildren = {
   R25ScrollRestorationRoute: R25ScrollRestorationRoute,
   R26RefetchIntervalsRoute: R26RefetchIntervalsRoute,
   R27InvalidationBasicsRoute: R27InvalidationBasicsRoute,
+  R28InvalidatingWithoutRefetchingActiveQueriesRoute:
+    R28InvalidatingWithoutRefetchingActiveQueriesRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

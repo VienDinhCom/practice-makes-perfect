@@ -94,6 +94,11 @@ function Index() {
         <li>
           <Link to="/27-invalidation-basics">Invalidation Basics</Link>
         </li>
+        <li>
+          <Link to="/28-invalidating-without-refetching-active-queries">
+            Invalidating without Refetching Active Queries
+          </Link>
+        </li>
       </ol>
     </div>
   );
