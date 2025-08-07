@@ -112,6 +112,11 @@ function Index() {
         <li>
           <Link to="/31-basic-query-prefetching">Basic Query Prefetching</Link>
         </li>
+        <li>
+          <Link to="/32-hover-based-query-prefetching">
+            Hover-based Query Prefetching
+          </Link>
+        </li>
       </ol>
     </div>
   );
