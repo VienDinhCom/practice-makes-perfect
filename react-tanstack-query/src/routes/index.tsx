@@ -104,6 +104,11 @@ function Index() {
             Invalidating and Refetching Inactive Queries
           </Link>
         </li>
+        <li>
+          <Link to="/30-invalidating-multiple-queries-with-similar-query-keys">
+            Invalidating Multiple Queries with Similar Query Keys
+          </Link>
+        </li>
       </ol>
     </div>
   );
