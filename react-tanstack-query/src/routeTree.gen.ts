@@ -9,6 +9,7 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as R29InvalidatingAndRefetchingInactiveQueriesRouteImport } from './routes/29-invalidating-and-refetching-inactive-queries'
 import { Route as R28InvalidatingWithoutRefetchingActiveQueriesRouteImport } from './routes/28-invalidating-without-refetching-active-queries'
 import { Route as R27InvalidationBasicsRouteImport } from './routes/27-invalidation-basics'
 import { Route as R26RefetchIntervalsRouteImport } from './routes/26-refetch-intervals'
@@ -39,6 +40,12 @@ import { Route as R02BasicQueriesRouteImport } from './routes/02-basic-queries'
 import { Route as R01SetupRouteImport } from './routes/01-setup'
 import { Route as IndexRouteImport } from './routes/index'
 
+const R29InvalidatingAndRefetchingInactiveQueriesRoute =
+  R29InvalidatingAndRefetchingInactiveQueriesRouteImport.update({
+    id: '/29-invalidating-and-refetching-inactive-queries',
+    path: '/29-invalidating-and-refetching-inactive-queries',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 const R28InvalidatingWithoutRefetchingActiveQueriesRoute =
   R28InvalidatingWithoutRefetchingActiveQueriesRouteImport.update({
     id: '/28-invalidating-without-refetching-active-queries',
@@ -217,6 +224,7 @@ export interface FileRoutesByFullPath {
   '/26-refetch-intervals': typeof R26RefetchIntervalsRoute
   '/27-invalidation-basics': typeof R27InvalidationBasicsRoute
   '/28-invalidating-without-refetching-active-queries': typeof R28InvalidatingWithoutRefetchingActiveQueriesRoute
+  '/29-invalidating-and-refetching-inactive-queries': typeof R29InvalidatingAndRefetchingInactiveQueriesRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -248,6 +256,7 @@ export interface FileRoutesByTo {
   '/26-refetch-intervals': typeof R26RefetchIntervalsRoute
   '/27-invalidation-basics': typeof R27InvalidationBasicsRoute
   '/28-invalidating-without-refetching-active-queries': typeof R28InvalidatingWithoutRefetchingActiveQueriesRoute
+  '/29-invalidating-and-refetching-inactive-queries': typeof R29InvalidatingAndRefetchingInactiveQueriesRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -280,6 +289,7 @@ export interface FileRoutesById {
   '/26-refetch-intervals': typeof R26RefetchIntervalsRoute
   '/27-invalidation-basics': typeof R27InvalidationBasicsRoute
   '/28-invalidating-without-refetching-active-queries': typeof R28InvalidatingWithoutRefetchingActiveQueriesRoute
+  '/29-invalidating-and-refetching-inactive-queries': typeof R29InvalidatingAndRefetchingInactiveQueriesRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -313,6 +323,7 @@ export interface FileRouteTypes {
     | '/26-refetch-intervals'
     | '/27-invalidation-basics'
     | '/28-invalidating-without-refetching-active-queries'
+    | '/29-invalidating-and-refetching-inactive-queries'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -344,6 +355,7 @@ export interface FileRouteTypes {
     | '/26-refetch-intervals'
     | '/27-invalidation-basics'
     | '/28-invalidating-without-refetching-active-queries'
+    | '/29-invalidating-and-refetching-inactive-queries'
   id:
     | '__root__'
     | '/'
@@ -375,6 +387,7 @@ export interface FileRouteTypes {
     | '/26-refetch-intervals'
     | '/27-invalidation-basics'
     | '/28-invalidating-without-refetching-active-queries'
+    | '/29-invalidating-and-refetching-inactive-queries'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -407,10 +420,18 @@ export interface RootRouteChildren {
   R26RefetchIntervalsRoute: typeof R26RefetchIntervalsRoute
   R27InvalidationBasicsRoute: typeof R27InvalidationBasicsRoute
   R28InvalidatingWithoutRefetchingActiveQueriesRoute: typeof R28InvalidatingWithoutRefetchingActiveQueriesRoute
+  R29InvalidatingAndRefetchingInactiveQueriesRoute: typeof R29InvalidatingAndRefetchingInactiveQueriesRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/29-invalidating-and-refetching-inactive-queries': {
+      id: '/29-invalidating-and-refetching-inactive-queries'
+      path: '/29-invalidating-and-refetching-inactive-queries'
+      fullPath: '/29-invalidating-and-refetching-inactive-queries'
+      preLoaderRoute: typeof R29InvalidatingAndRefetchingInactiveQueriesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/28-invalidating-without-refetching-active-queries': {
       id: '/28-invalidating-without-refetching-active-queries'
       path: '/28-invalidating-without-refetching-active-queries'
@@ -649,6 +670,8 @@ const rootRouteChildren: RootRouteChildren = {
   R27InvalidationBasicsRoute: R27InvalidationBasicsRoute,
   R28InvalidatingWithoutRefetchingActiveQueriesRoute:
     R28InvalidatingWithoutRefetchingActiveQueriesRoute,
+  R29InvalidatingAndRefetchingInactiveQueriesRoute:
+    R29InvalidatingAndRefetchingInactiveQueriesRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

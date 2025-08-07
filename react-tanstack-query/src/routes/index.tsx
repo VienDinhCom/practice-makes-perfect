@@ -99,6 +99,11 @@ function Index() {
             Invalidating without Refetching Active Queries
           </Link>
         </li>
+        <li>
+          <Link to="/29-invalidating-and-refetching-inactive-queries">
+            Invalidating and Refetching Inactive Queries
+          </Link>
+        </li>
       </ol>
     </div>
   );
