@@ -9,6 +9,7 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as R31BasicQueryPrefetchingRouteImport } from './routes/31-basic-query-prefetching'
 import { Route as R30InvalidatingMultipleQueriesWithSimilarQueryKeysRouteImport } from './routes/30-invalidating-multiple-queries-with-similar-query-keys'
 import { Route as R29InvalidatingAndRefetchingInactiveQueriesRouteImport } from './routes/29-invalidating-and-refetching-inactive-queries'
 import { Route as R28InvalidatingWithoutRefetchingActiveQueriesRouteImport } from './routes/28-invalidating-without-refetching-active-queries'
@@ -41,6 +42,12 @@ import { Route as R02BasicQueriesRouteImport } from './routes/02-basic-queries'
 import { Route as R01SetupRouteImport } from './routes/01-setup'
 import { Route as IndexRouteImport } from './routes/index'
 
+const R31BasicQueryPrefetchingRoute =
+  R31BasicQueryPrefetchingRouteImport.update({
+    id: '/31-basic-query-prefetching',
+    path: '/31-basic-query-prefetching',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 const R30InvalidatingMultipleQueriesWithSimilarQueryKeysRoute =
   R30InvalidatingMultipleQueriesWithSimilarQueryKeysRouteImport.update({
     id: '/30-invalidating-multiple-queries-with-similar-query-keys',
@@ -233,6 +240,7 @@ export interface FileRoutesByFullPath {
   '/28-invalidating-without-refetching-active-queries': typeof R28InvalidatingWithoutRefetchingActiveQueriesRoute
   '/29-invalidating-and-refetching-inactive-queries': typeof R29InvalidatingAndRefetchingInactiveQueriesRoute
   '/30-invalidating-multiple-queries-with-similar-query-keys': typeof R30InvalidatingMultipleQueriesWithSimilarQueryKeysRoute
+  '/31-basic-query-prefetching': typeof R31BasicQueryPrefetchingRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -266,6 +274,7 @@ export interface FileRoutesByTo {
   '/28-invalidating-without-refetching-active-queries': typeof R28InvalidatingWithoutRefetchingActiveQueriesRoute
   '/29-invalidating-and-refetching-inactive-queries': typeof R29InvalidatingAndRefetchingInactiveQueriesRoute
   '/30-invalidating-multiple-queries-with-similar-query-keys': typeof R30InvalidatingMultipleQueriesWithSimilarQueryKeysRoute
+  '/31-basic-query-prefetching': typeof R31BasicQueryPrefetchingRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -300,6 +309,7 @@ export interface FileRoutesById {
   '/28-invalidating-without-refetching-active-queries': typeof R28InvalidatingWithoutRefetchingActiveQueriesRoute
   '/29-invalidating-and-refetching-inactive-queries': typeof R29InvalidatingAndRefetchingInactiveQueriesRoute
   '/30-invalidating-multiple-queries-with-similar-query-keys': typeof R30InvalidatingMultipleQueriesWithSimilarQueryKeysRoute
+  '/31-basic-query-prefetching': typeof R31BasicQueryPrefetchingRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -335,6 +345,7 @@ export interface FileRouteTypes {
     | '/28-invalidating-without-refetching-active-queries'
     | '/29-invalidating-and-refetching-inactive-queries'
     | '/30-invalidating-multiple-queries-with-similar-query-keys'
+    | '/31-basic-query-prefetching'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -368,6 +379,7 @@ export interface FileRouteTypes {
     | '/28-invalidating-without-refetching-active-queries'
     | '/29-invalidating-and-refetching-inactive-queries'
     | '/30-invalidating-multiple-queries-with-similar-query-keys'
+    | '/31-basic-query-prefetching'
   id:
     | '__root__'
     | '/'
@@ -401,6 +413,7 @@ export interface FileRouteTypes {
     | '/28-invalidating-without-refetching-active-queries'
     | '/29-invalidating-and-refetching-inactive-queries'
     | '/30-invalidating-multiple-queries-with-similar-query-keys'
+    | '/31-basic-query-prefetching'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -435,10 +448,18 @@ export interface RootRouteChildren {
   R28InvalidatingWithoutRefetchingActiveQueriesRoute: typeof R28InvalidatingWithoutRefetchingActiveQueriesRoute
   R29InvalidatingAndRefetchingInactiveQueriesRoute: typeof R29InvalidatingAndRefetchingInactiveQueriesRoute
   R30InvalidatingMultipleQueriesWithSimilarQueryKeysRoute: typeof R30InvalidatingMultipleQueriesWithSimilarQueryKeysRoute
+  R31BasicQueryPrefetchingRoute: typeof R31BasicQueryPrefetchingRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/31-basic-query-prefetching': {
+      id: '/31-basic-query-prefetching'
+      path: '/31-basic-query-prefetching'
+      fullPath: '/31-basic-query-prefetching'
+      preLoaderRoute: typeof R31BasicQueryPrefetchingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/30-invalidating-multiple-queries-with-similar-query-keys': {
       id: '/30-invalidating-multiple-queries-with-similar-query-keys'
       path: '/30-invalidating-multiple-queries-with-similar-query-keys'
@@ -695,6 +716,7 @@ const rootRouteChildren: RootRouteChildren = {
     R29InvalidatingAndRefetchingInactiveQueriesRoute,
   R30InvalidatingMultipleQueriesWithSimilarQueryKeysRoute:
     R30InvalidatingMultipleQueriesWithSimilarQueryKeysRoute,
+  R31BasicQueryPrefetchingRoute: R31BasicQueryPrefetchingRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

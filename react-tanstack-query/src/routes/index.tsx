@@ -109,6 +109,9 @@ function Index() {
             Invalidating Multiple Queries with Similar Query Keys
           </Link>
         </li>
+        <li>
+          <Link to="/31-basic-query-prefetching">Basic Query Prefetching</Link>
+        </li>
       </ol>
     </div>
   );
