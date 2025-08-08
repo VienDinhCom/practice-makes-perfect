@@ -138,6 +138,11 @@ function Index() {
         <li>
           <Link to="/37-mutation-side-effects">Mutation Side Effects</Link>
         </li>
+        <li>
+          <Link to="/38-updating-query-data-with-mutation-responses">
+            Updating Query Data with Mutation Responses
+          </Link>
+        </li>
       </ol>
     </div>
   );
