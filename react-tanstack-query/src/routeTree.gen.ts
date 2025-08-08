@@ -9,6 +9,7 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as R37MutationSideEffectsRouteImport } from './routes/37-mutation-side-effects'
 import { Route as R36MutationsWithTheUsemutationHookRouteImport } from './routes/36-mutations-with-the-usemutation-hook'
 import { Route as R35MutationsOverviewRouteImport } from './routes/35-mutations-overview'
 import { Route as R34ForcedPrefetchingRouteImport } from './routes/34-forced-prefetching'
@@ -47,6 +48,11 @@ import { Route as R02BasicQueriesRouteImport } from './routes/02-basic-queries'
 import { Route as R01SetupRouteImport } from './routes/01-setup'
 import { Route as IndexRouteImport } from './routes/index'
 
+const R37MutationSideEffectsRoute = R37MutationSideEffectsRouteImport.update({
+  id: '/37-mutation-side-effects',
+  path: '/37-mutation-side-effects',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const R36MutationsWithTheUsemutationHookRoute =
   R36MutationsWithTheUsemutationHookRouteImport.update({
     id: '/36-mutations-with-the-usemutation-hook',
@@ -279,6 +285,7 @@ export interface FileRoutesByFullPath {
   '/34-forced-prefetching': typeof R34ForcedPrefetchingRoute
   '/35-mutations-overview': typeof R35MutationsOverviewRoute
   '/36-mutations-with-the-usemutation-hook': typeof R36MutationsWithTheUsemutationHookRoute
+  '/37-mutation-side-effects': typeof R37MutationSideEffectsRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -318,6 +325,7 @@ export interface FileRoutesByTo {
   '/34-forced-prefetching': typeof R34ForcedPrefetchingRoute
   '/35-mutations-overview': typeof R35MutationsOverviewRoute
   '/36-mutations-with-the-usemutation-hook': typeof R36MutationsWithTheUsemutationHookRoute
+  '/37-mutation-side-effects': typeof R37MutationSideEffectsRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -358,6 +366,7 @@ export interface FileRoutesById {
   '/34-forced-prefetching': typeof R34ForcedPrefetchingRoute
   '/35-mutations-overview': typeof R35MutationsOverviewRoute
   '/36-mutations-with-the-usemutation-hook': typeof R36MutationsWithTheUsemutationHookRoute
+  '/37-mutation-side-effects': typeof R37MutationSideEffectsRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -399,6 +408,7 @@ export interface FileRouteTypes {
     | '/34-forced-prefetching'
     | '/35-mutations-overview'
     | '/36-mutations-with-the-usemutation-hook'
+    | '/37-mutation-side-effects'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -438,6 +448,7 @@ export interface FileRouteTypes {
     | '/34-forced-prefetching'
     | '/35-mutations-overview'
     | '/36-mutations-with-the-usemutation-hook'
+    | '/37-mutation-side-effects'
   id:
     | '__root__'
     | '/'
@@ -477,6 +488,7 @@ export interface FileRouteTypes {
     | '/34-forced-prefetching'
     | '/35-mutations-overview'
     | '/36-mutations-with-the-usemutation-hook'
+    | '/37-mutation-side-effects'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -517,10 +529,18 @@ export interface RootRouteChildren {
   R34ForcedPrefetchingRoute: typeof R34ForcedPrefetchingRoute
   R35MutationsOverviewRoute: typeof R35MutationsOverviewRoute
   R36MutationsWithTheUsemutationHookRoute: typeof R36MutationsWithTheUsemutationHookRoute
+  R37MutationSideEffectsRoute: typeof R37MutationSideEffectsRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/37-mutation-side-effects': {
+      id: '/37-mutation-side-effects'
+      path: '/37-mutation-side-effects'
+      fullPath: '/37-mutation-side-effects'
+      preLoaderRoute: typeof R37MutationSideEffectsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/36-mutations-with-the-usemutation-hook': {
       id: '/36-mutations-with-the-usemutation-hook'
       path: '/36-mutations-with-the-usemutation-hook'
@@ -826,6 +846,7 @@ const rootRouteChildren: RootRouteChildren = {
   R35MutationsOverviewRoute: R35MutationsOverviewRoute,
   R36MutationsWithTheUsemutationHookRoute:
     R36MutationsWithTheUsemutationHookRoute,
+  R37MutationSideEffectsRoute: R37MutationSideEffectsRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

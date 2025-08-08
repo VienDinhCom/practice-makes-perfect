@@ -135,6 +135,9 @@ function Index() {
             Mutations with the useMutation Hook
           </Link>
         </li>
+        <li>
+          <Link to="/37-mutation-side-effects">Mutation Side Effects</Link>
+        </li>
       </ol>
     </div>
   );
