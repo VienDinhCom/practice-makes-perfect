@@ -3,13 +3,14 @@ import {
   QueryClient,
   QueryClientProvider,
   useQuery,
+  useMutation,
 } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { useState } from "react";
 
 const queryClient = new QueryClient();
 
-export const Route = createFileRoute("/35-mutations-overview")({
+export const Route = createFileRoute("/36-mutations-with-the-usemutation-hook")({
   component: Lesson,
 });
 
@@ -39,6 +40,17 @@ function Posts() {
     },
   });
 
+  const postMutation = useMutation({
+    mutationFn: async (post: string) => {
+      await new Promise((resolve) => setTimeout(resolve, 1000));
+      posts.push({ id: posts.length + 1, title: post });
+    },
+    onSuccess: () => {
+      // postsQuery.refetch();
+      queryClient.invalidateQueries({ queryKey: ["posts"] });
+    },
+  });
+
   if (postsQuery.isLoading) {
     return <div>Loading...</div>;
   }
@@ -64,7 +76,7 @@ function Posts() {
       <form
         onSubmit={(e) => {
           e.preventDefault();
-          posts.push({ id: posts.length + 1, title: post });
+          postMutation.mutate(post);
           setPost("");
         }}
       >
@@ -74,7 +86,9 @@ function Posts() {
           placeholder="Post title"
           onChange={(e) => setPost(e.target.value)}
         />
-        <button type="submit">Create post</button>
+        <button type="submit">
+          {postMutation.isPending ? "Saving..." : "Save"}
+        </button>
       </form>
     </div>
   );

@@ -130,6 +130,11 @@ function Index() {
         <li>
           <Link to="/35-mutations-overview">Mutations Overview</Link>
         </li>
+        <li>
+          <Link to="/36-mutations-with-the-usemutation-hook">
+            Mutations with the useMutation Hook
+          </Link>
+        </li>
       </ol>
     </div>
   );
