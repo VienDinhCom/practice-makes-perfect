@@ -122,6 +122,14 @@ function Index() {
             Prefetching and Stale Time
           </Link>
         </li>
+        <li>
+          <Link to="/34-forced-prefetching">
+            Forced Prefetching and Cache Time
+          </Link>
+        </li>
+        <li>
+          <Link to="/35-mutations-overview">Mutations Overview</Link>
+        </li>
       </ol>
     </div>
   );

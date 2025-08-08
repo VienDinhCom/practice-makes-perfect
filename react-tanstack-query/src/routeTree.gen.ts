@@ -9,6 +9,7 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as R35MutationsOverviewRouteImport } from './routes/35-mutations-overview'
 import { Route as R34ForcedPrefetchingRouteImport } from './routes/34-forced-prefetching'
 import { Route as R33PrefetchingAndStaleTimeRouteImport } from './routes/33-prefetching-and-stale-time'
 import { Route as R32HoverBasedQueryPrefetchingRouteImport } from './routes/32-hover-based-query-prefetching'
@@ -45,6 +46,11 @@ import { Route as R02BasicQueriesRouteImport } from './routes/02-basic-queries'
 import { Route as R01SetupRouteImport } from './routes/01-setup'
 import { Route as IndexRouteImport } from './routes/index'
 
+const R35MutationsOverviewRoute = R35MutationsOverviewRouteImport.update({
+  id: '/35-mutations-overview',
+  path: '/35-mutations-overview',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const R34ForcedPrefetchingRoute = R34ForcedPrefetchingRouteImport.update({
   id: '/34-forced-prefetching',
   path: '/34-forced-prefetching',
@@ -264,6 +270,7 @@ export interface FileRoutesByFullPath {
   '/32-hover-based-query-prefetching': typeof R32HoverBasedQueryPrefetchingRoute
   '/33-prefetching-and-stale-time': typeof R33PrefetchingAndStaleTimeRoute
   '/34-forced-prefetching': typeof R34ForcedPrefetchingRoute
+  '/35-mutations-overview': typeof R35MutationsOverviewRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -301,6 +308,7 @@ export interface FileRoutesByTo {
   '/32-hover-based-query-prefetching': typeof R32HoverBasedQueryPrefetchingRoute
   '/33-prefetching-and-stale-time': typeof R33PrefetchingAndStaleTimeRoute
   '/34-forced-prefetching': typeof R34ForcedPrefetchingRoute
+  '/35-mutations-overview': typeof R35MutationsOverviewRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -339,6 +347,7 @@ export interface FileRoutesById {
   '/32-hover-based-query-prefetching': typeof R32HoverBasedQueryPrefetchingRoute
   '/33-prefetching-and-stale-time': typeof R33PrefetchingAndStaleTimeRoute
   '/34-forced-prefetching': typeof R34ForcedPrefetchingRoute
+  '/35-mutations-overview': typeof R35MutationsOverviewRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -378,6 +387,7 @@ export interface FileRouteTypes {
     | '/32-hover-based-query-prefetching'
     | '/33-prefetching-and-stale-time'
     | '/34-forced-prefetching'
+    | '/35-mutations-overview'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -415,6 +425,7 @@ export interface FileRouteTypes {
     | '/32-hover-based-query-prefetching'
     | '/33-prefetching-and-stale-time'
     | '/34-forced-prefetching'
+    | '/35-mutations-overview'
   id:
     | '__root__'
     | '/'
@@ -452,6 +463,7 @@ export interface FileRouteTypes {
     | '/32-hover-based-query-prefetching'
     | '/33-prefetching-and-stale-time'
     | '/34-forced-prefetching'
+    | '/35-mutations-overview'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -490,10 +502,18 @@ export interface RootRouteChildren {
   R32HoverBasedQueryPrefetchingRoute: typeof R32HoverBasedQueryPrefetchingRoute
   R33PrefetchingAndStaleTimeRoute: typeof R33PrefetchingAndStaleTimeRoute
   R34ForcedPrefetchingRoute: typeof R34ForcedPrefetchingRoute
+  R35MutationsOverviewRoute: typeof R35MutationsOverviewRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/35-mutations-overview': {
+      id: '/35-mutations-overview'
+      path: '/35-mutations-overview'
+      fullPath: '/35-mutations-overview'
+      preLoaderRoute: typeof R35MutationsOverviewRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/34-forced-prefetching': {
       id: '/34-forced-prefetching'
       path: '/34-forced-prefetching'
@@ -782,6 +802,7 @@ const rootRouteChildren: RootRouteChildren = {
   R32HoverBasedQueryPrefetchingRoute: R32HoverBasedQueryPrefetchingRoute,
   R33PrefetchingAndStaleTimeRoute: R33PrefetchingAndStaleTimeRoute,
   R34ForcedPrefetchingRoute: R34ForcedPrefetchingRoute,
+  R35MutationsOverviewRoute: R35MutationsOverviewRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
