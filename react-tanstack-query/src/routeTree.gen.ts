@@ -9,6 +9,7 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as R33PrefetchingAndStaleTimeRouteImport } from './routes/33-prefetching-and-stale-time'
 import { Route as R32HoverBasedQueryPrefetchingRouteImport } from './routes/32-hover-based-query-prefetching'
 import { Route as R31BasicQueryPrefetchingRouteImport } from './routes/31-basic-query-prefetching'
 import { Route as R30InvalidatingMultipleQueriesWithSimilarQueryKeysRouteImport } from './routes/30-invalidating-multiple-queries-with-similar-query-keys'
@@ -43,6 +44,12 @@ import { Route as R02BasicQueriesRouteImport } from './routes/02-basic-queries'
 import { Route as R01SetupRouteImport } from './routes/01-setup'
 import { Route as IndexRouteImport } from './routes/index'
 
+const R33PrefetchingAndStaleTimeRoute =
+  R33PrefetchingAndStaleTimeRouteImport.update({
+    id: '/33-prefetching-and-stale-time',
+    path: '/33-prefetching-and-stale-time',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 const R32HoverBasedQueryPrefetchingRoute =
   R32HoverBasedQueryPrefetchingRouteImport.update({
     id: '/32-hover-based-query-prefetching',
@@ -249,6 +256,7 @@ export interface FileRoutesByFullPath {
   '/30-invalidating-multiple-queries-with-similar-query-keys': typeof R30InvalidatingMultipleQueriesWithSimilarQueryKeysRoute
   '/31-basic-query-prefetching': typeof R31BasicQueryPrefetchingRoute
   '/32-hover-based-query-prefetching': typeof R32HoverBasedQueryPrefetchingRoute
+  '/33-prefetching-and-stale-time': typeof R33PrefetchingAndStaleTimeRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -284,6 +292,7 @@ export interface FileRoutesByTo {
   '/30-invalidating-multiple-queries-with-similar-query-keys': typeof R30InvalidatingMultipleQueriesWithSimilarQueryKeysRoute
   '/31-basic-query-prefetching': typeof R31BasicQueryPrefetchingRoute
   '/32-hover-based-query-prefetching': typeof R32HoverBasedQueryPrefetchingRoute
+  '/33-prefetching-and-stale-time': typeof R33PrefetchingAndStaleTimeRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -320,6 +329,7 @@ export interface FileRoutesById {
   '/30-invalidating-multiple-queries-with-similar-query-keys': typeof R30InvalidatingMultipleQueriesWithSimilarQueryKeysRoute
   '/31-basic-query-prefetching': typeof R31BasicQueryPrefetchingRoute
   '/32-hover-based-query-prefetching': typeof R32HoverBasedQueryPrefetchingRoute
+  '/33-prefetching-and-stale-time': typeof R33PrefetchingAndStaleTimeRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -357,6 +367,7 @@ export interface FileRouteTypes {
     | '/30-invalidating-multiple-queries-with-similar-query-keys'
     | '/31-basic-query-prefetching'
     | '/32-hover-based-query-prefetching'
+    | '/33-prefetching-and-stale-time'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -392,6 +403,7 @@ export interface FileRouteTypes {
     | '/30-invalidating-multiple-queries-with-similar-query-keys'
     | '/31-basic-query-prefetching'
     | '/32-hover-based-query-prefetching'
+    | '/33-prefetching-and-stale-time'
   id:
     | '__root__'
     | '/'
@@ -427,6 +439,7 @@ export interface FileRouteTypes {
     | '/30-invalidating-multiple-queries-with-similar-query-keys'
     | '/31-basic-query-prefetching'
     | '/32-hover-based-query-prefetching'
+    | '/33-prefetching-and-stale-time'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -463,10 +476,18 @@ export interface RootRouteChildren {
   R30InvalidatingMultipleQueriesWithSimilarQueryKeysRoute: typeof R30InvalidatingMultipleQueriesWithSimilarQueryKeysRoute
   R31BasicQueryPrefetchingRoute: typeof R31BasicQueryPrefetchingRoute
   R32HoverBasedQueryPrefetchingRoute: typeof R32HoverBasedQueryPrefetchingRoute
+  R33PrefetchingAndStaleTimeRoute: typeof R33PrefetchingAndStaleTimeRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/33-prefetching-and-stale-time': {
+      id: '/33-prefetching-and-stale-time'
+      path: '/33-prefetching-and-stale-time'
+      fullPath: '/33-prefetching-and-stale-time'
+      preLoaderRoute: typeof R33PrefetchingAndStaleTimeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/32-hover-based-query-prefetching': {
       id: '/32-hover-based-query-prefetching'
       path: '/32-hover-based-query-prefetching'
@@ -739,6 +760,7 @@ const rootRouteChildren: RootRouteChildren = {
     R30InvalidatingMultipleQueriesWithSimilarQueryKeysRoute,
   R31BasicQueryPrefetchingRoute: R31BasicQueryPrefetchingRoute,
   R32HoverBasedQueryPrefetchingRoute: R32HoverBasedQueryPrefetchingRoute,
+  R33PrefetchingAndStaleTimeRoute: R33PrefetchingAndStaleTimeRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

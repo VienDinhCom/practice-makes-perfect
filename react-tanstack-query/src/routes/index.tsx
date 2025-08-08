@@ -117,6 +117,11 @@ function Index() {
             Hover-based Query Prefetching
           </Link>
         </li>
+        <li>
+          <Link to="/33-prefetching-and-stale-time">
+            Prefetching and Stale Time
+          </Link>
+        </li>
       </ol>
     </div>
   );
