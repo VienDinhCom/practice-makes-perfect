@@ -9,6 +9,7 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as R39OptimisticUpdatesForListLikeQueriesRouteImport } from './routes/39-optimistic-updates-for-list-like-queries'
 import { Route as R38UpdatingQueryDataWithMutationResponsesRouteImport } from './routes/38-updating-query-data-with-mutation-responses'
 import { Route as R37MutationSideEffectsRouteImport } from './routes/37-mutation-side-effects'
 import { Route as R36MutationsWithTheUsemutationHookRouteImport } from './routes/36-mutations-with-the-usemutation-hook'
@@ -49,6 +50,12 @@ import { Route as R02BasicQueriesRouteImport } from './routes/02-basic-queries'
 import { Route as R01SetupRouteImport } from './routes/01-setup'
 import { Route as IndexRouteImport } from './routes/index'
 
+const R39OptimisticUpdatesForListLikeQueriesRoute =
+  R39OptimisticUpdatesForListLikeQueriesRouteImport.update({
+    id: '/39-optimistic-updates-for-list-like-queries',
+    path: '/39-optimistic-updates-for-list-like-queries',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 const R38UpdatingQueryDataWithMutationResponsesRoute =
   R38UpdatingQueryDataWithMutationResponsesRouteImport.update({
     id: '/38-updating-query-data-with-mutation-responses',
@@ -294,6 +301,7 @@ export interface FileRoutesByFullPath {
   '/36-mutations-with-the-usemutation-hook': typeof R36MutationsWithTheUsemutationHookRoute
   '/37-mutation-side-effects': typeof R37MutationSideEffectsRoute
   '/38-updating-query-data-with-mutation-responses': typeof R38UpdatingQueryDataWithMutationResponsesRoute
+  '/39-optimistic-updates-for-list-like-queries': typeof R39OptimisticUpdatesForListLikeQueriesRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -335,6 +343,7 @@ export interface FileRoutesByTo {
   '/36-mutations-with-the-usemutation-hook': typeof R36MutationsWithTheUsemutationHookRoute
   '/37-mutation-side-effects': typeof R37MutationSideEffectsRoute
   '/38-updating-query-data-with-mutation-responses': typeof R38UpdatingQueryDataWithMutationResponsesRoute
+  '/39-optimistic-updates-for-list-like-queries': typeof R39OptimisticUpdatesForListLikeQueriesRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -377,6 +386,7 @@ export interface FileRoutesById {
   '/36-mutations-with-the-usemutation-hook': typeof R36MutationsWithTheUsemutationHookRoute
   '/37-mutation-side-effects': typeof R37MutationSideEffectsRoute
   '/38-updating-query-data-with-mutation-responses': typeof R38UpdatingQueryDataWithMutationResponsesRoute
+  '/39-optimistic-updates-for-list-like-queries': typeof R39OptimisticUpdatesForListLikeQueriesRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -420,6 +430,7 @@ export interface FileRouteTypes {
     | '/36-mutations-with-the-usemutation-hook'
     | '/37-mutation-side-effects'
     | '/38-updating-query-data-with-mutation-responses'
+    | '/39-optimistic-updates-for-list-like-queries'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -461,6 +472,7 @@ export interface FileRouteTypes {
     | '/36-mutations-with-the-usemutation-hook'
     | '/37-mutation-side-effects'
     | '/38-updating-query-data-with-mutation-responses'
+    | '/39-optimistic-updates-for-list-like-queries'
   id:
     | '__root__'
     | '/'
@@ -502,6 +514,7 @@ export interface FileRouteTypes {
     | '/36-mutations-with-the-usemutation-hook'
     | '/37-mutation-side-effects'
     | '/38-updating-query-data-with-mutation-responses'
+    | '/39-optimistic-updates-for-list-like-queries'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -544,10 +557,18 @@ export interface RootRouteChildren {
   R36MutationsWithTheUsemutationHookRoute: typeof R36MutationsWithTheUsemutationHookRoute
   R37MutationSideEffectsRoute: typeof R37MutationSideEffectsRoute
   R38UpdatingQueryDataWithMutationResponsesRoute: typeof R38UpdatingQueryDataWithMutationResponsesRoute
+  R39OptimisticUpdatesForListLikeQueriesRoute: typeof R39OptimisticUpdatesForListLikeQueriesRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/39-optimistic-updates-for-list-like-queries': {
+      id: '/39-optimistic-updates-for-list-like-queries'
+      path: '/39-optimistic-updates-for-list-like-queries'
+      fullPath: '/39-optimistic-updates-for-list-like-queries'
+      preLoaderRoute: typeof R39OptimisticUpdatesForListLikeQueriesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/38-updating-query-data-with-mutation-responses': {
       id: '/38-updating-query-data-with-mutation-responses'
       path: '/38-updating-query-data-with-mutation-responses'
@@ -870,6 +891,8 @@ const rootRouteChildren: RootRouteChildren = {
   R37MutationSideEffectsRoute: R37MutationSideEffectsRoute,
   R38UpdatingQueryDataWithMutationResponsesRoute:
     R38UpdatingQueryDataWithMutationResponsesRoute,
+  R39OptimisticUpdatesForListLikeQueriesRoute:
+    R39OptimisticUpdatesForListLikeQueriesRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

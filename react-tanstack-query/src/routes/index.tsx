@@ -143,6 +143,11 @@ function Index() {
             Updating Query Data with Mutation Responses
           </Link>
         </li>
+        <li>
+          <Link to="/39-optimistic-updates-for-list-like-queries">
+            Optimistic Updates for List-like Queries
+          </Link>
+        </li>
       </ol>
     </div>
   );
