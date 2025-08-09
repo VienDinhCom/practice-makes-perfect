@@ -9,6 +9,7 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as R43PaginatedQueriesRouteImport } from './routes/43-paginated-queries'
 import { Route as R42RollbacksForSingleEntityQueriesRouteImport } from './routes/42-rollbacks-for-single-entity-queries'
 import { Route as R41OptimisticUpdatesForSingleEntityQueriesRouteImport } from './routes/41-optimistic-updates-for-single-entity-queries'
 import { Route as R40RollbacksForListLikeQueriesRouteImport } from './routes/40-rollbacks-for-list-like-queries'
@@ -53,6 +54,11 @@ import { Route as R02BasicQueriesRouteImport } from './routes/02-basic-queries'
 import { Route as R01SetupRouteImport } from './routes/01-setup'
 import { Route as IndexRouteImport } from './routes/index'
 
+const R43PaginatedQueriesRoute = R43PaginatedQueriesRouteImport.update({
+  id: '/43-paginated-queries',
+  path: '/43-paginated-queries',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const R42RollbacksForSingleEntityQueriesRoute =
   R42RollbacksForSingleEntityQueriesRouteImport.update({
     id: '/42-rollbacks-for-single-entity-queries',
@@ -326,6 +332,7 @@ export interface FileRoutesByFullPath {
   '/40-rollbacks-for-list-like-queries': typeof R40RollbacksForListLikeQueriesRoute
   '/41-optimistic-updates-for-single-entity-queries': typeof R41OptimisticUpdatesForSingleEntityQueriesRoute
   '/42-rollbacks-for-single-entity-queries': typeof R42RollbacksForSingleEntityQueriesRoute
+  '/43-paginated-queries': typeof R43PaginatedQueriesRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -371,6 +378,7 @@ export interface FileRoutesByTo {
   '/40-rollbacks-for-list-like-queries': typeof R40RollbacksForListLikeQueriesRoute
   '/41-optimistic-updates-for-single-entity-queries': typeof R41OptimisticUpdatesForSingleEntityQueriesRoute
   '/42-rollbacks-for-single-entity-queries': typeof R42RollbacksForSingleEntityQueriesRoute
+  '/43-paginated-queries': typeof R43PaginatedQueriesRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -417,6 +425,7 @@ export interface FileRoutesById {
   '/40-rollbacks-for-list-like-queries': typeof R40RollbacksForListLikeQueriesRoute
   '/41-optimistic-updates-for-single-entity-queries': typeof R41OptimisticUpdatesForSingleEntityQueriesRoute
   '/42-rollbacks-for-single-entity-queries': typeof R42RollbacksForSingleEntityQueriesRoute
+  '/43-paginated-queries': typeof R43PaginatedQueriesRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -464,6 +473,7 @@ export interface FileRouteTypes {
     | '/40-rollbacks-for-list-like-queries'
     | '/41-optimistic-updates-for-single-entity-queries'
     | '/42-rollbacks-for-single-entity-queries'
+    | '/43-paginated-queries'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -509,6 +519,7 @@ export interface FileRouteTypes {
     | '/40-rollbacks-for-list-like-queries'
     | '/41-optimistic-updates-for-single-entity-queries'
     | '/42-rollbacks-for-single-entity-queries'
+    | '/43-paginated-queries'
   id:
     | '__root__'
     | '/'
@@ -554,6 +565,7 @@ export interface FileRouteTypes {
     | '/40-rollbacks-for-list-like-queries'
     | '/41-optimistic-updates-for-single-entity-queries'
     | '/42-rollbacks-for-single-entity-queries'
+    | '/43-paginated-queries'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -600,10 +612,18 @@ export interface RootRouteChildren {
   R40RollbacksForListLikeQueriesRoute: typeof R40RollbacksForListLikeQueriesRoute
   R41OptimisticUpdatesForSingleEntityQueriesRoute: typeof R41OptimisticUpdatesForSingleEntityQueriesRoute
   R42RollbacksForSingleEntityQueriesRoute: typeof R42RollbacksForSingleEntityQueriesRoute
+  R43PaginatedQueriesRoute: typeof R43PaginatedQueriesRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/43-paginated-queries': {
+      id: '/43-paginated-queries'
+      path: '/43-paginated-queries'
+      fullPath: '/43-paginated-queries'
+      preLoaderRoute: typeof R43PaginatedQueriesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/42-rollbacks-for-single-entity-queries': {
       id: '/42-rollbacks-for-single-entity-queries'
       path: '/42-rollbacks-for-single-entity-queries'
@@ -961,6 +981,7 @@ const rootRouteChildren: RootRouteChildren = {
     R41OptimisticUpdatesForSingleEntityQueriesRoute,
   R42RollbacksForSingleEntityQueriesRoute:
     R42RollbacksForSingleEntityQueriesRoute,
+  R43PaginatedQueriesRoute: R43PaginatedQueriesRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

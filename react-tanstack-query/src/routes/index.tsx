@@ -163,6 +163,9 @@ function Index() {
             Rollbacks for Single-Entity Queries
           </Link>
         </li>
+        <li>
+          <Link to="/43-paginated-queries">Paginated Queries</Link>
+        </li>
       </ol>
     </div>
   );
