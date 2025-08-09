@@ -153,6 +153,11 @@ function Index() {
             Rollbacks for List-like Queries
           </Link>
         </li>
+        <li>
+          <Link to="/41-optimistic-updates-for-single-entity-queries">
+            Optimistic Updates for Single-Entity Queries
+          </Link>
+        </li>
       </ol>
     </div>
   );

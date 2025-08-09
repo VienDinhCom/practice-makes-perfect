@@ -11,7 +11,7 @@ import { useState } from "react";
 const queryClient = new QueryClient();
 
 export const Route = createFileRoute(
-  "/38-updating-query-data-with-mutation-responses",
+  "/41-optimistic-updates-for-single-entity-queries",
 )({
   component: Lesson,
 });
@@ -53,16 +53,19 @@ function Edit(props: { edit: number; setEdit: (id: number) => void }) {
   });
 
   const postMutation = useMutation({
-    mutationFn: async (post: string) => {
+    mutationFn: async (post: { id: number; title: string }) => {
       await new Promise((resolve) => setTimeout(resolve, 1000));
 
       const index = posts.findIndex((post) => post.id === props.edit);
 
       if (index > -1) {
-        posts[index].title = post;
+        posts[index] = post;
       }
     },
-    onSuccess: () => {
+    onMutate: (post) => {
+      queryClient.setQueryData(["post", props.edit], () => post);
+    },
+    onSuccess: (data, post) => {
       // postQuery.refetch();
 
       queryClient.setQueryData(["post", props.edit], () => post);
@@ -96,7 +99,7 @@ function Edit(props: { edit: number; setEdit: (id: number) => void }) {
       <form
         onSubmit={(e) => {
           e.preventDefault();
-          postMutation.mutate(post);
+          postMutation.mutate({ id: props.edit, title: post });
         }}
       >
         <input
