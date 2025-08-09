@@ -148,6 +148,11 @@ function Index() {
             Optimistic Updates for List-like Queries
           </Link>
         </li>
+        <li>
+          <Link to="/40-rollbacks-for-list-like-queries">
+            Rollbacks for List-like Queries
+          </Link>
+        </li>
       </ol>
     </div>
   );

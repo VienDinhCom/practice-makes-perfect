@@ -9,6 +9,7 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as R40RollbacksForListLikeQueriesRouteImport } from './routes/40-rollbacks-for-list-like-queries'
 import { Route as R39OptimisticUpdatesForListLikeQueriesRouteImport } from './routes/39-optimistic-updates-for-list-like-queries'
 import { Route as R38UpdatingQueryDataWithMutationResponsesRouteImport } from './routes/38-updating-query-data-with-mutation-responses'
 import { Route as R37MutationSideEffectsRouteImport } from './routes/37-mutation-side-effects'
@@ -50,6 +51,12 @@ import { Route as R02BasicQueriesRouteImport } from './routes/02-basic-queries'
 import { Route as R01SetupRouteImport } from './routes/01-setup'
 import { Route as IndexRouteImport } from './routes/index'
 
+const R40RollbacksForListLikeQueriesRoute =
+  R40RollbacksForListLikeQueriesRouteImport.update({
+    id: '/40-rollbacks-for-list-like-queries',
+    path: '/40-rollbacks-for-list-like-queries',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 const R39OptimisticUpdatesForListLikeQueriesRoute =
   R39OptimisticUpdatesForListLikeQueriesRouteImport.update({
     id: '/39-optimistic-updates-for-list-like-queries',
@@ -302,6 +309,7 @@ export interface FileRoutesByFullPath {
   '/37-mutation-side-effects': typeof R37MutationSideEffectsRoute
   '/38-updating-query-data-with-mutation-responses': typeof R38UpdatingQueryDataWithMutationResponsesRoute
   '/39-optimistic-updates-for-list-like-queries': typeof R39OptimisticUpdatesForListLikeQueriesRoute
+  '/40-rollbacks-for-list-like-queries': typeof R40RollbacksForListLikeQueriesRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -344,6 +352,7 @@ export interface FileRoutesByTo {
   '/37-mutation-side-effects': typeof R37MutationSideEffectsRoute
   '/38-updating-query-data-with-mutation-responses': typeof R38UpdatingQueryDataWithMutationResponsesRoute
   '/39-optimistic-updates-for-list-like-queries': typeof R39OptimisticUpdatesForListLikeQueriesRoute
+  '/40-rollbacks-for-list-like-queries': typeof R40RollbacksForListLikeQueriesRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -387,6 +396,7 @@ export interface FileRoutesById {
   '/37-mutation-side-effects': typeof R37MutationSideEffectsRoute
   '/38-updating-query-data-with-mutation-responses': typeof R38UpdatingQueryDataWithMutationResponsesRoute
   '/39-optimistic-updates-for-list-like-queries': typeof R39OptimisticUpdatesForListLikeQueriesRoute
+  '/40-rollbacks-for-list-like-queries': typeof R40RollbacksForListLikeQueriesRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -431,6 +441,7 @@ export interface FileRouteTypes {
     | '/37-mutation-side-effects'
     | '/38-updating-query-data-with-mutation-responses'
     | '/39-optimistic-updates-for-list-like-queries'
+    | '/40-rollbacks-for-list-like-queries'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -473,6 +484,7 @@ export interface FileRouteTypes {
     | '/37-mutation-side-effects'
     | '/38-updating-query-data-with-mutation-responses'
     | '/39-optimistic-updates-for-list-like-queries'
+    | '/40-rollbacks-for-list-like-queries'
   id:
     | '__root__'
     | '/'
@@ -515,6 +527,7 @@ export interface FileRouteTypes {
     | '/37-mutation-side-effects'
     | '/38-updating-query-data-with-mutation-responses'
     | '/39-optimistic-updates-for-list-like-queries'
+    | '/40-rollbacks-for-list-like-queries'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -558,10 +571,18 @@ export interface RootRouteChildren {
   R37MutationSideEffectsRoute: typeof R37MutationSideEffectsRoute
   R38UpdatingQueryDataWithMutationResponsesRoute: typeof R38UpdatingQueryDataWithMutationResponsesRoute
   R39OptimisticUpdatesForListLikeQueriesRoute: typeof R39OptimisticUpdatesForListLikeQueriesRoute
+  R40RollbacksForListLikeQueriesRoute: typeof R40RollbacksForListLikeQueriesRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/40-rollbacks-for-list-like-queries': {
+      id: '/40-rollbacks-for-list-like-queries'
+      path: '/40-rollbacks-for-list-like-queries'
+      fullPath: '/40-rollbacks-for-list-like-queries'
+      preLoaderRoute: typeof R40RollbacksForListLikeQueriesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/39-optimistic-updates-for-list-like-queries': {
       id: '/39-optimistic-updates-for-list-like-queries'
       path: '/39-optimistic-updates-for-list-like-queries'
@@ -893,6 +914,7 @@ const rootRouteChildren: RootRouteChildren = {
     R38UpdatingQueryDataWithMutationResponsesRoute,
   R39OptimisticUpdatesForListLikeQueriesRoute:
     R39OptimisticUpdatesForListLikeQueriesRoute,
+  R40RollbacksForListLikeQueriesRoute: R40RollbacksForListLikeQueriesRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
