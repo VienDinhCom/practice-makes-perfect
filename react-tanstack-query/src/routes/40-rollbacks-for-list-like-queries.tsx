@@ -57,7 +57,7 @@ function Posts() {
         },
       );
 
-      return queryClient.setQueryData(["posts"], () => oldPosts);
+      return () => queryClient.setQueryData(["posts"], () => oldPosts);
     },
     onError: (error, _post, rollback) => {
       alert(error.message);
