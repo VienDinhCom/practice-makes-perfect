@@ -5,176 +5,110 @@ export const Route = createFileRoute("/")({
 });
 
 function Index() {
+  const lessons = [
+    { path: "/01-setup", title: "Setup" },
+    { path: "/02-basic-queries", title: "Basic Queries" },
+    { path: "/03-query-loading-state", title: "Query Loading State" },
+    { path: "/04-query-error-state", title: "Query Error State" },
+    { path: "/05-devtools", title: "Devtools" },
+    { path: "/06-window-focus", title: "Window Focus" },
+    { path: "/07-refetching-indicators", title: "Refetching Indicators" },
+    { path: "/08-stale-time", title: "Stale Time" },
+    { path: "/09-cache-time", title: "Cache Time" },
+    { path: "/10-keys-and-caching", title: "Keys and Caching" },
+    { path: "/11-reuse-queries", title: "Reuse Queries" },
+    { path: "/12-parallel-queries", title: "Parallel Queries" },
+    { path: "/13-props-and-state", title: "Props and State" },
+    { path: "/14-disabling-queries", title: "Disabling Queries" },
+    { path: "/15-multipart-query-keys", title: "Multipart Query Keys" },
+    { path: "/16-query-retries", title: "Query Retries" },
+    { path: "/17-query-cancellation", title: "Query Cancellation" },
+    { path: "/18-dependent-queries", title: "Dependent Queries" },
+    { path: "/19-initial-data", title: "Initial Data" },
+    { path: "/20-initial-data-as-stale", title: "Initial Data as Stale" },
+    { path: "/21-related-lists-and-items", title: "Related Lists and Items" },
+    {
+      path: "/22-seeding-initial-data-from-other-queries",
+      title: "Seeding Initial Data from Other Queries",
+    },
+    {
+      path: "/23-seeding-future-queries",
+      title: "Seeding Initial Data for Future Queries",
+    },
+    { path: "/24-query-side-effects", title: "Query Side Effects" },
+    { path: "/25-scroll-restoration", title: "Scroll Restoration" },
+    { path: "/26-refetch-intervals", title: "Refetching Intervals" },
+    { path: "/27-invalidation-basics", title: "Invalidation Basics" },
+    {
+      path: "/28-invalidating-without-refetching-active-queries",
+      title: "Invalidating without Refetching Active Queries",
+    },
+    {
+      path: "/29-invalidating-and-refetching-inactive-queries",
+      title: "Invalidating and Refetching Inactive Queries",
+    },
+    {
+      path: "/30-invalidating-multiple-queries-with-similar-query-keys",
+      title: "Invalidating Multiple Queries with Similar Query Keys",
+    },
+    { path: "/31-basic-query-prefetching", title: "Basic Query Prefetching" },
+    {
+      path: "/32-hover-based-query-prefetching",
+      title: "Hover-based Query Prefetching",
+    },
+    {
+      path: "/33-prefetching-and-stale-time",
+      title: "Prefetching and Stale Time",
+    },
+    {
+      path: "/34-forced-prefetching",
+      title: "Forced Prefetching and Cache Time",
+    },
+    { path: "/35-mutations-overview", title: "Mutations Overview" },
+    {
+      path: "/36-mutations-with-the-usemutation-hook",
+      title: "Mutations with the useMutation Hook",
+    },
+    { path: "/37-mutation-side-effects", title: "Mutation Side Effects" },
+    {
+      path: "/38-updating-query-data-with-mutation-responses",
+      title: "Updating Query Data with Mutation Responses",
+    },
+    {
+      path: "/39-optimistic-updates-for-list-like-queries",
+      title: "Optimistic Updates for List-like Queries",
+    },
+    {
+      path: "/40-rollbacks-for-list-like-queries",
+      title: "Rollbacks for List-like Queries",
+    },
+    {
+      path: "/41-optimistic-updates-for-single-entity-queries",
+      title: "Optimistic Updates for Single-Entity Queries",
+    },
+    {
+      path: "/42-rollbacks-for-single-entity-queries",
+      title: "Rollbacks for Single-Entity Queries",
+    },
+    { path: "/43-paginated-queries", title: "Paginated Queries" },
+    {
+      path: "/44-prefetching-paginated-queries",
+      title: "Prefetching Paginated Queries",
+    },
+    { path: "/45-infinite-queries", title: "Infinite Queries" },
+  ];
+
   return (
-    <div className="p-2">
-      <h3>React Tanstack Query</h3>
-      <ol>
-        <li>
-          <Link to="/01-setup">Setup</Link>
-        </li>
-        <li>
-          <Link to="/02-basic-queries">Basic Queries</Link>
-        </li>
-        <li>
-          <Link to="/03-query-loading-state">Query Loading State</Link>
-        </li>
-        <li>
-          <Link to="/04-query-error-state">Query Error State</Link>
-        </li>
-        <li>
-          <Link to="/05-devtools">Devtools</Link>
-        </li>
-        <li>
-          <Link to="/06-window-focus">Window Focus</Link>
-        </li>
-        <li>
-          <Link to="/07-refetching-indicators">Refetching Indicators</Link>
-        </li>
-        <li>
-          <Link to="/08-stale-time">Stale Time</Link>
-        </li>
-        <li>
-          <Link to="/09-cache-time">Cache Time</Link>
-        </li>
-        <li>
-          <Link to="/10-keys-and-caching">Keys and Caching</Link>
-        </li>
-        <li>
-          <Link to="/11-reuse-queries">Reuse Queries</Link>
-        </li>
-        <li>
-          <Link to="/12-parallel-queries">Parallel Queries</Link>
-        </li>
-        <li>
-          <Link to="/13-props-and-state">Props and State</Link>
-        </li>
-        <li>
-          <Link to="/14-disabling-queries">Disabling Queries</Link>
-        </li>
-        <li>
-          <Link to="/15-multipart-query-keys">Multipart Query Keys</Link>
-        </li>
-        <li>
-          <Link to="/16-query-retries">Query Retries</Link>
-        </li>
-        <li>
-          <Link to="/17-query-cancellation">Query Cancellation</Link>
-        </li>
-        <li>
-          <Link to="/18-dependent-queries">Dependent Queries</Link>
-        </li>
-        <li>
-          <Link to="/19-initial-data">Initial Data</Link>
-        </li>
-        <li>
-          <Link to="/20-initial-data-as-stale">Initial Data as Stale</Link>
-        </li>
-        <li>
-          <Link to="/21-related-lists-and-items">Related Lists and Items</Link>
-        </li>
-        <li>
-          <Link to="/22-seeding-initial-data-from-other-queries">
-            Seeding Initial Data from Other Queries
+    <div className="page">
+      <h1>React TanStack Query Tutorials</h1>
+      <div className="grid">
+        {lessons.map((lesson, i) => (
+          <Link key={lesson.path} to={lesson.path} className="card">
+            <span className="number">{String(i + 1).padStart(2, "0")}</span>
+            <span className="title">{lesson.title}</span>
           </Link>
-        </li>
-        <li>
-          <Link to="/23-seeding-future-queries">
-            Seeding Initial Data for Future Queries
-          </Link>
-        </li>
-        <li>
-          <Link to="/24-query-side-effects">Query Side Effects</Link>
-        </li>
-        <li>
-          <Link to="/25-scroll-restoration">Scroll Restoration</Link>
-        </li>
-        <li>
-          <Link to="/26-refetch-intervals">Refetching Intervals</Link>
-        </li>
-        <li>
-          <Link to="/27-invalidation-basics">Invalidation Basics</Link>
-        </li>
-        <li>
-          <Link to="/28-invalidating-without-refetching-active-queries">
-            Invalidating without Refetching Active Queries
-          </Link>
-        </li>
-        <li>
-          <Link to="/29-invalidating-and-refetching-inactive-queries">
-            Invalidating and Refetching Inactive Queries
-          </Link>
-        </li>
-        <li>
-          <Link to="/30-invalidating-multiple-queries-with-similar-query-keys">
-            Invalidating Multiple Queries with Similar Query Keys
-          </Link>
-        </li>
-        <li>
-          <Link to="/31-basic-query-prefetching">Basic Query Prefetching</Link>
-        </li>
-        <li>
-          <Link to="/32-hover-based-query-prefetching">
-            Hover-based Query Prefetching
-          </Link>
-        </li>
-        <li>
-          <Link to="/33-prefetching-and-stale-time">
-            Prefetching and Stale Time
-          </Link>
-        </li>
-        <li>
-          <Link to="/34-forced-prefetching">
-            Forced Prefetching and Cache Time
-          </Link>
-        </li>
-        <li>
-          <Link to="/35-mutations-overview">Mutations Overview</Link>
-        </li>
-        <li>
-          <Link to="/36-mutations-with-the-usemutation-hook">
-            Mutations with the useMutation Hook
-          </Link>
-        </li>
-        <li>
-          <Link to="/37-mutation-side-effects">Mutation Side Effects</Link>
-        </li>
-        <li>
-          <Link to="/38-updating-query-data-with-mutation-responses">
-            Updating Query Data with Mutation Responses
-          </Link>
-        </li>
-        <li>
-          <Link to="/39-optimistic-updates-for-list-like-queries">
-            Optimistic Updates for List-like Queries
-          </Link>
-        </li>
-        <li>
-          <Link to="/40-rollbacks-for-list-like-queries">
-            Rollbacks for List-like Queries
-          </Link>
-        </li>
-        <li>
-          <Link to="/41-optimistic-updates-for-single-entity-queries">
-            Optimistic Updates for Single-Entity Queries
-          </Link>
-        </li>
-        <li>
-          <Link to="/42-rollbacks-for-single-entity-queries">
-            Rollbacks for Single-Entity Queries
-          </Link>
-        </li>
-        <li>
-          <Link to="/43-paginated-queries">Paginated Queries</Link>
-        </li>
-        <li>
-          <Link to="/44-prefetching-paginated-queries">
-            Prefetching Paginated Queries
-          </Link>
-        </li>
-        <li>
-          <Link to="/45-infinite-queries">Infinite Queries</Link>
-        </li>
-      </ol>
+        ))}
+      </div>
     </div>
   );
 }
