@@ -35,6 +35,10 @@ I went through countless exercises, built over **35** hands-on projects, earned 
 - [Relational Database](/freecodecamp-relational-database/)
 - [PostgreSQL Exercises](/database-postgresql-exercises/)
 
+## React
+
+- [React Query in Practice](/react-query-in-practice/)
+
 ## Projects
 
 You can explore my work history on my LinkedIn [projects listing](https://www.linkedin.com/in/viendinhcom/details/projects/). My side projects and interview projects, along with their source code, are available here for you to check.
