@@ -37,7 +37,7 @@ I went through countless exercises, built over **35** hands-on projects, earned 
 
 ## React
 
-- [React Query in Practice](/react-query-in-practice/)
+- [React Query in Practice](/react-tanstack-query/)
 
 ## Projects
 
