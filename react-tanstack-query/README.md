@@ -1,6 +1,6 @@
 # React Query in Practice
 
-Back in 2022, I used React Query with GraphQL for my Next Shopify Storefront. It was good… but limited. Fast forward to now—React Query has evolved. A lot. So I revisited it.
+Back in 2022, I used React Query with GraphQL for my [Next Shopify Storefront](https://github.com/VienDinhCom/next-shopify-storefront/tree/v2) It was good… but limited. Fast forward to now—React Query has evolved. A lot. So I revisited it.
 
 This project became my deep dive into the new API: from caching with query keys, to optimistic updates, pagination, even working with TanStack Router.
 
