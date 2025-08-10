@@ -171,6 +171,9 @@ function Index() {
             Prefetching Paginated Queries
           </Link>
         </li>
+        <li>
+          <Link to="/45-infinite-queries">Infinite Queries</Link>
+        </li>
       </ol>
     </div>
   );

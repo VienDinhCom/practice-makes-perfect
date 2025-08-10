@@ -9,6 +9,7 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as R45InfiniteQueriesRouteImport } from './routes/45-infinite-queries'
 import { Route as R44PrefetchingPaginatedQueriesRouteImport } from './routes/44-prefetching-paginated-queries'
 import { Route as R43PaginatedQueriesRouteImport } from './routes/43-paginated-queries'
 import { Route as R42RollbacksForSingleEntityQueriesRouteImport } from './routes/42-rollbacks-for-single-entity-queries'
@@ -55,6 +56,11 @@ import { Route as R02BasicQueriesRouteImport } from './routes/02-basic-queries'
 import { Route as R01SetupRouteImport } from './routes/01-setup'
 import { Route as IndexRouteImport } from './routes/index'
 
+const R45InfiniteQueriesRoute = R45InfiniteQueriesRouteImport.update({
+  id: '/45-infinite-queries',
+  path: '/45-infinite-queries',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const R44PrefetchingPaginatedQueriesRoute =
   R44PrefetchingPaginatedQueriesRouteImport.update({
     id: '/44-prefetching-paginated-queries',
@@ -341,6 +347,7 @@ export interface FileRoutesByFullPath {
   '/42-rollbacks-for-single-entity-queries': typeof R42RollbacksForSingleEntityQueriesRoute
   '/43-paginated-queries': typeof R43PaginatedQueriesRoute
   '/44-prefetching-paginated-queries': typeof R44PrefetchingPaginatedQueriesRoute
+  '/45-infinite-queries': typeof R45InfiniteQueriesRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -388,6 +395,7 @@ export interface FileRoutesByTo {
   '/42-rollbacks-for-single-entity-queries': typeof R42RollbacksForSingleEntityQueriesRoute
   '/43-paginated-queries': typeof R43PaginatedQueriesRoute
   '/44-prefetching-paginated-queries': typeof R44PrefetchingPaginatedQueriesRoute
+  '/45-infinite-queries': typeof R45InfiniteQueriesRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -436,6 +444,7 @@ export interface FileRoutesById {
   '/42-rollbacks-for-single-entity-queries': typeof R42RollbacksForSingleEntityQueriesRoute
   '/43-paginated-queries': typeof R43PaginatedQueriesRoute
   '/44-prefetching-paginated-queries': typeof R44PrefetchingPaginatedQueriesRoute
+  '/45-infinite-queries': typeof R45InfiniteQueriesRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -485,6 +494,7 @@ export interface FileRouteTypes {
     | '/42-rollbacks-for-single-entity-queries'
     | '/43-paginated-queries'
     | '/44-prefetching-paginated-queries'
+    | '/45-infinite-queries'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -532,6 +542,7 @@ export interface FileRouteTypes {
     | '/42-rollbacks-for-single-entity-queries'
     | '/43-paginated-queries'
     | '/44-prefetching-paginated-queries'
+    | '/45-infinite-queries'
   id:
     | '__root__'
     | '/'
@@ -579,6 +590,7 @@ export interface FileRouteTypes {
     | '/42-rollbacks-for-single-entity-queries'
     | '/43-paginated-queries'
     | '/44-prefetching-paginated-queries'
+    | '/45-infinite-queries'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -627,10 +639,18 @@ export interface RootRouteChildren {
   R42RollbacksForSingleEntityQueriesRoute: typeof R42RollbacksForSingleEntityQueriesRoute
   R43PaginatedQueriesRoute: typeof R43PaginatedQueriesRoute
   R44PrefetchingPaginatedQueriesRoute: typeof R44PrefetchingPaginatedQueriesRoute
+  R45InfiniteQueriesRoute: typeof R45InfiniteQueriesRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/45-infinite-queries': {
+      id: '/45-infinite-queries'
+      path: '/45-infinite-queries'
+      fullPath: '/45-infinite-queries'
+      preLoaderRoute: typeof R45InfiniteQueriesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/44-prefetching-paginated-queries': {
       id: '/44-prefetching-paginated-queries'
       path: '/44-prefetching-paginated-queries'
@@ -1004,6 +1024,7 @@ const rootRouteChildren: RootRouteChildren = {
     R42RollbacksForSingleEntityQueriesRoute,
   R43PaginatedQueriesRoute: R43PaginatedQueriesRoute,
   R44PrefetchingPaginatedQueriesRoute: R44PrefetchingPaginatedQueriesRoute,
+  R45InfiniteQueriesRoute: R45InfiniteQueriesRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
