@@ -166,6 +166,11 @@ function Index() {
         <li>
           <Link to="/43-paginated-queries">Paginated Queries</Link>
         </li>
+        <li>
+          <Link to="/44-prefetching-paginated-queries">
+            Prefetching Paginated Queries
+          </Link>
+        </li>
       </ol>
     </div>
   );
