@@ -52,7 +52,9 @@ function Posts() {
 
       <ul>
         {postsQuery.data?.pages.flatMap((page) => {
-          return page.results.map((post) => <li key={post.id}>{post.name}</li>);
+          return page.results.map((post: any) => (
+            <li key={post.id}>{post.name}</li>
+          ));
         })}
       </ul>
       <button

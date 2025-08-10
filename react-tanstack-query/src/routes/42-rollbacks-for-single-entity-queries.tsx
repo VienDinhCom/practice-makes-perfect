@@ -75,12 +75,12 @@ function Edit(props: { edit: number; setEdit: (id: number) => void }) {
         queryClient.setQueryData(["post", props.edit], () => oldPost);
     },
 
-    onError: (error, values, rollback) => {
+    onError: (_error, _values, rollback) => {
       if (typeof rollback === "function") {
         rollback();
       }
     },
-    onSuccess: (data, post) => {
+    onSuccess: (_data, post) => {
       // postQuery.refetch();
 
       queryClient.setQueryData(["post", props.edit], () => post);

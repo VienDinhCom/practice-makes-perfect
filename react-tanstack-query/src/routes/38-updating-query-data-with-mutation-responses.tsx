@@ -108,7 +108,6 @@ function Edit(props: { edit: number; setEdit: (id: number) => void }) {
           {postMutation.isPending ? "Saving..." : "Save"}
         </button>
         <br />
-        {postMutation.isError && postMutation.error.message}
       </form>
     </div>
   );

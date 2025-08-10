@@ -58,7 +58,7 @@ function Posts(props: { setPostId: (id: number) => void }) {
     <div>
       <h1>Posts {postsQuery.isFetching && "..."}</h1>
       <ul>
-        {postsQuery.data.map((post: any) => (
+        {postsQuery.data?.map((post: any) => (
           <li key={post.id}>
             <a href="#" onClick={() => props.setPostId(post.id)}>
               {post.title}

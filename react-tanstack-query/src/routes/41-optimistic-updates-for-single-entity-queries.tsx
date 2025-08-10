@@ -65,7 +65,7 @@ function Edit(props: { edit: number; setEdit: (id: number) => void }) {
     onMutate: (post) => {
       queryClient.setQueryData(["post", props.edit], () => post);
     },
-    onSuccess: (data, post) => {
+    onSuccess: (_data, post) => {
       // postQuery.refetch();
 
       queryClient.setQueryData(["post", props.edit], () => post);
@@ -111,7 +111,6 @@ function Edit(props: { edit: number; setEdit: (id: number) => void }) {
           {postMutation.isPending ? "Saving..." : "Save"}
         </button>
         <br />
-        {postMutation.isError && postMutation.error.message}
       </form>
     </div>
   );
