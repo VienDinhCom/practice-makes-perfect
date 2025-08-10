@@ -1,3 +1,4 @@
+import { createFileRoute } from '@tanstack/react-router';
 import {
   QueryClient,
   QueryClientProvider,
@@ -6,14 +7,24 @@ import {
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import axios from "axios";
 import { shuffle } from "es-toolkit";
+import { useState } from "react";
 
 const queryClient = new QueryClient();
 
-export function App() {
+export const Route = createFileRoute('/09-cache-time')({
+  component: Lesson,
+});
+
+function Lesson() {
+  const [show, toggle] = useState(true);
+
   return (
     <QueryClientProvider client={queryClient}>
-      <Pokemon queryKey="pokemons" />
-      <Pokemon queryKey="pokemons" />
+      <button onClick={() => toggle((prev) => !prev)}>
+        {show ? "Hide" : "Show"}
+      </button>
+      <br />
+      {show && <Pokemon />}
       <ReactQueryDevtools initialIsOpen={false} />
     </QueryClientProvider>
   );
@@ -23,9 +34,9 @@ interface Data {
   name: string;
 }
 
-function Pokemon(props: { queryKey: string }) {
+function Pokemon() {
   const queryInfo = useQuery({
-    queryKey: [props.queryKey],
+    queryKey: ["pokemons"],
     queryFn: async () => {
       await new Promise((resolve) => setTimeout(resolve, 1000));
 
@@ -35,6 +46,7 @@ function Pokemon(props: { queryKey: string }) {
 
       return shuffle(pokemons);
     },
+    gcTime: 5000, // cache time: default is 5 minutes
   });
 
   return queryInfo.isLoading ? (

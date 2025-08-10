@@ -1,3 +1,4 @@
+import { createFileRoute } from '@tanstack/react-router';
 import {
   QueryClient,
   QueryClientProvider,
@@ -9,10 +10,13 @@ import { shuffle } from "es-toolkit";
 
 const queryClient = new QueryClient();
 
-export function App() {
+export const Route = createFileRoute('/08-stale-time')({
+  component: Lesson,
+});
+
+function Lesson() {
   return (
     <QueryClientProvider client={queryClient}>
-      <Count />
       <Pokemon />
       <ReactQueryDevtools initialIsOpen={false} />
     </QueryClientProvider>
@@ -23,8 +27,8 @@ interface Data {
   name: string;
 }
 
-function usePokemons() {
-  return useQuery({
+function Pokemon() {
+  const queryInfo = useQuery({
     queryKey: ["pokemons"],
     queryFn: async () => {
       await new Promise((resolve) => setTimeout(resolve, 1000));
@@ -35,11 +39,9 @@ function usePokemons() {
 
       return shuffle(pokemons);
     },
+    refetchOnWindowFocus: true,
+    staleTime: 5000, // Default is 0
   });
-}
-
-function Pokemon() {
-  const queryInfo = usePokemons();
 
   return queryInfo.isLoading ? (
     "Loading..."
@@ -54,10 +56,4 @@ function Pokemon() {
       ))}
     </div>
   );
-}
-
-function Count() {
-  const queryInfo = usePokemons();
-
-  return <h3>You are looking at {queryInfo.data?.length} pokemons</h3>;
 }

@@ -1,3 +1,4 @@
+import { createFileRoute } from '@tanstack/react-router';
 import {
   QueryClient,
   QueryClientProvider,
@@ -5,11 +6,14 @@ import {
 } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import axios from "axios";
-import { shuffle } from "es-toolkit";
 
 const queryClient = new QueryClient();
 
-export function App() {
+export const Route = createFileRoute('/07-refetching-indicators')({
+  component: Lesson,
+});
+
+function Lesson() {
   return (
     <QueryClientProvider client={queryClient}>
       <Pokemon />
@@ -28,14 +32,11 @@ function Pokemon() {
     queryFn: async () => {
       await new Promise((resolve) => setTimeout(resolve, 1000));
 
-      const pokemons = await axios
+      return axios
         .get("https://pokeapi.co/api/v2/pokemon")
         .then((res) => res.data.results as Data[]);
-
-      return shuffle(pokemons);
     },
     refetchOnWindowFocus: true,
-    staleTime: 5000, // Default is 0
   });
 
   return queryInfo.isLoading ? (

@@ -1,3 +1,4 @@
+import { createFileRoute } from '@tanstack/react-router';
 import {
   QueryClient,
   QueryClientProvider,
@@ -8,7 +9,11 @@ import axios from "axios";
 
 const queryClient = new QueryClient();
 
-export function App() {
+export const Route = createFileRoute('/06-window-focus')({
+  component: Lesson,
+});
+
+function Lesson() {
   return (
     <QueryClientProvider client={queryClient}>
       <Pokemon />
@@ -40,8 +45,6 @@ function Pokemon() {
     queryInfo.error?.message
   ) : (
     <div>
-      {queryInfo.isFetching && <div>Updatding...</div>}
-      <br />
       {queryInfo.data?.map((result) => (
         <div key={result.name}>{result.name}</div>
       ))}

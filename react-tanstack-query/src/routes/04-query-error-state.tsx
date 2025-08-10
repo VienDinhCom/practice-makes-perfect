@@ -1,3 +1,4 @@
+import { createFileRoute } from '@tanstack/react-router';
 import {
   QueryClient,
   QueryClientProvider,
@@ -7,7 +8,11 @@ import axios from "axios";
 
 const queryClient = new QueryClient();
 
-export function App() {
+export const Route = createFileRoute('/04-query-error-state')({
+  component: Lesson,
+});
+
+function Lesson() {
   return (
     <QueryClientProvider client={queryClient}>
       <Pokemon />

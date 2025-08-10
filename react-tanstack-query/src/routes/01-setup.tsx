@@ -1,12 +1,16 @@
+import { createFileRoute } from '@tanstack/react-router';
 import {
   QueryClient,
   QueryClientProvider,
-  useQuery,
 } from "@tanstack/react-query";
 
 const queryClient = new QueryClient();
 
-export function App() {
+export const Route = createFileRoute('/01-setup')({
+  component: Lesson,
+});
+
+function Lesson() {
   return (
     <QueryClientProvider client={queryClient}>
       <Pokemon />
@@ -15,7 +19,5 @@ export function App() {
 }
 
 function Pokemon() {
-  console.log(useQuery);
-
   return <div>Hello React Query</div>;
 }

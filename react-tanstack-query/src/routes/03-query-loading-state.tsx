@@ -1,18 +1,21 @@
+import { createFileRoute } from '@tanstack/react-router';
 import {
   QueryClient,
   QueryClientProvider,
   useQuery,
 } from "@tanstack/react-query";
-import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import axios from "axios";
 
 const queryClient = new QueryClient();
 
-export function App() {
+export const Route = createFileRoute('/03-query-loading-state')({
+  component: Lesson,
+});
+
+function Lesson() {
   return (
     <QueryClientProvider client={queryClient}>
       <Pokemon />
-      <ReactQueryDevtools initialIsOpen={false} />
     </QueryClientProvider>
   );
 }
@@ -31,13 +34,10 @@ function Pokemon() {
         .get("https://pokeapi.co/api/v2/pokemon")
         .then((res) => res.data.results as Data[]);
     },
-    refetchOnWindowFocus: true,
   });
 
   return queryInfo.isLoading ? (
     "Loading..."
-  ) : queryInfo.isError ? (
-    queryInfo.error?.message
   ) : (
     <div>
       {queryInfo.data?.map((result) => (

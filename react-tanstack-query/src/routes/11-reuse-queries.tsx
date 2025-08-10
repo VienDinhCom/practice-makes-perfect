@@ -1,3 +1,4 @@
+import { createFileRoute } from '@tanstack/react-router';
 import {
   QueryClient,
   QueryClientProvider,
@@ -9,11 +10,15 @@ import { shuffle } from "es-toolkit";
 
 const queryClient = new QueryClient();
 
-export function App() {
+export const Route = createFileRoute('/11-reuse-queries')({
+  component: Lesson,
+});
+
+function Lesson() {
   return (
     <QueryClientProvider client={queryClient}>
-      <Berries queryKey="berries" />
-      <Pokemon queryKey="pokemons" />
+      <Count />
+      <Pokemon />
       <ReactQueryDevtools initialIsOpen={false} />
     </QueryClientProvider>
   );
@@ -23,9 +28,9 @@ interface Data {
   name: string;
 }
 
-function Berries(props: { queryKey: string }) {
-  const queryInfo = useQuery({
-    queryKey: [props.queryKey],
+function usePokemons() {
+  return useQuery({
+    queryKey: ["pokemons"],
     queryFn: async () => {
       await new Promise((resolve) => setTimeout(resolve, 1000));
 
@@ -36,6 +41,10 @@ function Berries(props: { queryKey: string }) {
       return shuffle(pokemons);
     },
   });
+}
+
+function Pokemon() {
+  const queryInfo = usePokemons();
 
   return queryInfo.isLoading ? (
     "Loading..."
@@ -52,31 +61,8 @@ function Berries(props: { queryKey: string }) {
   );
 }
 
-function Pokemon(props: { queryKey: string }) {
-  const queryInfo = useQuery({
-    queryKey: [props.queryKey],
-    queryFn: async () => {
-      await new Promise((resolve) => setTimeout(resolve, 1000));
+function Count() {
+  const queryInfo = usePokemons();
 
-      const pokemons = await axios
-        .get("https://pokeapi.co/api/v2/pokemon")
-        .then((res) => res.data.results as Data[]);
-
-      return shuffle(pokemons);
-    },
-  });
-
-  return queryInfo.isLoading ? (
-    "Loading..."
-  ) : queryInfo.isError ? (
-    queryInfo.error?.message
-  ) : (
-    <div>
-      {queryInfo.isFetching && <div>Updatding...</div>}
-      <br />
-      {queryInfo.data?.map((result) => (
-        <div key={result.name}>{result.name}</div>
-      ))}
-    </div>
-  );
+  return <h3>You are looking at {queryInfo.data?.length} pokemons</h3>;
 }
