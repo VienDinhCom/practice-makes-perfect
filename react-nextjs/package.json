@@ -11,12 +11,12 @@
     "autoprefixer": "10.4.20",
     "bcrypt": "^5.1.1",
     "clsx": "^2.1.1",
-    "next": "latest",
+    "next": "^15.4.6",
     "next-auth": "5.0.0-beta.25",
     "postcss": "8.5.1",
     "postgres": "^3.4.6",
-    "react": "latest",
-    "react-dom": "latest",
+    "react": "^19.1.1",
+    "react-dom": "^19.1.1",
     "tailwindcss": "3.4.17",
     "typescript": "5.7.3",
     "use-debounce": "^10.0.4",
@@ -25,8 +25,8 @@
   "devDependencies": {
     "@types/bcrypt": "^5.0.2",
     "@types/node": "22.10.7",
-    "@types/react": "19.0.7",
-    "@types/react-dom": "19.0.3"
+    "@types/react": "^19.0.7",
+    "@types/react-dom": "^19.0.3"
   },
   "pnpm": {
     "onlyBuiltDependencies": [
