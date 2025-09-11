@@ -34,16 +34,16 @@ These scripts were developed with Deno v2. Please download the correct runtime t
 - [Article](https://github.com/VienDinhCom/practice-makes-perfect/issues/67) - [Source](data-structures/queue.ts) - Queue
 - [Article](https://www.freecodecamp.org/learn/coding-interview-prep/data-structures/create-a-priority-queue-class) - [Source](data-structures/queue-priority.ts) - Priority Queue
 - [Article](https://www.freecodecamp.org/learn/coding-interview-prep/data-structures/create-a-circular-queue) - [Source](data-structures/queue-circular.ts) - Circular Queue
-- [Article](https://viendinh.com/posts/zzyw-tap-hop/) - [Source](data-structures/set.ts) - Set
-- [Article](https://viendinh.com/posts/zzyv-bang-anh-xa/) - [Source](data-structures/map.ts) - Map
-- [Article](https://viendinh.com/posts/zzzi-bang-bam/) - [Source](data-structures/hash-table.ts) - Hash Table
-- [Article](https://viendinh.com/posts/zzyu-danh-sach-lien-ket-don/) - [Source](data-structures/linked-list-singly.ts) - Singly Linked List
-- [Article](https://viendinh.com/posts/zzyt-danh-sach-lien-ket-doi/) - [Source](data-structures/linked-list-doubly.ts) - Doubly Linked List
-- [Article](https://viendinh.com/posts/zzys-cay-tim-kiem-nhi-phan/) - [Source](data-structures/binary-search-tree.ts) - Binary Search Tree
-- [Article](https://viendinh.com/posts/zzyr-trie/) - [Source](data-structures/trie.ts) - Trie
-- [Article](https://viendinh.com/posts/zzyq-dong-nhi-phan/) - [Source](data-structures/heap-min.ts) - Min Heap
-- [Article](https://viendinh.com/posts/zzyq-dong-nhi-phan/) - [Source](data-structures/heap-max.ts) - Max Heap
-- [Article](https://viendinh.com/posts/zzzj-do-thi/) - [Source](data-structures/graph-implementation.ts) - Graph
+- [Article](https://github.com/VienDinhCom/practice-makes-perfect/issues/68) - [Source](data-structures/set.ts) - Set
+- [Article](https://github.com/VienDinhCom/practice-makes-perfect/issues/69) - [Source](data-structures/map.ts) - Map
+- [Article](https://github.com/VienDinhCom/practice-makes-perfect/issues/70) - [Source](data-structures/hash-table.ts) - Hash Table
+- [Article](https://github.com/VienDinhCom/practice-makes-perfect/issues/71) - [Source](data-structures/linked-list-singly.ts) - Singly Linked List
+- [Article](https://github.com/VienDinhCom/practice-makes-perfect/issues/72) - [Source](data-structures/linked-list-doubly.ts) - Doubly Linked List
+- [Article](https://github.com/VienDinhCom/practice-makes-perfect/issues/73) - [Source](data-structures/binary-search-tree.ts) - Binary Search Tree
+- [Article](https://github.com/VienDinhCom/practice-makes-perfect/issues/74) - [Source](data-structures/trie.ts) - Trie
+- [Article](https://github.com/VienDinhCom/practice-makes-perfect/issues/75) - [Source](data-structures/heap-min.ts) - Min Heap
+- [Article](https://github.com/VienDinhCom/practice-makes-perfect/issues/75) - [Source](data-structures/heap-max.ts) - Max Heap
+- [Article](https://github.com/VienDinhCom/practice-makes-perfect/issues/76) - [Source](data-structures/graph-implementation.ts) - Graph
 
 ### Others
 
