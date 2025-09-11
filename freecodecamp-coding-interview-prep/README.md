@@ -18,20 +18,20 @@ These scripts were developed with Deno v2. Please download the correct runtime t
 
 ### Algorithms
 
-- [Article](https://viendinh.com/posts/zzzx-sap-xep-noi-bot/) - [Source](algorithms/sorting/bubble-sort.ts) - Bubble Sort
-- [Article](https://viendinh.com/posts/zzzw-sap-xep-chon/) - [Source](algorithms/sorting/selection-sort.ts) - Selection Sort
-- [Article](https://viendinh.com/posts/zzzv-sap-xep-chen/) - [Source](algorithms/sorting/insertion-sort.ts) - Insertion Sort
-- [Article](https://viendinh.com/posts/zzzu-sap-xep-nhanh/) - [Source](algorithms/sorting/quick-sort.ts) - Quick Sort
-- [Article](https://viendinh.com/posts/zzzt-sap-xep-tron/) - [Source](algorithms/sorting/merge-sort.ts) - Merge Sort
-- [Article](https://viendinh.com/posts/zzzg-sap-xep-phan-phoi/) - [Source](algorithms/sorting/counting-sort.ts) - Counting Sort
-- [Article](https://viendinh.com/posts/zzze-sap-xep-theo-co-so/) - [Source](algorithms/sorting/radix-sort.ts) - Radix Sort
-- [Article](https://viendinh.com/posts/zzzl-tim-kiem-tuan-tu/) - [Source](algorithms/search/linear-search.ts) - Linear Search
-- [Article](https://viendinh.com/posts/zzzm-tim-kiem-nhi-phan/) - [Source](algorithms/search/binary-search.ts) - Binary Search
+- [Article](https://github.com/VienDinhCom/practice-makes-perfect/issues/56) - [Source](algorithms/sorting/bubble-sort.ts) - Bubble Sort
+- [Article](https://github.com/VienDinhCom/practice-makes-perfect/issues/57) - [Source](algorithms/sorting/selection-sort.ts) - Selection Sort
+- [Article](https://github.com/VienDinhCom/practice-makes-perfect/issues/58) - [Source](algorithms/sorting/insertion-sort.ts) - Insertion Sort
+- [Article](https://github.com/VienDinhCom/practice-makes-perfect/issues/59) - [Source](algorithms/sorting/quick-sort.ts) - Quick Sort
+- [Article](https://github.com/VienDinhCom/practice-makes-perfect/issues/62) - [Source](algorithms/sorting/merge-sort.ts) - Merge Sort
+- [Article](https://github.com/VienDinhCom/practice-makes-perfect/issues/60) - [Source](algorithms/sorting/counting-sort.ts) - Counting Sort
+- [Article](https://github.com/VienDinhCom/practice-makes-perfect/issues/61) - [Source](algorithms/sorting/radix-sort.ts) - Radix Sort
+- [Article](https://github.com/VienDinhCom/practice-makes-perfect/issues/63) - [Source](algorithms/search/linear-search.ts) - Linear Search
+- [Article](https://github.com/VienDinhCom/practice-makes-perfect/issues/64) - [Source](algorithms/search/binary-search.ts) - Binary Search
 
 ### Data Structures
 
-- [Article](https://viendinh.com/posts/zzzb-ngan-xep/) - [Source](data-structures/stack.ts) - Stack
-- [Article](https://viendinh.com/posts/zzza-hang-doi/) - [Source](data-structures/queue.ts) - Queue
+- [Article](https://github.com/VienDinhCom/practice-makes-perfect/issues/66) - [Source](data-structures/stack.ts) - Stack
+- [Article](https://github.com/VienDinhCom/practice-makes-perfect/issues/67) - [Source](data-structures/queue.ts) - Queue
 - [Article](https://www.freecodecamp.org/learn/coding-interview-prep/data-structures/create-a-priority-queue-class) - [Source](data-structures/queue-priority.ts) - Priority Queue
 - [Article](https://www.freecodecamp.org/learn/coding-interview-prep/data-structures/create-a-circular-queue) - [Source](data-structures/queue-circular.ts) - Circular Queue
 - [Article](https://viendinh.com/posts/zzyw-tap-hop/) - [Source](data-structures/set.ts) - Set
