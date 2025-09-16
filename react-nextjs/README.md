@@ -17,7 +17,7 @@ This project was developed with Node 22 and NPM 10.<br>
 
 To set up a compatible environment, please download [Volta](https://github.com/volta-cli/volta) and run `volta setup`.
 
-## `docker compose up`
+### `docker compose up`
 
 This project uses Postgres and Docker to run the database. Please run `docker compose up` to start the database.
 
