@@ -1,6 +1,6 @@
 # Next.js App Router Fundamentals
 
-I’ve been working with Next.js since 2019, starting with a side project called [Next Shopify Storefront](https://github.com/VienDinhCom/next-shopify-storefront), where I used GraphQL to build a storefront on Shopify.
+I’ve been working with Next.js since 2019, starting with a side project called [Next Shopify Storefront](https://github.com/VienDinhCom/next-shopify-storefront), where I used GraphQL to build a storefront with Shopify.
 
 Over time, everything shifted—Next.js evolved from the Page Router to the App Router. To keep up, I completed the Next.js App Router Fundamentals certificate. It was my way of updating myself.
 
