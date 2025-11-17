@@ -8,30 +8,30 @@ https://www.techinterviewhandbook.org/grind75/?hours=8&weeks=8
 
 - [Two Sum](problems/001-two-sum.ts)
 
-### Stack
-
-### Linked List
-
-### String
-
-### Binary Tree
+### Binary
 
 ### Binary Search
 
-### Graph
-
 ### Binary Search Tree
 
-### Hash Table
+### Binary Tree
 
 ### Dynamic Programming
 
-### Binary
+### Graph
+
+### Hash Table
 
 ### Heap
 
-### Trie
+### Linked List
+
+### Matrix
 
 ### Recursion
 
-### Matrix
+### Stack
+
+### String
+
+### Trie

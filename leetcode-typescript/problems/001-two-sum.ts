@@ -1,6 +1,6 @@
 import { expect } from "jsr:@std/expect";
 
-// https://leetcode.com/problems/two-sum/
+// Array: https://leetcode.com/problems/two-sum/
 
 function twoSum(nums: number[], target: number): number[] {
   for (let i = 0; i < nums.length; i++) {
