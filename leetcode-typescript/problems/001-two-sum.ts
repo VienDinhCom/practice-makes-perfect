@@ -2,17 +2,36 @@ import { expect } from "jsr:@std/expect";
 
 // Array: https://leetcode.com/problems/two-sum/
 
+// Time: O(n) Space: O(n)
 function twoSum(nums: number[], target: number): number[] {
+  const seen = new Map<number, number>(); // num => index
+
   for (let i = 0; i < nums.length; i++) {
-    for (let j = i + 1; j < nums.length; j++) {
-      if (i !== j && nums[i] + nums[j] === target) {
-        return [i, j];
-      }
+    const num = nums[i];
+    const complement = target - num;
+
+    if (seen.has(complement)) {
+      return [seen.get(complement)!, i];
     }
+
+    seen.set(num, i);
   }
 
   return [];
 }
+
+// Time: O(n2) Space: O(1)
+// function twoSum(nums: number[], target: number): number[] {
+//   for (let i = 0; i < nums.length; i++) {
+//     for (let j = i + 1; j < nums.length; j++) {
+//       if (i !== j && nums[i] + nums[j] === target) {
+//         return [i, j];
+//       }
+//     }
+//   }
+
+//   return [];
+// }
 
 Deno.test("Two Sum", async (t) => {
   await t.step("Finds a valid pair", () => {
