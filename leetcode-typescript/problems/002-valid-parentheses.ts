@@ -2,6 +2,7 @@ import { expect } from "jsr:@std/expect";
 
 // Stack: https://leetcode.com/problems/valid-parentheses/
 
+// Time: O(n) Space: O(n)
 function isValid(string: string): boolean {
   const stack: string[] = [];
   const pairs: Record<string, string> = {
