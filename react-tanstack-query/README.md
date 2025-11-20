@@ -8,7 +8,7 @@ Each lesson—like retries, cancellations, or prefetching—feels like solving a
 
 Because at its core, it’s about asking: how can we manage uncertainty in our apps… and maybe in life too? That's what this journey is really about.
 
-You can find all **45 lessons** in the [routes](src/routes) folder, and read my Vietnamese post: [Vì Sao Phải Dùng TanStack React Query?](https://github.com/VienDinhCom/practice-makes-perfect/issues/55)
+You can find all **45 lessons** in the [routes](src/routes) folder.
 
 ## Usage
 
