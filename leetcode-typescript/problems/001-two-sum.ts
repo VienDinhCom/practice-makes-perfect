@@ -6,15 +6,15 @@ import { expect } from "jsr:@std/expect";
 function twoSum(nums: number[], target: number): number[] {
   const seen = new Map<number, number>(); // num => index
 
-  for (let i = 0; i < nums.length; i++) {
-    const num = nums[i];
+  for (let index = 0; index < nums.length; index++) {
+    const num = nums[index];
     const complement = target - num;
 
     if (seen.has(complement)) {
-      return [seen.get(complement)!, i];
+      return [seen.get(complement)!, index];
     }
 
-    seen.set(num, i);
+    seen.set(num, index);
   }
 
   return [];
