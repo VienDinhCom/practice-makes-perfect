@@ -8,7 +8,7 @@ So, I went back to the basics—sorting, searching, linked list, set, map, tree,
 
 I didn’t just write these data structures and algorithms in JavaScript; for review purposes, I also rewrote them in TypeScript and tested them with Deno.
 
-It turns out, shortcuts only get me so far. Understanding the foundation? That changed everything for me as a developer.
+I also sharpen my skills even further with exercises at [LeetCode TypeScript](https://github.com/VienDinhCom/practice-makes-perfect/tree/main/leetcode-typescript). Because knowing Data Structures and Algorithms? It’s not just useful—it’s essential. And I’m finally starting to appreciate why.
 
 You can find the course here: [Coding Interview Prep](https://www.freecodecamp.org/learn/coding-interview-prep/)
 
