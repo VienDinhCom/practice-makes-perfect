@@ -33,7 +33,7 @@ I went through countless exercises, built over **35** hands-on projects, earned 
 ## Data Structures and Algorithms
 
 - [freeCodeCamp Coding Interview Prep](/freecodecamp-coding-interview-prep)
-- [Grind 75 LeetCode Questions with TypeScript](/leetcode-typescript)
+- [Grind LeetCode Questions with TypeScript](/leetcode-typescript)
 
 ## Database
 
