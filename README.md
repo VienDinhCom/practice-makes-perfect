@@ -48,31 +48,13 @@ I went through countless exercises, built over **35** hands-on projects, earned 
 
 ## Projects
 
-You can explore my work history on my LinkedIn [projects listing](https://www.linkedin.com/in/viendinhcom/details/projects/). My side projects and interview projects, along with their source code, are available here for you to check.
+I started as a front-end developer—just building interfaces, making things look good. But over time, curiosity pulled me deeper. I wanted to understand the whole system, not just the surface. So, I evolved into a full-stack developer.
 
-### Side Projects
+I have worked with agencies like Creative Haus, Cactus Themes, and Redline Coders. I have also been part of companies like Morph Ventures and Ventive. And sometimes, I went solo—freelancing on Upwork, tackling projects end-to-end.
 
-#### [SuperMemo](https://github.com/VienDinhCom/supermemo)
+Each experience shaped me. Different teams, different challenges. But the goal remained the same—solving problems, learning, and growing.
 
-A JavaScript and TypeScript version of the SuperMemo 2 algorithm, making spaced repetition flashcards easier and smarter.
-
-#### [Next Shopify Storefront](https://github.com/VienDinhCom/next-shopify-storefront)
-
-A shopping cart using TypeScript, Tailwind CSS, Headless UI, Next.js, React.js, Hydrogen, and a GraphQL API for efficiency.
-
-#### [Bootstrap Shopify Theme](https://github.com/VienDinhCom/bootstrap-shopify-theme)
-
-A simple, free Shopify theme crafted with Bootstrap, BEM, Liquid, Sass, ESNext, Theme Tools, and Webpack for modern, efficient development.
-
-### Interview Projects
-
-#### [React PDF Reader](interview-project-react-pdf-reader)
-
-A simple PDF reader using React.js, FileReader API, ReactPDF.js, and CSS Modules, making document viewing smooth and efficient.
-
-#### [React Quote Generator](interview-project-react-quote-generator)
-
-A simple Quote Image Generator using React.js, Next.js, Shopify Polaris, and React Query to streamline inspiration-sharing effortlessly.
+You can explore my work history on my LinkedIn [projects listing](https://www.linkedin.com/in/viendinhcom/details/projects/).
 
 ## History
 
