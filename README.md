@@ -27,7 +27,13 @@ I went through countless exercises, built over **35** hands-on projects, earned 
 
 ## Container
 
-- [Docker VSCode Workspace](https://github.com/VienDinhCom/docker-vscode-fullstack)
+- [Docker Recipes](/container-docker-recipes)
+- [Docker VSCode Workspace](/docker-vscode-fullstack)
+
+## Data Structures and Algorithms
+
+- [freeCodeCamp Coding Interview Prep](/freecodecamp-coding-interview-prep)
+- [Grind 75 LeetCode Questions with TypeScript](/leetcode-typescript)
 
 ## Database
 
@@ -70,4 +76,4 @@ A simple Quote Image Generator using React.js, Next.js, Shopify Polaris, and Rea
 
 ## History
 
-![Alt](https://repobeats.axiom.co/api/embed/096d8610fcd82ce6aa1cb1f7969c4182f2021c99.svg 'Practice Makes Perfect Analytics')
+![Alt](https://repobeats.axiom.co/api/embed/096d8610fcd82ce6aa1cb1f7969c4182f2021c99.svg "Practice Makes Perfect Analytics")
