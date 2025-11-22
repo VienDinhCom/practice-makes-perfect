@@ -26,6 +26,8 @@ https://www.techinterviewhandbook.org/grind75/?hours=8&weeks=8
 
 ### Linked List
 
+- [Two Sorted Lists](problems/003-merge-two-sorted-lists.ts)
+
 ### Matrix
 
 ### Recursion
