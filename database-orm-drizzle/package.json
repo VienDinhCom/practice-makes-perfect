@@ -7,6 +7,7 @@
     "dev:api": "tsx --watch src/api/index.ts",
     "dev:client": "tsx src/client/index.ts",
     "build": "tsc && tsc-alias",
+    "db:studio": "drizzle-kit studio",
     "db:generate": "drizzle-kit generate",
     "db:migrate": "cross-env DB_MIGRATING=true tsx src/db/migrate.ts",
     "db:seed": "cross-env DB_SEEDING=true tsx src/db/seed.ts"
@@ -24,6 +25,7 @@
   },
   "devDependencies": {
     "@types/pg": "^8.11.11",
+    "argon2": "^0.44.0",
     "cross-env": "^10.1.0",
     "drizzle-kit": "^0.30.5",
     "tsc-alias": "^1.8.16",
