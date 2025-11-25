@@ -14,3 +14,4 @@ export { default as orderStatus, orderStatusRelations } from "./orderStatus";
 export { default as order, orderRelations } from "./order";
 export { default as restaurant, restaurantRelations } from "./restaurant";
 export { default as statusCatalog } from "./statusCatalog";
+export { default as restaurantOwner } from "./restaurantOwner";
