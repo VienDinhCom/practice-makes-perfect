@@ -7,8 +7,8 @@ import {
   boolean,
 } from "drizzle-orm/pg-core";
 
-// import order from "./order";
-// import address from "./address";
+import order from "./order";
+import address from "./address";
 
 const user = pgTable("users", {
   id: serial("id").primaryKey(),
@@ -23,9 +23,9 @@ const user = pgTable("users", {
   updatedAt: timestamp("updated_at", { mode: "string" }).notNull().defaultNow(),
 });
 
-// export const userRelations = relations(user, ({ many }) => ({
-//   addresses: many(address),
-//   orders: many(order),
-// }));
+export const userRelations = relations(user, ({ many }) => ({
+  addresses: many(address),
+  orders: many(order),
+}));
 
 export default user;
