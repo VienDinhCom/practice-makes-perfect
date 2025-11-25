@@ -4,7 +4,7 @@ I’ve been working with Next.js since 2019, starting with a side project called
 
 Over time, everything shifted—Next.js evolved from the Page Router to the App Router. To keep up, I completed the Next.js App Router Fundamentals certificate. It was my way of updating myself.
 
-Along the way, I learned practical skills: styling apps in different ways, optimizing images and fonts, building nested layouts, and connecting a Postgres with Docker. I explored search and pagination, mutating data with React Server Actions, and handling errors gracefully. I also practiced accessibility, authentication, and metadata for sharing.
+Along the way, I learned practical skills: styling the app with TailwindCSS, optimizing images and fonts, building nested layouts, and connecting a Postgres with Docker. I explored search and pagination, mutating data with React Server Actions, and handling errors gracefully. I also practiced accessibility, authentication, and metadata for sharing.
 
 It reminded me—technology always changes, but learning keeps us steady.
 
