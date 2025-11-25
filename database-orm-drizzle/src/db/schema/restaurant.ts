@@ -9,8 +9,8 @@ import {
 
 import city from "./city";
 import { relations } from "drizzle-orm";
-// import menuItem from "./menuItem";
-// import order from "./order";
+import menuItem from "./menuItem";
+import order from "./order";
 
 const restaurant = pgTable(
   "restaurant",
@@ -39,8 +39,8 @@ export const restaurantRelations = relations(restaurant, ({ one, many }) => ({
     fields: [restaurant.cityId],
     references: [city.id],
   }),
-  // menuItems: many(menuItem),
-  // orders: many(order),
+  menuItems: many(menuItem),
+  orders: many(order),
 }));
 
 export default restaurant;

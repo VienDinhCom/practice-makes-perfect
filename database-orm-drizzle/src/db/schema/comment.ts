@@ -7,8 +7,8 @@ import {
   boolean,
 } from "drizzle-orm/pg-core";
 
-import user from "./user";
-import order from "./order";
+import user from './user';
+import order from './order';
 import { relations } from "drizzle-orm";
 
 const comment = pgTable("comment", {

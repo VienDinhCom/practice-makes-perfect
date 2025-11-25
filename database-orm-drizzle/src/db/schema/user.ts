@@ -25,7 +25,7 @@ const user = pgTable("users", {
 
 export const userRelations = relations(user, ({ many }) => ({
   addresses: many(address),
-  orders: many(order),
+  orders: many(order)
 }));
 
 export default user;
