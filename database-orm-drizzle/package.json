@@ -3,8 +3,12 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "start": "tsx src/index.ts",
-    "drizzle": "npx drizzle-kit"
+    "dev:api": "tsx --watch src/api/index.ts",
+    "dev:client": "tsx src/client/index.ts",
+    "build": "tsc && tsc-alias",
+    "db:generate": "drizzle-kit generate:pg",
+    "db:migrate": "cross-env DB_MIGRATING=true tsx src/db/migrate.ts",
+    "db:seed": "cross-env DB_SEEDING=true tsx src/db/seed.ts"
   },
   "keywords": [],
   "author": "",
@@ -19,7 +23,9 @@
   },
   "devDependencies": {
     "@types/pg": "^8.11.11",
+    "cross-env": "^10.1.0",
     "drizzle-kit": "^0.30.5",
+    "tsc-alias": "^1.8.16",
     "tsx": "^4.19.3"
   }
 }
