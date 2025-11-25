@@ -2,11 +2,12 @@
   "name": "database-orm-drizzle",
   "version": "1.0.0",
   "main": "index.js",
+  "type": "module",
   "scripts": {
     "dev:api": "tsx --watch src/api/index.ts",
     "dev:client": "tsx src/client/index.ts",
     "build": "tsc && tsc-alias",
-    "db:generate": "drizzle-kit generate:pg",
+    "db:generate": "drizzle-kit generate",
     "db:migrate": "cross-env DB_MIGRATING=true tsx src/db/migrate.ts",
     "db:seed": "cross-env DB_SEEDING=true tsx src/db/seed.ts"
   },
