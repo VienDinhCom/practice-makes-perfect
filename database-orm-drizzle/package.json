@@ -2,22 +2,43 @@
   "name": "database-orm-drizzle",
   "version": "1.0.0",
   "main": "index.js",
+  "type": "module",
+  "volta": {
+    "node": "24.11.1",
+    "npm": "11.6.2"
+  },
   "scripts": {
-    "start": "tsx src/index.ts",
-    "drizzle": "npx drizzle-kit"
+    "dev:api": "tsx --watch src/api/index.ts",
+    "dev:client": "tsx src/client/index.ts",
+    "build": "tsc && tsc-alias",
+    "db:studio": "drizzle-kit studio",
+    "db:generate": "drizzle-kit generate",
+    "db:migrate": "cross-env DB_MIGRATING=true tsx src/db/migrate.ts",
+    "db:seed": "cross-env DB_SEEDING=true tsx src/db/seed.ts"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "description": "",
   "dependencies": {
-    "dotenv": "^16.4.7",
-    "drizzle-orm": "^0.40.0",
-    "pg": "^8.14.0"
+    "@hono/node-server": "^1.19.6",
+    "@hono/trpc-server": "^0.4.0",
+    "@trpc/client": "^11.7.2",
+    "@trpc/server": "^11.7.2",
+    "argon2": "^0.40.3",
+    "dotenv": "^16.6.1",
+    "dotenv-expand": "^11.0.7",
+    "drizzle-orm": "^0.30.10",
+    "hono": "^4.10.6",
+    "postgres": "^3.4.7",
+    "zod": "^3.25.76"
   },
   "devDependencies": {
-    "@types/pg": "^8.11.11",
-    "drizzle-kit": "^0.30.5",
-    "tsx": "^4.19.3"
+    "@types/node": "^20.19.25",
+    "cross-env": "^7.0.3",
+    "drizzle-kit": "^0.21.4",
+    "tsc-alias": "^1.8.16",
+    "tsx": "^4.20.6",
+    "typescript": "^5.9.3"
   }
 }
