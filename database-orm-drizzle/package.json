@@ -3,6 +3,10 @@
   "version": "1.0.0",
   "main": "index.js",
   "type": "module",
+  "volta": {
+    "node": "24.11.1",
+    "npm": "11.6.2"
+  },
   "scripts": {
     "dev:api": "tsx --watch src/api/index.ts",
     "dev:client": "tsx src/client/index.ts",
