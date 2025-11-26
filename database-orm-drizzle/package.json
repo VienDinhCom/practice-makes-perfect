@@ -17,18 +17,24 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
-    "dotenv": "^16.4.5",
-    "dotenv-expand": "^11.0.6",
-    "drizzle-orm": "^0.40.0",
-    "postgres": "^3.4.4",
+    "@hono/node-server": "^1.19.6",
+    "@hono/trpc-server": "^0.4.0",
+    "@trpc/client": "^11.7.2",
+    "@trpc/server": "^11.7.2",
+    "argon2": "^0.40.3",
+    "dotenv": "^16.6.1",
+    "dotenv-expand": "^11.0.7",
+    "drizzle-orm": "^0.30.10",
+    "hono": "^4.10.6",
+    "postgres": "^3.4.7",
     "zod": "^3.25.76"
   },
   "devDependencies": {
-    "@types/pg": "^8.11.11",
-    "argon2": "^0.44.0",
-    "cross-env": "^10.1.0",
-    "drizzle-kit": "^0.30.5",
+    "@types/node": "^20.19.25",
+    "cross-env": "^7.0.3",
+    "drizzle-kit": "^0.21.4",
     "tsc-alias": "^1.8.16",
-    "tsx": "^4.19.3"
+    "tsx": "^4.20.6",
+    "typescript": "^5.9.3"
   }
 }
