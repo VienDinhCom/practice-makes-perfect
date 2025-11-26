@@ -18,10 +18,10 @@ const address = pgTable("address", {
   deliveryInstructions: varchar("delivery_instructions", { length: 255 }),
   userId: integer("user_id")
     .notNull()
-    .references(() => user.id),
+    .references(() => user.id, { onDelete: "cascade", onUpdate: "cascade" }),
   cityId: integer("city_id")
     .notNull()
-    .references(() => city.id),
+    .references(() => city.id, { onDelete: "cascade", onUpdate: "cascade" }),
   createdAt: timestamp("created_at", { mode: "string" }).notNull().defaultNow(),
   updatedAt: timestamp("updated_at", { mode: "string" }).notNull().defaultNow(),
 });

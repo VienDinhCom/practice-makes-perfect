@@ -18,10 +18,16 @@ const menuItem = pgTable("menu_item", {
   name: varchar("name", { length: 255 }).notNull(),
   restaurantId: integer("restaurant_id")
     .notNull()
-    .references(() => restaurant.id),
+    .references(() => restaurant.id, {
+      onDelete: "cascade",
+      onUpdate: "cascade",
+    }),
   categoryId: integer("category_id")
     .notNull()
-    .references(() => category.id),
+    .references(() => category.id, {
+      onDelete: "cascade",
+      onUpdate: "cascade",
+    }),
   description: text("description").notNull(),
   ingredients: text("ingredients").notNull(),
   price: numeric("price", { precision: 12, scale: 2 }).notNull(),

@@ -21,7 +21,7 @@ const restaurant = pgTable(
     zipCode: varchar("zip_code", { length: 16 }).notNull(),
     cityId: integer("city_id")
       .notNull()
-      .references(() => city.id),
+      .references(() => city.id, { onDelete: "cascade", onUpdate: "cascade" }),
     createdAt: timestamp("created_at", { mode: "string" })
       .notNull()
       .defaultNow(),

@@ -8,14 +8,17 @@ const restaurantOwner = pgTable(
     id: serial("id").primaryKey(),
     restaurantId: integer("restaurant_id")
       .notNull()
-      .references(() => restaurant.id),
+      .references(() => restaurant.id, {
+        onDelete: "cascade",
+        onUpdate: "cascade",
+      }),
     ownerId: integer("owner_id")
       .notNull()
-      .references(() => user.id),
+      .references(() => user.id, { onDelete: "cascade", onUpdate: "cascade" }),
   },
   (table) => {
     return {
-      unqiueOwner: unique().on(table.restaurantId, table.ownerId)
+      unqiueOwner: unique().on(table.restaurantId, table.ownerId),
     };
   }
 );

@@ -19,18 +19,24 @@ const order = pgTable("orders", {
   id: serial("id").primaryKey(),
   restaurantId: integer("restaurant_id")
     .notNull()
-    .references(() => restaurant.id),
+    .references(() => restaurant.id, {
+      onDelete: "cascade",
+      onUpdate: "cascade",
+    }),
   estimatedDeliveryTime: timestamp("estimated_delivery_time", {
     mode: "string",
   }).notNull(),
   actualDeliveryTime: timestamp("actual_delivery_time", { mode: "string" }),
   deliveryAddressId: integer("delivery_address_id")
     .notNull()
-    .references(() => address.id),
+    .references(() => address.id, { onDelete: "cascade", onUpdate: "cascade" }),
   userId: integer("user_id")
     .notNull()
-    .references(() => user.id),
-  driverId: integer("driver_id").references(() => driver.id),
+    .references(() => user.id, { onDelete: "cascade", onUpdate: "cascade" }),
+  driverId: integer("driver_id").references(() => driver.id, {
+    onDelete: "cascade",
+    onUpdate: "cascade",
+  }),
   price: numeric("price", { precision: 12, scale: 2 }).notNull(),
   discount: numeric("discount", { precision: 12, scale: 2 }).notNull(),
   finalPrice: numeric("final_price", { precision: 12, scale: 2 }).notNull(),

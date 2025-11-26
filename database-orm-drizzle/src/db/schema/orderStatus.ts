@@ -8,10 +8,13 @@ const orderStatus = pgTable("order_status", {
   id: serial("id").primaryKey(),
   orderId: integer("order_id")
     .notNull()
-    .references(() => order.id),
+    .references(() => order.id, { onDelete: "cascade", onUpdate: "cascade" }),
   statusCatalogId: integer("status_catalog_id")
     .notNull()
-    .references(() => statusCatalog.id),
+    .references(() => statusCatalog.id, {
+      onDelete: "cascade",
+      onUpdate: "cascade",
+    }),
   createdAt: timestamp("created_at", { mode: "string" }).notNull().defaultNow(),
 });
 

@@ -10,7 +10,7 @@ const city = pgTable(
     name: varchar("name", { length: 255 }).notNull(),
     stateId: integer("state_id")
       .notNull()
-      .references(() => state.id),
+      .references(() => state.id, { onDelete: "cascade", onUpdate: "cascade" }),
   },
   (table) => {
     return {

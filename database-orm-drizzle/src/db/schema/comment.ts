@@ -7,18 +7,18 @@ import {
   boolean,
 } from "drizzle-orm/pg-core";
 
-import user from './user';
-import order from './order';
+import user from "./user";
+import order from "./order";
 import { relations } from "drizzle-orm";
 
 const comment = pgTable("comment", {
   id: serial("id").primaryKey(),
   orderId: integer("order_id")
     .notNull()
-    .references(() => order.id),
+    .references(() => order.id, { onDelete: "cascade", onUpdate: "cascade" }),
   userId: integer("user_id")
     .notNull()
-    .references(() => user.id),
+    .references(() => user.id, { onDelete: "cascade", onUpdate: "cascade" }),
   commentText: text("comment_text").notNull(),
   isComplaint: boolean("is_complaint").notNull(),
   isPraise: boolean("is_praise").notNull(),
