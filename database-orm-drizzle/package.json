@@ -34,7 +34,7 @@
     "zod": "^3.25.76"
   },
   "devDependencies": {
-    "@types/node": "^20.19.25",
+    "@types/node": "^24.10.1",
     "cross-env": "^7.0.3",
     "drizzle-kit": "^0.21.4",
     "tsc-alias": "^1.8.16",
