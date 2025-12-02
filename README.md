@@ -27,7 +27,7 @@ I went through countless exercises, built over **35** hands-on projects, earned 
 ## Container
 
 - [Docker Recipes](/container-docker-recipes)
-- [Docker VSCode Workspace](/docker-vscode-fullstack)
+- [Docker VSCode Workspace](https://github.com/VienDinhCom/docker-vscode-fullstack)
 
 ## Data Structures and Algorithms
 
