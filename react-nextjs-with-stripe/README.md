@@ -1,22 +1,13 @@
-# ESMate React Next
+# React Next.js with Stripe
 
-ESMate React Next is a production-ready SaaS template built with the latest technologies to help you launch your next
-idea in days, not weeks. It comes with a complete setup for authentication, payments, database, and all the tools you
-need for a modern web application.
+I’ve spent years stumbling through the early stages of new projects, repeating the same setup over and over. Eventually I realized the real bottleneck wasn’t the idea—it was the scaffolding around it. So I built a production-ready SaaS template to clear that path.
 
-This template is built with:
+In simple terms, it gives you everything a modern app needs on day one: authentication, payments, a database, and a clean developer workflow. Nothing flashy. Just the essentials, wired together so you can focus on the part only you can create.
 
-- **Framework**: [Next.js](https://nextjs.org/) – A complete React framework for production.
-- **Styling**: [Tailwind CSS](https://tailwindcss.com/) – A utility-first CSS framework for rapid UI development.
-- **Authentication**: [Better Auth](https://www.better-auth.com/) – A complete open-source authentication solution for
-  Next.js applications.
-- **Payments**: [Stripe](https://stripe.com/) – A complete payment platform engineered for growth.
-- **Database**: [PostgreSQL](https://www.postgresql.org/) – A powerful, open-source object-relational database system.
-- **ORM**: [Drizzle ORM](https://orm.drizzle.team/) – A lightweight and performant TypeScript ORM for Node.js and
-  TypeScript.
-- **Linting**: [ESLint](https://eslint.org/) – A tool for identifying and reporting on patterns found in
-  ECMAScript/JavaScript code.
-- **Formatting**: [Prettier](https://prettier.io/) – An opinionated code formatter.
+It’s built on Next.js for the frontend and backend, styled with Tailwind, secured with Better Auth, powered by Stripe for payments, and backed by PostgreSQL with Drizzle handling the ORM layer. ESLint and Prettier keep the code honest.
+
+My hope is that this template shortens the distance between an idea in your head and something real in the world—because that gap is where most dreams fade.
+
 
 ## Features
 
