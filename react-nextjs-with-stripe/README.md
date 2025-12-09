@@ -19,6 +19,8 @@ My hope is that this template shortens the distance between an idea in your head
 - ✅ Code quality with ESLint and Prettier
 - ✅ Docker setup for local development
 
+If you are interested in this project, you can find the up-to-date version in my [ESMate React Next](https://github.com/VienDinhCom/esmate/tree/main/templates/react-next) template.
+
 ## Getting Started
 
 Follow these instructions to get a copy of the project up and running on your local machine for development and testing
