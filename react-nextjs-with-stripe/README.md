@@ -89,3 +89,10 @@ purposes.
 - `npm run check`: Check the codebase using ESLint & Prettier.
 - `npm run db:migrate`: Applies database migrations.
 - `npm run db:studio`: Opens the Drizzle Studio to manage your database.
+
+## Learn More
+
+To learn more about Next.js, take a look at the following resources:
+
+- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
+- [Next.js SaaS Starter](https://github.com/nextjs/saas-starter) - Get started quickly with Next.js.
