@@ -43,8 +43,9 @@ I went through countless exercises, built over **35** hands-on projects, earned 
 
 ## React
 
-- [React Vite Fullstack](/react-vite-fullstack/)
+- [React Vite Full Stack](/react-vite-fullstack/)
 - [React Query in Practice](/react-tanstack-query/)
+- [Next.js Shopify Storefront](https://github.com/VienDinhCom/next-shopify-storefront)
 - [Next.js App Router in Practice](/react-nextjs/)
 - [Next.js SaaS with Drizzle and Stripe](/react-nextjs-with-stripe/)
 
