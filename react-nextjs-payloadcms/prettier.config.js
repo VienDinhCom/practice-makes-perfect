@@ -7,5 +7,5 @@ export default defineConfig({
     tailwindFunctions: ["cn"],
     tailwindStylesheet: "src/app/globals.css",
   },
-  ignores: ["src/backend/database/migrations"],
+  ignores: ["src/payload-types.ts"],
 });
