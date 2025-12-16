@@ -13,9 +13,22 @@
     "generate:types": "cross-env NODE_OPTIONS=--no-deprecation payload generate:types",
     "lint": "cross-env NODE_OPTIONS=--no-deprecation next lint",
     "payload": "cross-env NODE_OPTIONS=--no-deprecation payload",
-    "start": "cross-env NODE_OPTIONS=--no-deprecation next start"
+    "start": "cross-env NODE_OPTIONS=--no-deprecation next start",
+    "fix": "esmate task fix",
+    "check": "esmate task check"
+  },
+  "tasks": {
+    "fix": [
+      "esmate fmt",
+      "esmate lint --fix"
+    ],
+    "check": [
+      "esmate fmt --check",
+      "esmate lint"
+    ]
   },
   "dependencies": {
+    "@payloadcms/db-sqlite": "^3.68.5",
     "@payloadcms/next": "^3.68.5",
     "@payloadcms/richtext-lexical": "^3.68.5",
     "@payloadcms/ui": "^3.68.5",
@@ -25,15 +38,17 @@
     "payload": "^3.68.5",
     "react": "^19.2.3",
     "react-dom": "^19.2.3",
-    "sharp": "^0.34.5",
-    "@payloadcms/db-sqlite": "^3.68.5"
+    "sharp": "^0.34.5"
   },
   "devDependencies": {
+    "@esmate/prettier": "^1.0.6",
     "@types/node": "^25.0.2",
     "@types/react": "^19.2.7",
     "@types/react-dom": "^19.2.3",
+    "babel-plugin-react-compiler": "^1.0.0",
     "eslint": "^9.39.2",
     "eslint-config-next": "^16.0.10",
+    "esmate": "^2.1.3",
     "prettier": "^3.7.4",
     "typescript": "5.9.3"
   },
