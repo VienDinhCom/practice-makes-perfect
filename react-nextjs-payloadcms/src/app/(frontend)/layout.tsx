@@ -1,18 +1,26 @@
-import React from "react";
+import { ReactNode } from "react";
 import "./styles.css";
+import { Header } from "./header";
+import { getAuth } from "@/lib/auth";
 
 export const metadata = {
+  title: "ESMate React Payload",
   description: "A blank template using Payload in a Next.js app.",
-  title: "Payload Blank Template",
 };
 
-export default async function RootLayout(props: { children: React.ReactNode }) {
+export default async function RootLayout(props: { children: ReactNode }) {
   const { children } = props;
+  const auth = await getAuth();
 
   return (
-    <html lang="en">
+    <html lang="en" className="light">
       <body>
-        <main>{children}</main>
+        <main>
+          <section className="flex min-h-screen flex-col">
+            <Header user={auth} />
+            {children}
+          </section>
+        </main>
       </body>
     </html>
   );
