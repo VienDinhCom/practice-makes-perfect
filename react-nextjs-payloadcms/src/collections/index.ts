@@ -6,4 +6,4 @@ import { Posts } from "./posts";
 
 export { Users, Media, Posts };
 
-export const collections: CollectionConfig[] = [Users, Media, Posts];
+export const collections: CollectionConfig[] = [Posts, Media, Users];
