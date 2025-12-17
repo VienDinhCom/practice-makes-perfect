@@ -1,5 +1,6 @@
 import { Button } from "@esmate/shadcn/components/ui/button";
 import { ArrowRight, CreditCard, Database } from "@esmate/shadcn/pkgs/lucide-react";
+import Link from "next/link";
 
 export default function Page() {
   return (
@@ -15,13 +16,19 @@ export default function Page() {
               Launch your SaaS product in record time with our powerful, ready-to-use template. Packed with modern
               technologies and essential integrations.
             </p>
-            <div className="mt-8 text-center sm:mx-auto sm:max-w-lg">
-              <a href="/dashboard/" className="rounded-full text-lg">
-                <Button size="lg" variant="outline" className="rounded-full text-lg">
-                  Go to Dashboard
+            <div className="mt-8 flex justify-center gap-2 text-center sm:mx-auto sm:max-w-lg">
+              <Link href="/admin/" className="rounded-full text-lg">
+                <Button size="lg" className="rounded-full text-lg">
+                  Go to Admin
                   <ArrowRight className="ml-2 h-5 w-5" />
                 </Button>
-              </a>
+              </Link>
+              <Link href="/dashboard/" className="rounded-full text-lg">
+                <Button size="lg" variant="outline" className="rounded-full text-lg">
+                  Dashboard
+                  <ArrowRight className="ml-2 h-5 w-5" />
+                </Button>
+              </Link>
             </div>
           </div>
         </div>
@@ -52,9 +59,10 @@ export default function Page() {
                 <Database className="h-6 w-6" />
               </div>
               <div className="mt-5">
-                <h2 className="text-lg font-medium text-gray-900">Postgres and Drizzle ORM</h2>
+                <h2 className="text-lg font-medium text-gray-900">PayloadCMS</h2>
                 <p className="mt-2 text-base text-gray-500">
-                  Robust database solution with an intuitive ORM for efficient data management and scalability.
+                  Payload is the open-source Next.js backend used in production by the most innovative companies on
+                  earth.
                 </p>
               </div>
             </div>
@@ -85,7 +93,7 @@ export default function Page() {
               </p>
             </div>
             <div className="mt-8 flex justify-center lg:mt-0 lg:justify-end">
-              <a href="https://github.com/VienDinhCom/esmate/tree/main/templates/react-next" target="_blank">
+              <a href="https://github.com/VienDinhCom/esmate/tree/main/templates/react-payload" target="_blank">
                 <Button size="lg" variant="outline" className="rounded-full text-lg">
                   View the code
                   <ArrowRight className="ml-3 h-6 w-6" />
