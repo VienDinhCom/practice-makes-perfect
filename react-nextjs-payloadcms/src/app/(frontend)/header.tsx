@@ -12,7 +12,7 @@ import {
 } from "@esmate/shadcn/components/ui/dropdown-menu";
 import { Avatar, AvatarFallback, AvatarImage } from "@esmate/shadcn/components/ui/avatar";
 import { useRouter } from "next/navigation";
-// import { authClient } from "@/lib/utils";
+import { signOut } from "@/lib/auth";
 
 interface User {
   id: number;
@@ -26,7 +26,8 @@ function UserMenu(props: { user: User | null }) {
   const router = useRouter();
 
   async function handleSignOut() {
-    // await authClient.signOut();
+    await signOut();
+
     router.push("/");
   }
 
