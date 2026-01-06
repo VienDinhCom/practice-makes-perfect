@@ -125,6 +125,7 @@ export interface UserAuthOperations {
 export interface Post {
   id: number;
   title: string;
+  image?: (number | null) | Media;
   content: {
     root: {
       type: string;
@@ -271,6 +272,7 @@ export interface PayloadMigration {
  */
 export interface PostsSelect<T extends boolean = true> {
   title?: T;
+  image?: T;
   content?: T;
   updatedAt?: T;
   createdAt?: T;

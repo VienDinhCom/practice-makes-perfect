@@ -12,6 +12,11 @@ export const Posts: CollectionConfig = {
       required: true,
     },
     {
+      name: "image",
+      type: "upload",
+      relationTo: "media",
+    },
+    {
       name: "content",
       type: "richText",
       required: true,
