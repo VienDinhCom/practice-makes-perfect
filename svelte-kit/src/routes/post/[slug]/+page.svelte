@@ -6,8 +6,8 @@
 </script>
 
 {#if post}
-	<section>
+	<article class="prose prose-lg max-w-none dark:prose-invert">
 		<h1 style:view-transition-name={`heading-${post.slug}`}>{post.title}</h1>
 		<p>{post.body}</p>
-	</section>
+	</article>
 {/if}
