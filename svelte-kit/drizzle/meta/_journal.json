@@ -8,6 +8,13 @@
       "when": 1767694222580,
       "tag": "0000_slimy_stone_men",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1767757067186,
+      "tag": "0001_fantastic_tempest",
+      "breakpoints": true
     }
   ]
 }
