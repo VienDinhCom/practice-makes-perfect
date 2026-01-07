@@ -2,7 +2,7 @@
 	import { resolve } from '$app/paths';
 	import { goto } from '$app/navigation';
 	import { authClient } from '$lib/auth-client';
-	import { get_user } from '../../user.remote';
+	import { get_user } from '$lib/remote/user.remote';
 
 	let error = $state('');
 

@@ -2,7 +2,7 @@
 	import { resolve } from '$app/paths';
 	import './layout.css';
 	import favicon from '$lib/assets/favicon.svg';
-	import { get_user } from './user.remote';
+	import { get_user } from '$lib/remote/user.remote';
 	import { authClient } from '$lib/auth-client';
 	import { goto, onNavigate } from '$app/navigation';
 
