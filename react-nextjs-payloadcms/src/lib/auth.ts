@@ -1,6 +1,10 @@
+"use server";
+
 import { payload } from "./payload";
 import { headers } from "next/headers";
 import { redirect } from "next/navigation";
+import { login, logout } from "@payloadcms/next/auth";
+import config from "@payload-config";
 
 interface Auth {
   id: number;
@@ -34,4 +38,32 @@ export async function getAuthOrRedirect(redirectUrl?: string): Promise<Auth> {
   if (!auth) redirect(redirectUrl || "/auth/sign-in");
 
   return auth;
+}
+
+export async function signIn({ email, password }: Pick<Auth, "email"> & { password: string }) {
+  const result = await login({
+    collection: "users",
+    config,
+    email,
+    password,
+  });
+
+  return result;
+}
+
+export async function signUp(user: Pick<Auth, "name" | "email"> & { password: string }) {
+  const result = await payload.create({
+    collection: "users",
+    data: user,
+  });
+
+  await signIn({ email: user.email, password: user.password });
+
+  return result;
+}
+
+export async function signOut() {
+  const result = await logout({ allSessions: true, config });
+
+  return result;
 }
