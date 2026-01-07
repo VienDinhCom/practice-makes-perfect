@@ -49,6 +49,10 @@ I went through countless exercises, built over **35** hands-on projects, earned 
 - [Next.js App Router in Practice](/react-nextjs/)
 - [Next.js SaaS with Drizzle and Stripe](/react-nextjs-with-stripe/)
 
+## Svelte
+
+- [Svelte Kit in Practice](/svelte-kit)
+
 ## Projects
 
 I started as a front-end developer—just building interfaces, making things look good. But over time, curiosity pulled me deeper. I wanted to understand the whole system, not just the surface. So, I evolved into a full-stack developer.
