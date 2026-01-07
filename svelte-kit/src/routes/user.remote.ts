@@ -9,6 +9,7 @@ export const get_user = query(async () => {
 	return {
 		id: session?.user.id || null,
 		name: session?.user.name || null,
-		email: session?.user.email || null
+		email: session?.user.email || null,
+		role: session?.user.role || null
 	};
 });

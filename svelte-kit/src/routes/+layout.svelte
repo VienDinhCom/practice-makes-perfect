@@ -40,7 +40,9 @@
 <header>
 	<div class="layout-readable center split">
 		<a href={resolve('/')}>Home</a>
-		<a href={resolve('/admin')}>Admin</a>
+		{#if user.role === 'admin'}
+			<a href={resolve('/admin')}>Admin</a>
+		{/if}
 		{#if user.id}
 			Name: {user.name}
 			<button onclick={logout}>Logout</button>
