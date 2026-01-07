@@ -1,38 +1,35 @@
-# sv
+# Svelte Kit in Practice
 
-Everything you need to build a Svelte project, powered by [`sv`](https://github.com/sveltejs/cli).
+I’ve watched Svelte from afar for a long time, hearing other developers speak about its elegance. There was always this quiet pull inside me: _one day, I’ll try it myself._
 
-## Creating a project
+When I finally did, it felt like clarity. Svelte Kit’s simplicity opened space in my mind. The remote functions feature wasn’t just neat — it felt like a natural extension of how I think about code and data.
 
-If you're seeing this, you've probably already done this step. Congrats!
+I followed [Scott Tolinski](https://www.youtube.com/watch?v=vkXxFfGwPao)’s walkthrough on the Syntax to build a blog app with Svelte Kit and DrizzleORM — a full CRUD with admin pages. The pieces fit. Better Auth handled users without friction. I wasn’t wrestling with configuration, I was creating.
 
-```sh
-# create a new project in the current directory
-npx sv create
+What resonated most was the development experience itself: fast, intuitive, and unpretentious. Svelte Kit didn’t just help me build things — it reminded me why I code in the first place: to make ideas tangible with as little noise as possible.
 
-# create a new project in my-app
-npx sv create my-app
-```
+## Usage
 
-## Developing
+### `volta setup`
 
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+This project was developed with Node 22 and NPM 10.<br>
 
-```sh
-npm run dev
+To set up a compatible environment, please download [Volta](https://github.com/volta-cli/volta) and run `volta setup`.
 
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
-```
+### `docker compose up`
 
-## Building
+This project uses Postgres and Docker to run the database. Please run `docker compose up` to start the database.
 
-To create a production version of your app:
+### `npm run dev`
 
-```sh
-npm run build
-```
+Runs the app in the development mode.<br>
+Open [http://localhost:5173](http://localhost:5173) to view it in the browser.
+
+The page will reload if you make edits.<br>
+You will also see any lint errors in the console.
+
+### `npm run build`
+
+Builds the app for production.
 
 You can preview the production build with `npm run preview`.
-
-> To deploy your app, you may need to install an [adapter](https://svelte.dev/docs/kit/adapters) for your target environment.
