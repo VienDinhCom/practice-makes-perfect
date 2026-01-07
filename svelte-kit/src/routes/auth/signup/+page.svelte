@@ -2,7 +2,7 @@
 	import { resolve } from '$app/paths';
 	import { goto } from '$app/navigation';
 	import { authClient } from '$lib/auth-client';
-	// import { get_user } from '../../user.remote';
+	import { get_user } from '../../user.remote';
 
 	let error = $state('');
 
@@ -33,7 +33,7 @@
 			{
 				onSuccess: async () => {
 					// what you want to do on success
-					// get_user().refresh();
+					get_user().refresh();
 					goto(resolve('/'));
 				}
 			}
