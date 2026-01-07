@@ -39,9 +39,14 @@
 
 <header>
 	<div class="layout-readable center split">
-		<a href={resolve('/')}>Blog</a>
+		<a href={resolve('/')}>Home</a>
+		<a href={resolve('/admin')}>Admin</a>
 		{#if user.id}
+			Name: {user.name}
 			<button onclick={logout}>Logout</button>
+		{/if}
+		{#if !user.id}
+			<a href={resolve('/auth/login')}>Login</a>
 		{/if}
 	</div>
 </header>
