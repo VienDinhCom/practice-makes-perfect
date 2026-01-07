@@ -12,7 +12,7 @@ What resonated most was the development experience itself: fast, intuitive, and 
 
 ### `volta setup`
 
-This project was developed with Node 22 and NPM 10.<br>
+This project was developed with Node 24 and NPM 11.<br>
 
 To set up a compatible environment, please download [Volta](https://github.com/volta-cli/volta) and run `volta setup`.
 
