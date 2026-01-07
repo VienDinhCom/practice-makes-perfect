@@ -1,6 +1,5 @@
-// import * as Sentry from '@sentry/sveltekit';
-import { building } from '$app/environment';
 import { auth } from '$lib/auth';
+import { building } from '$app/environment';
 import type { Handle } from '@sveltejs/kit';
 import { sequence } from '@sveltejs/kit/hooks';
 import { svelteKitHandler } from 'better-auth/svelte-kit';
@@ -24,6 +23,7 @@ const sessionHandle: Handle = async ({ event, resolve }) => {
 // 	console.log('After Page hit');
 // 	return response;
 // };
+
 // export const log_two: Handle = async ({ event, resolve }) => {
 // 	console.log('Before LOG 2 Page hit');
 // 	const response = await resolve(event);
