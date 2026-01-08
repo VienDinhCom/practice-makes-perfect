@@ -20,6 +20,10 @@ To set up a compatible environment, please download [Volta](https://github.com/v
 
 This project uses Postgres and Docker to run the database. Please run `docker compose up` to start the database.
 
+### `npm run db:migrate`
+
+Runs the database migrations to create the tables with DrizzleKit.
+
 ### `npm run dev`
 
 Runs the app in the development mode.<br>
