@@ -1,12 +1,12 @@
 # Svelte Kit in Practice
 
-I’ve watched Svelte from afar for a long time, hearing other developers speak about its elegance. There was always this quiet pull inside me: _one day, I’ll try it myself._
+I’ve watched **Svelte** from afar for a long time, hearing other developers speak about its elegance. There was always this quiet pull inside me: _one day, I’ll try it myself._
 
-When I finally did, it felt like clarity. Svelte Kit’s simplicity opened space in my mind. The remote functions feature wasn’t just neat — it felt like a natural extension of how I think about code and data.
+When I finally did, it felt like clarity. **Svelte Kit**’s simplicity opened space in my mind. The **remote functions** feature wasn’t just neat—it felt like a natural extension of how I think about code and data.
 
-I followed [Scott Tolinski](https://www.youtube.com/watch?v=vkXxFfGwPao)’s walkthrough on the Syntax to build a blog app with Svelte Kit and DrizzleORM — a full CRUD with admin pages. The pieces fit. Better Auth handled users without friction. I wasn’t wrestling with configuration, I was creating.
+I followed [Scott Tolinski](https://www.youtube.com/watch?v=vkXxFfGwPao)’s walkthrough on the Syntax to build a blog app with **Svelte Kit** and **DrizzleORM** — a full CRUD with admin pages. The pieces fit. **Better Auth** handled users without friction. I wasn’t wrestling with configuration, I was creating.
 
-What resonated most was the development experience itself: fast, intuitive, and unpretentious. Svelte Kit didn’t just help me build things — it reminded me why I code in the first place: to make ideas tangible with as little noise as possible.
+What resonated most was the development experience itself: fast, intuitive, and unpretentious. **Svelte Kit** didn’t just help me build things—it reminded me why I code in the first place: to make ideas tangible with as little noise as possible.
 
 ## Usage
 
@@ -19,6 +19,10 @@ To set up a compatible environment, please download [Volta](https://github.com/v
 ### `docker compose up`
 
 This project uses Postgres and Docker to run the database. Please run `docker compose up` to start the database.
+
+### `npm run db:migrate`
+
+Runs the database migrations to create the tables with DrizzleKit.
 
 ### `npm run dev`
 
