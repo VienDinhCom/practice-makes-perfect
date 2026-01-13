@@ -4,7 +4,7 @@ I wanted to understand how real-time communication works on the web, so I built 
 
 You know how most websites work like a conversation where you have to keep asking questions? You click, the server responds, then silence. **WebSockets** are different. They're like leaving a phone line open. Both sides can talk whenever they want.
 
-I used **TypeScript** with **Node.js**, **Express.js** for the server, **Vite**, **React** with **Tailwind CSS** for the interface. Nothing fancy. The goal wasn't to build the next big thing, just to see the mechanics up close.
+I used **TypeScript** with **Node.js**, **Express.js** for the server, **Vite**, **React**, **Tailwind CSS** for the interface. Nothing fancy. The goal wasn't to build the next big thing, just to see the mechanics up close.
 
 What struck me most was how fragile these connections are. They drop, they timeout, they need constant care. Building it myself revealed all these little problems you never think about as a user.
 
