@@ -1,6 +1,6 @@
 import { useEffect, useRef } from "react";
 import { useImmerState } from "@esmate/react/hooks";
-import { createWebSocket } from "../lib/socket";
+import { useWebSocket } from "@esmate/react/ahooks";
 import type { User, Chat, Socket } from "../../shared/types";
 import { capitalize } from "@esmate/utils";
 
@@ -16,13 +16,17 @@ interface State {
   status: string;
 }
 
+const wsUrl = `${window.location.protocol === "https:" ? "wss:" : "ws:"}//${
+  window.location.host
+}/socket`;
+
 export function Chat() {
   const [state, setState] = useImmerState<State>({
     messages: [],
     input: "",
     status: "Connecting...",
   });
-  const wsRef = useRef<WebSocket | null>(null);
+
   const myIdShortRef = useRef<string>("");
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
@@ -30,22 +34,18 @@ export function Chat() {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [state.messages]);
 
-  useEffect(() => {
-    const ws = createWebSocket();
-    wsRef.current = ws;
-
-    ws.onopen = () =>
+  const { readyState, sendMessage: wsSendMessage } = useWebSocket(wsUrl, {
+    onOpen: () =>
       setState((draft) => {
         draft.status = "Connected";
         return draft;
-      });
-    ws.onclose = () =>
+      }),
+    onClose: () =>
       setState((draft) => {
         draft.status = "Disconnected";
         return draft;
-      });
-
-    ws.onmessage = (event) => {
+      }),
+    onMessage: (event) => {
       const data = JSON.parse(event.data) as Socket<User | Chat>;
 
       if (data.type === "user") {
@@ -68,15 +68,27 @@ export function Chat() {
           return draft;
         });
       }
+    },
+  });
+
+  useEffect(() => {
+    const statusMap = {
+      0: "Connecting...",
+      1: "Connected",
+      2: "Disconnecting...",
+      3: "Disconnected",
     };
 
-    return () => ws.close();
-  }, []);
+    setState((draft) => {
+      draft.status = statusMap[readyState as keyof typeof statusMap];
+      return draft;
+    });
+  }, [readyState, setState]);
 
   const sendMessage = () => {
-    if (!state.input.trim() || !wsRef.current) return;
+    if (!state.input.trim()) return;
 
-    wsRef.current.send(
+    wsSendMessage(
       JSON.stringify({
         type: "chat",
         payload: {
