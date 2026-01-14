@@ -1,4 +1,5 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
+import { useImmerState } from "@esmate/react/hooks";
 import { createWebSocket } from "../lib/socket";
 import type { User, Chat, Socket } from "../../shared/types";
 import { capitalize } from "@esmate/utils";
@@ -9,24 +10,40 @@ interface Message {
   type: "sent" | "received";
 }
 
+interface State {
+  messages: Message[];
+  input: string;
+  status: string;
+}
+
 export function Chat() {
-  const [messages, setMessages] = useState<Message[]>([]);
-  const [inputValue, setInputValue] = useState("");
-  const [status, setStatus] = useState("Connecting...");
+  const [state, setState] = useImmerState<State>({
+    messages: [],
+    input: "",
+    status: "Connecting...",
+  });
   const wsRef = useRef<WebSocket | null>(null);
   const myIdShortRef = useRef<string>("");
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
-  }, [messages]);
+  }, [state.messages]);
 
   useEffect(() => {
     const ws = createWebSocket();
     wsRef.current = ws;
 
-    ws.onopen = () => setStatus("Connected");
-    ws.onclose = () => setStatus("Disconnected");
+    ws.onopen = () =>
+      setState((draft) => {
+        draft.status = "Connected";
+        return draft;
+      });
+    ws.onclose = () =>
+      setState((draft) => {
+        draft.status = "Disconnected";
+        return draft;
+      });
 
     ws.onmessage = (event) => {
       const data = JSON.parse(event.data) as Socket<User | Chat>;
@@ -40,16 +57,16 @@ export function Chat() {
         const chat = data.payload as Chat;
         const isMe = chat.userId === myIdShortRef.current;
 
-        setMessages((prev) => [
-          ...prev,
-          {
+        setState((draft) => {
+          draft.messages.push({
             id: crypto.randomUUID(),
             type: isMe ? "sent" : "received",
             text: isMe
               ? `Me: ${chat.message}`
               : `${capitalize(chat.userId)}: ${chat.message}`,
-          },
-        ]);
+          });
+          return draft;
+        });
       }
     };
 
@@ -57,19 +74,22 @@ export function Chat() {
   }, []);
 
   const sendMessage = () => {
-    if (!inputValue.trim() || !wsRef.current) return;
+    if (!state.input.trim() || !wsRef.current) return;
 
     wsRef.current.send(
       JSON.stringify({
         type: "chat",
         payload: {
           userId: myIdShortRef.current,
-          message: inputValue,
+          message: state.input,
         },
       })
     );
 
-    setInputValue("");
+    setState((draft) => {
+      draft.input = "";
+      return draft;
+    });
   };
 
   return (
@@ -78,15 +98,15 @@ export function Chat() {
         <h1 className="text-lg font-semibold">WebSocket Chat</h1>
         <span
           className={`text-sm ${
-            status === "Connected" ? "text-green-600" : "text-gray-500"
+            state.status === "Connected" ? "text-green-600" : "text-gray-500"
           }`}
         >
-          {status}
+          {state.status}
         </span>
       </header>
 
       <ul className="flex-1 space-y-2 overflow-y-auto px-4 py-3">
-        {messages.map((msg) => (
+        {state.messages.map((msg) => (
           <li
             key={msg.id}
             className={`max-w-[75%] rounded-lg px-3 py-2 text-sm ${
@@ -106,8 +126,13 @@ export function Chat() {
           className="flex-1 rounded-md border px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
           type="text"
           placeholder="Type a message..."
-          value={inputValue}
-          onChange={(e) => setInputValue(e.target.value)}
+          value={state.input}
+          onChange={(e) =>
+            setState((draft) => {
+              draft.input = e.target.value;
+              return draft;
+            })
+          }
           onKeyDown={(e) => e.key === "Enter" && sendMessage()}
         />
         <button
