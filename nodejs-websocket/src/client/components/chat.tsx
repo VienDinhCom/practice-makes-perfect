@@ -1,8 +1,9 @@
-import { useEffect, useRef } from "react";
+import { useEffect } from "react";
 import { useImmerState } from "@esmate/react/hooks";
 import { useWebSocket } from "@esmate/react/ahooks";
 import type { User, Chat, Socket } from "../../shared/types";
 import { capitalize } from "@esmate/utils";
+import { useScrollIntoView } from "../hooks/use-scroll-into-view";
 
 interface Message {
   id: string;
@@ -28,12 +29,6 @@ export function Chat() {
     messages: [],
     status: "Connecting...",
   });
-
-  const messagesEndRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
-  }, [state.messages]);
 
   const socket = useWebSocket(wsUrl, {
     onOpen: () =>
@@ -74,6 +69,10 @@ export function Chat() {
       }
     },
   });
+
+  const scrollIntoView = useScrollIntoView<HTMLDivElement>(
+    state.messages.length
+  );
 
   useEffect(() => {
     const statusMap = {
@@ -134,7 +133,8 @@ export function Chat() {
             {msg.text}
           </li>
         ))}
-        <div ref={messagesEndRef} />
+
+        <div ref={scrollIntoView.ref} />
       </ul>
 
       <div className="flex items-center gap-2 border-t px-4 py-3">
