@@ -1,8 +1,9 @@
-import { useEffect, useRef } from "react";
+import { useEffect } from "react";
 import { useImmerState } from "@esmate/react/hooks";
-import { createWebSocket } from "../lib/socket";
+import { useWebSocket } from "@esmate/react/ahooks";
 import type { User, Chat, Socket } from "../../shared/types";
 import { capitalize } from "@esmate/utils";
+import { useScrollIntoView } from "../hooks/use-scroll-into-view";
 
 interface Message {
   id: string;
@@ -11,51 +12,49 @@ interface Message {
 }
 
 interface State {
-  messages: Message[];
+  userId: string;
   input: string;
   status: string;
+  messages: Message[];
 }
+
+const wsUrl = `${window.location.protocol === "https:" ? "wss:" : "ws:"}//${
+  window.location.host
+}/socket`;
 
 export function Chat() {
   const [state, setState] = useImmerState<State>({
-    messages: [],
+    userId: "",
     input: "",
+    messages: [],
     status: "Connecting...",
   });
-  const wsRef = useRef<WebSocket | null>(null);
-  const myIdShortRef = useRef<string>("");
-  const messagesEndRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
-    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
-  }, [state.messages]);
-
-  useEffect(() => {
-    const ws = createWebSocket();
-    wsRef.current = ws;
-
-    ws.onopen = () =>
+  const socket = useWebSocket(wsUrl, {
+    onOpen: () =>
       setState((draft) => {
         draft.status = "Connected";
         return draft;
-      });
-    ws.onclose = () =>
+      }),
+    onClose: () =>
       setState((draft) => {
         draft.status = "Disconnected";
         return draft;
-      });
-
-    ws.onmessage = (event) => {
+      }),
+    onMessage: (event) => {
       const data = JSON.parse(event.data) as Socket<User | Chat>;
 
       if (data.type === "user") {
-        myIdShortRef.current = (data.payload as User).id;
+        setState((draft) => {
+          draft.userId = (data.payload as User).id;
+          return draft;
+        });
         return;
       }
 
       if (data.type === "chat") {
         const chat = data.payload as Chat;
-        const isMe = chat.userId === myIdShortRef.current;
+        const isMe = chat.userId === state.userId;
 
         setState((draft) => {
           draft.messages.push({
@@ -68,19 +67,35 @@ export function Chat() {
           return draft;
         });
       }
+    },
+  });
+
+  const scrollIntoView = useScrollIntoView<HTMLDivElement>(
+    state.messages.length
+  );
+
+  useEffect(() => {
+    const statusMap = {
+      0: "Connecting...",
+      1: "Connected",
+      2: "Disconnecting...",
+      3: "Disconnected",
     };
 
-    return () => ws.close();
-  }, []);
+    setState((draft) => {
+      draft.status = statusMap[socket.readyState as keyof typeof statusMap];
+      return draft;
+    });
+  }, [socket.readyState, setState]);
 
   const sendMessage = () => {
-    if (!state.input.trim() || !wsRef.current) return;
+    if (!state.input.trim()) return;
 
-    wsRef.current.send(
+    socket.sendMessage(
       JSON.stringify({
         type: "chat",
         payload: {
-          userId: myIdShortRef.current,
+          userId: state.userId,
           message: state.input,
         },
       })
@@ -118,7 +133,8 @@ export function Chat() {
             {msg.text}
           </li>
         ))}
-        <div ref={messagesEndRef} />
+
+        <div ref={scrollIntoView.ref} />
       </ul>
 
       <div className="flex items-center gap-2 border-t px-4 py-3">
