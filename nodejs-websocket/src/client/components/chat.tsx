@@ -11,9 +11,10 @@ interface Message {
 }
 
 interface State {
-  messages: Message[];
+  userId: string;
   input: string;
   status: string;
+  messages: Message[];
 }
 
 const wsUrl = `${window.location.protocol === "https:" ? "wss:" : "ws:"}//${
@@ -22,19 +23,19 @@ const wsUrl = `${window.location.protocol === "https:" ? "wss:" : "ws:"}//${
 
 export function Chat() {
   const [state, setState] = useImmerState<State>({
-    messages: [],
+    userId: "",
     input: "",
+    messages: [],
     status: "Connecting...",
   });
 
-  const myIdShortRef = useRef<string>("");
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [state.messages]);
 
-  const { readyState, sendMessage: wsSendMessage } = useWebSocket(wsUrl, {
+  const socket = useWebSocket(wsUrl, {
     onOpen: () =>
       setState((draft) => {
         draft.status = "Connected";
@@ -49,13 +50,16 @@ export function Chat() {
       const data = JSON.parse(event.data) as Socket<User | Chat>;
 
       if (data.type === "user") {
-        myIdShortRef.current = (data.payload as User).id;
+        setState((draft) => {
+          draft.userId = (data.payload as User).id;
+          return draft;
+        });
         return;
       }
 
       if (data.type === "chat") {
         const chat = data.payload as Chat;
-        const isMe = chat.userId === myIdShortRef.current;
+        const isMe = chat.userId === state.userId;
 
         setState((draft) => {
           draft.messages.push({
@@ -80,19 +84,19 @@ export function Chat() {
     };
 
     setState((draft) => {
-      draft.status = statusMap[readyState as keyof typeof statusMap];
+      draft.status = statusMap[socket.readyState as keyof typeof statusMap];
       return draft;
     });
-  }, [readyState, setState]);
+  }, [socket.readyState, setState]);
 
   const sendMessage = () => {
     if (!state.input.trim()) return;
 
-    wsSendMessage(
+    socket.sendMessage(
       JSON.stringify({
         type: "chat",
         payload: {
-          userId: myIdShortRef.current,
+          userId: state.userId,
           message: state.input,
         },
       })
